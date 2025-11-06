@@ -127,10 +127,27 @@
       border-radius: 4px;
       font-family: monospace;
     }
+    
+    #discoverSummary {
+      font-size: 13px;
+      margin: 5px 0;
+      padding: 8px;
+      background-color: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      font-family: monospace;
+      display: none;
+    }
+    
+    #discoverSummary.visible {
+      display: block;
+    }
   </style>
 </head>
 <body>
   <h1>Ising Life Lab</h1>
+  
+  <div id="discoverSummary"></div>
   
   <div class="controls">
     <label>

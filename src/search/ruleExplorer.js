@@ -38,9 +38,10 @@ export function generateRandomRule() {
 
 /**
  * Evaluates a rule by simulating it on a small grid.
+ * Classifies rules by type: dead, full, frozen, or complex.
  * @param {Object} rule - Rule to evaluate
  * @param {Object} options - { width, height, steps, density }
- * @returns {Object} { rule, score, densityMean, entropyMean }
+ * @returns {Object} { rule, score, densityMean, entropyMean, type }
  */
 export function evaluateRule(rule, options = {}) {
   const width = options.width || 40;
@@ -57,6 +58,7 @@ export function evaluateRule(rule, options = {}) {
   const entropies = [];
   let populationChanges = 0;
   let previousPopulation = 0;
+  let changesAfterStep20 = 0;
   
   // Simulate
   for (let i = 0; i < steps; i++) {
@@ -66,6 +68,9 @@ export function evaluateRule(rule, options = {}) {
     
     if (i > 0 && metrics.population !== previousPopulation) {
       populationChanges++;
+      if (i >= 20) {
+        changesAfterStep20++;
+      }
     }
     previousPopulation = metrics.population;
     
@@ -78,35 +83,36 @@ export function evaluateRule(rule, options = {}) {
   const densityFinal = densities[densities.length - 1];
   const variationNorm = populationChanges / steps;
   
-  // Filtering criteria
-  if (densityFinal < 0.02 || densityFinal > 0.8) {
-    // Dies out or fills completely
-    return { rule, score: 0, densityMean, entropyMean };
+  // Classify rule type
+  let type = 'complex';
+  
+  if (densityFinal < 0.02) {
+    type = 'dead';
+  } else if (densityFinal > 0.9) {
+    type = 'full';
+  } else if (changesAfterStep20 < 5) {
+    type = 'frozen';
+  } else if (densityFinal < 0.05 || densityFinal > 0.8 || entropyMean < 0.7 || variationNorm < 0.1) {
+    // Doesn't meet complexity criteria
+    type = 'boring';
   }
   
-  if (entropyMean < 0.7) {
-    // Too uniform/boring
-    return { rule, score: 0, densityMean, entropyMean };
+  // Score only for complex rules
+  let score = 0;
+  if (type === 'complex') {
+    score = entropyMean
+      + 0.5 * (1 - Math.abs(densityMean - 0.3))
+      + 0.3 * variationNorm;
   }
   
-  if (variationNorm < 0.1) {
-    // Stuck/static
-    return { rule, score: 0, densityMean, entropyMean };
-  }
-  
-  // Calculate score (higher = more interesting)
-  const score = entropyMean
-    + 0.5 * (1 - Math.abs(densityMean - 0.3))
-    + 0.3 * variationNorm;
-  
-  return { rule, score, densityMean, entropyMean };
+  return { rule, score, densityMean, entropyMean, type };
 }
 
 /**
- * Explores many random rules and returns the best ones.
+ * Explores many random rules and returns the best complex ones.
  * @param {number} numCandidates - Number of rules to generate
  * @param {Object} options - Simulation options
- * @returns {Array} Top rules sorted by score
+ * @returns {Array} Top complex rules sorted by score
  */
 export function exploreRules(numCandidates = 30, options = {}) {
   const results = [];
@@ -115,7 +121,8 @@ export function exploreRules(numCandidates = 30, options = {}) {
     const rule = generateRandomRule();
     const evaluation = evaluateRule(rule, options);
     
-    if (evaluation.score > 1.0) {
+    // Only keep complex rules with good scores
+    if (evaluation.type === 'complex' && evaluation.score > 1.0) {
       results.push(evaluation);
     }
   }

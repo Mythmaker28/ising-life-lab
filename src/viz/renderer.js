@@ -50,6 +50,7 @@ let energyViewCheckbox = null;
 let nextRuleBtn = null;
 let randomRuleBtn = null;
 let discoverRulesBtn = null;
+let discoverSummary = null;
 let metricsGraph = null;
 let metricsGraphCtx = null;
 
@@ -73,6 +74,7 @@ function init() {
   nextRuleBtn = document.getElementById('nextRuleBtn');
   randomRuleBtn = document.getElementById('randomRuleBtn');
   discoverRulesBtn = document.getElementById('discoverRulesBtn');
+  discoverSummary = document.getElementById('discoverSummary');
   metricsGraph = document.getElementById('metricsGraph');
   
   // Check for missing elements
@@ -213,50 +215,84 @@ function init() {
       discoverRulesBtn.disabled = true;
       discoverRulesBtn.textContent = 'Searching...';
       
+      if (discoverSummary) {
+        discoverSummary.textContent = 'Exploring 30 random rules...';
+        discoverSummary.className = 'visible';
+      }
+      
       // Run exploration after small delay to update UI
       setTimeout(() => {
-        console.log('Starting rule exploration (30 candidates)...');
-        const results = exploreRules(30, { width: 40, height: 40, steps: 60 });
-        
-        console.log('Found', results.length, 'interesting rules:');
-        console.table(results.map(r => ({
-          name: r.rule.name,
-          score: r.score.toFixed(3),
-          density: r.densityMean.toFixed(3),
-          entropy: r.entropyMean.toFixed(3)
-        })));
-        
-        // Add rules to RULES if not duplicate
-        let addedCount = 0;
-        results.forEach(result => {
-          const rule = result.rule;
+        try {
+          console.log('🔍 Starting rule exploration (30 candidates)...');
+          const results = exploreRules(30, { width: 40, height: 40, steps: 60 });
           
-          // Check if rule already exists
-          const exists = RULES.some(r => 
-            JSON.stringify(r.born) === JSON.stringify(rule.born) &&
-            JSON.stringify(r.survive) === JSON.stringify(rule.survive)
-          );
-          
-          if (!exists) {
-            // Rename to "Found: ..."
-            rule.name = `Found: B${rule.born.join('')}/S${rule.survive.join('')}`;
-            RULES.push(rule);
+          if (results.length === 0) {
+            // No interesting rules found
+            if (discoverSummary) {
+              discoverSummary.textContent = 'No interesting rules found. Try again!';
+            }
+            console.log('❌ No complex rules passed the criteria.');
+          } else {
+            // Log results
+            console.log(`✅ Found ${results.length} interesting rules:`);
+            console.table(results.map(r => ({
+              name: r.rule.name,
+              born: r.rule.born.join(''),
+              survive: r.rule.survive.join(''),
+              score: r.score.toFixed(3),
+              type: r.type,
+              density: r.densityMean.toFixed(3),
+              entropy: r.entropyMean.toFixed(3)
+            })));
             
-            // Add to dropdown
-            const option = document.createElement('option');
-            option.value = RULES.length - 1;
-            option.textContent = rule.name;
-            ruleSelect.appendChild(option);
+            // Add rules to RULES if not duplicate
+            let addedCount = 0;
+            results.forEach(result => {
+              const rule = result.rule;
+              
+              // Check if rule already exists
+              const exists = RULES.some(r => 
+                JSON.stringify(r.born) === JSON.stringify(rule.born) &&
+                JSON.stringify(r.survive) === JSON.stringify(rule.survive)
+              );
+              
+              if (!exists) {
+                // Rename to "Found: ..." with score
+                rule.name = `Found: B${rule.born.join('')}/S${rule.survive.join('')} (${result.score.toFixed(2)})`;
+                RULES.push(rule);
+                
+                // Add to dropdown
+                const option = document.createElement('option');
+                option.value = RULES.length - 1;
+                option.textContent = rule.name;
+                ruleSelect.appendChild(option);
+                
+                addedCount++;
+              }
+            });
             
-            addedCount++;
+            if (addedCount > 0) {
+              if (discoverSummary) {
+                discoverSummary.textContent = `Found ${addedCount} interesting rule${addedCount > 1 ? 's' : ''}! Check the dropdown for "Found: B.../S..." entries.`;
+              }
+              console.log(`➕ Added ${addedCount} new rules to the selector.`);
+            } else {
+              if (discoverSummary) {
+                discoverSummary.textContent = `Found ${results.length} rule${results.length > 1 ? 's' : ''} but already in list.`;
+              }
+              console.log('ℹ️ All found rules already exist in selector.');
+            }
           }
-        });
-        
-        console.log(`Added ${addedCount} new rules to the selector.`);
-        
-        // Re-enable button
-        discoverRulesBtn.disabled = false;
-        discoverRulesBtn.textContent = 'Discover rules';
+        } catch (error) {
+          console.error('❌ Error while searching rules:', error);
+          if (discoverSummary) {
+            discoverSummary.textContent = 'Error while searching rules (see console).';
+          }
+        } finally {
+          // Always re-enable button
+          discoverRulesBtn.disabled = false;
+          discoverRulesBtn.textContent = 'Discover rules';
+        }
       }, 50);
     });
   }
