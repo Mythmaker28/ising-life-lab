@@ -90,3 +90,90 @@ export async function analyzeFoundRules(options = {}) {
   return allSummaries;
 }
 
+/**
+ * Analyzes all promoted rules (Mythmaker_X, Mahee_X, Tommy_X).
+ * 
+ * @param {Object} options - Analysis options
+ * @returns {Array} Array of summaries
+ */
+export async function analyzePromotedRules(options = {}) {
+  const promoted = RULES.filter(r => {
+    const name = r.name || '';
+    return name.startsWith('Mythmaker_') || name.startsWith('Mahee_') || name.startsWith('Tommy_');
+  });
+
+  if (promoted.length === 0) {
+    console.warn('⚠️ No promoted rules found.');
+    return [];
+  }
+
+  console.log(`🔬 Analyzing ${promoted.length} promoted rules...`);
+  
+  const summaries = [];
+  for (const rule of promoted) {
+    const { summary } = await analyzeRule(rule, options);
+    summaries.push(summary);
+  }
+
+  console.log('=== Analysis of promoted rules ===');
+  console.table(summaries);
+
+  return summaries;
+}
+
+/**
+ * Generates promotion code for top discovered rules.
+ * Use this to copy-paste into rules.js
+ * 
+ * @param {number} topN - Number of top rules to promote (default: 5)
+ */
+export function generatePromotionCode(topN = 5) {
+  const foundRules = RULES.filter(r => (r.name || '').startsWith('Found:'));
+  
+  if (foundRules.length === 0) {
+    console.warn('⚠️ No "Found:" rules to promote.');
+    return;
+  }
+  
+  // Extract scores from names like "Found: B.../S... [type, 1.84]"
+  const rulesWithScores = foundRules.map(rule => {
+    const match = rule.name.match(/\[([^,]+),\s*([0-9.]+)\]/);
+    const score = match ? parseFloat(match[2]) : 0;
+    const type = match ? match[1] : 'unknown';
+    return { rule, score, type };
+  });
+  
+  // Sort by score
+  rulesWithScores.sort((a, b) => b.score - a.score);
+  
+  // Take top N
+  const topRules = rulesWithScores.slice(0, topN);
+  
+  console.log('🏆 Top', topN, 'rules to promote:');
+  console.table(topRules.map((r, i) => ({
+    rank: i + 1,
+    name: r.rule.name,
+    born: r.rule.born.join(''),
+    survive: r.rule.survive.join(''),
+    type: r.type,
+    score: r.score
+  })));
+  
+  // Generate code
+  let code = '\n// --- Promoted discovered rules ---\n';
+  topRules.forEach((r, i) => {
+    const suffix = i + 1;
+    const ruleName = r.type.includes('osc') ? `Mythmaker_osc_${suffix}` : `Mythmaker_${suffix}`;
+    code += `  {\n`;
+    code += `    name: "${ruleName} (B${r.rule.born.join('')}/S${r.rule.survive.join('')})",\n`;
+    code += `    born: [${r.rule.born.join(', ')}],\n`;
+    code += `    survive: [${r.rule.survive.join(', ')}]\n`;
+    code += `  },\n`;
+  });
+  
+  console.log('📋 Copy this code and paste into src/presets/rules.js after the base rules:');
+  console.log(code);
+  
+  return code;
+}
+

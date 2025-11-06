@@ -10,11 +10,17 @@ import { RULES } from '../presets/rules.js';
 import { getBasicMetrics } from '../metrics/metrics.js';
 import { totalEnergy, localEnergy } from '../energy/localEnergyStub.js';
 import { exploreRules } from '../search/ruleExplorer.js';
-import { analyzeRule, analyzeFoundRules } from '../experiments/ruleAnalysis.js';
+import { analyzeRule, analyzeFoundRules, analyzePromotedRules, generatePromotionCode } from '../experiments/ruleAnalysis.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
-  window.IsingAnalysis = { analyzeRule, analyzeFoundRules, RULES };
+  window.IsingAnalysis = { 
+    analyzeRule, 
+    analyzeFoundRules, 
+    analyzePromotedRules,
+    generatePromotionCode,
+    RULES 
+  };
 }
 
 // Global state
