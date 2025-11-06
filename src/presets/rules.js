@@ -31,6 +31,21 @@ export const RULES = [
     name: "Replicator (B1357/S1357)",
     born: [1, 3, 5, 7],
     survive: [1, 3, 5, 7]
+  },
+  {
+    name: "Mythmaker (B345/S346)",
+    born: [3, 4, 5],
+    survive: [3, 4, 6]
+  },
+  {
+    name: "Mahee (B3678/S23678)",
+    born: [3, 6, 7, 8],
+    survive: [2, 3, 6, 7, 8]
+  },
+  {
+    name: "Tommy (B3457/S3456)",
+    born: [3, 4, 5, 7],
+    survive: [3, 4, 5, 6]
   }
 ];
 
