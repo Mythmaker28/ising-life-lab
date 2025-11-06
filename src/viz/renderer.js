@@ -47,6 +47,7 @@ let speedValue = null;
 let metricsDiv = null;
 let energyViewCheckbox = null;
 let nextRuleBtn = null;
+let randomRuleBtn = null;
 let metricsGraph = null;
 let metricsGraphCtx = null;
 
@@ -68,6 +69,7 @@ function init() {
   metricsDiv = document.getElementById('metrics');
   energyViewCheckbox = document.getElementById('energyView');
   nextRuleBtn = document.getElementById('nextRuleBtn');
+  randomRuleBtn = document.getElementById('randomRuleBtn');
   metricsGraph = document.getElementById('metricsGraph');
   
   // Check for missing elements
@@ -177,6 +179,26 @@ function init() {
       ruleSelect.value = ruleIndex;
       currentRule = RULES[ruleIndex];
       console.log('Next rule:', currentRule.name);
+      render(grid);
+      updateMetrics(grid);
+    });
+  }
+  
+  if (randomRuleBtn) {
+    randomRuleBtn.addEventListener('click', () => {
+      const newRule = generateRandomRule();
+      RULES.push(newRule);
+      
+      // Add to dropdown
+      const option = document.createElement('option');
+      option.value = RULES.length - 1;
+      option.textContent = newRule.name;
+      ruleSelect.appendChild(option);
+      
+      // Select it
+      ruleSelect.value = RULES.length - 1;
+      currentRule = newRule;
+      console.log('Random rule generated:', newRule.name);
       render(grid);
       updateMetrics(grid);
     });
@@ -456,6 +478,41 @@ function stopAnimation() {
     cancelAnimationFrame(animationId);
     animationId = null;
   }
+}
+
+/**
+ * Generates a random Life-like rule.
+ * Born and survive are random subsets of {0..8}.
+ * @returns {Object} Rule object with name, born, survive
+ */
+function generateRandomRule() {
+  const born = [];
+  const survive = [];
+  
+  // Randomly select numbers for born (probability 0.3 for each)
+  for (let i = 0; i <= 8; i++) {
+    if (Math.random() < 0.3) {
+      born.push(i);
+    }
+  }
+  
+  // Randomly select numbers for survive (probability 0.3 for each)
+  for (let i = 0; i <= 8; i++) {
+    if (Math.random() < 0.3) {
+      survive.push(i);
+    }
+  }
+  
+  // Format name
+  const bornStr = born.join('');
+  const surviveStr = survive.join('');
+  const name = `Random (B${bornStr}/S${surviveStr})`;
+  
+  return {
+    name: name,
+    born: born,
+    survive: survive
+  };
 }
 
 // Initialize when DOM is ready
