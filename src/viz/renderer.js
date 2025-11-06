@@ -9,6 +9,7 @@ import { step } from '../core/caStep.js';
 import { RULES } from '../presets/rules.js';
 import { getBasicMetrics } from '../metrics/metrics.js';
 import { totalEnergy, localEnergy } from '../energy/localEnergyStub.js';
+import { exploreRules } from '../search/ruleExplorer.js';
 
 // Global state
 let grid = null;
@@ -48,6 +49,7 @@ let metricsDiv = null;
 let energyViewCheckbox = null;
 let nextRuleBtn = null;
 let randomRuleBtn = null;
+let discoverRulesBtn = null;
 let metricsGraph = null;
 let metricsGraphCtx = null;
 
@@ -70,6 +72,7 @@ function init() {
   energyViewCheckbox = document.getElementById('energyView');
   nextRuleBtn = document.getElementById('nextRuleBtn');
   randomRuleBtn = document.getElementById('randomRuleBtn');
+  discoverRulesBtn = document.getElementById('discoverRulesBtn');
   metricsGraph = document.getElementById('metricsGraph');
   
   // Check for missing elements
@@ -201,6 +204,60 @@ function init() {
       console.log('Random rule generated:', newRule.name);
       render(grid);
       updateMetrics(grid);
+    });
+  }
+  
+  if (discoverRulesBtn) {
+    discoverRulesBtn.addEventListener('click', () => {
+      // Disable button during search
+      discoverRulesBtn.disabled = true;
+      discoverRulesBtn.textContent = 'Searching...';
+      
+      // Run exploration after small delay to update UI
+      setTimeout(() => {
+        console.log('Starting rule exploration (30 candidates)...');
+        const results = exploreRules(30, { width: 40, height: 40, steps: 60 });
+        
+        console.log('Found', results.length, 'interesting rules:');
+        console.table(results.map(r => ({
+          name: r.rule.name,
+          score: r.score.toFixed(3),
+          density: r.densityMean.toFixed(3),
+          entropy: r.entropyMean.toFixed(3)
+        })));
+        
+        // Add rules to RULES if not duplicate
+        let addedCount = 0;
+        results.forEach(result => {
+          const rule = result.rule;
+          
+          // Check if rule already exists
+          const exists = RULES.some(r => 
+            JSON.stringify(r.born) === JSON.stringify(rule.born) &&
+            JSON.stringify(r.survive) === JSON.stringify(rule.survive)
+          );
+          
+          if (!exists) {
+            // Rename to "Found: ..."
+            rule.name = `Found: B${rule.born.join('')}/S${rule.survive.join('')}`;
+            RULES.push(rule);
+            
+            // Add to dropdown
+            const option = document.createElement('option');
+            option.value = RULES.length - 1;
+            option.textContent = rule.name;
+            ruleSelect.appendChild(option);
+            
+            addedCount++;
+          }
+        });
+        
+        console.log(`Added ${addedCount} new rules to the selector.`);
+        
+        // Re-enable button
+        discoverRulesBtn.disabled = false;
+        discoverRulesBtn.textContent = 'Discover rules';
+      }, 50);
     });
   }
   
