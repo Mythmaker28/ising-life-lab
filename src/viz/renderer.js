@@ -11,6 +11,8 @@ import { getBasicMetrics } from '../metrics/metrics.js';
 import { totalEnergy, localEnergy } from '../energy/localEnergyStub.js';
 import { exploreRules } from '../search/ruleExplorer.js';
 import { analyzeRule, analyzeFoundRules, analyzePromotedRules, generatePromotionCode } from '../experiments/ruleAnalysis.js';
+import { initMemoryLab } from '../memory/memoryLab.js';
+import { getRuleByName, scanAttractors } from '../memory/attractorScan.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
@@ -19,6 +21,8 @@ if (typeof window !== 'undefined') {
     analyzeFoundRules, 
     analyzePromotedRules,
     generatePromotionCode,
+    scanAttractors,
+    getRuleByName,
     RULES 
   };
 }
@@ -376,6 +380,9 @@ function init() {
       updateMetrics(grid);
     }
   });
+  
+  // Initialize Memory Lab
+  initMemoryLab();
 }
 
 /**

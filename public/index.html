@@ -181,6 +181,43 @@
     Density: 0.00, Entropy: 0.00 bits, Population: 0
   </div>
   
+  <hr style="margin: 30px 0; border: none; border-top: 2px solid #ccc;">
+  
+  <div id="memoryLab">
+    <h2 style="color: #333;">Memory Lab (experimental)</h2>
+    <p style="color: #666;">Draw a pattern, add noise, and see which attractors your favorite rule converges to.</p>
+    
+    <div class="memory-controls" style="margin: 10px 0; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+      <label>
+        Rule:
+        <select id="memoryRuleSelect" style="padding: 5px; font-family: monospace;"></select>
+      </label>
+      <label>
+        Noise:
+        <input id="memoryNoise" type="range" min="0" max="0.5" step="0.01" value="0.1" style="width: 100px;">
+        <span id="memoryNoiseValue">0.10</span>
+      </label>
+      <label>
+        Steps:
+        <input id="memorySteps" type="number" value="80" min="10" max="500" style="width: 60px;">
+      </label>
+      <label>
+        Runs:
+        <input id="memoryRuns" type="number" value="40" min="5" max="200" style="width: 60px;">
+      </label>
+    </div>
+    
+    <canvas id="memoryCanvas" width="256" height="256" style="border: 2px solid #000; margin: 10px 0; cursor: crosshair;"></canvas>
+    
+    <div class="memory-buttons" style="margin: 10px 0; display: flex; gap: 10px;">
+      <button id="memoryClearBtn" style="padding: 8px 15px; background-color: #ff9800; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: monospace;">Clear</button>
+      <button id="memoryRandomBtn" style="padding: 8px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: monospace;">Random</button>
+      <button id="memoryScanBtn" style="padding: 8px 15px; background-color: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: monospace;">Run memory test</button>
+    </div>
+    
+    <div id="memoryResults" style="margin-top: 10px; font-family: monospace; font-size: 13px;"></div>
+  </div>
+  
   <script type="module" src="../src/viz/renderer.js"></script>
 </body>
 </html>
