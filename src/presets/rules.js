@@ -46,6 +46,32 @@ export const RULES = [
     name: "Tommy (B3457/S3456)",
     born: [3, 4, 5, 7],
     survive: [3, 4, 5, 6]
+  },
+  // --- Promoted discovered rules (auto-selected from Rule Explorer) ---
+  {
+    name: "Mythmaker_1 (B2456/S5)",
+    born: [2, 4, 5, 6],
+    survive: [5]
+  },
+  {
+    name: "Mythmaker_2 (B01/S3)",
+    born: [0, 1],
+    survive: [3]
+  },
+  {
+    name: "Mahee_1 (B0345/S8)",
+    born: [0, 3, 4, 5],
+    survive: [8]
+  },
+  {
+    name: "Tommy_1 (B1245/S)",
+    born: [1, 2, 4, 5],
+    survive: []
+  },
+  {
+    name: "Tommy_2 (B018/S)",
+    born: [0, 1, 8],
+    survive: []
   }
 ];
 

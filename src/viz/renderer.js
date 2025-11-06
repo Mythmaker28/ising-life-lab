@@ -45,10 +45,18 @@ let detectedPattern = '';
 let currentInterestingIndex = 0;
 
 /**
- * Gets indices of interesting rules (predefined + any Found rules)
+ * Gets indices of interesting rules (predefined + promoted + any Found rules)
  */
 function getInterestingRuleIndices() {
-  const indices = [0, 1, 2, 5, 6, 7]; // Conway, HighLife, Day&Night, Mythmaker, Mahee, Tommy
+  const indices = [];
+  
+  // Add all predefined and promoted rules (everything except "Found:" and "Random")
+  RULES.forEach((rule, index) => {
+    const name = rule.name || '';
+    if (!name.startsWith('Found:') && !name.startsWith('Random') && !name.startsWith('Auto')) {
+      indices.push(index);
+    }
+  });
   
   // Add any "Found:" rules
   RULES.forEach((rule, index) => {
