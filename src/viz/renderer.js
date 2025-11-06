@@ -29,9 +29,24 @@ const MAX_HISTORY = 200;
 let previousStates = new Map();
 let detectedPattern = '';
 
-// Interesting rules indices for Next Rule button
-const INTERESTING_RULES = [0, 1, 2, 5, 6, 7]; // Conway, HighLife, Day&Night, Mythmaker, Mahee, Tommy
+// Next Rule button: cycles through interesting rules (predefined + found)
 let currentInterestingIndex = 0;
+
+/**
+ * Gets indices of interesting rules (predefined + any Found rules)
+ */
+function getInterestingRuleIndices() {
+  const indices = [0, 1, 2, 5, 6, 7]; // Conway, HighLife, Day&Night, Mythmaker, Mahee, Tommy
+  
+  // Add any "Found:" rules
+  RULES.forEach((rule, index) => {
+    if (rule.name.startsWith('Found:') && !indices.includes(index)) {
+      indices.push(index);
+    }
+  });
+  
+  return indices;
+}
 
 // DOM elements (will be initialized in init())
 let canvas = null;
@@ -179,8 +194,9 @@ function init() {
   
   if (nextRuleBtn) {
     nextRuleBtn.addEventListener('click', () => {
-      currentInterestingIndex = (currentInterestingIndex + 1) % INTERESTING_RULES.length;
-      const ruleIndex = INTERESTING_RULES[currentInterestingIndex];
+      const interestingRules = getInterestingRuleIndices();
+      currentInterestingIndex = (currentInterestingIndex + 1) % interestingRules.length;
+      const ruleIndex = interestingRules[currentInterestingIndex];
       ruleSelect.value = ruleIndex;
       currentRule = RULES[ruleIndex];
       console.log('Next rule:', currentRule.name);
@@ -239,10 +255,12 @@ function init() {
               name: r.rule.name,
               born: r.rule.born.join(''),
               survive: r.rule.survive.join(''),
-              score: r.score.toFixed(3),
               type: r.type,
-              density: r.densityMean.toFixed(3),
-              entropy: r.entropyMean.toFixed(3)
+              score: r.score.toFixed(3),
+              densityFinal: r.densityFinal.toFixed(3),
+              entropyMean: r.entropyMean.toFixed(3),
+              variationMean: r.variationMean.toFixed(3),
+              period: r.period || '-'
             })));
             
             // Add rules to RULES if not duplicate
@@ -257,8 +275,9 @@ function init() {
               );
               
               if (!exists) {
-                // Rename to "Found: ..." with score
-                rule.name = `Found: B${rule.born.join('')}/S${rule.survive.join('')} (${result.score.toFixed(2)})`;
+                // Rename to "Found: ..." with type and score
+                const typeLabel = result.type === 'oscillating' ? `osc.p${result.period}` : result.type;
+                rule.name = `Found: B${rule.born.join('')}/S${rule.survive.join('')} [${typeLabel}, ${result.score.toFixed(2)}]`;
                 RULES.push(rule);
                 
                 // Add to dropdown
@@ -273,12 +292,12 @@ function init() {
             
             if (addedCount > 0) {
               if (discoverSummary) {
-                discoverSummary.textContent = `Found ${addedCount} interesting rule${addedCount > 1 ? 's' : ''}! Check the dropdown for "Found: B.../S..." entries.`;
+                discoverSummary.textContent = `✓ Found ${addedCount} interesting rule${addedCount > 1 ? 's' : ''}! Check dropdown for "Found: B.../S..." entries.`;
               }
-              console.log(`➕ Added ${addedCount} new rules to the selector.`);
+              console.log(`➕ Added ${addedCount} new rule${addedCount > 1 ? 's' : ''} to the selector.`);
             } else {
               if (discoverSummary) {
-                discoverSummary.textContent = `Found ${results.length} rule${results.length > 1 ? 's' : ''} but already in list.`;
+                discoverSummary.textContent = `Found ${results.length} rule${results.length > 1 ? 's' : ''} (already in list).`;
               }
               console.log('ℹ️ All found rules already exist in selector.');
             }

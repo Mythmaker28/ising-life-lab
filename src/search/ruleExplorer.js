@@ -38,10 +38,10 @@ export function generateRandomRule() {
 
 /**
  * Evaluates a rule by simulating it on a small grid.
- * Classifies rules by type: dead, full, frozen, or complex.
+ * Classifies rules by type and detects oscillators.
  * @param {Object} rule - Rule to evaluate
  * @param {Object} options - { width, height, steps, density }
- * @returns {Object} { rule, score, densityMean, entropyMean, type }
+ * @returns {Object} { rule, score, densityFinal, entropyMean, variationMean, type, period }
  */
 export function evaluateRule(rule, options = {}) {
   const width = options.width || 40;
@@ -52,13 +52,13 @@ export function evaluateRule(rule, options = {}) {
   // Create and randomize grid
   let grid = createGrid(width, height, 0);
   randomizeGrid(grid, density);
+  let previousGrid = null;
   
   // Track metrics over time
   const densities = [];
   const entropies = [];
-  let populationChanges = 0;
-  let previousPopulation = 0;
-  let changesAfterStep20 = 0;
+  const variations = [];
+  const hashes = [];
   
   // Simulate
   for (let i = 0; i < steps; i++) {
@@ -66,53 +66,85 @@ export function evaluateRule(rule, options = {}) {
     densities.push(metrics.density);
     entropies.push(metrics.entropy);
     
-    if (i > 0 && metrics.population !== previousPopulation) {
-      populationChanges++;
-      if (i >= 20) {
-        changesAfterStep20++;
+    // Calculate variation (Hamming distance)
+    if (previousGrid) {
+      let changes = 0;
+      const totalCells = width * height;
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          if (grid[y][x] !== previousGrid[y][x]) {
+            changes++;
+          }
+        }
       }
+      variations.push(changes / totalCells);
     }
-    previousPopulation = metrics.population;
     
+    // Simple hash
+    const hash = grid.map(row => row.join('')).join('|');
+    hashes.push(hash);
+    
+    previousGrid = grid.map(row => [...row]);
     grid = step(grid, rule);
   }
   
-  // Calculate means
-  const densityMean = densities.reduce((a, b) => a + b, 0) / densities.length;
-  const entropyMean = entropies.reduce((a, b) => a + b, 0) / entropies.length;
+  // Calculate metrics
   const densityFinal = densities[densities.length - 1];
-  const variationNorm = populationChanges / steps;
+  const entropyMean = entropies.reduce((a, b) => a + b, 0) / entropies.length;
+  const variationMean = variations.length > 0 
+    ? variations.slice(10).reduce((a, b) => a + b, 0) / Math.max(1, variations.length - 10)
+    : 0;
+  
+  // Detect oscillator (check last 10 steps for repeating hash)
+  let isOscillator = false;
+  let period = null;
+  if (hashes.length >= 20) {
+    const lastHash = hashes[hashes.length - 1];
+    for (let p = 2; p <= 10; p++) {
+      if (hashes.length > p && hashes[hashes.length - 1 - p] === lastHash) {
+        isOscillator = true;
+        period = p;
+        break;
+      }
+    }
+  }
+  
+  // Check if frozen (very low variation in last 10 steps)
+  const variationLast10 = variations.length >= 10
+    ? variations.slice(-10).reduce((a, b) => a + b, 0) / 10
+    : variationMean;
   
   // Classify rule type
-  let type = 'complex';
+  let type = 'boring';
   
   if (densityFinal < 0.02) {
     type = 'dead';
   } else if (densityFinal > 0.9) {
     type = 'full';
-  } else if (changesAfterStep20 < 5) {
+  } else if (variationLast10 < 0.001) {
     type = 'frozen';
-  } else if (densityFinal < 0.05 || densityFinal > 0.8 || entropyMean < 0.7 || variationNorm < 0.1) {
-    // Doesn't meet complexity criteria
-    type = 'boring';
+  } else if (isOscillator) {
+    type = 'oscillating';
+  } else if (densityFinal >= 0.05 && densityFinal <= 0.8 && entropyMean > 0.7 && variationMean > 0.02) {
+    type = 'complex';
   }
   
-  // Score only for complex rules
+  // Calculate score for interesting rules
   let score = 0;
-  if (type === 'complex') {
+  if (type === 'complex' || type === 'oscillating') {
     score = entropyMean
-      + 0.5 * (1 - Math.abs(densityMean - 0.3))
-      + 0.3 * variationNorm;
+      + 0.5 * (1 - Math.abs(densityFinal - 0.3))
+      + 0.5 * variationMean;
   }
   
-  return { rule, score, densityMean, entropyMean, type };
+  return { rule, score, densityFinal, entropyMean, variationMean, type, period };
 }
 
 /**
- * Explores many random rules and returns the best complex ones.
+ * Explores many random rules and returns the best complex/oscillating ones.
  * @param {number} numCandidates - Number of rules to generate
  * @param {Object} options - Simulation options
- * @returns {Array} Top complex rules sorted by score
+ * @returns {Array} Top interesting rules sorted by score
  */
 export function exploreRules(numCandidates = 30, options = {}) {
   const results = [];
@@ -121,8 +153,8 @@ export function exploreRules(numCandidates = 30, options = {}) {
     const rule = generateRandomRule();
     const evaluation = evaluateRule(rule, options);
     
-    // Only keep complex rules with good scores
-    if (evaluation.type === 'complex' && evaluation.score > 1.0) {
+    // Only keep complex or oscillating rules with good scores
+    if ((evaluation.type === 'complex' || evaluation.type === 'oscillating') && evaluation.score > 1.0) {
       results.push(evaluation);
     }
   }
