@@ -146,9 +146,3 @@ export async function scanForMemoryRules(options = {}) {
   };
 }
 
-// Expose to window for console use
-if (typeof window !== 'undefined') {
-  window.IsingAnalysis = window.IsingAnalysis || {};
-  window.IsingAnalysis.scanForMemoryRules = scanForMemoryRules;
-}
-

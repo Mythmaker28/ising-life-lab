@@ -17,7 +17,8 @@ import { scanForMemoryRules } from '../search/memoryRuleSearch.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
-  window.IsingAnalysis = { 
+  window.IsingAnalysis = {
+    ...(window.IsingAnalysis || {}),
     analyzeRule, 
     analyzeFoundRules, 
     analyzePromotedRules,
@@ -92,6 +93,7 @@ let energyViewCheckbox = null;
 let nextRuleBtn = null;
 let randomRuleBtn = null;
 let discoverRulesBtn = null;
+let searchMemoryBtn = null;
 let discoverSummary = null;
 let metricsGraph = null;
 let metricsGraphCtx = null;
@@ -116,6 +118,7 @@ function init() {
   nextRuleBtn = document.getElementById('nextRuleBtn');
   randomRuleBtn = document.getElementById('randomRuleBtn');
   discoverRulesBtn = document.getElementById('discoverRulesBtn');
+  searchMemoryBtn = document.getElementById('searchMemoryBtn');
   discoverSummary = document.getElementById('discoverSummary');
   metricsGraph = document.getElementById('metricsGraph');
   
@@ -340,6 +343,39 @@ function init() {
           discoverRulesBtn.textContent = 'Discover rules';
         }
       }, 50);
+    });
+  }
+  
+  if (searchMemoryBtn) {
+    searchMemoryBtn.addEventListener('click', async () => {
+      if (!window.IsingAnalysis || !window.IsingAnalysis.scanForMemoryRules) {
+        console.error('❌ scanForMemoryRules not available');
+        return;
+      }
+      
+      searchMemoryBtn.disabled = true;
+      searchMemoryBtn.textContent = 'Scanning...';
+      
+      try {
+        const result = await window.IsingAnalysis.scanForMemoryRules({
+          candidates: 40,
+          runs: 40,
+          steps: 80,
+          noise: 0.05
+        });
+        
+        console.log('');
+        console.log('📊 Memory search complete!');
+        console.log(`   Memory-like: ${result.memoryLike.length}`);
+        console.log(`   Weak-memory: ${result.weakMemory.length}`);
+        console.log(`   Chaotic: ${result.chaotic.length}`);
+        console.log(`   Frozen: ${result.frozen.length}`);
+      } catch (error) {
+        console.error('❌ Error during memory search:', error);
+      } finally {
+        searchMemoryBtn.disabled = false;
+        searchMemoryBtn.textContent = 'Search memory rules';
+      }
     });
   }
   
