@@ -13,6 +13,7 @@ import { exploreRules } from '../search/ruleExplorer.js';
 import { analyzeRule, analyzeFoundRules, analyzePromotedRules, generatePromotionCode } from '../experiments/ruleAnalysis.js';
 import { initMemoryLab } from '../memory/memoryLab.js';
 import { getRuleByName, scanAttractors } from '../memory/attractorScan.js';
+import { scanForMemoryRules } from '../search/memoryRuleSearch.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
@@ -22,6 +23,7 @@ if (typeof window !== 'undefined') {
     analyzePromotedRules,
     generatePromotionCode,
     scanAttractors,
+    scanForMemoryRules,
     getRuleByName,
     RULES 
   };
