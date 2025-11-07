@@ -14,7 +14,7 @@ import { analyzeRule, analyzeFoundRules, analyzePromotedRules, generatePromotion
 import { initMemoryLab } from '../memory/memoryLab.js';
 import { getRuleByName, scanAttractors } from '../memory/attractorScan.js';
 import { scanForMemoryRules } from '../search/memoryRuleSearch.js';
-import { evolveMemoryRules } from '../search/advancedMemorySearch.js';
+import { evolveMemoryRules, extremeMemorySearch } from '../search/advancedMemorySearch.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
@@ -27,6 +27,7 @@ if (typeof window !== 'undefined') {
     scanAttractors,
     scanForMemoryRules,
     evolveMemoryRules,
+    extremeMemorySearch,
     getRuleByName,
     RULES 
   };
@@ -97,6 +98,7 @@ let randomRuleBtn = null;
 let discoverRulesBtn = null;
 let searchMemoryBtn = null;
 let deepMemoryBtn = null;
+let extremeSearchBtn = null;
 let discoverSummary = null;
 let metricsGraph = null;
 let metricsGraphCtx = null;
@@ -123,6 +125,7 @@ function init() {
   discoverRulesBtn = document.getElementById('discoverRulesBtn');
   searchMemoryBtn = document.getElementById('searchMemoryBtn');
   deepMemoryBtn = document.getElementById('deepMemoryBtn');
+  extremeSearchBtn = document.getElementById('extremeSearchBtn');
   discoverSummary = document.getElementById('discoverSummary');
   metricsGraph = document.getElementById('metricsGraph');
   
@@ -411,6 +414,49 @@ function init() {
       } finally {
         deepMemoryBtn.disabled = false;
         deepMemoryBtn.textContent = 'Deep memory search';
+      }
+    });
+  }
+  
+  if (extremeSearchBtn) {
+    extremeSearchBtn.addEventListener('click', async () => {
+      if (!window.IsingAnalysis || !window.IsingAnalysis.extremeMemorySearch) {
+        console.error('❌ extremeMemorySearch not available');
+        return;
+      }
+      
+      extremeSearchBtn.disabled = true;
+      extremeSearchBtn.textContent = 'Extreme running...';
+      
+      if (discoverSummary) {
+        discoverSummary.textContent = 'Running extreme search (2-5 min)...';
+        discoverSummary.className = 'visible';
+      }
+      
+      try {
+        const result = await window.IsingAnalysis.extremeMemorySearch({
+          populationSize: 200,
+          generations: 8,
+          runsPerRule: 60
+        });
+        
+        if (discoverSummary) {
+          const top3 = result.top.slice(0, 3).map(r => 
+            `B${r.rule.born.join('')}/S${r.rule.survive.join('')}`
+          ).join(', ');
+          discoverSummary.textContent = `✅ Top extreme memory rules: ${top3} (see console)`;
+        }
+        
+        console.log('');
+        console.log('🎊 EXTREME SEARCH COMPLETE - Check memory-results-extreme.md');
+      } catch (error) {
+        console.error('❌ Error during extreme search:', error);
+        if (discoverSummary) {
+          discoverSummary.textContent = 'Error during extreme search (see console)';
+        }
+      } finally {
+        extremeSearchBtn.disabled = false;
+        extremeSearchBtn.textContent = 'Extreme search';
       }
     });
   }

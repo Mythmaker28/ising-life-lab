@@ -272,6 +272,160 @@ export async function evolveMemoryRules({
   };
 }
 
+/**
+ * EXTREME memory search: 10x more exploration with multi-noise robustness.
+ */
+export async function extremeMemorySearch(options = {}) {
+  const populationSize = options.populationSize || 200;
+  const generations = options.generations || 8;
+  const baseSteps = options.baseSteps || 80;
+  const runsPerRule = options.runsPerRule || 60;
+  const noiseLevels = options.noiseLevels || [0.03, 0.05, 0.08];
+  const topK = options.topK || 15;
+  
+  console.log('🚀 ========== EXTREME MEMORY SEARCH ==========');
+  console.log(`   Population: ${populationSize} | Generations: ${generations}`);
+  console.log(`   Runs/rule: ${runsPerRule} | Noise: ${noiseLevels.join(', ')}`);
+  
+  const startTime = performance.now();
+  
+  // Premium seeds
+  const premiumSeeds = [
+    { name: 'Seed_1.88a (B2456/S078)', born: [2, 4, 5, 6], survive: [0, 7, 8] },
+    { name: 'Seed_1.88b (B2456/S068)', born: [2, 4, 5, 6], survive: [0, 6, 8] }
+  ];
+  
+  let baseRules = [...premiumSeeds];
+  baseRules = baseRules.concat(RULES.filter(r => {
+    const name = r.name || '';
+    return name.startsWith('Mythmaker_') || name.startsWith('Mahee_') || 
+           name.startsWith('Tommy_');
+  }));
+  
+  let population = [];
+  let allEvaluated = [];
+  
+  // Initial population
+  for (let i = 0; i < populationSize / 4; i++) {
+    population.push(baseRules[i % baseRules.length]);
+  }
+  for (let i = 0; i < populationSize / 2; i++) {
+    const base = baseRules[Math.floor(Math.random() * baseRules.length)];
+    population.push(mutateRule(base, Math.floor(Math.random() * 3) + 1));
+  }
+  while (population.length < populationSize) {
+    population.push(generateRandomRule());
+  }
+  
+  // Evolution
+  for (let gen = 0; gen < generations; gen++) {
+    console.log(`\n🧬 Gen ${gen + 1}/${generations}...`);
+    
+    const genResults = [];
+    
+    for (let i = 0; i < population.length; i++) {
+      if (i % 50 === 0) {
+        console.log(`   Progress: ${i}/${population.length}`);
+        await new Promise(resolve => setTimeout(resolve, 0));
+      }
+      
+      const rule = population[i];
+      
+      // Multi-noise evaluation
+      const evaluations = [];
+      for (const noise of noiseLevels) {
+        const ev = await evaluateMemory(rule, { 
+          runs: runsPerRule, 
+          steps: baseSteps, 
+          noise 
+        });
+        evaluations.push(ev);
+      }
+      
+      // Aggregate
+      const avgScore = evaluations.reduce((s, e) => s + e.memoryScore, 0) / evaluations.length;
+      const avgCoverage = evaluations.reduce((s, e) => s + e.coverage, 0) / evaluations.length;
+      const avgDominant = evaluations.reduce((s, e) => s + e.dominantCount, 0) / evaluations.length;
+      
+      let finalClass = 'chaotic';
+      if (avgScore > 0.7 && avgCoverage >= 0.7 && avgDominant >= 2 && avgDominant <= 10) {
+        finalClass = 'memory-like';
+      } else if (avgScore > 0.3) {
+        finalClass = 'weak-memory';
+      } else if (avgDominant <= 1) {
+        finalClass = 'frozen';
+      }
+      
+      genResults.push({
+        rule,
+        dominantCount: Math.round(avgDominant),
+        coverage: avgCoverage,
+        memoryScore: avgScore,
+        class: finalClass
+      });
+    }
+    
+    allEvaluated = allEvaluated.concat(genResults);
+    
+    // Next generation
+    if (gen < generations - 1) {
+      genResults.sort((a, b) => b.memoryScore - a.memoryScore);
+      const elite = genResults.slice(0, Math.floor(populationSize * 0.2));
+      
+      population = [...elite.map(r => r.rule)];
+      
+      for (let i = 0; i < populationSize * 0.6; i++) {
+        const base = elite[Math.floor(Math.random() * elite.length)].rule;
+        population.push(mutateRule(base, Math.floor(Math.random() * 3) + 1));
+      }
+      
+      while (population.length < populationSize) {
+        population.push(generateRandomRule());
+      }
+    }
+  }
+  
+  // Final results
+  const memoryLike = allEvaluated.filter(r => r.class === 'memory-like');
+  memoryLike.sort((a, b) => b.memoryScore - a.memoryScore);
+  
+  const topRules = memoryLike.slice(0, topK);
+  const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
+  
+  console.log('');
+  console.log('=' .repeat(70));
+  console.log('🎯 EXTREME SEARCH RESULTS');
+  console.log(`   Time: ${elapsed}s | Evaluated: ${allEvaluated.length} rules`);
+  console.log(`   Memory-like: ${memoryLike.length}`);
+  console.log('=' .repeat(70));
+  console.log('');
+  console.log('🏆 TOP 10:');
+  console.table(topRules.slice(0, 10).map((r, i) => ({
+    rank: i + 1,
+    name: r.rule.name,
+    born: r.rule.born.join(''),
+    survive: r.rule.survive.join(''),
+    domAttr: r.dominantCount,
+    coverage: (r.coverage * 100).toFixed(1) + '%',
+    score: r.memoryScore.toFixed(3)
+  })));
+  
+  // Check premium seeds
+  const seedInTop = topRules.filter(r => r.rule.name.includes('Seed_1.88'));
+  if (seedInTop.length > 0) {
+    console.log('✨ Premium seeds B2456/S078 & B2456/S068 validated!');
+  }
+  
+  return {
+    top: topRules,
+    stats: {
+      tested: allEvaluated.length,
+      memoryLike: memoryLike.length,
+      elapsed
+    }
+  };
+}
+
 // Simple random rule generator
 function generateRandomRule() {
   const born = [];
