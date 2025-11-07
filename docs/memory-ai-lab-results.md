@@ -41,9 +41,11 @@ const comp = await HopfieldLab.compareWithHallOfFame({
 // Générer le rapport Markdown
 const report = Reports.generateMarkdownReport(batch, comp);
 
-// Copier le rapport (Ctrl+C)
-copy(report);
+// Afficher et copier le rapport
+console.log(report);
 ```
+
+**Note**: Si aucun pattern n'est dessiné dans l'UI, le système utilise automatiquement 4 patterns par défaut (block, blinker, glider-like, random sparse).
 
 5. **Coller les résultats ci-dessous**
 
@@ -53,11 +55,12 @@ copy(report);
 
 ### Méthodologie
 
-- **Patterns testés**: 3 (glider, blinker, block)
+- **Patterns testés**: 3-4 (glider, blinker, block, random sparse)
 - **Runs par pattern**: 50
 - **Noise level**: 0.05 (5%)
 - **Steps**: 80
-- **Date**: [À remplir]
+- **Critère de succès**: Distance de Hamming ≤ 10% de la taille du pattern
+- **Date**: [À remplir après tests]
 
 ### Hall of Fame - Résultats CA
 
@@ -95,12 +98,15 @@ copy(report);
 
 ## Notes
 
+- **Critère de succès réaliste**: Distance de Hamming ≤ 10% permet de considérer qu'un pattern est "retrouvé" même avec de légères variations
 - Les résultats peuvent varier de ±5% entre les runs (seeds aléatoires non fixées)
 - Les patterns de test influencent fortement les résultats
 - Pour des résultats plus robustes, augmenter le nombre de runs (100+)
-- Les règles avec recall rate < 40% sont considérées comme "Fail" pour la mémoire
-- Les règles avec recall rate 40-70% sont "Weak"
-- Les règles avec recall rate ≥70% sont "OK"
+- **Classification**:
+  - Recall rate < 40% : "Fail" (mémoire faible)
+  - Recall rate 40-70% : "Weak" (mémoire modérée)
+  - Recall rate ≥70% : "OK" (bonne mémoire)
+- **Patterns par défaut**: Si aucun pattern n'est dessiné, le système utilise automatiquement 4 patterns de test standard
 
 ## Historique des tests
 
