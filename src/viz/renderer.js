@@ -27,6 +27,7 @@ if (typeof window !== 'undefined') {
     getRuleByName,
     RULES 
   };
+  console.log('✅ IsingAnalysis exposed with', Object.keys(window.IsingAnalysis).length, 'functions');
 }
 
 // Global state
