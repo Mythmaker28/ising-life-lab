@@ -79,7 +79,7 @@ export function runRelaxation(rule, baseGrid, { noise = 0, steps = 60 } = {}) {
 export function scanAttractors(rule, baseGrid, {
   runs = 40,
   steps = 80,
-  noise = 0.1,
+  noise = 0.05,
   maxAttractors = 6
 } = {}) {
   
@@ -112,15 +112,22 @@ export function scanAttractors(rule, baseGrid, {
   // Sort by frequency descending
   attractors.sort((a, b) => b.frequency - a.frequency);
   
-  // Limit to maxAttractors
-  const topAttractors = attractors.slice(0, maxAttractors);
+  // Filter dominant attractors only (>= 5% frequency)
+  const dominantAttractors = attractors.filter(a => a.frequency >= 0.05);
   
-  console.log(`✅ Found ${attractors.length} distinct attractors (showing top ${topAttractors.length}):`);
-  console.table(topAttractors.map((a, i) => ({
-    rank: i + 1,
-    count: a.count,
-    frequency: (a.frequency * 100).toFixed(1) + '%'
-  })));
+  // Limit to maxAttractors
+  const topAttractors = dominantAttractors.slice(0, maxAttractors);
+  
+  console.log(`✅ Found ${attractors.length} distinct attractors, ${dominantAttractors.length} dominant (≥5%):`);
+  if (topAttractors.length > 0) {
+    console.table(topAttractors.map((a, i) => ({
+      rank: i + 1,
+      count: a.count,
+      frequency: (a.frequency * 100).toFixed(1) + '%'
+    })));
+  } else {
+    console.log('   No dominant attractors (all < 5% frequency)');
+  }
   
   return {
     ruleName: rule.name,
@@ -128,7 +135,9 @@ export function scanAttractors(rule, baseGrid, {
     steps,
     noise,
     totalAttractors: attractors.length,
+    dominantCount: dominantAttractors.length,
     attractors: topAttractors
   };
 }
+
 

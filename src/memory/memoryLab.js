@@ -190,10 +190,10 @@ function runMemoryTest() {
       
       // Display results
       let html = `<h3>Results</h3>`;
-      html += `<p><b>Rule:</b> ${report.ruleName} | <b>Runs:</b> ${report.runs} | <b>Noise:</b> ${(report.noise * 100).toFixed(0)}% | <b>Attractors found:</b> ${report.totalAttractors}</p>`;
+      html += `<p><b>Rule:</b> ${report.ruleName} | <b>Runs:</b> ${report.runs} | <b>Noise:</b> ${(report.noise * 100).toFixed(0)}% | <b>Attractors found:</b> ${report.dominantCount} dominant (≥5%)</p>`;
       
       if (report.attractors.length === 0) {
-        html += '<p>No stable attractors detected.</p>';
+        html += '<p style="color: orange;"><b>No strong attractors detected for these parameters.</b><br>All final states had frequency &lt;5%. This rule may be chaotic or require different noise/steps.</p>';
       } else {
         html += '<table style="border-collapse: collapse; margin: 10px 0; font-family: monospace; font-size: 12px;">';
         html += '<tr><th style="border: 1px solid #ccc; padding: 5px;">#</th><th style="border: 1px solid #ccc; padding: 5px;">Frequency</th><th style="border: 1px solid #ccc; padding: 5px;">Count</th><th style="border: 1px solid #ccc; padding: 5px;">Pattern</th></tr>';
@@ -244,4 +244,5 @@ function runMemoryTest() {
     }
   }, 50);
 }
+
 
