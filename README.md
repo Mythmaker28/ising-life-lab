@@ -22,10 +22,24 @@ python -m http.server 8001
 # Then open http://localhost:8001/experiments/memory-ai-lab/index.html
 ```
 
-Features:
+**Features**:
 - **CA Playground**: Test Hall of Fame rules (Seed_1.88a, Seed_1.88b, etc.)
-- **Memory Lab**: Draw patterns, test memory recall with noise
+- **Memory Lab**: Draw patterns, test memory recall with noise, attractor detection
 - **Hopfield Comparison**: Compare CA memory vs classical Hopfield networks
+
+**Automatic Testing** (console F12):
+```javascript
+// Test all Hall of Fame rules automatically
+const batch = await MemoryLab.runBatchForHallOfFame();
+
+// Compare with Hopfield
+const comp = await HopfieldLab.compareWithHallOfFame();
+
+// Generate report
+Reports.generateMarkdownReport(batch, comp);
+```
+
+See `docs/memory-ai-lab-results.md` for detailed testing instructions.
 
 ## Features
 
