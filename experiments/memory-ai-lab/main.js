@@ -1,9 +1,13 @@
+console.log('⏳ Chargement Memory AI Lab...');
+
 import { CAEngine } from './ca/engine.js';
 import { CARenderer } from './viz/canvas.js';
 import { HOF_RULES } from '../../src/presets/rules.js';
 import { hashGrid, findDominantAttractors, addNoise, hammingDistance } from './memory/attractorUtils.js';
 import { HopfieldNetwork } from './hopfield/hopfield.js';
 import { createPatternItem, createResultsTable, createComparisonTable, updateProgressBar } from './viz/ui.js';
+
+console.log('✓ Imports chargés');
 
 const CA_WIDTH = 64;
 const CA_HEIGHT = 64;
@@ -223,6 +227,7 @@ function addPattern() {
   updatePatternsList();
   clearPattern();
   console.log(`✓ Pattern ${pattern.name} ajouté (${patterns.length} patterns total)`);
+}
 
 function clearPattern() {
   patternGrid.fill(0);
@@ -676,13 +681,20 @@ window.Reports = {
   generateMarkdownReport
 };
 
-console.log('✅ Memory AI Lab chargé');
-console.log('📚 API disponible:');
-console.log('  - MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 })');
-console.log('  - HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 })');
-console.log('  - Reports.generateMarkdownReport(batchResults, comparisonResults)');
-console.log('💡 Exemple complet:');
-console.log('  const batch = await MemoryLab.runBatchForHallOfFame();');
-console.log('  const comp = await HopfieldLab.compareWithHallOfFame();');
-console.log('  Reports.generateMarkdownReport(batch, comp);');
+console.log('%c✅ Memory AI Lab chargé', 'color: #00ff88; font-weight: bold; font-size: 14px');
+console.log('%c📚 API disponible:', 'color: #00ff88; font-weight: bold');
+console.log('%c  MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 })', 'color: #88ffaa');
+console.log('%c  HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 })', 'color: #88ffaa');
+console.log('%c  Reports.generateMarkdownReport(batchResults, comparisonResults)', 'color: #88ffaa');
+console.log('%c💡 Exemple complet:', 'color: #ffaa00; font-weight: bold');
+console.log(`%c  const batch = await MemoryLab.runBatchForHallOfFame();
+  const comp = await HopfieldLab.compareWithHallOfFame();
+  Reports.generateMarkdownReport(batch, comp);`, 'color: #aaffaa');
+
+// Vérification que l'API est bien exposée
+if (typeof window.MemoryLab !== 'undefined' && typeof window.HopfieldLab !== 'undefined') {
+  console.log('%c✓ API correctement exposée au window', 'color: #00ff88');
+} else {
+  console.error('❌ Erreur: API non exposée correctement');
+}
 
