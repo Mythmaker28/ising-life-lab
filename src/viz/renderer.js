@@ -14,6 +14,7 @@ import { analyzeRule, analyzeFoundRules, analyzePromotedRules, generatePromotion
 import { initMemoryLab } from '../memory/memoryLab.js';
 import { getRuleByName, scanAttractors } from '../memory/attractorScan.js';
 import { scanForMemoryRules } from '../search/memoryRuleSearch.js';
+import { evolveMemoryRules } from '../search/advancedMemorySearch.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
@@ -25,6 +26,7 @@ if (typeof window !== 'undefined') {
     generatePromotionCode,
     scanAttractors,
     scanForMemoryRules,
+    evolveMemoryRules,
     getRuleByName,
     RULES 
   };
@@ -94,6 +96,7 @@ let nextRuleBtn = null;
 let randomRuleBtn = null;
 let discoverRulesBtn = null;
 let searchMemoryBtn = null;
+let deepMemoryBtn = null;
 let discoverSummary = null;
 let metricsGraph = null;
 let metricsGraphCtx = null;
@@ -119,6 +122,7 @@ function init() {
   randomRuleBtn = document.getElementById('randomRuleBtn');
   discoverRulesBtn = document.getElementById('discoverRulesBtn');
   searchMemoryBtn = document.getElementById('searchMemoryBtn');
+  deepMemoryBtn = document.getElementById('deepMemoryBtn');
   discoverSummary = document.getElementById('discoverSummary');
   metricsGraph = document.getElementById('metricsGraph');
   
@@ -375,6 +379,38 @@ function init() {
       } finally {
         searchMemoryBtn.disabled = false;
         searchMemoryBtn.textContent = 'Search memory rules';
+      }
+    });
+  }
+  
+  if (deepMemoryBtn) {
+    deepMemoryBtn.addEventListener('click', async () => {
+      if (!window.IsingAnalysis || !window.IsingAnalysis.evolveMemoryRules) {
+        console.error('❌ evolveMemoryRules not available');
+        return;
+      }
+      
+      deepMemoryBtn.disabled = true;
+      deepMemoryBtn.textContent = 'Evolving...';
+      
+      try {
+        const result = await window.IsingAnalysis.evolveMemoryRules({
+          populationSize: 60,
+          generations: 4,
+          runs: 40,
+          steps: 90,
+          noise: 0.05,
+          topK: 20
+        });
+        
+        console.log('');
+        console.log('🎯 Deep memory evolution complete!');
+        console.table(result.top.slice(0, 5));
+      } catch (error) {
+        console.error('❌ Error during deep search:', error);
+      } finally {
+        deepMemoryBtn.disabled = false;
+        deepMemoryBtn.textContent = 'Deep memory search';
       }
     });
   }
