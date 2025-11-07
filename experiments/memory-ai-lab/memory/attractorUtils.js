@@ -38,3 +38,17 @@ export function hammingDistance(grid1, grid2) {
   return dist;
 }
 
+/**
+ * Vérifie si le recall est considéré comme un succès
+ * @param {Uint8Array} original - Pattern original
+ * @param {Uint8Array} final - État final après évolution
+ * @param {number} maxDiffRatio - Ratio max de différence acceptable (0-1)
+ * @returns {boolean} True si succès
+ */
+export function isRecallSuccess(original, final, maxDiffRatio = 0.1) {
+  const h = hammingDistance(original, final);
+  const total = original.length;
+  const ratio = total > 0 ? h / total : 1;
+  return ratio <= maxDiffRatio;
+}
+

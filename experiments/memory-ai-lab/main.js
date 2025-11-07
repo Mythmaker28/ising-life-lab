@@ -3,7 +3,7 @@ console.log('⏳ Chargement Memory AI Lab...');
 import { CAEngine } from './ca/engine.js';
 import { CARenderer } from './viz/canvas.js';
 import { HOF_RULES } from '../../src/presets/rules.js';
-import { hashGrid, findDominantAttractors, addNoise, hammingDistance } from './memory/attractorUtils.js';
+import { hashGrid, findDominantAttractors, addNoise, hammingDistance, isRecallSuccess } from './memory/attractorUtils.js';
 import { HopfieldNetwork } from './hopfield/hopfield.js';
 import { createPatternItem, createResultsTable, createComparisonTable, updateProgressBar } from './viz/ui.js';
 
@@ -16,6 +16,74 @@ const CA_CELL_SIZE = 8;
 let engine, renderer, currentGrid, animationId = null, isRunning = false, stepCount = 0, lastTime = 0, fps = 0;
 let patterns = [], patternCounter = 0;
 let patternCanvas, patternCtx, patternGrid, patternWidth = 32, patternHeight = 32, patternCellSize = 8, isDrawing = false;
+
+// Patterns par défaut pour tests automatiques
+function createDefaultPatterns() {
+  const defaultPatterns = [];
+  
+  // Block 2×2
+  const block = new Uint8Array(32 * 32);
+  block[15 * 32 + 15] = 1;
+  block[15 * 32 + 16] = 1;
+  block[16 * 32 + 15] = 1;
+  block[16 * 32 + 16] = 1;
+  defaultPatterns.push({
+    id: 'default_block',
+    name: 'Block 2×2',
+    grid: block,
+    width: 32,
+    height: 32,
+    created: Date.now()
+  });
+  
+  // Blinker période 2
+  const blinker = new Uint8Array(32 * 32);
+  blinker[16 * 32 + 15] = 1;
+  blinker[16 * 32 + 16] = 1;
+  blinker[16 * 32 + 17] = 1;
+  defaultPatterns.push({
+    id: 'default_blinker',
+    name: 'Blinker p2',
+    grid: blinker,
+    width: 32,
+    height: 32,
+    created: Date.now()
+  });
+  
+  // Glider-like
+  const glider = new Uint8Array(32 * 32);
+  glider[15 * 32 + 16] = 1;
+  glider[16 * 32 + 17] = 1;
+  glider[17 * 32 + 15] = 1;
+  glider[17 * 32 + 16] = 1;
+  glider[17 * 32 + 17] = 1;
+  defaultPatterns.push({
+    id: 'default_glider',
+    name: 'Glider-like',
+    grid: glider,
+    width: 32,
+    height: 32,
+    created: Date.now()
+  });
+  
+  // Pattern random sparse
+  const random = new Uint8Array(32 * 32);
+  for (let i = 0; i < 30; i++) {
+    const x = Math.floor(Math.random() * 32);
+    const y = Math.floor(Math.random() * 32);
+    random[y * 32 + x] = 1;
+  }
+  defaultPatterns.push({
+    id: 'default_random',
+    name: 'Random sparse',
+    grid: random,
+    width: 32,
+    height: 32,
+    created: Date.now()
+  });
+  
+  return defaultPatterns;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   engine = new CAEngine(CA_WIDTH, CA_HEIGHT);
@@ -307,20 +375,27 @@ async function runMemoryTest() {
   }
 }
 
-async function testPattern(pattern, rule, { noiseLevel, steps, runs }) {
+async function testPattern(pattern, rule, { noiseLevel, steps, runs, maxDiffRatio = 0.1 }) {
   const tempEngine = new CAEngine(pattern.width, pattern.height);
   const attractorCounts = new Map();
+  let successCount = 0;
   
   for (let i = 0; i < runs; i++) {
     const noisy = addNoise(pattern.grid, noiseLevel);
     const final = tempEngine.run(noisy, rule, steps);
     const hash = hashGrid(final);
     attractorCounts.set(hash, (attractorCounts.get(hash) || 0) + 1);
+    
+    // Vérifier si le recall est un succès (tolérance 10%)
+    if (isRecallSuccess(pattern.grid, final, maxDiffRatio)) {
+      successCount++;
+    }
   }
   
   const dominants = findDominantAttractors(attractorCounts, runs);
   const mainAttractor = dominants[0] || { count: 0, percentage: 0 };
   const coverage = dominants.reduce((sum, a) => sum + a.percentage, 0);
+  const recallRate = successCount / runs;
   
   return {
     patternId: pattern.id,
@@ -329,9 +404,9 @@ async function testPattern(pattern, rule, { noiseLevel, steps, runs }) {
     noiseLevel,
     steps,
     attractors: dominants,
-    recallRate: mainAttractor.percentage / 100,
+    recallRate: recallRate,
     coverage: coverage / 100,
-    status: mainAttractor.percentage >= 70 ? 'OK' : mainAttractor.percentage >= 40 ? 'Weak' : 'Fail'
+    status: recallRate >= 0.7 ? 'OK' : recallRate >= 0.4 ? 'Weak' : 'Fail'
   };
 }
 
@@ -475,17 +550,21 @@ function displayComparison(hopfieldResults, caResults) {
 // ========== API Publique pour tests automatiques ==========
 
 async function runBatchForHallOfFame(options = {}) {
-  const { noiseLevel = 0.05, steps = 80, runs = 50, patterns: testPatterns = null } = options;
+  const { noiseLevel = 0.05, steps = 80, runs = 50, patterns: testPatterns = null, maxDiffRatio = 0.1 } = options;
   
-  if (!testPatterns || testPatterns.length === 0) {
-    console.warn('⚠️ runBatchForHallOfFame: Aucun pattern fourni. Utilisez les patterns du Memory Lab ou fournissez patterns: [...]');
-    if (patterns.length === 0) {
-      console.error('❌ Aucun pattern disponible. Dessinez des patterns dans Memory Lab d\'abord.');
-      return null;
+  let patternsToTest = testPatterns;
+  
+  // Si pas de patterns fournis, utiliser ceux de l'UI
+  if (!patternsToTest || patternsToTest.length === 0) {
+    if (patterns.length > 0) {
+      patternsToTest = patterns;
+      console.log(`✓ Utilisation de ${patterns.length} patterns depuis Memory Lab`);
+    } else {
+      // Fallback: patterns par défaut
+      patternsToTest = createDefaultPatterns();
+      console.log(`⚠️ Aucun pattern UI trouvé. Utilisation de ${patternsToTest.length} patterns par défaut`);
     }
   }
-  
-  const patternsToTest = testPatterns || patterns;
   console.log(`🧪 Lancement batch Hall of Fame: ${HOF_RULES.length} règles × ${patternsToTest.length} patterns × ${runs} runs`);
   
   const results = [];
@@ -494,7 +573,7 @@ async function runBatchForHallOfFame(options = {}) {
     const ruleResults = [];
     
     for (const pattern of patternsToTest) {
-      const result = await testPattern(pattern, ruleData, { noiseLevel, steps, runs });
+      const result = await testPattern(pattern, ruleData, { noiseLevel, steps, runs, maxDiffRatio });
       ruleResults.push(result);
     }
     
@@ -502,16 +581,18 @@ async function runBatchForHallOfFame(options = {}) {
     const avgCoverage = ruleResults.reduce((sum, r) => sum + r.coverage, 0) / ruleResults.length;
     const avgAttractors = ruleResults.reduce((sum, r) => sum + r.attractors.length, 0) / ruleResults.length;
     
+    const notation = rule.name.match(/\(([^)]+)\)/)?.[1] || rule.name;
+    
     results.push({
-      rule: rule.name,
-      notation: rule.name.match(/\(([^)]+)\)/)?.[1] || 'N/A',
+      rule: rule.name.replace('🏆 ', ''),
+      notation: notation,
       avgRecallRate: avgRecall,
       avgCoverage: avgCoverage,
       avgAttractors: avgAttractors,
       patternsResults: ruleResults
     });
     
-    console.log(`✓ ${rule.name}: recall=${(avgRecall * 100).toFixed(1)}%, coverage=${(avgCoverage * 100).toFixed(1)}%, attractors=${avgAttractors.toFixed(1)}`);
+    console.log(`✓ ${notation}: recall=${(avgRecall * 100).toFixed(1)}%, coverage=${(avgCoverage * 100).toFixed(1)}%, attractors=${avgAttractors.toFixed(1)}`);
   }
   
   console.log('✅ Batch Hall of Fame terminé');
@@ -526,14 +607,22 @@ async function runBatchForHallOfFame(options = {}) {
 }
 
 async function compareWithHallOfFame(options = {}) {
-  const { noiseLevel = 0.05, runs = 50, patterns: testPatterns = null } = options;
+  const { noiseLevel = 0.05, runs = 50, patterns: testPatterns = null, maxDiffRatio = 0.1 } = options;
   
-  if (!testPatterns && patterns.length === 0) {
-    console.error('❌ Aucun pattern disponible. Dessinez des patterns dans Memory Lab d\'abord.');
-    return null;
+  let patternsToTest = testPatterns;
+  
+  // Si pas de patterns fournis, utiliser ceux de l'UI ou fallback
+  if (!patternsToTest || patternsToTest.length === 0) {
+    if (patterns.length > 0) {
+      patternsToTest = patterns;
+      console.log(`✓ Utilisation de ${patterns.length} patterns depuis Memory Lab`);
+    } else {
+      // Fallback: patterns par défaut
+      patternsToTest = createDefaultPatterns();
+      console.log(`⚠️ Aucun pattern UI trouvé. Utilisation de ${patternsToTest.length} patterns par défaut`);
+    }
   }
   
-  const patternsToTest = testPatterns || patterns;
   console.log(`🧪 Comparaison Hopfield vs Hall of Fame: ${HOF_RULES.length} règles × ${patternsToTest.length} patterns`);
   
   // Entraîner Hopfield
@@ -542,16 +631,16 @@ async function compareWithHallOfFame(options = {}) {
   const network = new HopfieldNetwork(networkSize);
   network.train(flatPatterns);
   
-  // Test Hopfield
+  // Test Hopfield (même critère de succès que CA)
   const hopfieldResults = [];
   for (const pattern of patternsToTest) {
     let successCount = 0;
     for (let j = 0; j < runs; j++) {
       const noisy = addNoise(pattern.grid, noiseLevel);
       const recalled = network.recall(noisy, 100);
-      const dist = hammingDistance(recalled, pattern.grid);
-      const threshold = pattern.grid.length * 0.05;
-      if (dist <= threshold) successCount++;
+      if (isRecallSuccess(pattern.grid, recalled, maxDiffRatio)) {
+        successCount++;
+      }
     }
     hopfieldResults.push({
       patternId: pattern.id,
@@ -562,7 +651,7 @@ async function compareWithHallOfFame(options = {}) {
   const hopfieldAvg = hopfieldResults.reduce((sum, r) => sum + r.recallRate, 0) / hopfieldResults.length;
   console.log(`✓ Hopfield: recall moyen=${(hopfieldAvg * 100).toFixed(1)}%`);
   
-  // Test chaque règle CA
+  // Test chaque règle CA (même critère de succès que Hopfield)
   const comparisons = [];
   for (const rule of HOF_RULES) {
     const ruleData = { born: rule.born, survive: rule.survive, name: rule.name };
@@ -570,34 +659,38 @@ async function compareWithHallOfFame(options = {}) {
     
     for (const pattern of patternsToTest) {
       const tempEngine = new CAEngine(pattern.width, pattern.height);
-      const attractorCounts = new Map();
+      let successCount = 0;
+      
       for (let j = 0; j < runs; j++) {
         const noisy = addNoise(pattern.grid, noiseLevel);
         const final = tempEngine.run(noisy, ruleData, 80);
-        const hash = hashGrid(final);
-        attractorCounts.set(hash, (attractorCounts.get(hash) || 0) + 1);
+        
+        if (isRecallSuccess(pattern.grid, final, maxDiffRatio)) {
+          successCount++;
+        }
       }
-      const dominants = findDominantAttractors(attractorCounts, runs);
-      const mainAttractor = dominants[0] || { count: 0, percentage: 0 };
+      
       caResults.push({
         patternId: pattern.id,
-        recallRate: mainAttractor.percentage / 100
+        recallRate: successCount / runs
       });
     }
     
     const caAvg = caResults.reduce((sum, r) => sum + r.recallRate, 0) / caResults.length;
     const delta = (caAvg - hopfieldAvg) * 100;
     
+    const notation = rule.name.match(/\(([^)]+)\)/)?.[1] || rule.name;
+    
     comparisons.push({
-      rule: rule.name,
-      notation: rule.name.match(/\(([^)]+)\)/)?.[1] || 'N/A',
+      rule: rule.name.replace('🏆 ', ''),
+      notation: notation,
       hopfieldRecall: hopfieldAvg,
       caRecall: caAvg,
       delta: delta,
       winner: delta > 5 ? 'CA' : delta < -5 ? 'Hopfield' : 'Tie'
     });
     
-    console.log(`✓ ${rule.name}: CA=${(caAvg * 100).toFixed(1)}% vs Hopfield=${(hopfieldAvg * 100).toFixed(1)}% (Δ${delta > 0 ? '+' : ''}${delta.toFixed(1)}%)`);
+    console.log(`✓ ${notation}: CA=${(caAvg * 100).toFixed(1)}% vs Hopfield=${(hopfieldAvg * 100).toFixed(1)}% (Δ${delta > 0 ? '+' : ''}${delta.toFixed(1)}%)`);
   }
   
   console.log('✅ Comparaison terminée');
@@ -613,18 +706,21 @@ async function compareWithHallOfFame(options = {}) {
 }
 
 function generateMarkdownReport(batchResults, comparisonResults) {
-  if (!batchResults) {
+  if (!batchResults || batchResults.length === 0) {
     console.error('❌ Pas de résultats batch. Lancez runBatchForHallOfFame() d\'abord.');
-    return null;
+    return '';
   }
+  
+  const numPatterns = batchResults[0]?.patternsResults?.length || patterns.length || 'N/A';
   
   let md = `# Memory AI Lab - Résultats automatiques\n\n`;
   md += `**Date**: ${new Date().toLocaleString('fr-FR')}\n\n`;
   md += `**Méthodologie**:\n`;
-  md += `- Patterns testés: ${patterns.length}\n`;
+  md += `- Patterns testés: ${numPatterns}\n`;
   md += `- Runs par pattern: 50\n`;
   md += `- Noise level: 0.05\n`;
-  md += `- Steps: 80\n\n`;
+  md += `- Steps: 80\n`;
+  md += `- Critère de succès: Distance de Hamming ≤ 10% de la taille\n\n`;
   
   md += `## Résultats Hall of Fame (CA)\n\n`;
   md += `| Règle | Notation | Recall Rate | Coverage | Attracteurs | Status |\n`;
@@ -658,10 +754,9 @@ function generateMarkdownReport(batchResults, comparisonResults) {
   
   md += `\n## Règle recommandée\n\n`;
   const best = batchResults.reduce((max, r) => r.avgRecallRate > max.avgRecallRate ? r : max);
-  md += `**${best.rule}** - Meilleur recall rate: ${(best.avgRecallRate * 100).toFixed(1)}%\n`;
+  md += `**${best.rule}** (${best.notation}) - Meilleur recall rate: ${(best.avgRecallRate * 100).toFixed(1)}%\n\n`;
+  md += `Cette règle présente le meilleur taux de rappel moyen sur l'ensemble des patterns testés.\n`;
   
-  console.log('📄 Rapport Markdown généré:');
-  console.log(md);
   return md;
 }
 
@@ -683,17 +778,22 @@ window.Reports = {
 
 console.log('%c✅ Memory AI Lab chargé', 'color: #00ff88; font-weight: bold; font-size: 14px');
 console.log('%c📚 API disponible:', 'color: #00ff88; font-weight: bold');
-console.log('%c  MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 })', 'color: #88ffaa');
-console.log('%c  HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 })', 'color: #88ffaa');
-console.log('%c  Reports.generateMarkdownReport(batchResults, comparisonResults)', 'color: #88ffaa');
-console.log('%c💡 Exemple complet:', 'color: #ffaa00; font-weight: bold');
-console.log(`%c  const batch = await MemoryLab.runBatchForHallOfFame();
-  const comp = await HopfieldLab.compareWithHallOfFame();
-  Reports.generateMarkdownReport(batch, comp);`, 'color: #aaffaa');
+console.log('%c  MemoryLab.runBatchForHallOfFame(options)', 'color: #88ffaa');
+console.log('%c  HopfieldLab.compareWithHallOfFame(options)', 'color: #88ffaa');
+console.log('%c  Reports.generateMarkdownReport(batch, comp)', 'color: #88ffaa');
+console.log('');
+console.log('%c💡 Test automatique complet (copier-coller):', 'color: #ffaa00; font-weight: bold');
+console.log(`%cconst batch = await MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 });
+const comp = await HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 });
+const report = Reports.generateMarkdownReport(batch, comp);
+console.log(report);`, 'color: #aaffaa; font-family: monospace;');
+console.log('');
+console.log('%c📝 Note: Si aucun pattern n\'est dessiné dans Memory Lab, des patterns par défaut seront utilisés automatiquement.', 'color: #aaa; font-style: italic');
 
 // Vérification que l'API est bien exposée
-if (typeof window.MemoryLab !== 'undefined' && typeof window.HopfieldLab !== 'undefined') {
+if (typeof window.MemoryLab !== 'undefined' && typeof window.HopfieldLab !== 'undefined' && typeof window.Reports !== 'undefined') {
   console.log('%c✓ API correctement exposée au window', 'color: #00ff88');
+  console.log('%c  Accès: window.MemoryLab, window.HopfieldLab, window.Reports', 'color: #88ffaa');
 } else {
   console.error('❌ Erreur: API non exposée correctement');
 }
