@@ -15,6 +15,7 @@ import { initMemoryLab } from '../memory/memoryLab.js';
 import { getRuleByName, scanAttractors } from '../memory/attractorScan.js';
 import { scanForMemoryRules } from '../search/memoryRuleSearch.js';
 import { evolveMemoryRules, extremeMemorySearch } from '../search/advancedMemorySearch.js';
+import { aggressiveSearch } from '../search/aggressiveMemorySearch.js';
 
 // Expose analysis functions to console for dev/research use
 if (typeof window !== 'undefined') {
@@ -28,6 +29,7 @@ if (typeof window !== 'undefined') {
     scanForMemoryRules,
     evolveMemoryRules,
     extremeMemorySearch,
+    aggressiveSearch,
     getRuleByName,
     RULES 
   };
