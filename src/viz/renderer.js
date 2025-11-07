@@ -6,7 +6,7 @@
 
 import { createGrid, randomizeGrid } from '../core/caGrid.js';
 import { step } from '../core/caStep.js';
-import { RULES } from '../presets/rules.js';
+import { RULES, HOF_RULES } from '../presets/rules.js';
 import { getBasicMetrics } from '../metrics/metrics.js';
 import { totalEnergy, localEnergy } from '../energy/localEnergyStub.js';
 import { exploreRules } from '../search/ruleExplorer.js';
@@ -154,17 +154,38 @@ function init() {
   }
   
   // Debug: verify RULES is loaded
-  console.log('RULES loaded:', RULES.length, 'rules');
+  console.log('RULES loaded:', RULES.length, 'rules + HOF:', HOF_RULES.length);
   
-  // Populate rule dropdown
-  RULES.forEach((rule, index) => {
+  // Combine HOF + RULES for unified access
+  const allRules = [...HOF_RULES, ...RULES];
+  
+  // Populate rule dropdown with Hall of Fame first
+  const hofGroup = document.createElement('optgroup');
+  hofGroup.label = '🏆 Hall of Fame (Top Memory Rules)';
+  HOF_RULES.forEach((rule, index) => {
     const option = document.createElement('option');
     option.value = index;
     option.textContent = rule.name;
-    ruleSelect.appendChild(option);
+    hofGroup.appendChild(option);
   });
+  ruleSelect.appendChild(hofGroup);
   
-  // Set default to Conway (first rule)
+  // Then add all other rules
+  const otherGroup = document.createElement('optgroup');
+  otherGroup.label = 'All Rules';
+  RULES.forEach((rule, index) => {
+    const option = document.createElement('option');
+    option.value = HOF_RULES.length + index;
+    option.textContent = rule.name;
+    otherGroup.appendChild(option);
+  });
+  ruleSelect.appendChild(otherGroup);
+  
+  // Update global RULES reference to combined list
+  RULES.length = 0;
+  RULES.push(...allRules);
+  
+  // Set default to first HOF rule (Seed_1.88a)
   ruleSelect.value = 0;
   currentRule = RULES[0];
   

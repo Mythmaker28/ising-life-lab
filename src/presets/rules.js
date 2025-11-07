@@ -6,6 +6,17 @@
  * Example: "B3/S23" means born with 3 neighbors, survive with 2 or 3 neighbors.
  */
 
+// === Hall of Fame: Top memory rules (validated through extreme search) ===
+export const HOF_RULES = [
+  { name: "🏆 Seed_1.88a (B2456/S078)", born: [2, 4, 5, 6], survive: [0, 7, 8] },
+  { name: "🏆 Seed_1.88b (B2456/S068)", born: [2, 4, 5, 6], survive: [0, 6, 8] },
+  { name: "🏆 Evo B246/S58", born: [2, 4, 6], survive: [5, 8] },
+  { name: "🏆 Evo B2456/S07", born: [2, 4, 5, 6], survive: [0, 7] },
+  { name: "🏆 Evo B246/S5", born: [2, 4, 6], survive: [5] },
+  { name: "🏆 Mythmaker_1 (B2456/S5)", born: [2, 4, 5, 6], survive: [5] },
+  { name: "🏆 Mythmaker_2 (B01/S3)", born: [0, 1], survive: [3] }
+];
+
 export const RULES = [
   {
     name: "Conway's Life (B3/S23)",
