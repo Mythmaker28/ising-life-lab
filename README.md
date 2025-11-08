@@ -14,35 +14,41 @@ A minimal sandbox exploring Life-like cellular automata, Ising-style energies, a
    ```
 3. Select rule, click Randomize, click Start
 
-### Memory AI Lab (Experimental)
+### Memory AI Lab (V1.0 ✅)
 
-Explore memory experiments with CA vs Hopfield networks:
-```bash
-python -m http.server 8001
-# Then open http://localhost:8001/experiments/memory-ai-lab/index.html
-```
+**URL**: http://localhost:8001/experiments/memory-ai-lab/index.html
+
+Test and compare CA vs Hopfield memory capabilities.
 
 **Features**:
-- **CA Playground**: Test Hall of Fame rules (Seed_1.88a, Seed_1.88b, etc.)
-- **Memory Lab**: Draw patterns, test memory recall with noise, attractor detection
-- **Hopfield Comparison**: Compare CA memory vs classical Hopfield networks
+- **CA Playground**: 7 Hall of Fame rules
+- **Memory Lab**: Draw patterns (localStorage persistence)
+- **Hopfield Comparison**: Fair benchmarking
+- **AutoScan**: Discover memory candidates
+- **5 APIs**: MemoryLab, HopfieldLab, Reports, MemoryScanner, MemoryCapacity
 
-**Automatic Testing** (console F12):
-```javascript
-// Test all Hall of Fame rules automatically
-const batch = await MemoryLab.runBatchForHallOfFame();
+**Results**: 7 validated memory rules (B01/S3 champion 96-99% recall)
 
-// Compare with Hopfield
-const comp = await HopfieldLab.compareWithHallOfFame();
+See `docs/QUICK_START_MEMORY_AI_LAB.md`
 
-// Generate report
-Reports.generateMarkdownReport(batch, comp);
+### Memory Storage System (Phase 2 ✅)
 
-// Find new memory candidates (5-10 min)
-await MemoryScanner.scanMemoryCandidates();
-```
+**URL**: http://localhost:8001/experiments/memory-storage-system/
 
-See `docs/memory-ai-lab-results.md` and `docs/QUICK_START_MEMORY_AI_LAB.md` for detailed instructions.
+Multi-engine parallel comparison (7 CA + Hopfield).
+
+**Features**:
+- Test 7 CA rules + Hopfield simultaneously
+- Visual pattern grid
+- Configurable noise testing (0-20%)
+- Real-time performance metrics
+- Batch testing across all patterns
+
+### Hybrid Memory Demo
+
+**URL**: http://localhost:8001/experiments/hybrid-memory/
+
+Simple demo using factorized memory engines.
 
 ## Features
 
