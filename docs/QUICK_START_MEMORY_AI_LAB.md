@@ -133,6 +133,43 @@ const batch = await MemoryLab.runBatchForHallOfFame({ patterns: myPatterns });
 
 ---
 
+## 🔍 AutoScan - Découvrir de Nouvelles Candidates
+
+Pour explorer ~25 règles et identifier de nouvelles candidates mémoire:
+
+**Via UI:**
+1. Onglet Memory Lab
+2. Cliquer sur "Run AutoScan" (bouton bleu en bas)
+3. Attendre 5-10 minutes
+4. Résultats dans la console
+
+**Via Console:**
+```javascript
+await MemoryScanner.scanMemoryCandidates({
+  noiseLevels: [0.01, 0.03, 0.05, 0.08],  // Multi-noise testing
+  steps: 160,
+  runs: 60
+});
+```
+
+**Critères de sélection:**
+- Recall ≥70% sur au moins 2 niveaux de bruit bas (≤0.05)
+- Coverage ≥40%
+- Attracteurs ≥0.5 (bassin d'attraction existant)
+- Recall ≥40% même à bruit élevé (0.08)
+
+**Règles testées:**
+- Voisinage de B01/S3 (Mythmaker_2)
+- Variations des règles Hall of Fame
+- Règles minimales survive
+- Oscillateurs potentiels
+
+**Résultat attendu:**
+- B01/S3 confirmée comme candidate
+- 1-2 nouvelles candidates potentielles découvertes
+
+---
+
 ## 📚 Accès direct aux APIs
 
 ```javascript
@@ -141,5 +178,8 @@ MemoryLab.patterns()
 
 // Voir les règles Hall of Fame
 MemoryLab.HOF_RULES()
+
+// Voir les règles testées par AutoScan
+MemoryScanner.EXTRA_RULES()
 ```
 

@@ -37,9 +37,12 @@ const comp = await HopfieldLab.compareWithHallOfFame();
 
 // Generate report
 Reports.generateMarkdownReport(batch, comp);
+
+// Find new memory candidates (5-10 min)
+await MemoryScanner.scanMemoryCandidates();
 ```
 
-See `docs/memory-ai-lab-results.md` for detailed testing instructions.
+See `docs/memory-ai-lab-results.md` and `docs/QUICK_START_MEMORY_AI_LAB.md` for detailed instructions.
 
 ## Features
 

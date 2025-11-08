@@ -807,12 +807,16 @@ console.log('%c📚 API disponible:', 'color: #00ff88; font-weight: bold');
 console.log('%c  MemoryLab.runBatchForHallOfFame(options)', 'color: #88ffaa');
 console.log('%c  HopfieldLab.compareWithHallOfFame(options)', 'color: #88ffaa');
 console.log('%c  Reports.generateMarkdownReport(batch, comp)', 'color: #88ffaa');
+console.log('%c  MemoryScanner.scanMemoryCandidates(options)', 'color: #00aaff');
 console.log('');
 console.log('%c💡 Test automatique complet (copier-coller):', 'color: #ffaa00; font-weight: bold');
 console.log(`%cconst batch = await MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 });
 const comp = await HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 });
 const report = Reports.generateMarkdownReport(batch, comp);
 console.log(report);`, 'color: #aaffaa; font-family: monospace;');
+console.log('');
+console.log('%c🔍 AutoScan - Trouver nouvelles candidates mémoire:', 'color: #00aaff; font-weight: bold');
+console.log(`%cawait MemoryScanner.scanMemoryCandidates({ noiseLevels: [0.01, 0.03, 0.05, 0.08], steps: 160, runs: 60 });`, 'color: #aaffaa; font-family: monospace;');
 console.log('');
 console.log('%c📝 Note: Si aucun pattern n\'est dessiné dans Memory Lab, des patterns par défaut seront utilisés automatiquement.', 'color: #aaa; font-style: italic');
 
