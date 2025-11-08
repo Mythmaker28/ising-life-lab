@@ -20,15 +20,18 @@ Permet de tester automatiquement quel engine performe le mieux sur des patterns 
 
 ```javascript
 const memoryAI = window.MemoryAI.create({
-  width: 32,      // Largeur grille
-  height: 32,     // Hauteur grille
-  steps: 80       // Steps CA pour recall
+  width: 32,       // Largeur grille
+  height: 32,      // Hauteur grille
+  steps: 80,       // Steps CA pour recall
+  useSelector: false  // Meta-learner (défaut: false)
 })
 ```
 
-**Équivalent**:
+**Avec Meta-Learner** (NEW):
 ```javascript
-const memoryAI = window.createMemoryAI({ width: 32, height: 32, steps: 80 })
+const memoryAI = MemoryAI.create({ useSelector: true })
+// Apprend quel engine est optimal par pattern
+// Gain: 8× plus rapide si prédiction correcte
 ```
 
 ---
@@ -48,7 +51,12 @@ memoryAI.store(patterns)
 
 ```javascript
 const noisy = addNoise(patterns[0], 0.05)
+
+// Standard: teste les 8 engines
 const result = memoryAI.recall(noisy)
+
+// Avec prédiction (si useSelector: true)
+const resultFast = memoryAI.recall(noisy, { usePrediction: true, patternIndex: 0 })
 ```
 
 **Retour**:
@@ -58,16 +66,15 @@ const result = memoryAI.recall(noisy)
   all: [
     { rule: 'B01/S4', distance: 12, success: true },
     { rule: 'B01/S3', distance: 18, success: true },
-    { rule: 'B01/S23', distance: 25, success: true },
-    { rule: 'Hopfield', distance: 32, success: true },
-    { rule: 'B01/S2', distance: 45, success: false },
-    ...
-  ]
+    // ... (8 résultats si predicted: false, 1 seul si predicted: true)
+  ],
+  predicted: false  // true si usePrediction activé et selector trained
 }
 ```
 
 **best**: Meilleur engine (Hamming distance minimal)  
-**all**: Tous les résultats triés par distance
+**all**: Tous testés (predicted: false) ou seul prédit (predicted: true)  
+**predicted**: Indique si meta-learner utilisé
 
 ---
 
