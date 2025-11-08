@@ -301,7 +301,22 @@ function diagnosePatterns(patterns) {
 
 ---
 
+---
+
+## 📦 Module Réutilisable
+
+**Depuis commit [suivant]**: MemoryAI extrait en module standalone
+
+**Import**:
+```javascript
+import { createMemoryAI, MemoryAI, MEMORY_CHAMPIONS } from './src/memory/memoryAI.js';
+```
+
+**Fichier**: `src/memory/memoryAI.js` (60 lignes, pur ES6)
+
+---
+
 **Status**: ✅ Production-Ready  
-**Commit**: 669cb78  
-**API Version**: 1.0
+**Module**: src/memory/memoryAI.js  
+**API Version**: 1.1
 
