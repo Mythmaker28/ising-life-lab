@@ -164,9 +164,9 @@ export async function scanMemoryCandidates(options = {}) {
   const results = [];
   let ruleIndex = 0;
   
-  for (const rule of EXTRA_RULES) {
+  for (const rule of rulesToTest) {
     ruleIndex++;
-    console.log(`[${ruleIndex}/${EXTRA_RULES.length}] Test de ${rule.name}...`);
+    console.log(`[${ruleIndex}/${rulesToTest.length}] Test de ${rule.name}...`);
     
     const perNoise = [];
     
