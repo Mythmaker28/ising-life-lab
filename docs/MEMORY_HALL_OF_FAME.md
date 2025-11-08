@@ -157,7 +157,7 @@ Sur le protocole standard (4 patterns par défaut, noise 0.05):
 
 ## 💡 Utilisation
 
-### Pour Tester une Règle
+### Test Simple (Hall of Fame)
 
 ```javascript
 // Dans Memory AI Lab console (F12)
@@ -168,9 +168,13 @@ const batch = await MemoryLab.runBatchForHallOfFame({
 });
 
 // B01/S3 devrait montrer recall ~96%
+console.table(batch.map(r => ({
+  Règle: r.notation,
+  'Recall (%)': (r.avgRecallRate * 100).toFixed(1)
+})));
 ```
 
-### Pour Découvrir d'Autres Candidates
+### AutoScan (Découverte)
 
 ```javascript
 const scan = await MemoryScanner.scanMemoryCandidates({ 
@@ -180,7 +184,28 @@ const scan = await MemoryScanner.scanMemoryCandidates({
 });
 
 // Devrait identifier les 7 règles ci-dessus
+console.log("🏆 Candidates:", scan.candidates);
 console.table(scan.candidates);
+```
+
+### Capacity Benchmark (Stress-Test)
+
+```javascript
+// Test avancé: capacité mémoire sur les 7 règles
+const capacity = await MemoryCapacity.runFullSuite({
+  rules: ['B01/S3', 'B01/S23', 'B01/S34', 'B01/S2', 'B01/S4', 'B01/S13', 'B46/S58'],
+  patternConfigs: [
+    { size: 32, count: 3 },
+    { size: 32, count: 5 },
+    { size: 32, count: 10 }
+  ],
+  noiseLevels: [0.01, 0.03, 0.05, 0.08],
+  steps: 80,
+  runs: 40
+});
+
+// NOTE: Hopfield baseline est ajouté automatiquement
+console.table(capacity.byRule);
 ```
 
 ---

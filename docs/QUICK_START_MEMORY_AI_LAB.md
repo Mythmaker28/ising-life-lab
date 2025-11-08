@@ -112,9 +112,16 @@ const batch = await MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.1 });
 // Changer le critère de succès (20% de tolérance au lieu de 10%)
 const batch = await MemoryLab.runBatchForHallOfFame({ maxDiffRatio: 0.2 });
 
-// Utiliser des patterns spécifiques
-const myPatterns = [/* vos patterns */];
-const batch = await MemoryLab.runBatchForHallOfFame({ patterns: myPatterns });
+// Capacity benchmark (stress-test)
+const capacity = await MemoryCapacity.runFullSuite({
+  rules: ['B01/S3', 'B01/S23', 'B01/S34', 'B01/S2', 'B01/S4', 'B01/S13', 'B46/S58'],
+  patternConfigs: [{ size: 32, count: 3 }, { size: 32, count: 5 }, { size: 32, count: 10 }],
+  noiseLevels: [0.01, 0.03, 0.05, 0.08],
+  steps: 80,
+  runs: 40
+});
+// NOTE: Hopfield baseline ajouté automatiquement
+console.table(capacity.byRule);
 ```
 
 ---
@@ -153,11 +160,13 @@ Pour explorer ~25 règles et identifier de nouvelles candidates mémoire:
 
 **Via Console:**
 ```javascript
-await MemoryScanner.scanMemoryCandidates({
+const scan = await MemoryScanner.scanMemoryCandidates({
   noiseLevels: [0.01, 0.03, 0.05, 0.08],  // Multi-noise testing
   steps: 160,
   runs: 60
 });
+console.log("🏆 Candidates:", scan.candidates);
+console.table(scan.candidates);
 ```
 
 **Critères de sélection:**

@@ -91,6 +91,17 @@ async function testHopfieldCapacity(patterns, { noiseLevel, runs, maxDiffRatio }
 
 /**
  * Suite complète de benchmarks de capacité mémoire
+ * 
+ * @param {Object} options
+ * @param {Array<string>} options.rules - CA rules en notation B/S (ex: ['B01/S3', 'B46/S58'])
+ * @param {Array} options.patternConfigs - Configs [{size: 32, count: 3}, ...]
+ * @param {Array<number>} options.noiseLevels - Niveaux de bruit [0.01, 0.03, ...]
+ * @param {number} options.steps - Steps CA
+ * @param {number} options.runs - Runs par test
+ * @param {number} options.maxDiffRatio - Tolérance succès
+ * 
+ * NOTE: 'rules' doit contenir SEULEMENT des CA rules (notation B/S).
+ *       Hopfield baseline est TOUJOURS ajouté automatiquement pour comparaison.
  */
 export async function runFullSuite(options = {}) {
   const {
@@ -107,11 +118,12 @@ export async function runFullSuite(options = {}) {
   } = options;
   
   console.log('🧪 MemoryCapacity - Full Suite Benchmark');
-  console.log(`📊 ${rules.length + 1} modèles × ${patternConfigs.length} configs × ${noiseLevels.length} noise levels`);
+  console.log(`📊 ${rules.length} règles CA + Hopfield baseline × ${patternConfigs.length} configs × ${noiseLevels.length} noise levels`);
   
   const results = [];
   
-  // Tester chaque règle CA
+  // NOTE: Tester uniquement les règles CA (B/S notation)
+  // Hopfield sera ajouté séparément en tant que baseline
   for (const ruleNotation of rules) {
     console.log(`\nTest de ${ruleNotation}...`);
     const rule = parseNotation(ruleNotation);
@@ -157,8 +169,8 @@ export async function runFullSuite(options = {}) {
     console.log(`  ✓ ${ruleNotation}: capacity=${maxCapacity ? maxCapacity.count : '<3'}, avgRecall=${results[results.length-1].avgRecall.toFixed(1)}%`);
   }
   
-  // Tester Hopfield
-  console.log(`\nTest de Hopfield...`);
+  // Tester Hopfield (baseline - toujours ajouté automatiquement)
+  console.log(`\nTest de Hopfield (baseline)...`);
   const hopfieldResults = [];
   
   for (const config of patternConfigs) {
