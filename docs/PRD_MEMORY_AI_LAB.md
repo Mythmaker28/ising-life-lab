@@ -282,6 +282,33 @@ console.log(report);
 
 Les tests utiliseront automatiquement les patterns dessinés.
 
+### Workflow AutoScan (découverte de candidates)
+
+**Objectif**: Trouver de nouvelles règles candidates mémoire au-delà du Hall of Fame.
+
+**Via UI:**
+```
+1. Onglet Memory Lab
+2. Scroll en bas
+3. Cliquer "Run AutoScan" (bouton bleu)
+4. Attendre 5-10 minutes
+5. Voir résultats dans console
+```
+
+**Via Console:**
+```javascript
+await MemoryScanner.scanMemoryCandidates({
+  noiseLevels: [0.01, 0.03, 0.05, 0.08],
+  steps: 160,
+  runs: 60
+});
+```
+
+**Résultat attendu:**
+- Table avec ~25 règles testées
+- Identification des candidates (recall ≥70% sur multi-noise)
+- B01/S3 confirmée + potentiellement 1-2 nouvelles découvertes
+
 ---
 
 ## 🎛️ Paramètres & Tunables
