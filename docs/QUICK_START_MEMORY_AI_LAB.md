@@ -15,18 +15,26 @@ python -m http.server 8001
 http://localhost:8001/experiments/memory-ai-lab/index.html
 ```
 
-### 3. Lancer les tests automatiques
+### 3. Lancer le Full Pipeline
 
 **Ouvrir la console** (F12) et copier-coller:
 
 ```javascript
+// 1) Test Hall of Fame
 const batch = await MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 });
 const comp = await HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 });
 const report = Reports.generateMarkdownReport(batch, comp);
 console.log(report);
+
+// 2) AutoScan candidates
+const scan = await MemoryScanner.scanMemoryCandidates({ noiseLevels: [0.01, 0.03, 0.05, 0.08], steps: 160, runs: 60 });
+console.log("🏆 Candidates mémoire finales:", scan.candidates);
+console.table(scan.candidates);
 ```
 
-**C'est tout!** Les tests utilisent automatiquement 4 patterns par défaut si vous n'en avez pas dessiné.
+**C'est tout!** Les tests utilisent:
+- Vos patterns UI si vous en avez dessinés (persistés via localStorage)
+- Sinon 4 patterns par défaut reproductibles
 
 ---
 

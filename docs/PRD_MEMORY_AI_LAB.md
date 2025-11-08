@@ -4,7 +4,7 @@
 **Project**: ising-v2-final / Memory AI Lab  
 **Branch**: memory-ai-lab  
 **Version**: 1.0  
-**Status**: ✅ Implemented & Tested
+**Status**: ✅ Production-Ready & Complete
 
 ---
 
@@ -463,12 +463,18 @@ Le README.md du projet contient:
 
 ## 🚀 Roadmap & Améliorations Futures
 
-### Version 1.1 (Implémenté)
+### Version 1.1 (✅ Implémenté)
 
 - [x] **AutoScan**: Exploration automatique de candidates mémoire
   - ~25 règles testées sur multi-noise
   - Critères stricts de sélection
+  - 7 candidates validées
   - UI button + API console
+
+- [x] **Persistence**: LocalStorage pour patterns UI
+  - Auto-save après add/delete
+  - Auto-load au démarrage
+  - Patterns conservés entre sessions
 
 ### Version 1.2 (Optionnel)
 
