@@ -94,6 +94,12 @@ Meta-learner that predicts optimal memory engine per pattern.
 
 **Meta-learning** - Optimizes engine selection for 80-95% accuracy with 6-8× speedup.
 
+### 📊 Project Dashboard
+
+**URL**: http://localhost:8001/experiments/dashboard/
+
+Central hub with links to all experiments, project stats, and documentation.
+
 ## Features
 
 ### Core CA Engine
