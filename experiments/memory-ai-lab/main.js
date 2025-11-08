@@ -225,6 +225,32 @@ function setupMemoryLab() {
   populateRuleSelect('memoryRuleSelect');
   renderPattern();
   updateTestButtonsState(); // Désactiver les boutons si pas de patterns
+  
+  // Bouton AutoScan
+  const autoScanBtn = document.getElementById('runAutoScanBtn');
+  if (autoScanBtn) {
+    autoScanBtn.addEventListener('click', async () => {
+      if (!window.MemoryScanner) {
+        alert('⚠️ Module AutoScan non chargé. Rechargez la page.');
+        return;
+      }
+      autoScanBtn.disabled = true;
+      autoScanBtn.textContent = 'Scan en cours...';
+      try {
+        await window.MemoryScanner.scanMemoryCandidates({
+          noiseLevels: [0.01, 0.03, 0.05, 0.08],
+          steps: 160,
+          runs: 60
+        });
+        autoScanBtn.textContent = 'Run AutoScan';
+      } catch (error) {
+        console.error('❌ Erreur AutoScan:', error);
+        alert('Erreur lors du scan. Consultez la console.');
+        autoScanBtn.textContent = 'Run AutoScan';
+      }
+      autoScanBtn.disabled = false;
+    });
+  }
 }
 
 function populateRuleSelect(selectId) {

@@ -68,6 +68,12 @@
           <h3>Résultats</h3>
           <div id="memoryResults"></div>
         </div>
+        <div class="autoscan-section" style="margin-top: 30px; padding: 20px; background: #1a1a1a; border-radius: 6px;">
+          <h3 style="color: #88ffaa;">🔍 AutoScan - Exploration de Candidates</h3>
+          <p style="color: #aaa; margin: 10px 0;">Teste automatiquement ~25 règles sur plusieurs niveaux de bruit pour identifier de nouvelles candidates mémoire.</p>
+          <button id="runAutoScanBtn" style="background: #00aaff;">Run AutoScan</button>
+          <p style="color: #aaa; font-size: 0.9em; margin-top: 10px;">⏱️ Durée estimée: 5-10 minutes</p>
+        </div>
       </div>
     </div>
 
@@ -93,6 +99,7 @@
     </div>
   </div>
   <script type="module" src="main.js"></script>
+  <script type="module" src="autoScan.js"></script>
 </body>
 </html>
 
