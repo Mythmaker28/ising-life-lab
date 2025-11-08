@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Storage System - Multi-Engine Comparison</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Memory Storage System</h1>
+      <p>Multi-Engine Comparison Laboratory (Phase 2)</p>
+    </header>
+
+    <div class="grid-layout">
+      <!-- Column 1: Configuration -->
+      <div class="panel">
+        <h2>⚙️ Configuration</h2>
+        
+        <div class="section">
+          <h3>CA Engines</h3>
+          <label><input type="checkbox" class="ca-checkbox" value="B01/S3" checked> B01/S3 (Champion 96%)</label>
+          <label><input type="checkbox" class="ca-checkbox" value="B01/S23" checked> B01/S23</label>
+          <label><input type="checkbox" class="ca-checkbox" value="B01/S34"> B01/S34</label>
+          <label><input type="checkbox" class="ca-checkbox" value="B01/S2"> B01/S2</label>
+          <label><input type="checkbox" class="ca-checkbox" value="B01/S4" checked> B01/S4</label>
+          <label><input type="checkbox" class="ca-checkbox" value="B01/S13"> B01/S13</label>
+          <label><input type="checkbox" class="ca-checkbox" value="B46/S58"> B46/S58</label>
+        </div>
+
+        <div class="section">
+          <h3>Classical</h3>
+          <label><input type="checkbox" id="hopfield-checkbox" checked> Hopfield Baseline</label>
+        </div>
+
+        <button id="initBtn" class="primary">Initialize Storage</button>
+        <div id="initStatus"></div>
+      </div>
+
+      <!-- Column 2: Stored Patterns -->
+      <div class="panel">
+        <h2>💾 Patterns Stockés</h2>
+        <div id="patternCount">0 patterns</div>
+        <div id="patternGrid"></div>
+        <button id="refreshBtn" disabled>Refresh Patterns</button>
+      </div>
+
+      <!-- Column 3: Query & Recall -->
+      <div class="panel">
+        <h2>🔍 Query & Recall</h2>
+        
+        <div class="section">
+          <label>
+            Pattern source:
+            <select id="patternSelect"></select>
+          </label>
+          <label>
+            Noise level: <span id="noiseValue">5%</span>
+            <input type="range" id="noiseSlider" min="0" max="20" value="5">
+          </label>
+          <button id="recallBtn" disabled>Add Noise & Recall All</button>
+        </div>
+
+        <div id="resultsContainer">
+          <h3>Résultats</h3>
+          <table id="resultsTable">
+            <thead>
+              <tr>
+                <th>Engine</th>
+                <th>Success</th>
+                <th>Distance</th>
+                <th>Steps</th>
+                <th>Time (ms)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <button id="batchBtn" disabled>Batch Test All Patterns</button>
+      </div>
+    </div>
+
+    <div class="console-log">
+      <h3>Console</h3>
+      <div id="consoleLog"></div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+
