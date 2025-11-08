@@ -6,6 +6,8 @@ import { HOF_RULES } from '../../src/presets/rules.js';
 import { hashGrid, findDominantAttractors, addNoise, hammingDistance, isRecallSuccess, getDefaultPatterns } from './memory/attractorUtils.js';
 import { HopfieldNetwork } from './hopfield/hopfield.js';
 import { createPatternItem, createResultsTable, createComparisonTable, updateProgressBar } from './viz/ui.js';
+import { CAMemoryEngine } from '../../src/memory/caMemoryEngine.js';
+import { HopfieldMemoryEngine } from '../../src/memory/hopfieldMemoryEngine.js';
 
 console.log('✓ Imports chargés');
 
@@ -777,11 +779,17 @@ function generateMarkdownReport(batchResults, comparisonResults) {
   return md;
 }
 
+// Helper: patterns pour tests (UI ou defaults)
+function getPatternsForTests() {
+  return patterns.length > 0 ? patterns : getDefaultPatterns();
+}
+
 // Exposer l'API globalement
 window.MemoryLab = {
   runBatchForHallOfFame,
-  getCurrentPatterns: () => patterns,  // Retourne patterns UI actuels
-  patterns: () => patterns,  // Alias pour compatibilité
+  getCurrentPatterns: () => patterns,
+  getPatternsForTests,
+  patterns: () => patterns,
   HOF_RULES: () => HOF_RULES
 };
 
@@ -793,6 +801,10 @@ window.HopfieldLab = {
 window.Reports = {
   generateMarkdownReport
 };
+
+// Exposer memory engines
+window.CAMemoryEngine = CAMemoryEngine;
+window.HopfieldMemoryEngine = HopfieldMemoryEngine;
 
 console.log('%c✅ Memory AI Lab chargé', 'color: #00ff88; font-weight: bold; font-size: 14px');
 console.log('%c📚 API disponible:', 'color: #00ff88; font-weight: bold');
