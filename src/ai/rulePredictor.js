@@ -123,6 +123,8 @@ export function trainLogisticModel(X, y, config = {}) {
   // Gradient descent
   console.log('🔄 Training logistic model...');
   
+  let lastLossValue = null;
+  
   for (let epoch = 0; epoch < epochs; epoch++) {
     let totalLoss = 0;
     const dw = new Float32Array(nFeatures);
@@ -155,12 +157,18 @@ export function trainLogisticModel(X, y, config = {}) {
     }
     b -= learningRate * (db / nSamples);
     
-    if (epoch % 100 === 0) {
-      console.log(`   Epoch ${epoch}/${epochs} - Loss: ${(totalLoss / nSamples).toFixed(4)}`);
+    lastLossValue = totalLoss / nSamples;
+    
+    if (epoch === 0 || (epoch + 1) % 100 === 0 || epoch === epochs - 1) {
+      console.log(`   Epoch ${epoch + 1}/${epochs} - Loss: ${lastLossValue.toFixed(4)}`);
     }
   }
   
-  console.log(`✅ Training complete - Final loss: ${(totalLoss / nSamples).toFixed(4)}`);
+  if (lastLossValue !== null) {
+    console.log(`✅ Training complete - Final loss: ${lastLossValue.toFixed(4)}`);
+  } else {
+    console.log('✅ Training complete - Final loss: n/a');
+  }
   
   return {
     weights: w,
