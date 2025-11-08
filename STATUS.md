@@ -22,9 +22,10 @@ python -m http.server 8001
 
 ### Structure des Fichiers
 
-✅ **8 fichiers** dans `experiments/memory-ai-lab/`:
-- index.html (4.3KB)
-- main.js (30.6KB) ← API complète
+✅ **9 fichiers** dans `experiments/memory-ai-lab/`:
+- index.html (4.8KB) ← + bouton AutoScan
+- main.js (31.4KB) ← API complète
+- autoScan.js (8.5KB) ← NOUVEAU: Exploration candidates
 - styles.css (5KB)
 - ca/engine.js (1.8KB)
 - memory/attractorUtils.js (1.6KB) ← avec isRecallSuccess()
@@ -42,6 +43,7 @@ python -m http.server 8001
 typeof MemoryLab      // → "object" ✅
 typeof HopfieldLab    // → "object" ✅
 typeof Reports        // → "object" ✅
+typeof MemoryScanner  // → "object" ✅
 ```
 
 **Fonctions disponibles:**
@@ -61,6 +63,13 @@ HopfieldLab.compareWithHallOfFame({
 
 // Génération de rapport
 Reports.generateMarkdownReport(batchResults, comparisonResults);
+
+// Exploration de nouvelles candidates (5-10 min)
+MemoryScanner.scanMemoryCandidates({ 
+  noiseLevels: [0.01, 0.03, 0.05, 0.08],
+  steps: 160,
+  runs: 60
+});
 ```
 
 ### Fonctionnalités Implémentées
@@ -94,6 +103,13 @@ Reports.generateMarkdownReport(batchResults, comparisonResults);
    - Boutons désactivés si pas de patterns
    - Messages d'erreur clairs
    - Fallback automatique
+
+6. **AutoScan** ✅ NOUVEAU
+   - Exploration automatique ~25 règles
+   - Multi-noise testing (4 niveaux)
+   - Critères stricts de sélection
+   - Bouton UI + API console
+   - Découverte de candidates mémoire
 
 ---
 
