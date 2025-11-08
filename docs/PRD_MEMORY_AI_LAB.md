@@ -154,6 +154,11 @@ window.HopfieldLab = {
 window.Reports = {
   generateMarkdownReport: (batch, comp) => {...}  // Retourne string
 }
+
+window.MemoryScanner = {
+  scanMemoryCandidates: async (options) => {...}, // Explore candidates
+  EXTRA_RULES: () => EXTRA_RULES                  // Getter
+}
 ```
 
 ### MemoryLab.runBatchForHallOfFame(options)
@@ -431,7 +436,14 @@ Le README.md du projet contient:
 
 ## 🚀 Roadmap & Améliorations Futures
 
-### Version 1.1 (Optionnel)
+### Version 1.1 (Implémenté)
+
+- [x] **AutoScan**: Exploration automatique de candidates mémoire
+  - ~25 règles testées sur multi-noise
+  - Critères stricts de sélection
+  - UI button + API console
+
+### Version 1.2 (Optionnel)
 
 - [ ] Export/import patterns au format JSON
 - [ ] Visualisation des attracteurs dominants
