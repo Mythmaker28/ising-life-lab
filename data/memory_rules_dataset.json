@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "version": "1.0",
+    "date": "2025-11-08",
+    "protocol": {
+      "patternSize": "32×32",
+      "patterns": 4,
+      "noiseLevel": 0.05,
+      "steps": 80,
+      "runs": 50,
+      "criterion": "Hamming ≤10%"
+    },
+    "source": "Mythmaker28/ising-life-lab Memory AI Lab",
+    "description": "Dataset of CA rules tested for memory capabilities. Includes Hall of Fame rules and Memory Candidates validated through multi-noise testing."
+  },
+  "memoryHallOfFame": [
+    "B01/S3",
+    "B01/S23",
+    "B01/S34",
+    "B01/S2",
+    "B01/S4",
+    "B01/S13",
+    "B46/S58"
+  ],
+  "rules": [],
+  "notes": "Use scripts/export-memory-dataset.js to generate full dataset with test results."
+}
+
