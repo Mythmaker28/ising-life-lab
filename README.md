@@ -9,10 +9,40 @@ A minimal sandbox exploring Life-like cellular automata, Ising-style energies, a
 1. Clone repository
 2. Open `public/index.html` in modern browser via HTTP server:
    ```bash
-   python -m http.server 8000
-   # Then open http://localhost:8000/public/index.html
+   python -m http.server 8001
+   # Then open http://localhost:8001/public/index.html
    ```
 3. Select rule, click Randomize, click Start
+
+### Memory AI Lab (Experimental)
+
+Explore memory experiments with CA vs Hopfield networks:
+```bash
+python -m http.server 8001
+# Then open http://localhost:8001/experiments/memory-ai-lab/index.html
+```
+
+**Features**:
+- **CA Playground**: Test Hall of Fame rules (Seed_1.88a, Seed_1.88b, etc.)
+- **Memory Lab**: Draw patterns, test memory recall with noise, attractor detection
+- **Hopfield Comparison**: Compare CA memory vs classical Hopfield networks
+
+**Automatic Testing** (console F12):
+```javascript
+// Test all Hall of Fame rules automatically
+const batch = await MemoryLab.runBatchForHallOfFame();
+
+// Compare with Hopfield
+const comp = await HopfieldLab.compareWithHallOfFame();
+
+// Generate report
+Reports.generateMarkdownReport(batch, comp);
+
+// Find new memory candidates (5-10 min)
+await MemoryScanner.scanMemoryCandidates();
+```
+
+See `docs/memory-ai-lab-results.md` and `docs/QUICK_START_MEMORY_AI_LAB.md` for detailed instructions.
 
 ## Features
 
@@ -40,12 +70,14 @@ A minimal sandbox exploring Life-like cellular automata, Ising-style energies, a
 ## Architecture
 
 - `/src/core/`: Grid logic and CA engine
-- `/src/presets/`: Predefined rulesets
+- `/src/presets/`: Predefined rulesets (including Hall of Fame)
 - `/src/viz/`: Canvas rendering and UI
 - `/src/metrics/`: Complexity measurements
 - `/src/energy/`: Local energy functions (extensible)
 - `/src/search/`: Rule discovery and exploration
+- `/src/memory/`: Memory analysis and attractor detection
 - `/src/experiments/`: Analysis utilities for discovered rules
+- `/experiments/memory-ai-lab/`: Standalone Memory AI Lab (branch: memory-ai-lab)
 
 ## Promoted Rules
 
