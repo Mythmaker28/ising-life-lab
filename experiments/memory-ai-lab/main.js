@@ -3,7 +3,7 @@ console.log('⏳ Chargement Memory AI Lab...');
 import { CAEngine } from './ca/engine.js';
 import { CARenderer } from './viz/canvas.js';
 import { HOF_RULES } from '../../src/presets/rules.js';
-import { hashGrid, findDominantAttractors, addNoise, hammingDistance, isRecallSuccess } from './memory/attractorUtils.js';
+import { hashGrid, findDominantAttractors, addNoise, hammingDistance, isRecallSuccess, getDefaultPatterns } from './memory/attractorUtils.js';
 import { HopfieldNetwork } from './hopfield/hopfield.js';
 import { createPatternItem, createResultsTable, createComparisonTable, updateProgressBar } from './viz/ui.js';
 
@@ -17,72 +17,12 @@ let engine, renderer, currentGrid, animationId = null, isRunning = false, stepCo
 let patterns = [], patternCounter = 0;
 let patternCanvas, patternCtx, patternGrid, patternWidth = 32, patternHeight = 32, patternCellSize = 8, isDrawing = false;
 
-// Patterns par défaut pour tests automatiques
-function createDefaultPatterns() {
-  const defaultPatterns = [];
-  
-  // Block 2×2
-  const block = new Uint8Array(32 * 32);
-  block[15 * 32 + 15] = 1;
-  block[15 * 32 + 16] = 1;
-  block[16 * 32 + 15] = 1;
-  block[16 * 32 + 16] = 1;
-  defaultPatterns.push({
-    id: 'default_block',
-    name: 'Block 2×2',
-    grid: block,
-    width: 32,
-    height: 32,
-    created: Date.now()
-  });
-  
-  // Blinker période 2
-  const blinker = new Uint8Array(32 * 32);
-  blinker[16 * 32 + 15] = 1;
-  blinker[16 * 32 + 16] = 1;
-  blinker[16 * 32 + 17] = 1;
-  defaultPatterns.push({
-    id: 'default_blinker',
-    name: 'Blinker p2',
-    grid: blinker,
-    width: 32,
-    height: 32,
-    created: Date.now()
-  });
-  
-  // Glider-like
-  const glider = new Uint8Array(32 * 32);
-  glider[15 * 32 + 16] = 1;
-  glider[16 * 32 + 17] = 1;
-  glider[17 * 32 + 15] = 1;
-  glider[17 * 32 + 16] = 1;
-  glider[17 * 32 + 17] = 1;
-  defaultPatterns.push({
-    id: 'default_glider',
-    name: 'Glider-like',
-    grid: glider,
-    width: 32,
-    height: 32,
-    created: Date.now()
-  });
-  
-  // Pattern random sparse
-  const random = new Uint8Array(32 * 32);
-  for (let i = 0; i < 30; i++) {
-    const x = Math.floor(Math.random() * 32);
-    const y = Math.floor(Math.random() * 32);
-    random[y * 32 + x] = 1;
-  }
-  defaultPatterns.push({
-    id: 'default_random',
-    name: 'Random sparse',
-    grid: random,
-    width: 32,
-    height: 32,
-    created: Date.now()
-  });
-  
-  return defaultPatterns;
+/**
+ * Retourne les patterns UI actuels
+ * @returns {Array} Patterns dessinés par l'utilisateur
+ */
+function getCurrentPatterns() {
+  return patterns;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -585,15 +525,15 @@ async function runBatchForHallOfFame(options = {}) {
   
   let patternsToTest = testPatterns;
   
-  // Si pas de patterns fournis, utiliser ceux de l'UI
+  // Logique unifiée de sélection des patterns
   if (!patternsToTest || patternsToTest.length === 0) {
     if (patterns.length > 0) {
       patternsToTest = patterns;
-      console.log(`✓ Utilisation de ${patterns.length} patterns depuis Memory Lab`);
+      console.log(`✓ Utilisation de ${patterns.length} patterns depuis Memory Lab UI`);
     } else {
-      // Fallback: patterns par défaut
-      patternsToTest = createDefaultPatterns();
-      console.log(`⚠️ Aucun pattern UI trouvé. Utilisation de ${patternsToTest.length} patterns par défaut`);
+      // Fallback: patterns par défaut centralisés
+      patternsToTest = getDefaultPatterns();
+      console.log(`✓ Utilisation de ${patternsToTest.length} patterns par défaut (reproductibles)`);
     }
   }
   console.log(`🧪 Lancement batch Hall of Fame: ${HOF_RULES.length} règles × ${patternsToTest.length} patterns × ${runs} runs`);
@@ -642,15 +582,15 @@ async function compareWithHallOfFame(options = {}) {
   
   let patternsToTest = testPatterns;
   
-  // Si pas de patterns fournis, utiliser ceux de l'UI ou fallback
+  // Logique unifiée de sélection des patterns
   if (!patternsToTest || patternsToTest.length === 0) {
     if (patterns.length > 0) {
       patternsToTest = patterns;
-      console.log(`✓ Utilisation de ${patterns.length} patterns depuis Memory Lab`);
+      console.log(`✓ Utilisation de ${patterns.length} patterns depuis Memory Lab UI`);
     } else {
-      // Fallback: patterns par défaut
-      patternsToTest = createDefaultPatterns();
-      console.log(`⚠️ Aucun pattern UI trouvé. Utilisation de ${patternsToTest.length} patterns par défaut`);
+      // Fallback: patterns par défaut centralisés
+      patternsToTest = getDefaultPatterns();
+      console.log(`✓ Utilisation de ${patternsToTest.length} patterns par défaut (reproductibles)`);
     }
   }
   
@@ -794,7 +734,8 @@ function generateMarkdownReport(batchResults, comparisonResults) {
 // Exposer l'API globalement
 window.MemoryLab = {
   runBatchForHallOfFame,
-  patterns: () => patterns,
+  getCurrentPatterns: () => patterns,  // Retourne patterns UI actuels
+  patterns: () => patterns,  // Alias pour compatibilité
   HOF_RULES: () => HOF_RULES
 };
 

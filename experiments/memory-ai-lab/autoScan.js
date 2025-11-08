@@ -5,7 +5,7 @@
 console.log('⏳ Chargement AutoScan...');
 
 import { CAEngine } from './ca/engine.js';
-import { hashGrid, findDominantAttractors, addNoise, isRecallSuccess } from './memory/attractorUtils.js';
+import { hashGrid, findDominantAttractors, addNoise, isRecallSuccess, getDefaultPatterns } from './memory/attractorUtils.js';
 
 // Règles à explorer (voisinage de B01/S3 + variations Hall of Fame)
 const EXTRA_RULES = [
@@ -44,69 +44,7 @@ const EXTRA_RULES = [
   { name: 'B46/S58', born: [4, 6], survive: [5, 8] },
 ];
 
-// Patterns par défaut pour tests
-function createDefaultPatterns() {
-  const defaultPatterns = [];
-  
-  // Block 2×2
-  const block = new Uint8Array(32 * 32);
-  block[15 * 32 + 15] = 1;
-  block[15 * 32 + 16] = 1;
-  block[16 * 32 + 15] = 1;
-  block[16 * 32 + 16] = 1;
-  defaultPatterns.push({
-    id: 'default_block',
-    name: 'Block 2×2',
-    grid: block,
-    width: 32,
-    height: 32
-  });
-  
-  // Blinker période 2
-  const blinker = new Uint8Array(32 * 32);
-  blinker[16 * 32 + 15] = 1;
-  blinker[16 * 32 + 16] = 1;
-  blinker[16 * 32 + 17] = 1;
-  defaultPatterns.push({
-    id: 'default_blinker',
-    name: 'Blinker p2',
-    grid: blinker,
-    width: 32,
-    height: 32
-  });
-  
-  // Glider-like
-  const glider = new Uint8Array(32 * 32);
-  glider[15 * 32 + 16] = 1;
-  glider[16 * 32 + 17] = 1;
-  glider[17 * 32 + 15] = 1;
-  glider[17 * 32 + 16] = 1;
-  glider[17 * 32 + 17] = 1;
-  defaultPatterns.push({
-    id: 'default_glider',
-    name: 'Glider-like',
-    grid: glider,
-    width: 32,
-    height: 32
-  });
-  
-  // Pattern random sparse
-  const random = new Uint8Array(32 * 32);
-  for (let i = 0; i < 30; i++) {
-    const x = Math.floor(Math.random() * 32);
-    const y = Math.floor(Math.random() * 32);
-    random[y * 32 + x] = 1;
-  }
-  defaultPatterns.push({
-    id: 'default_random',
-    name: 'Random sparse',
-    grid: random,
-    width: 32,
-    height: 32
-  });
-  
-  return defaultPatterns;
-}
+// Patterns par défaut maintenant centralisés dans attractorUtils.js
 
 /**
  * Teste une règle sur un pattern avec un niveau de bruit donné
@@ -151,15 +89,33 @@ export async function scanMemoryCandidates(options = {}) {
     minRecall = 70,
     minCoverage = 40,
     maxDiffRatio = 0.1,
-    patterns = null
+    patterns: providedPatterns = null
   } = options;
   
   console.log('🔍 AutoScan - Recherche de candidates mémoire');
   console.log(`📊 Config: ${EXTRA_RULES.length} règles × ${noiseLevels.length} niveaux de bruit × ${runs} runs`);
   
-  // Utiliser patterns fournis ou générer par défaut
-  const patternsToTest = patterns || createDefaultPatterns();
-  console.log(`✓ Utilisation de ${patternsToTest.length} patterns de test`);
+  // Logique unifiée de sélection des patterns (alignée avec MemoryLab)
+  let patternsToTest = providedPatterns;
+  
+  if (!patternsToTest || patternsToTest.length === 0) {
+    // Essayer d'utiliser les patterns UI de MemoryLab
+    if (window.MemoryLab && typeof window.MemoryLab.getCurrentPatterns === 'function') {
+      const uiPatterns = window.MemoryLab.getCurrentPatterns();
+      if (uiPatterns && uiPatterns.length > 0) {
+        patternsToTest = uiPatterns;
+        console.log(`✓ Utilisation de ${patternsToTest.length} patterns depuis Memory Lab UI`);
+      }
+    }
+    
+    // Fallback: patterns par défaut centralisés
+    if (!patternsToTest || patternsToTest.length === 0) {
+      patternsToTest = getDefaultPatterns();
+      console.log(`✓ Utilisation de ${patternsToTest.length} patterns par défaut (reproductibles)`);
+    }
+  } else {
+    console.log(`✓ Utilisation de ${patternsToTest.length} patterns fournis explicitement`);
+  }
   
   const results = [];
   let ruleIndex = 0;
