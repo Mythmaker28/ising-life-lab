@@ -50,6 +50,21 @@ Multi-engine parallel comparison (7 CA + Hopfield).
 
 Simple demo using factorized memory engines.
 
+### 🧠 Rule Predictor AI (Phase 3 ✅)
+
+**URL**: http://localhost:8001/experiments/rule-predictor/
+
+ML-powered prediction of memory-capable CA rules.
+
+**Features**:
+- Logistic regression trained on validated datasets
+- Predict memory score (0-100%) for any B/S rule
+- Auto-suggest top 20 promising candidates
+- Validation table (predicted vs actual)
+- Links to Memory AI Lab for testing
+
+**No external libs** - Pure vanilla JS ML implementation.
+
 ## Features
 
 ### Core CA Engine
