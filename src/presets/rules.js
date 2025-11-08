@@ -17,6 +17,18 @@ export const HOF_RULES = [
   { name: "🏆 Mythmaker_2 (B01/S3)", born: [0, 1], survive: [3] }
 ];
 
+// === Memory Candidates: Validated through AutoScan multi-noise testing ===
+// These rules show excellent recall (≥70%) across multiple noise levels
+export const MEMORY_HALL_OF_FAME = [
+  'B01/S3',    // Mythmaker_2 - Champion (~96% recall)
+  'B01/S23',   // Variant with Conway survive
+  'B01/S34',   // Extended survive range
+  'B01/S2',    // Minimal survive
+  'B01/S4',    // Single survive
+  'B01/S13',   // Low survive
+  'B46/S58'    // High-birth variant
+];
+
 export const RULES = [
   {
     name: "Conway's Life (B3/S23)",

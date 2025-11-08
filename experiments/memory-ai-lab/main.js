@@ -17,6 +17,45 @@ let engine, renderer, currentGrid, animationId = null, isRunning = false, stepCo
 let patterns = [], patternCounter = 0;
 let patternCanvas, patternCtx, patternGrid, patternWidth = 32, patternHeight = 32, patternCellSize = 8, isDrawing = false;
 
+// === Persistence localStorage ===
+const STORAGE_KEY = 'memorylab_patterns_v1';
+
+function savePatternsToLocalStorage() {
+  try {
+    const patternsData = patterns.map(p => ({
+      id: p.id,
+      name: p.name,
+      grid: Array.from(p.grid),
+      width: p.width,
+      height: p.height,
+      created: p.created
+    }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(patternsData));
+    console.log(`💾 ${patterns.length} patterns sauvegardés`);
+  } catch (error) {
+    console.warn('⚠️ Impossible de sauvegarder les patterns:', error);
+  }
+}
+
+function loadPatternsFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const patternsData = JSON.parse(saved);
+      patterns = patternsData.map(p => ({
+        ...p,
+        grid: new Uint8Array(p.grid)
+      }));
+      patternCounter = Math.max(...patterns.map(p => parseInt(p.id.replace(/\D/g, '')) || 0), 0) + 1;
+      console.log(`📂 ${patterns.length} patterns restaurés depuis localStorage`);
+      return true;
+    }
+  } catch (error) {
+    console.warn('⚠️ Unable to load saved patterns:', error);
+  }
+  return false;
+}
+
 /**
  * Retourne les patterns UI actuels
  * @returns {Array} Patterns dessinés par l'utilisateur
@@ -35,6 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHopfieldLab();
   renderer.render(currentGrid);
   updateMetrics();
+  
+  // Charger patterns sauvegardés après init UI
+  if (loadPatternsFromLocalStorage()) {
+    updatePatternsList();
+  }
 });
 
 function setupTabs() {
@@ -265,6 +309,7 @@ function addPattern() {
   patterns.push(pattern);
   updatePatternsList();
   clearPattern();
+  savePatternsToLocalStorage();
   console.log(`✓ Pattern ${pattern.name} ajouté (${patterns.length} patterns total)`);
 }
 
@@ -282,6 +327,7 @@ function updatePatternsList() {
       patterns = patterns.filter(p => p.id !== id);
       updatePatternsList();
       updateTestButtonsState();
+      savePatternsToLocalStorage();
     });
     container.appendChild(item);
   });
@@ -755,16 +801,20 @@ console.log('%c  HopfieldLab.compareWithHallOfFame(options)', 'color: #88ffaa');
 console.log('%c  Reports.generateMarkdownReport(batch, comp)', 'color: #88ffaa');
 console.log('%c  MemoryScanner.scanMemoryCandidates(options)', 'color: #00aaff');
 console.log('');
-console.log('%c💡 Test automatique complet (copier-coller):', 'color: #ffaa00; font-weight: bold');
-console.log(`%cconst batch = await MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 });
+console.log('%c🎯 FULL PIPELINE (copier-coller):', 'color: #ffaa00; font-weight: bold; font-size: 13px');
+console.log(`%c// 1) Test Hall of Fame
+const batch = await MemoryLab.runBatchForHallOfFame({ noiseLevel: 0.05, steps: 80, runs: 50 });
 const comp = await HopfieldLab.compareWithHallOfFame({ noiseLevel: 0.05, runs: 50 });
 const report = Reports.generateMarkdownReport(batch, comp);
-console.log(report);`, 'color: #aaffaa; font-family: monospace;');
+console.log(report);
+
+// 2) AutoScan candidates
+const scan = await MemoryScanner.scanMemoryCandidates({ noiseLevels: [0.01, 0.03, 0.05, 0.08], steps: 160, runs: 60 });
+console.log("🏆 Candidates mémoire finales:", scan.candidates);
+console.table(scan.candidates);`, 'color: #aaffaa; font-family: monospace;');
 console.log('');
-console.log('%c🔍 AutoScan - Trouver nouvelles candidates mémoire:', 'color: #00aaff; font-weight: bold');
-console.log(`%cawait MemoryScanner.scanMemoryCandidates({ noiseLevels: [0.01, 0.03, 0.05, 0.08], steps: 160, runs: 60 });`, 'color: #aaffaa; font-family: monospace;');
-console.log('');
-console.log('%c📝 Note: Si aucun pattern n\'est dessiné dans Memory Lab, des patterns par défaut seront utilisés automatiquement.', 'color: #aaa; font-style: italic');
+console.log('%c💾 Patterns persistés via localStorage. Vos patterns sont sauvegardés automatiquement.', 'color: #aaffaa; font-style: italic');
+console.log('%c🏆 Memory Candidates: B01/S3, B01/S23, B01/S34, B01/S2, B01/S4, B01/S13, B46/S58', 'color: #ffaa00');
 
 // Vérification que l'API est bien exposée
 if (typeof window.MemoryLab !== 'undefined' && typeof window.HopfieldLab !== 'undefined' && typeof window.Reports !== 'undefined') {

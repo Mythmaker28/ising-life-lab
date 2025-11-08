@@ -51,7 +51,33 @@ console.log(report);
 
 ---
 
-## Résultats (à compléter après tests)
+## Final Memory Hall of Fame
+
+**Date de validation**: 08/11/2025  
+**Méthode**: AutoScan multi-noise avec patterns reproductibles
+
+### 7 Règles Mémoire Validées
+
+| Règle | Notation | Recall Min (%) | Recall Max (%) | Status | Notes |
+|-------|----------|----------------|----------------|--------|-------|
+| B01/S3 | B01/S3 | 95 | 99.9 | ✅ Champion | Mythmaker_2, recall ~96-99% |
+| B01/S23 | B01/S23 | 71 | 95 | ✅ Excellent | Variant Conway survive |
+| B01/S34 | B01/S34 | 77 | 100 | ✅ Excellent | Extended survive |
+| B01/S2 | B01/S2 | 95 | 100 | ✅ Excellent | Minimal survive |
+| B01/S4 | B01/S4 | 99 | 100 | ✅ Excellent | Single survive |
+| B01/S13 | B01/S13 | 66 | 100 | ✅ Good | Low survive |
+| B46/S58 | B46/S58 | 84 | 100 | ✅ Excellent | High-birth variant |
+
+**Critères de validation:**
+- Recall ≥70% sur au moins 2 niveaux de bruit (0.01, 0.03, 0.05)
+- Coverage ≥40%
+- Attracteurs ≥0.5
+- Recall ≥40% à bruit élevé (0.08)
+- Distance de Hamming ≤10% pour succès
+
+---
+
+## Résultats (tests utilisateur)
 
 ### Méthodologie
 
