@@ -8,17 +8,7 @@ import { HopfieldNetwork } from './hopfield/hopfield.js';
 import { createPatternItem, createResultsTable, createComparisonTable, updateProgressBar } from './viz/ui.js';
 import { CAMemoryEngine } from '../../src/memory/caMemoryEngine.js';
 import { HopfieldMemoryEngine } from '../../src/memory/hopfieldMemoryEngine.js';
-
-// Règles mémoires champions (capacity v1)
-const MEMORY_CHAMPIONS = [
-  'B01/S3',
-  'B01/S23',
-  'B01/S34',
-  'B01/S2',
-  'B01/S4',
-  'B01/S13',
-  'B46/S58',
-];
+import { createMemoryAI, MEMORY_CHAMPIONS } from '../../src/memory/memoryAI.js';
 
 console.log('✓ Imports chargés');
 
@@ -816,44 +806,23 @@ window.Reports = {
 // Exposer memory engines
 window.CAMemoryEngine = CAMemoryEngine;
 window.HopfieldMemoryEngine = HopfieldMemoryEngine;
+window.MemoryAI = { create: createMemoryAI };
 
-// 🧠 MemoryAI : multi-engine (7 CA champions + Hopfield)
-window.createMemoryAI = function createMemoryAI({
-  width = 32,
-  height = 32,
-  steps = 80,
-} = {}) {
-  if (!window.CAMemoryEngine || !window.HopfieldMemoryEngine || !window.MemoryLab) {
-    throw new Error('Memory engines or MemoryLab not loaded.');
+// Self-check MemoryAI
+(async function smokeTestMemoryAI() {
+  try {
+    const testPatterns = getDefaultPatterns().slice(0, 3);
+    const memAI = createMemoryAI({ width: 32, height: 32, steps: 80 });
+    memAI.store(testPatterns);
+    const noisy = addNoise(testPatterns[0], 0.05);
+    const result = memAI.recall(noisy);
+    if (result && result.best && result.all && result.all.length === 8) {
+      console.log('%c✓ MemoryAI smoke test OK', 'color: #00ff88');
+    }
+  } catch (e) {
+    console.warn('⚠️ MemoryAI self-check failed:', e.message);
   }
-  const caEngines = MEMORY_CHAMPIONS.map(rule => ({
-    rule,
-    engine: CAMemoryEngine.create({ rule, width, height, steps }),
-  }));
-  const hopfield = HopfieldMemoryEngine.create({ width, height });
-  return {
-    store(patterns) {
-      caEngines.forEach(({ engine }) => engine.store(patterns));
-      hopfield.store(patterns);
-    },
-    recall(noisy) {
-      const results = caEngines.map(({ rule, engine }) => {
-        const r = engine.recall(noisy, { steps });
-        return { rule, distance: r.distance, success: r.success };
-      });
-      const hr = hopfield.recall(noisy);
-      results.push({ rule: 'Hopfield', distance: hr.distance, success: hr.success });
-      results.sort((a, b) => a.distance - b.distance);
-      return {
-        best: results[0],
-        all: results,
-      };
-    },
-  };
-};
-
-// Alias pratique
-window.MemoryAI = { create: window.createMemoryAI };
+})();
 
 console.log('%c✅ Memory AI Lab chargé', 'color: #00ff88; font-weight: bold; font-size: 14px');
 console.log('%c📚 API disponible:', 'color: #00ff88; font-weight: bold');
