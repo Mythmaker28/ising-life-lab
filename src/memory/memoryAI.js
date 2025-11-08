@@ -5,6 +5,7 @@
 
 import { CAMemoryEngine } from './caMemoryEngine.js';
 import { HopfieldMemoryEngine } from './hopfieldMemoryEngine.js';
+import { EngineSelector } from '../ai/engineSelector.js';
 
 export const MEMORY_CHAMPIONS = [
   'B01/S3',
@@ -17,10 +18,13 @@ export const MEMORY_CHAMPIONS = [
 ];
 
 export class MemoryAI {
-  constructor({ width = 32, height = 32, steps = 80 } = {}) {
+  constructor({ width = 32, height = 32, steps = 80, useSelector = false } = {}) {
     this.width = width;
     this.height = height;
     this.steps = steps;
+    this.useSelector = useSelector;
+    this.selector = null;
+    this.storedPatterns = null;
     
     this.caEngines = MEMORY_CHAMPIONS.map(rule => ({
       rule,
@@ -33,23 +37,71 @@ export class MemoryAI {
   store(patterns) {
     this.caEngines.forEach(({ engine }) => engine.store(patterns));
     this.hopfield.store(patterns);
+    this.storedPatterns = patterns;
+    
+    // Train selector asynchronously if enabled
+    if (this.useSelector && patterns && patterns.length > 0) {
+      this.selector = new EngineSelector();
+      this.selector.train({
+        memAI: this,
+        patterns,
+        noiseLevels: [0.05, 0.08],
+        samplesPerPattern: 10
+      }).catch(err => {
+        console.warn('⚠️ EngineSelector training failed:', err.message);
+        this.selector = null;
+      });
+    }
   }
   
-  recall(noisy) {
-    const results = this.caEngines.map(({ rule, engine }) => {
+  recall(noisy, { usePrediction = false, patternIndex = null } = {}) {
+    const allResults = [];
+    
+    const testEngine = (rule, engine) => {
       const r = engine.recall(noisy, { steps: this.steps });
-      return { rule, distance: r.distance, success: r.success };
-    });
-    
-    const hr = this.hopfield.recall(noisy);
-    results.push({ rule: 'Hopfield', distance: hr.distance, success: hr.success });
-    
-    results.sort((a, b) => a.distance - b.distance);
-    
-    return {
-      best: results[0],
-      all: results
+      const result = { rule, distance: r.distance, success: r.success };
+      allResults.push(result);
+      return result;
     };
+    
+    const testAll = () => {
+      this.caEngines.forEach(({ rule, engine }) => testEngine(rule, engine));
+      const hr = this.hopfield.recall(noisy);
+      allResults.push({ rule: 'Hopfield', distance: hr.distance, success: hr.success });
+    };
+    
+    // Use prediction if enabled and trained
+    if (usePrediction && this.selector && this.selector.trained) {
+      let chosenEngine = null;
+      
+      if (patternIndex != null) {
+        chosenEngine = this.selector.suggestForPattern(patternIndex);
+      }
+      if (!chosenEngine) {
+        chosenEngine = this.selector.bestGlobal();
+      }
+      
+      if (chosenEngine) {
+        // Test only predicted engine
+        if (chosenEngine === 'Hopfield') {
+          const hr = this.hopfield.recall(noisy);
+          const result = { rule: 'Hopfield', distance: hr.distance, success: hr.success };
+          allResults.push(result);
+          return { best: result, all: allResults, predicted: true };
+        } else {
+          const ca = this.caEngines.find(e => e.rule === chosenEngine);
+          if (ca) {
+            const result = testEngine(ca.rule, ca.engine);
+            return { best: result, all: allResults, predicted: true };
+          }
+        }
+      }
+    }
+    
+    // Fallback: test all engines
+    testAll();
+    allResults.sort((a, b) => a.distance - b.distance);
+    return { best: allResults[0], all: allResults, predicted: false };
   }
 }
 
