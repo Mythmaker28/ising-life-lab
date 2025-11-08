@@ -120,43 +120,80 @@ async function validateTopRules() {
   btnValidate.disabled = true;
   
   try {
-    // Take top 10 rules
-    const topRules = mlSuggestions.slice(0, 10).map(s => s.notation);
-    console.log(`Validating ${topRules.length} rules:`, topRules);
-    
-    validatedResults = [];
-    
-    for (let i = 0; i < topRules.length; i++) {
-      const ruleNotation = topRules[i];
-      status2.innerHTML = `Testing ${i + 1}/${topRules.length}: ${ruleNotation}...`;
-      
-      try {
-        const result = await validateRule(ruleNotation);
-        const mlData = mlSuggestions.find(s => s.notation === ruleNotation);
-        
-        validatedResults.push({
-          notation: ruleNotation,
-          mlProba: mlData.mlProba,
-          avgRecall: result.avgRecall,
-          maxCapacity: result.maxCapacity,
-          isMemoryLike: result.avgRecall >= 90 && result.maxCapacity >= 5,
-          mlPredictedMemory: mlData.mlProba >= 0.8,
-          match: (mlData.mlProba >= 0.8 && result.avgRecall >= 90) || 
-                 (mlData.mlProba < 0.8 && result.avgRecall < 90)
-        });
-        
-        console.log(`✓ ${ruleNotation}: recall=${result.avgRecall}%, capacity=${result.maxCapacity}`);
-        
-      } catch (e) {
-        console.warn(`Failed to validate ${ruleNotation}:`, e.message);
-      }
+    // Check MemoryCapacity API availability
+    if (!window.MemoryCapacity) {
+      throw new Error('❌ MemoryCapacity API not available. Make sure memoryCapacity.js is loaded.');
     }
     
+    // Take top 10 rules
+    const topRules = mlSuggestions.slice(0, 10).filter(s => s && s.notation);
+    
+    if (!topRules.length) {
+      console.warn('⚠️ No ML suggestions to validate.');
+      validatedResults = [];
+      status2.innerHTML = '⚠️ No rules to validate';
+      return;
+    }
+    
+    const rules = topRules.map(s => s.notation);
+    console.log(`Validating ${rules.length} rules with MemoryCapacity:`, rules);
+    
+    status2.innerHTML = `Running full Memory Capacity protocol...`;
+    
+    // Use EXACTLY the validated V1 protocol
+    const res = await window.MemoryCapacity.runFullSuite({
+      rules,
+      patternConfigs: [
+        { label: 'N=3',  count: 3,  size: 32 },
+        { label: 'N=5',  count: 5,  size: 32 },
+        { label: 'N=10', count: 10, size: 32 }
+      ],
+      noiseLevels: [0.01, 0.03, 0.05, 0.08],
+      steps: 80,
+      runs: 30
+    });
+    
+    const byRule = res.byRule || [];
+    
+    // Map results
+    validatedResults = topRules.map(s => {
+      const m = byRule.find(r => r.rule === s.notation);
+      
+      if (!m) {
+        // No measurement - just mark ML prediction
+        const mlPred = s.mlProba >= 0.5;
+        return {
+          notation: s.notation,
+          mlProba: s.mlProba,
+          avgRecall: 0,
+          maxCapacity: 0,
+          isMemoryLike: false,
+          mlPredictedMemory: mlPred,
+          match: !mlPred
+        };
+      }
+      
+      // Same criteria as capacity_v1.json
+      const isMemoryLike = m.maxCapacity >= 10 && m.avgRecall >= 90;
+      const mlPred = s.mlProba >= 0.5;
+      
+      return {
+        notation: s.notation,
+        mlProba: s.mlProba,
+        avgRecall: m.avgRecall,
+        maxCapacity: m.maxCapacity,
+        isMemoryLike,
+        mlPredictedMemory: mlPred,
+        match: isMemoryLike === mlPred
+      };
+    });
+    
     const truePositives = validatedResults.filter(r => r.isMemoryLike).length;
-    const accuracy = validatedResults.filter(r => r.match).length / validatedResults.length;
+    const accuracy = validatedResults.length > 0 ? 
+      (validatedResults.filter(r => r.match).length / validatedResults.length * 100).toFixed(1) : 'n/a';
     
     console.log(`✅ Validation complete: ${truePositives}/${validatedResults.length} true memory rules`);
-    console.log(`📊 ML accuracy: ${(accuracy * 100).toFixed(1)}%`);
+    console.log(`📊 ML accuracy: ${accuracy}%`);
     
     status2.innerHTML = `✅ Validated ${validatedResults.length} rules`;
     step2.classList.remove('active');
@@ -170,7 +207,7 @@ async function validateTopRules() {
     document.getElementById('btn-export').disabled = false;
     document.getElementById('step3').classList.add('completed');
     document.getElementById('status3').style.display = 'block';
-    document.getElementById('status3').innerHTML = `✅ Pipeline complete! Accuracy: ${(accuracy * 100).toFixed(1)}%`;
+    document.getElementById('status3').innerHTML = `✅ Pipeline complete! Accuracy: ${accuracy}%`;
     
   } catch (error) {
     status2.innerHTML = `❌ Error: ${error.message}`;
@@ -180,73 +217,7 @@ async function validateTopRules() {
   }
 }
 
-// Validate a single rule using Memory Capacity protocol
-async function validateRule(ruleNotation) {
-  // Import CAMemoryEngine
-  const { CAMemoryEngine } = await import('../../src/memory/caMemoryEngine.js');
-  const { getDefaultPatterns } = await import('../memory-ai-lab/memory/attractorUtils.js');
-  
-  const patterns = getDefaultPatterns().slice(0, 5);  // Use 5 test patterns
-  const noiseLevels = [0.03, 0.05, 0.08];
-  const runs = 15;
-  
-  const engine = CAMemoryEngine.create({
-    rule: ruleNotation,
-    width: 32,
-    height: 32,
-    steps: 80
-  });
-  
-  engine.store(patterns);
-  
-  let totalSuccesses = 0;
-  let totalTests = 0;
-  let maxSuccessfulCapacity = 0;
-  
-  // Test different capacities
-  for (let capacity = 3; capacity <= 10; capacity += 2) {
-    const testPatterns = patterns.slice(0, Math.min(capacity, patterns.length));
-    
-    for (const noiseLevel of noiseLevels) {
-      let successes = 0;
-      
-      for (let run = 0; run < runs; run++) {
-        for (const pattern of testPatterns) {
-          const noisy = applyNoise(pattern, noiseLevel);
-          const result = engine.recall(noisy, { steps: 80, maxDiffRatio: 0.1 });
-          if (result.success) successes++;
-          totalTests++;
-        }
-      }
-      
-      totalSuccesses += successes;
-      const recallRate = successes / (testPatterns.length * runs);
-      
-      if (recallRate >= 0.9 && testPatterns.length > maxSuccessfulCapacity) {
-        maxSuccessfulCapacity = testPatterns.length;
-      }
-    }
-  }
-  
-  const avgRecall = (totalSuccesses / totalTests) * 100;
-  
-  return {
-    rule: ruleNotation,
-    avgRecall: Math.round(avgRecall),
-    maxCapacity: maxSuccessfulCapacity
-  };
-}
-
-// Apply noise to a pattern
-function applyNoise(grid, rate) {
-  const noisy = new Uint8Array(grid);
-  for (let i = 0; i < noisy.length; i++) {
-    if (Math.random() < rate) {
-      noisy[i] = 1 - noisy[i];
-    }
-  }
-  return noisy;
-}
+// (validateRule custom implementation removed - using MemoryCapacity.runFullSuite instead)
 
 // Update summary cards
 function updateSummary() {
