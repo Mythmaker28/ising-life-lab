@@ -230,25 +230,30 @@ function setupMemoryLab() {
   const autoScanBtn = document.getElementById('runAutoScanBtn');
   if (autoScanBtn) {
     autoScanBtn.addEventListener('click', async () => {
-      if (!window.MemoryScanner) {
+      if (!window.MemoryScanner || !window.MemoryScanner.scanMemoryCandidates) {
+        console.error('❌ MemoryScanner non disponible (autoScan.js non chargé)');
         alert('⚠️ Module AutoScan non chargé. Rechargez la page.');
         return;
       }
       autoScanBtn.disabled = true;
-      autoScanBtn.textContent = 'Scan en cours...';
+      const originalText = autoScanBtn.textContent;
+      autoScanBtn.textContent = 'Running AutoScan...';
       try {
-        await window.MemoryScanner.scanMemoryCandidates({
+        console.log('🚀 Lancement AutoScan...');
+        const result = await window.MemoryScanner.scanMemoryCandidates({
           noiseLevels: [0.01, 0.03, 0.05, 0.08],
           steps: 160,
           runs: 60
         });
-        autoScanBtn.textContent = 'Run AutoScan';
+        console.log('🎯 AutoScan terminé. Candidates:', result.candidates || result);
+        autoScanBtn.textContent = originalText;
       } catch (error) {
         console.error('❌ Erreur AutoScan:', error);
-        alert('Erreur lors du scan. Consultez la console.');
-        autoScanBtn.textContent = 'Run AutoScan';
+        alert('Erreur lors du scan. Consultez la console (F12) pour plus de détails.');
+        autoScanBtn.textContent = 'AutoScan failed (voir console)';
+      } finally {
+        autoScanBtn.disabled = false;
       }
-      autoScanBtn.disabled = false;
     });
   }
 }

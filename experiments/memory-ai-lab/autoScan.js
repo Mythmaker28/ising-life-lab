@@ -270,5 +270,3 @@ if (typeof window !== 'undefined') {
   console.log('📚 API: MemoryScanner.scanMemoryCandidates({ noiseLevels: [0.01, 0.03, 0.05, 0.08], steps: 160, runs: 60 })');
 }
 
-export { scanMemoryCandidates, EXTRA_RULES };
-
