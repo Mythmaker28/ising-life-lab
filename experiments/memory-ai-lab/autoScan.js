@@ -79,6 +79,42 @@ async function testRuleOnPattern(rule, pattern, { noiseLevel, steps, runs, maxDi
 }
 
 /**
+ * Pré-filtre les règles avec le ML predictor (optionnel)
+ */
+async function preFilterWithML(rules, threshold = 0.3) {
+  try {
+    const { createRulePredictor } = await import('../../src/ai/rulePredictor.js');
+    console.log('🧠 Pré-filtrage ML activé...');
+    
+    const predictor = await createRulePredictor();
+    const scored = [];
+    
+    rules.forEach(rule => {
+      const notation = `B${rule.born.join('')}/S${rule.survive.join('')}`;
+      try {
+        const score = predictor.scoreRule(notation);
+        if (score.proba >= threshold) {
+          scored.push({
+            ...rule,
+            mlScore: score.proba,
+            mlLabel: score.label
+          });
+        }
+      } catch (e) {
+        // Skip invalid rules
+      }
+    });
+    
+    console.log(`   ✂️ ML filter: ${rules.length} → ${scored.length} rules (threshold: ${(threshold * 100).toFixed(0)}%)`);
+    return scored;
+    
+  } catch (e) {
+    console.warn('   ⚠️ ML pre-filter unavailable, using all candidates');
+    return rules;
+  }
+}
+
+/**
  * Scanne les règles candidates avec plusieurs niveaux de bruit
  */
 export async function scanMemoryCandidates(options = {}) {
@@ -89,11 +125,19 @@ export async function scanMemoryCandidates(options = {}) {
     minRecall = 70,
     minCoverage = 40,
     maxDiffRatio = 0.1,
-    patterns: providedPatterns = null
+    patterns: providedPatterns = null,
+    useMLFilter = false,
+    mlThreshold = 0.3
   } = options;
   
   console.log('🔍 AutoScan - Recherche de candidates mémoire');
   console.log(`📊 Config: ${EXTRA_RULES.length} règles × ${noiseLevels.length} niveaux de bruit × ${runs} runs`);
+  
+  // Optional ML pre-filtering
+  let rulesToTest = EXTRA_RULES;
+  if (useMLFilter) {
+    rulesToTest = await preFilterWithML(EXTRA_RULES, mlThreshold);
+  }
   
   // Logique unifiée de sélection des patterns (alignée avec MemoryLab)
   let patternsToTest = providedPatterns;
