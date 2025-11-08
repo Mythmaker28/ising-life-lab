@@ -7,21 +7,33 @@
 **Attendu**:
 - Spinner "Training model..." pendant 2-3 secondes
 - Puis interface s'affiche
-- Console logs:
+- Console logs améliorés:
   ```
-  🔄 Loading training datasets...
-  ✅ Training set built: 25 samples
+  🔄 Loading real lab datasets...
+     ✓ Loaded 7 rules from capacity_v1.json
+     ✓ Loaded 11 rules from rules_dataset.json
+  ✅ Training set built: 16 unique rules
+     - Positive (memory-capable): 7
+     - Negative (not memory): 9
+     - Balance: 43.8% positive
+  📊 Hold-out split: 12 train / 4 test
   🔄 Training logistic model...
      Epoch 1/500 - Loss: 0.6931
      Epoch 100/500 - Loss: 0.3245
      ...
      Epoch 500/500 - Loss: 0.1682
   ✅ Training complete - Final loss: 0.1682
+  📈 Test accuracy: 4/4 (100.0%)
+     Confusion: TP=2, TN=2, FP=0, FN=0
+  🔄 Retraining on full dataset for production...
   ✅ Rule Predictor ready!
-  📊 Validation accuracy: XX.X%
   ```
 
-**❌ Si erreur "totalLoss is not defined"**: Le correctif n'a pas été appliqué correctement
+**✅ Améliorations**:
+- Features simplifiées: 18 bits au lieu de 22
+- Données réelles du lab (capacity_v1.json prioritaire)
+- Validation hold-out avec confusion matrix
+- Pas de duplicatas
 
 ---
 
@@ -31,19 +43,21 @@
 
 ```javascript
 // Test 1: Règle mémoire forte (Hall of Fame)
-await predictor.scoreRule('B01/S3')
+predictor.scoreRule('B01/S3')
 ```
 
-**Attendu**:
+**Attendu** (scores peuvent varier selon split aléatoire):
 ```javascript
 {
   notation: "B01/S3",
-  proba: 0.8956,  // >0.8
+  proba: 0.85-0.95,  // Devrait être élevé
   label: true,
-  confidence: 0.7912,
+  confidence: 0.7-0.9,
   message: "✅ Likely memory-capable"
 }
 ```
+
+**Note**: Scores maintenant basés sur vraies données de capacity_v1.json
 
 ---
 
@@ -51,18 +65,30 @@ await predictor.scoreRule('B01/S3')
 
 ```javascript
 // Test 2: Conway (règle standard, pas mémoire)
-await predictor.scoreRule('B3/S23')
+predictor.scoreRule('B3/S23')
 ```
 
 **Attendu**:
 ```javascript
 {
   notation: "B3/S23",
-  proba: 0.2134,  // <0.5
+  proba: 0.1-0.3,  // <0.5 (faible)
   label: false,
-  confidence: 0.5732,
+  confidence: 0.4-0.8,
   message: "❌ Unlikely"
 }
+```
+
+**✅ Test 3: Vérifier training stats**:
+```javascript
+predictor.trainingStats
+// {
+//   totalSamples: 16,
+//   trainSamples: 12,
+//   testSamples: 4,
+//   positives: 7,
+//   negatives: 9
+// }
 ```
 
 ---
