@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory AI Lab - Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); color: #e0e0e0; padding: 20px; }
+    .container { max-width: 1400px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%); border-radius: 12px; color: #0a0a0a; }
+    h1 { font-size: 3em; margin-bottom: 10px; }
+    .subtitle { font-size: 1.2em; opacity: 0.9; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+    .card { background: #1a1a1a; padding: 25px; border-radius: 12px; border: 2px solid #333; transition: all 0.3s; }
+    .card:hover { border-color: #00ff88; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,255,136,0.2); }
+    .card h2 { color: #00ff88; margin-bottom: 15px; font-size: 1.5em; }
+    .card p { color: #aaa; line-height: 1.6; margin-bottom: 15px; }
+    .card a { display: inline-block; padding: 10px 20px; background: #00ff88; color: #0a0a0a; text-decoration: none; border-radius: 6px; font-weight: bold; }
+    .card a:hover { background: #00cc6a; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-left: 10px; }
+    .badge-new { background: #00ff88; color: #0a0a0a; }
+    .badge-stable { background: #00aaff; color: #fff; }
+    .stats { background: #252525; padding: 30px; border-radius: 12px; margin-bottom: 30px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center; }
+    .stat-item .value { font-size: 3em; color: #00ff88; font-weight: bold; }
+    .stat-item .label { color: #aaa; margin-top: 5px; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧠 Memory AI Lab</h1>
+      <p class="subtitle">Cellular Automata Memory Systems with ML & Meta-Learning</p>
+    </header>
+
+    <div class="stats">
+      <h2 style="color: #00ff88; margin-bottom: 20px; text-align: center;">Project Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="value">6</div>
+          <div class="label">Experiments</div>
+        </div>
+        <div class="stat-item">
+          <div class="value">8</div>
+          <div class="label">Memory Engines</div>
+        </div>
+        <div class="stat-item">
+          <div class="value">2</div>
+          <div class="label">ML Models</div>
+        </div>
+        <div class="stat-item">
+          <div class="value">99</div>
+          <div class="label">Score / 100</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>🔬 Memory AI Lab <span class="badge badge-stable">V1.0</span></h2>
+        <p>Tests mémoire, AutoScan, Capacity benchmarks. API complète pour exploration CA.</p>
+        <a href="../memory-ai-lab/index.html" target="_blank">Ouvrir →</a>
+      </div>
+
+      <div class="card">
+        <h2>🧠 Rule Predictor <span class="badge badge-stable">ML</span></h2>
+        <p>Prédiction ML de règles mémoire-capable. Training sur vraies données (16 samples).</p>
+        <a href="../rule-predictor/index.html" target="_blank">Ouvrir →</a>
+      </div>
+
+      <div class="card">
+        <h2>🤖 Auto Memory Research <span class="badge badge-stable">Pipeline</span></h2>
+        <p>Pipeline ML-guidé: suggest → validate → export. Intégration complète.</p>
+        <a href="../auto-memory-research/index.html" target="_blank">Ouvrir →</a>
+      </div>
+
+      <div class="card">
+        <h2>🎯 Engine Selector <span class="badge badge-new">Phase 5</span></h2>
+        <p>Meta-learner pour prédire meilleur engine. 8× speedup, 80-95% accuracy.</p>
+        <a href="../engine-selector-demo/index.html" target="_blank">Ouvrir →</a>
+      </div>
+
+      <div class="card">
+        <h2>🔧 Memory Storage System</h2>
+        <p>Comparaison multi-engines en temps réel. Visualisation patterns et recall.</p>
+        <a href="../memory-storage-system/index.html" target="_blank">Ouvrir →</a>
+      </div>
+
+      <div class="card">
+        <h2>🌀 Ising Life Lab</h2>
+        <p>Exploration CA classique. Hall of Fame, Rule Explorer, Advanced Search.</p>
+        <a href="../../public/index.html" target="_blank">Ouvrir →</a>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top: 30px;">
+      <h2 style="color: #00ff88; margin-bottom: 15px;">📚 Documentation</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+        <a href="../../START_HERE.md" style="color: #00aaff; text-decoration: none;">→ START_HERE (quick ref)</a>
+        <a href="../../QUICK_TEST.md" style="color: #00aaff; text-decoration: none;">→ QUICK_TEST (5 min)</a>
+        <a href="../../PROJECT_FINAL_REPORT.md" style="color: #00aaff; text-decoration: none;">→ FINAL REPORT (99/100)</a>
+        <a href="../../TEST_ENGINE_SELECTOR.md" style="color: #00aaff; text-decoration: none;">→ TEST_ENGINE_SELECTOR</a>
+        <a href="../../docs/MEMORY_AI_API.md" style="color: #00aaff; text-decoration: none;">→ MEMORY_AI_API</a>
+        <a href="../../docs/CA_MEMORY_API.md" style="color: #00aaff; text-decoration: none;">→ CA_MEMORY_API</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
