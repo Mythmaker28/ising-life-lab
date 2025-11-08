@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Memory Rule Researcher</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, sans-serif; 
+      background: #0a0a0a; 
+      color: #e0e0e0; 
+      padding: 20px; 
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    
+    header { 
+      text-align: center; 
+      margin-bottom: 40px; 
+      padding-bottom: 20px; 
+      border-bottom: 3px solid #00ff88; 
+    }
+    h1 { 
+      color: #00ff88; 
+      font-size: 2.8em; 
+      margin-bottom: 10px; 
+      text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    }
+    header p { color: #aaa; font-size: 1.2em; }
+    
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .step {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      padding: 25px;
+      border-radius: 12px;
+      border: 2px solid #333;
+      transition: all 0.3s;
+    }
+    
+    .step.active {
+      border-color: #00ff88;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    }
+    
+    .step.completed {
+      border-color: #00cc6a;
+    }
+    
+    .step h2 {
+      color: #00ff88;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .step-number {
+      background: #00ff88;
+      color: #0a0a0a;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .step p { color: #aaa; margin-bottom: 15px; line-height: 1.6; }
+    
+    button {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+    }
+    
+    button:disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 12px;
+      background: #1a1a1a;
+      border-radius: 6px;
+      border-left: 4px solid #00ff88;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    
+    .results-section {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px solid #333;
+    }
+    
+    .results-section h2 {
+      color: #00ff88;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #0a0a0a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    th {
+      background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+      color: #0a0a0a;
+      padding: 14px;
+      text-align: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.85em;
+      letter-spacing: 0.5px;
+    }
+    
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    
+    tr:hover {
+      background: #1a1a1a;
+    }
+    
+    .high-score { color: #00ff88; font-weight: bold; }
+    .low-score { color: #ff4444; }
+    .medium-score { color: #ffaa00; }
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+    
+    .badge-success {
+      background: rgba(0, 255, 136, 0.2);
+      color: #00ff88;
+      border: 1px solid #00ff88;
+    }
+    
+    .badge-warning {
+      background: rgba(255, 170, 0, 0.2);
+      color: #ffaa00;
+      border: 1px solid #ffaa00;
+    }
+    
+    .badge-danger {
+      background: rgba(255, 68, 68, 0.2);
+      color: #ff4444;
+      border: 1px solid #ff4444;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #333;
+      border-top-color: #00ff88;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .summary-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #333;
+      text-align: center;
+    }
+    
+    .summary-card .value {
+      font-size: 2.5em;
+      color: #00ff88;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .summary-card .label {
+      color: #aaa;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    #loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #aaa;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤖 Auto Memory Rule Researcher</h1>
+      <p>ML-guided discovery and validation of memory-capable CA rules</p>
+      <div id="loading">
+        <div class="spinner"></div>
+        <p>Initializing ML predictor...</p>
+      </div>
+    </header>
+
+    <div id="app" style="display:none;">
+      <div class="pipeline">
+        <!-- Step 1: ML Suggestions -->
+        <div class="step" id="step1">
+          <h2>
+            <span class="step-number">1</span>
+            ML Suggestions
+          </h2>
+          <p>Generate and score candidate CA rules using trained ML model</p>
+          <button id="btn-suggest">Generate Candidates</button>
+          <div class="status" id="status1" style="display:none;"></div>
+        </div>
+
+        <!-- Step 2: CA Validation -->
+        <div class="step" id="step2">
+          <h2>
+            <span class="step-number">2</span>
+            CA Validation
+          </h2>
+          <p>Test top-scored rules with Memory Capacity protocol</p>
+          <button id="btn-validate" disabled>Validate Top Rules</button>
+          <div class="status" id="status2" style="display:none;"></div>
+        </div>
+
+        <!-- Step 3: Results -->
+        <div class="step" id="step3">
+          <h2>
+            <span class="step-number">3</span>
+            Results
+          </h2>
+          <p>Compare ML predictions vs. actual memory performance</p>
+          <button id="btn-export" disabled>Export Results</button>
+          <div class="status" id="status3" style="display:none;"></div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-section">
+        <h2>📊 Research Results</h2>
+        
+        <div class="summary" id="summary" style="display:none;">
+          <div class="summary-card">
+            <div class="value" id="total-candidates">0</div>
+            <div class="label">Candidates</div>
+          </div>
+          <div class="summary-card">
+            <div class="value" id="ml-promising">0</div>
+            <div class="label">ML Promising</div>
+          </div>
+          <div class="summary-card">
+            <div class="value" id="validated">0</div>
+            <div class="label">Validated</div>
+          </div>
+          <div class="summary-card">
+            <div class="value" id="true-positives">0</div>
+            <div class="label">True Memory</div>
+          </div>
+        </div>
+
+        <div id="tables-container">
+          <div class="empty-state">
+            Click "Generate Candidates" to start the research pipeline
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

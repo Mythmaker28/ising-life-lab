@@ -65,6 +65,21 @@ ML-powered prediction of memory-capable CA rules.
 
 **No external libs** - Pure vanilla JS ML implementation.
 
+### 🤖 Auto Memory Researcher (Phase 4 ✅)
+
+**URL**: http://localhost:8001/experiments/auto-memory-research/
+
+Integrated ML-guided rule discovery and validation pipeline.
+
+**Features**:
+- Automated candidate generation and ML scoring
+- Real-time validation with Memory Capacity protocol
+- Compare ML predictions vs. actual performance
+- Export results as JSON
+- Full pipeline automation with `AutoMemoryResearch.runAll()`
+
+**Perfect integration** - Uses all existing primitives without breaking changes.
+
 ## Features
 
 ### Core CA Engine
