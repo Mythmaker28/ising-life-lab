@@ -80,12 +80,25 @@ def load_optical_systems(
         data_dir = _get_data_directory()
     
     filename = f"optical_{tier}.csv"
-    filepath = data_dir / filename
     
-    if not filepath.exists():
+    # Try multiple locations (for flexibility in testing/deployment)
+    possible_paths = [
+        data_dir / "atlas_optical" / filename,  # Structured subdirectory
+        data_dir / filename,                    # Direct in data/
+    ]
+    
+    filepath = None
+    for path in possible_paths:
+        if path.exists():
+            filepath = path
+            break
+    
+    if filepath is None:
         available = list_available_datasets()
         raise AtlasDataError(
-            f"Optical data file not found: {filepath}\\n"
+            f"Optical data file not found. Tried:\\n"
+            f"  - {possible_paths[0]}\\n"
+            f"  - {possible_paths[1]}\\n"
             f"Available datasets: {available}\\n"
             f"Expected directory: {data_dir}\\n"
             f"Ensure Atlas CSV exports are placed in data/ directory."
@@ -126,12 +139,25 @@ def load_nonoptical_systems(
         data_dir = _get_data_directory()
     
     filename = f"nonoptical_{tier}.csv"
-    filepath = data_dir / filename
     
-    if not filepath.exists():
+    # Try multiple locations
+    possible_paths = [
+        data_dir / "atlas_nonoptical" / filename,
+        data_dir / filename,
+    ]
+    
+    filepath = None
+    for path in possible_paths:
+        if path.exists():
+            filepath = path
+            break
+    
+    if filepath is None:
         available = list_available_datasets()
         raise AtlasDataError(
-            f"Non-optical data file not found: {filepath}\\n"
+            f"Non-optical data file not found. Tried:\\n"
+            f"  - {possible_paths[0]}\\n"
+            f"  - {possible_paths[1]}\\n"
             f"Available datasets: {available}\\n"
             f"Expected directory: {data_dir}\\n"
             f"Ensure Atlas CSV exports are placed in data/ directory."
@@ -140,6 +166,147 @@ def load_nonoptical_systems(
     try:
         df = pd.read_csv(filepath)
         return df.copy()  # Return copy to ensure READ-ONLY
+    except Exception as e:
+        raise AtlasDataError(f"Failed to read {filepath}: {e}")
+
+
+def load_spin_qubits(
+    data_dir: Optional[Path] = None
+) -> pd.DataFrame:
+    """
+    Load spin qubit systems data (READ-ONLY).
+    
+    Includes: NV centers, SiC defects, SiV, GeV, P1 centers, endohedral fullerenes, etc.
+    
+    Args:
+        data_dir: Override default data directory (for testing)
+        
+    Returns:
+        DataFrame with spin qubit systems
+        
+    Raises:
+        AtlasDataError: If file not found or cannot be read
+        
+    Example:
+        >>> from isinglab.data_bridge import load_spin_qubits
+        >>> df = load_spin_qubits()
+        >>> print(f"Loaded {len(df)} spin qubit systems")
+    """
+    if data_dir is None:
+        data_dir = _get_data_directory()
+    
+    # Look in atlas_nonoptical subdirectory
+    filepath = data_dir / "atlas_nonoptical" / "spin_qubit_candidates.csv"
+    
+    if not filepath.exists():
+        # Fallback: try root data directory
+        filepath = data_dir / "spin_qubit_candidates.csv"
+    
+    if not filepath.exists():
+        available = list_available_datasets()
+        raise AtlasDataError(
+            f"Spin qubit data file not found: {filepath}\\n"
+            f"Available datasets: {available}\\n"
+            f"Expected: data/atlas_nonoptical/spin_qubit_candidates.csv\\n"
+            f"See data/README.md for download instructions."
+        )
+    
+    try:
+        df = pd.read_csv(filepath)
+        return df.copy()  # Return copy to ensure READ-ONLY
+    except Exception as e:
+        raise AtlasDataError(f"Failed to read {filepath}: {e}")
+
+
+def load_nuclear_spins(
+    data_dir: Optional[Path] = None
+) -> pd.DataFrame:
+    """
+    Load nuclear spin systems data (READ-ONLY).
+    
+    Includes: 13C, 31P, 14N, 29Si, 15N, 1H nuclear spins in diamond, silicon, proteins, etc.
+    
+    Args:
+        data_dir: Override default data directory (for testing)
+        
+    Returns:
+        DataFrame with nuclear spin systems
+        
+    Raises:
+        AtlasDataError: If file not found or cannot be read
+        
+    Example:
+        >>> from isinglab.data_bridge import load_nuclear_spins
+        >>> df = load_nuclear_spins()
+        >>> print(f"Loaded {len(df)} nuclear spin systems")
+    """
+    if data_dir is None:
+        data_dir = _get_data_directory()
+    
+    # Look in atlas_nonoptical subdirectory
+    filepath = data_dir / "atlas_nonoptical" / "nuclear_spin_candidates.csv"
+    
+    if not filepath.exists():
+        filepath = data_dir / "nuclear_spin_candidates.csv"
+    
+    if not filepath.exists():
+        available = list_available_datasets()
+        raise AtlasDataError(
+            f"Nuclear spin data file not found: {filepath}\\n"
+            f"Available datasets: {available}\\n"
+            f"Expected: data/atlas_nonoptical/nuclear_spin_candidates.csv\\n"
+            f"See data/README.md for download instructions."
+        )
+    
+    try:
+        df = pd.read_csv(filepath)
+        return df.copy()
+    except Exception as e:
+        raise AtlasDataError(f"Failed to read {filepath}: {e}")
+
+
+def load_radical_pairs(
+    data_dir: Optional[Path] = None
+) -> pd.DataFrame:
+    """
+    Load radical pair systems data (READ-ONLY).
+    
+    Includes: Cryptochrome, photolyase, photosystem II, bacterial reaction centers, etc.
+    
+    Args:
+        data_dir: Override default data directory (for testing)
+        
+    Returns:
+        DataFrame with radical pair systems
+        
+    Raises:
+        AtlasDataError: If file not found or cannot be read
+        
+    Example:
+        >>> from isinglab.data_bridge import load_radical_pairs
+        >>> df = load_radical_pairs()
+        >>> print(f"Loaded {len(df)} radical pair systems")
+    """
+    if data_dir is None:
+        data_dir = _get_data_directory()
+    
+    filepath = data_dir / "atlas_nonoptical" / "radical_pair_candidates.csv"
+    
+    if not filepath.exists():
+        filepath = data_dir / "radical_pair_candidates.csv"
+    
+    if not filepath.exists():
+        available = list_available_datasets()
+        raise AtlasDataError(
+            f"Radical pair data file not found: {filepath}\\n"
+            f"Available datasets: {available}\\n"
+            f"Expected: data/atlas_nonoptical/radical_pair_candidates.csv\\n"
+            f"See data/README.md for download instructions."
+        )
+    
+    try:
+        df = pd.read_csv(filepath)
+        return df.copy()
     except Exception as e:
         raise AtlasDataError(f"Failed to read {filepath}: {e}")
 

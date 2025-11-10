@@ -80,6 +80,41 @@ print(f"Memory score: {metrics['memory_score']:.3f}")
 - [**THEORETICAL_FOUNDATION.md**](docs/THEORETICAL_FOUNDATION.md) - Fondements mathématiques des métriques
 - [**AI_AGENT_GUIDE.md**](docs/AI_AGENT_GUIDE.md) - Guide pour agents IA autonomes
 - [**CONNECTIONS.md**](docs/CONNECTIONS.md) - Liens avec autres projets (qubits biologiques, arrest-molecules)
+- [**ATLAS_INTEGRATION_GUIDE.md**](docs/ATLAS_INTEGRATION_GUIDE.md) - 🆕 Intégration Biological Qubits Atlas
+
+### 🔬 Intégration Biological Qubits Atlas (Nouveau)
+
+Le package `isinglab` peut maintenant charger et analyser des systèmes réels du [Biological Qubits Atlas](https://github.com/Mythmaker28/Quantum-Sensors-Qubits-in-Biology) :
+
+**Systèmes supportés** :
+- ✅ **180 systèmes optiques** (fluorescent proteins : GCaMP, ASAP, dLight, etc.)
+- ✅ **10 spin qubits** (NV centers, SiC defects, SiV, P1, etc.)
+- ✅ **8 nuclear spins** (¹³C, ³¹P, ¹⁴N, ²⁹Si dans diamond/silicon)
+- ✅ **8 radical pairs** (Cryptochrome, photolyase, PSII, etc.)
+
+**Workflow typique** :
+```python
+from isinglab.data_bridge import load_optical_systems, map_system_properties
+from isinglab.mapping_profiles import get_target_profile_for_system
+from isinglab.pipelines import run_regime_search
+
+# 1. Charger systèmes Atlas (READ-ONLY)
+df = load_optical_systems(tier="curated")  # 180 curated systems
+df_mapped = map_system_properties(df)
+
+# 2. Générer profil cible (HEURISTIQUE)
+profile = get_target_profile_for_system(
+    modality="optical",
+    temperature_regime="physiological",
+    coherence_class="long"
+)
+
+# 3. Rechercher régimes CA/Ising
+results_df, top_rules = run_regime_search(target_profile=profile)
+print(f"Top rule: {top_rules[0]['rule']}")
+```
+
+**⚠️ DISCLAIMERS** : Mappings = analogies conceptuelles, PAS prédictions quantiques. Voir [docs/ATLAS_INTEGRATION_GUIDE.md](docs/ATLAS_INTEGRATION_GUIDE.md)
 
 ---
 

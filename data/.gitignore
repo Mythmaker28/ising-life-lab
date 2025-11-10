@@ -1,0 +1,8 @@
+# Atlas CSV data files (user-provided, not versioned)
+*.csv
+!.gitignore
+
+# Allow example/mock files for testing
+!*_example.csv
+!*_mock.csv
+

@@ -25,11 +25,13 @@ def classify_modality(row: pd.Series) -> str:
     
     Logic (deterministic):
         1. If 'modality' column exists → use it directly
-        2. If 'system_type' contains 'optical' → "optical"
-        3. If 'system_type' contains 'spin' → "spin"
-        4. If 'system_type' contains 'nuclear' → "nuclear"
-        5. If 'system_type' contains 'radical' → "radical_pair"
-        6. Otherwise → "unknown"
+        2. Check for explicit markers:
+           - 'family' column (optical FP families)
+           - 'system_type' (NV_center, SiC_defect, etc.)
+           - 'nucleus' column → nuclear
+           - 'protein_or_complex' with radical → radical_pair
+        3. Infer from system_type keywords
+        4. Otherwise → "unknown"
     
     Args:
         row: DataFrame row (one system)
@@ -41,14 +43,31 @@ def classify_modality(row: pd.Series) -> str:
     if 'modality' in row.index and pd.notna(row['modality']):
         return str(row['modality']).lower().strip()
     
-    # Infer from system_type
+    # Optical systems: have 'family' column (GFP-like, Calcium, Voltage, etc.)
+    if 'family' in row.index and pd.notna(row['family']):
+        family = str(row['family']).lower()
+        # All FP families are optical
+        if family != 'unknown':
+            return "optical"
+    
+    # Nuclear spin systems: have 'nucleus' column
+    if 'nucleus' in row.index and pd.notna(row['nucleus']):
+        return "nuclear"
+    
+    # Radical pair systems: have 'protein_or_complex' column
+    if 'protein_or_complex' in row.index and pd.notna(row['protein_or_complex']):
+        complex_name = str(row['protein_or_complex']).lower()
+        if 'crypto' in complex_name or 'radical' in complex_name or 'photolyase' in complex_name:
+            return "radical_pair"
+    
+    # Spin qubit systems: check system_type
     if 'system_type' in row.index and pd.notna(row['system_type']):
         system_type = str(row['system_type']).lower()
         
-        if 'optical' in system_type or 'photon' in system_type:
-            return "optical"
-        elif 'spin' in system_type or 'electron' in system_type:
+        if 'nv' in system_type or 'defect' in system_type or 'spin' in system_type:
             return "spin"
+        elif 'optical' in system_type or 'photon' in system_type or 'fluorescent' in system_type:
+            return "optical"
         elif 'nuclear' in system_type or 'nmr' in system_type:
             return "nuclear"
         elif 'radical' in system_type or 'pair' in system_type:
@@ -120,12 +139,15 @@ def classify_coherence_class(row: pd.Series) -> str:
     Classify coherence class based on T₂ (decoherence time).
     
     Logic (deterministic):
-        1. If 'T2_seconds' or 'coherence_time' column exists:
+        1. Check multiple T₂ column formats:
+           - T2_seconds, T2_milliseconds, T2_microseconds
+           - coherence_time, t2, T2
+        2. Convert to seconds and classify:
            - T₂ < 1 µs → "short"
            - 1 µs ≤ T₂ < 1 ms → "medium"
            - 1 ms ≤ T₂ < 1 s → "long"
            - T₂ ≥ 1 s → "record"
-        2. Otherwise → "unknown"
+        3. Otherwise → "unknown"
     
     Args:
         row: DataFrame row
@@ -133,22 +155,48 @@ def classify_coherence_class(row: pd.Series) -> str:
     Returns:
         Coherence class: "short", "medium", "long", "record", "unknown"
     """
-    # Direct T₂ column
+    # Check T₂ in various units
+    t2_seconds = None
+    
+    # T2 in seconds
     for col in ['T2_seconds', 'coherence_time', 't2', 'T2']:
         if col in row.index and pd.notna(row[col]):
             try:
-                t2 = float(row[col])
-                
-                if t2 < 1e-6:  # < 1 µs
-                    return "short"
-                elif t2 < 1e-3:  # < 1 ms
-                    return "medium"
-                elif t2 < 1.0:  # < 1 s
-                    return "long"
-                else:  # ≥ 1 s
-                    return "record"
+                t2_seconds = float(row[col])
+                break
             except (ValueError, TypeError):
                 pass
+    
+    # T2 in milliseconds (non-optical systems often use ms)
+    if t2_seconds is None:
+        for col in ['T2_milliseconds', 't2_ms', 'T2_ms']:
+            if col in row.index and pd.notna(row[col]):
+                try:
+                    t2_seconds = float(row[col]) / 1000.0  # Convert ms → s
+                    break
+                except (ValueError, TypeError):
+                    pass
+    
+    # T2 in microseconds
+    if t2_seconds is None:
+        for col in ['T2_microseconds', 't2_us', 'T2_us', 'T2_star_microseconds']:
+            if col in row.index and pd.notna(row[col]):
+                try:
+                    t2_seconds = float(row[col]) / 1e6  # Convert µs → s
+                    break
+                except (ValueError, TypeError):
+                    pass
+    
+    # Classify
+    if t2_seconds is not None:
+        if t2_seconds < 1e-6:  # < 1 µs
+            return "short"
+        elif t2_seconds < 1e-3:  # < 1 ms
+            return "medium"
+        elif t2_seconds < 1.0:  # < 1 s
+            return "long"
+        else:  # ≥ 1 s
+            return "record"
     
     return "unknown"
 
