@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ising Life Lab</title>
+  <style>
+    body {
+      font-family: monospace;
+      margin: 20px;
+      background: #ffffff;
+      color: #111;
+    }
+    canvas {
+      border: 1px solid #000;
+      display: block;
+      margin-top: 10px;
+    }
+    .controls {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .metrics {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    button, select {
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ising Life Lab</h1>
+
+  <div class="controls">
+    <label>Rule:
+      <select id="ruleSelect"></select>
+    </label>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="stepBtn">Step</button>
+    <button id="randomBtn">Randomize</button>
+    <button id="clearBtn">Clear</button>
+  </div>
+
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <div class="metrics" id="metrics">
+    Density: 0.00, Entropy: 0.00 bits, Population: 0
+  </div>
+
+  <script type="module" src="../src/viz/renderer.js"></script>
+</body>
+</html>

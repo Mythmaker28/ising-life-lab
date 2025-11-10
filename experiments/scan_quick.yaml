@@ -1,0 +1,26 @@
+# Quick scan configuration for rapid exploration
+# Uses smaller grids and fewer steps for fast iteration
+
+rule_range: [0, 255]
+
+ca_type: "elementary"
+
+# Smaller grid for speed
+grid_size: [50]
+
+# Fewer steps
+steps: 100
+
+seed: 42
+
+# Single seed for speed
+n_seeds: 1
+
+output_dir: "outputs/quick"
+
+top_n: 10
+
+metric: "edge_score"
+
+verbose: true
+

@@ -1,0 +1,38 @@
+# Default configuration for CA rule scanning
+# Usage: python -m isinglab.scan_rules --config experiments/scan_default.yaml
+
+# Rule range to scan (inclusive)
+rule_range: [0, 255]
+
+# Type of cellular automaton
+# Options: "elementary", "life", "totalistic"
+ca_type: "elementary"
+
+# Grid dimensions
+# For 1D CA: [width]
+# For 2D CA: [height, width]
+grid_size: [100]
+
+# Number of evolution steps
+steps: 200
+
+# Random seed for reproducibility
+seed: 42
+
+# Number of different initial conditions per rule
+# Higher values give more robust statistics but take longer
+n_seeds: 3
+
+# Output directory
+output_dir: "outputs"
+
+# Number of top rules to save separately
+top_n: 20
+
+# Metric for ranking top rules
+# Options: "edge_score", "memory_score", "entropy", "sensitivity"
+metric: "edge_score"
+
+# Verbose output
+verbose: true
+

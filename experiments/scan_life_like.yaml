@@ -1,0 +1,32 @@
+# Configuration for scanning Life-like CA rules
+# These are 2D CAs with birth/survival rules (like Conway's Game of Life)
+
+# For Life-like rules, we sample interesting rule space
+# Rule encoding: bits 0-8 for birth, bits 9-17 for survival
+
+# We'll manually specify some interesting Life-like rules to scan
+# Rule 224 = Conway's Life (B3/S23)
+# Rule format: sum(2^b for b in birth) + sum(2^(s+9) for s in survival)
+
+# Note: For Life-like, rule_range is approximate
+# The scanner will generate Life-like rules appropriately
+rule_range: [0, 262143]  # 2^18 - 1 (18 bits total)
+
+ca_type: "life"
+
+grid_size: [100, 100]
+
+steps: 300
+
+seed: 42
+
+n_seeds: 3
+
+output_dir: "outputs/life_like"
+
+top_n: 20
+
+metric: "edge_score"
+
+verbose: true
+

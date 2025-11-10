@@ -1,0 +1,156 @@
+Projet : Ising Life & Memory AI Lab
+1. Vision
+
+Construire un bac à sable autonome d’IA mathématique où :
+
+des agents explorent automatiquement l’espace des règles d’automates cellulaires,
+
+identifient des règles à mémoire (style Hopfield / Ising),
+
+comparent leurs performances à des modèles classiques (Hopfield),
+
+produisent des rapports reproductibles utilisables par des humains (toi) pour poser des conjectures, orienter la recherche, et designer des systèmes de mémoire exotiques.
+
+Objectif long terme : démontrer concrètement comment des IA + outils programmés peuvent aider à découvrir des structures mathématiques non triviales, sur un cas jouet maîtrisé.
+
+2. Utilisateurs cibles
+
+Mythmaker (toi)
+
+Veut un terrain de jeu clair, robuste, sans galère Git/serveur, avec des résultats lisibles.
+
+IA / agents (Cursor, GPT, etc.)
+
+Doivent pouvoir lancer des expériences, lire/écrire des résultats, proposer des prompts / patchs, sans casser le projet.
+
+Curieux / chercheurs
+
+Veulent voir comment on passe de “search brut sur des règles” → “analyse de mémoire” → “comparaison avec Hopfield” → idées de modèles énergétiques.
+
+3. Composants principaux
+3.1 Ising Life Lab (forge à règles)
+
+Exploration de règles Life-like (B/S).
+
+Search / Deep search / Extreme search.
+
+Scoring : complexité, attracteurs, robustesse au bruit.
+
+Hall of Fame : meilleures règles sélectionnées & validées.
+
+Sorties : logs, tableaux, snippets pour rules.js.
+
+Status : ✅ stable, Hall of Fame figé + pipeline d’exploration robuste.
+
+3.2 Memory AI Lab (expériences mémoire)
+
+URL dédiée dans experiments/memory-ai-lab/.
+
+Fonctions clés :
+
+CA Playground avec Hall of Fame.
+
+Memory Lab :
+
+patterns par défaut + ajout manuel,
+
+tests de rappel sous bruit,
+
+métriques : recall, coverage, attracteurs dominants.
+
+Hopfield Lab :
+
+réseau de Hebb,
+
+comparaison CA vs Hopfield avec métrique commune.
+
+API console :
+
+MemoryLab.runBatchForHallOfFame(...)
+
+HopfieldLab.compareWithHallOfFame(...)
+
+Reports.generateMarkdownReport(...)
+
+Status : ✅ opérationnel, critères plus réalistes, patterns auto, rapport propre.
+
+4. Rôle des agents (très important)
+4.1 Agent “Research Orchestrator” (ChatGPT / GPT-4.1 / GPT-5)
+
+Lit la doc (README, docs/, QUICK_START_MEMORY_AI_LAB.md).
+
+Vérifie que la branche / repo / paths sont à jour.
+
+Produit des prompts structurés pour l’agent Cursor (et pas du code direct bancal).
+
+Tâches typiques :
+
+Lancer des campagnes de tests via snippets console.
+
+Sauvegarder les rapports (copier/coller dans fichiers markdown dédiés).
+
+Proposer des interprétations (ex : “Mythmaker_2 se comporte comme X, candidate pour Y”).
+
+Proposer des patchs ciblés (sans tout casser) : UI, nouveaux metrics, meilleure visualisation.
+
+4.2 Agent Cursor (dev exécutant)
+
+Applique les patchs.
+
+Garde la structure propre.
+
+Ne touche pas à la base sans raison (pas de reset sauvage).
+
+En cas de doute : nouvelle branche / sous-dossier d’expériences.
+
+5. Prochaines étapes (roadmap courte)
+
+Step 1 — Solidifier & loguer
+
+ Ajouter un fichier docs/HOF_RULES.md qui documente chaque règle du Hall of Fame + Seeds_1.88 (origine, perf, intuitions).
+
+ Ajouter une petite section dans Memory Lab UI : “Current best rule: Mythmaker_2 (B01/S3) (empirical)”.
+
+Step 2 — IA analyste intégrée
+
+ Ajouter un module reports/autoSummary.js :
+
+prend les résultats batch,
+
+génère 5–10 phrases de conclusion lisibles,
+
+prêt à être montré / copié dans Notion / slides.
+
+ L’agent GPT utilise ça au lieu d’improviser.
+
+Step 3 — Vers l’IA de recherche
+
+ Ajouter un export JSON des runs (rules + metrics).
+
+ Commencer un dossier experiments/meta/ pour scripts (même juste doc) d’analyse méta :
+
+corrélation paramètres B/S ↔ mémoire,
+
+patterns “famille Seeds_1.88”.
+
+ Spécifier comment un futur agent pourra proposer des conjectures textuelles à partir de ces données.
+
+6. Règles de base à ne pas casser
+
+Une seule commande serveur claire :
+
+cd ising-v2-final
+
+python -m http.server 8001
+
+URLs fixes :
+
+/public/index.html → search & Hall of Fame
+
+/experiments/memory-ai-lab/index.html → mémoire & comparaison
+
+Aucun fichier 0 bytes.
+
+Pas de refactor massif sans nouvelle branche.
+
+Tout nouveau module : documenté en 5 lignes max dans docs/.

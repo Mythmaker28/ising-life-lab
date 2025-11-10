@@ -1,0 +1,26 @@
+# Configuration for finding rules with strong memory behavior
+# Optimizes for attractor-based dynamics rather than edge-of-chaos
+
+rule_range: [0, 255]
+
+ca_type: "elementary"
+
+grid_size: [100]
+
+# Longer evolution to find attractors
+steps: 500
+
+seed: 42
+
+# More seeds for robust memory detection
+n_seeds: 5
+
+output_dir: "outputs/memory"
+
+top_n: 20
+
+# Focus on memory score
+metric: "memory_score"
+
+verbose: true
+
