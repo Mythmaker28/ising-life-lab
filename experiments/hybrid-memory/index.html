@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hybrid Memory System</title>
+  <style>
+    body { font-family: monospace; background: #1a1a1a; color: #e0e0e0; padding: 20px; }
+    h1 { color: #00ff88; }
+    button { padding: 10px 20px; background: #00ff88; color: #1a1a1a; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+    button:disabled { background: #555; color: #888; }
+    #log { background: #000; padding: 15px; border-radius: 6px; margin-top: 20px; font-size: 12px; max-height: 400px; overflow-y: auto; }
+    .success { color: #00ff88; }
+    .fail { color: #ff4444; }
+  </style>
+</head>
+<body>
+  <h1>Hybrid Memory System (7 CA Rules + Hopfield)</h1>
+  <p>Tests les 7 règles MEMORY_HALL_OF_FAME en parallèle</p>
+  
+  <button id="initBtn">Initialize Engines</button>
+  <button id="testBtn" disabled>Test Noisy Recall</button>
+  <button id="benchmarkBtn" disabled>Benchmark All</button>
+  
+  <div id="log"></div>
+  
+  <script type="module" src="hybrid-memory.js"></script>
+</body>
+</html>
+

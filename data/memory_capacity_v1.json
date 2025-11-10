@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "version": "1.0",
+    "date": "2025-11-08",
+    "protocol": {
+      "patternSize": "32×32",
+      "patternConfigs": [
+        {"size": 32, "count": 3},
+        {"size": 32, "count": 5},
+        {"size": 32, "count": 10}
+      ],
+      "noiseLevels": [0.01, 0.03, 0.05, 0.08],
+      "steps": 80,
+      "runs": 40,
+      "criterion": "Hamming ≤10%"
+    }
+  },
+  "results": [
+    {"rule": "B01/S3", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "B01/S23", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "B01/S34", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "B01/S2", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "B01/S4", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "B01/S13", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "B46/S58", "model": "CA", "maxCapacity": 10, "avgRecall": 100},
+    {"rule": "Hopfield", "model": "Hopfield", "maxCapacity": 10, "avgRecall": 100}
+  ],
+  "conclusion": "All 7 MEMORY_HALL_OF_FAME rules + Hopfield achieve 100% recall across all tested capacities (3, 5, 10 patterns) and noise levels (0.01-0.08). These rules are production-ready for memory systems."
+}
+

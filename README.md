@@ -1,32 +1,23 @@
 # Ising Life Lab
 
-**Un laboratoire expérimental pour automates cellulaires et systèmes de type Ising**
+**Un laboratoire expérimental dual pour automates cellulaires et systèmes de type Ising**
 
-## Vue d'ensemble
+Ce dépôt contient **deux environnements complémentaires**:
 
-Ce dépôt fournit un environnement propre et reproductible pour:
+1. **Python `isinglab`** (analyse quantitative, recherche systématique, API pour agents IA)
+2. **JavaScript Memory Lab** (visualisation interactive, exploration en temps réel)
+
+---
+
+## 🐍 Python `isinglab` - Analyse Quantitative
+
+### Vue d'ensemble
+
+Environnement reproductible pour:
 - Explorer les dynamiques d'automates cellulaires (CA) et systèmes de type Ising
 - Découvrir et caractériser des règles "edge-of-chaos" (bord du chaos)
 - Quantifier les comportements de type mémoire et attracteurs
 - Permettre à des agents IA de rechercher et évaluer des règles systématiquement
-
-## Structure du dépôt
-
-```
-ising-life-lab/
-├── src/
-│   ├── core/          # Dynamiques de base CA/Ising
-│   ├── memory/        # Détection d'attracteurs et comportements mémoire
-│   ├── energy/        # Fonctionnelles d'énergie, Lyapunov, entropie
-│   ├── search/        # Recherche et évolution de règles CA
-│   └── viz/           # Visualisation (frontend web)
-├── isinglab/          # API Python pour analyse et recherche
-├── experiments/       # Configurations reproductibles
-├── outputs/           # Résultats de scans
-└── docs/              # Documentation théorique et guides
-```
-
-## Démarrage rapide
 
 ### Installation et Test (Smoke Test)
 
@@ -83,43 +74,129 @@ print(f"Edge score: {metrics['edge_score']:.3f}")
 print(f"Memory score: {metrics['memory_score']:.3f}")
 ```
 
-### Visualisation interactive
-
-```bash
-npm start
-```
-
-Ouvre un navigateur sur `http://localhost:3000` pour explorer visuellement les règles.
-
-## Documentation
+### Documentation Python
 
 - [**README_LAB.md**](docs/README_LAB.md) - Guide complet du laboratoire
 - [**THEORETICAL_FOUNDATION.md**](docs/THEORETICAL_FOUNDATION.md) - Fondements mathématiques des métriques
 - [**AI_AGENT_GUIDE.md**](docs/AI_AGENT_GUIDE.md) - Guide pour agents IA autonomes
 - [**CONNECTIONS.md**](docs/CONNECTIONS.md) - Liens avec autres projets (qubits biologiques, arrest-molecules)
 
-## Principes de conception
+---
+
+## 🌐 JavaScript Memory Lab - Visualisation Interactive
+
+### Quick Start
+
+1. Clone repository
+2. Open `public/index.html` in modern browser via HTTP server:
+   ```bash
+   python -m http.server 8001
+   # Then open http://localhost:8001/public/index.html
+   ```
+3. Select rule, click Randomize, click Start
+
+### Memory AI Lab (V1.0 ✅)
+
+**URL**: http://localhost:8001/experiments/memory-ai-lab/index.html
+
+Test and compare CA vs Hopfield memory capabilities.
+
+**Features**:
+- **CA Playground**: 7 Hall of Fame rules
+- **Memory Lab**: Draw patterns (localStorage persistence)
+- **Hopfield Comparison**: Fair benchmarking
+- **AutoScan**: Discover memory candidates
+- **5 APIs**: MemoryLab, HopfieldLab, Reports, MemoryScanner, MemoryCapacity
+
+**Results**: 7 validated memory rules (B01/S3 champion 96-99% recall)
+
+See `docs/QUICK_START_MEMORY_AI_LAB.md`
+
+### Autres Expériences JavaScript
+
+- **Memory Storage System** (Phase 2): http://localhost:8001/experiments/memory-storage-system/
+- **Rule Predictor AI** (Phase 3): http://localhost:8001/experiments/rule-predictor/
+- **Auto Memory Researcher** (Phase 4): http://localhost:8001/experiments/auto-memory-research/
+- **Engine Selector Demo** (Phase 5): http://localhost:8001/experiments/engine-selector-demo/
+- **Project Dashboard**: http://localhost:8001/experiments/dashboard/
+
+### Features JavaScript
+
+#### Core CA Engine
+- **13 Life-like CA rules** including classics (Conway, HighLife, Day & Night, Seeds, Replicator)
+- **Custom rules**: Mythmaker, Mahee, Tommy
+- **Promoted rules**: 5 automatically discovered high-scoring rules (Mythmaker_1/2, Mahee_1, Tommy_1/2)
+- **Real-time visualization** with play/pause/step controls
+- **Speed control** (0.1x to 3x)
+
+#### Advanced Features
+- **Energy view** (checkbox): color heatmap showing local energy (green=stable, red=unstable)
+- **Live metrics**: density, entropy, population, energy
+- **Real-time graph**: density and energy evolution over time
+- **Pattern detection**: automatic oscillator period detection
+- **Rule Explorer**: "Discover rules" button finds interesting Life-like rules automatically
+- **Random rule**: generate random Life-like rules on demand
+- **Next rule**: cycle through interesting rules
+
+---
+
+## 📁 Structure du dépôt
+
+```
+ising-life-lab/
+├── isinglab/           # 🐍 Python API pour analyse quantitative
+│   ├── api.py          # API publique (evaluate_rule, evaluate_batch, quick_scan)
+│   ├── core/           # Dynamiques de base CA/Ising
+│   ├── metrics/        # Métriques quantitatives (entropy, sensitivity, memory, edge_score)
+│   ├── search/         # Recherche et évolution de règles
+│   └── scan_rules.py   # CLI principal
+├── src/                # 🌐 JavaScript modules pour visualisation
+│   ├── core/           # Grid logic and CA engine
+│   ├── memory/         # Memory Lab, Hopfield, attractor detection
+│   ├── viz/            # Canvas rendering and UI
+│   ├── metrics/        # Complexity measurements
+│   ├── energy/         # Local energy functions
+│   ├── search/         # Rule discovery and exploration
+│   └── experiments/    # Analysis utilities
+├── experiments/        # Configurations reproductibles (Python YAML + JavaScript demos)
+│   ├── scan_*.yaml     # Python experiment configs
+│   ├── memory-ai-lab/  # Standalone Memory AI Lab
+│   ├── rule-predictor/ # ML-powered rule prediction
+│   └── [autres expériences JS]
+├── public/             # Entry points pour applications web
+│   └── index.html      # Interface principale JavaScript
+├── outputs/            # Résultats de scans (Python)
+└── docs/               # Documentation théorique et guides
+```
+
+---
+
+## 🧬 Principes de conception
 
 1. **Reproductibilité totale** - Tous les résultats sont reproductibles avec seeds
 2. **Traçabilité** - Chaque métrique est définie mathématiquement
 3. **Modularité** - Composants indépendants et testables
 4. **Transparence** - Pas de "boîtes noires" ou de nombres mystiques
 5. **AI-friendly** - API simple sans état global
+6. **Complémentarité** - Python pour l'analyse rigoureuse, JavaScript pour l'exploration intuitive
 
-## Licence
+---
+
+## 📜 Licence
 
 MIT License - Voir [LICENSE](LICENSE) pour détails.
 
-## Citation
+---
+
+## 📖 Citation
 
 Si vous utilisez ce laboratoire dans vos recherches, veuillez citer:
 
 ```bibtex
 @software{ising_life_lab,
-  title = {Ising Life Lab: Experimental Framework for CA and Ising Systems},
+  title = {Ising Life Lab: Dual Framework for CA and Ising Systems},
   author = {Mythmaker28},
   year = {2025},
   url = {https://github.com/Mythmaker28/ising-life-lab}
 }
 ```
-

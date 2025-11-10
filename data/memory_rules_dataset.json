@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "1.0",
+    "date": "2025-11-08",
+    "description": "CA rules tested for memory capabilities with binary encoding for ML",
+    "protocol": "Memory AI Lab V1.0 (32×32, noise 0.05, steps 80, runs 50)",
+    "source": "Mythmaker28/ising-life-lab"
+  },
+  "rules": [
+    {"notation": "B01/S3", "bornMask": [1,1,0,0,0,0,0,0,0], "surviveMask": [0,0,0,1,0,0,0,0,0], "isMemoryCandidate": true, "avgRecall": 96.7, "source": "hall_of_fame"},
+    {"notation": "B01/S23", "bornMask": [1,1,0,0,0,0,0,0,0], "surviveMask": [0,0,1,1,0,0,0,0,0], "isMemoryCandidate": true, "avgRecall": 85, "source": "autoscan"},
+    {"notation": "B01/S34", "bornMask": [1,1,0,0,0,0,0,0,0], "surviveMask": [0,0,0,1,1,0,0,0,0], "isMemoryCandidate": true, "avgRecall": 90, "source": "autoscan"},
+    {"notation": "B01/S2", "bornMask": [1,1,0,0,0,0,0,0,0], "surviveMask": [0,0,1,0,0,0,0,0,0], "isMemoryCandidate": true, "avgRecall": 95, "source": "autoscan"},
+    {"notation": "B01/S4", "bornMask": [1,1,0,0,0,0,0,0,0], "surviveMask": [0,0,0,0,1,0,0,0,0], "isMemoryCandidate": true, "avgRecall": 99, "source": "autoscan"},
+    {"notation": "B01/S13", "bornMask": [1,1,0,0,0,0,0,0,0], "surviveMask": [0,1,0,1,0,0,0,0,0], "isMemoryCandidate": true, "avgRecall": 80, "source": "autoscan"},
+    {"notation": "B46/S58", "bornMask": [0,0,0,0,1,0,1,0,0], "surviveMask": [0,0,0,0,0,1,0,0,1], "isMemoryCandidate": true, "avgRecall": 100, "source": "autoscan"},
+    {"notation": "B2456/S078", "bornMask": [0,0,1,0,1,1,1,0,0], "surviveMask": [1,0,0,0,0,0,0,1,1], "isMemoryCandidate": false, "avgRecall": 0, "source": "hall_of_fame"},
+    {"notation": "B2456/S068", "bornMask": [0,0,1,0,1,1,1,0,0], "surviveMask": [1,0,0,0,0,0,1,0,1], "isMemoryCandidate": false, "avgRecall": 0, "source": "hall_of_fame"},
+    {"notation": "B246/S58", "bornMask": [0,0,1,0,1,0,1,0,0], "surviveMask": [0,0,0,0,0,1,0,0,1], "isMemoryCandidate": false, "avgRecall": 100, "source": "hall_of_fame"},
+    {"notation": "B3/S23", "bornMask": [0,0,0,1,0,0,0,0,0], "surviveMask": [0,0,1,1,0,0,0,0,0], "isMemoryCandidate": false, "avgRecall": 20, "source": "autoscan"}
+  ],
+  "notes": "bornMask and surviveMask are 9-element arrays (indices 0-8). isMemoryCandidate=true means validated by AutoScan multi-noise testing."
+}
