@@ -189,7 +189,16 @@ def lambda_parameter_estimate(history: List[np.ndarray]) -> float:
     Returns:
         Estimated λ in [0, 1]
     """
-    if not history or len(history) < 2:
+    # Convert to list if numpy array
+    if isinstance(history, np.ndarray):
+        if history.ndim == 2:
+            # Single state passed, wrap in list
+            history = [history]
+        elif history.ndim == 3:
+            # 3D array: (timesteps, height, width)
+            history = [history[i] for i in range(len(history))]
+    
+    if len(history) < 2:
         return 0.0
     
     # Activity level

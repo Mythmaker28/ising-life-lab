@@ -89,6 +89,46 @@ Le **Biological Qubits Atlas** catalogue des **porteurs physiques potentiels** d
 
 **Objectif**: Identifier candidats pour computation quantique biologique
 
+### 🆕 Data Bridge (READ-ONLY)
+
+**Nouveaux modules** (Novembre 2025):
+- `isinglab/data_bridge/atlas_loader.py` : Charge des CSV exportés de l'Atlas (READ-ONLY)
+- `isinglab/data_bridge/mapping.py` : Mappe des propriétés (modality, temperature_regime, coherence_class)
+- `isinglab/mapping_profiles.py` : Suggère des profils CA/Ising à explorer (HEURISTIQUE)
+- `isinglab/pipelines/regime_search.py` : Pipeline de recherche de régimes (stateless, pour IA)
+
+**⚠️ DISCLAIMERS CRITIQUES**:
+1. **Pas de prédiction quantique** : Les mappings suggèrent des **analogies conceptuelles**, ils ne prédisent PAS T₂, fidelité de porte, ou comportement quantique réel.
+2. **Heuristiques transparentes** : Toutes les règles de mapping sont dans le code source, tracables, modifiables.
+3. **Exploration guidée** : Objectif = aider une IA à explorer l'espace CA/Ising de manière structurée, pas à remplacer des simulations quantiques.
+
+**Exemple d'usage** (pour IA ou chercheur):
+```python
+from isinglab.data_bridge import load_optical_systems, map_system_properties
+from isinglab.mapping_profiles import get_target_profile_for_system
+from isinglab.pipelines import run_regime_search
+
+# 1. Charger des systèmes de l'Atlas (READ-ONLY)
+df = load_optical_systems(tier="tier1")
+
+# 2. Mapper les propriétés (heuristique)
+df_mapped = map_system_properties(df)
+
+# 3. Pour chaque système, obtenir un profil cible
+profile = get_target_profile_for_system(
+    modality="optical",
+    temperature_regime="physiological",
+    coherence_class="long"
+)
+
+# 4. Rechercher des régimes CA/Ising correspondants (analogie)
+results_df, top_rules = run_regime_search(profile)
+
+# Interprétation: "Les systèmes optiques à longue cohérence pourraient
+# partager des caractéristiques qualitatives avec ces règles CA"
+# PAS: "Cette règle CA prédit le comportement du système optique"
+```
+
 ### Pont Conceptuel
 
 | Biological Qubits | ising-life-lab |
