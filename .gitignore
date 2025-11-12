@@ -4,27 +4,16 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual environments
 venv/
-ENV/
 env/
-.venv
+ENV/
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
 
 # IDEs
 .vscode/
@@ -32,33 +21,25 @@ env/
 *.swp
 *.swo
 *~
+
+# OS
 .DS_Store
-
-# Jupyter
-.ipynb_checkpoints
-
-# Outputs
-outputs/
-*.csv
-*.json
-!experiments/*.yaml
-!experiments/*.json
+Thumbs.db
 
 # Logs
+logs/
 *.log
 
-# Test coverage
-.coverage
-htmlcov/
-.pytest_cache/
+# Outputs temporaires
+outputs/quick/
+outputs/test*.csv
+outputs/mock_*.csv
 
-# Node (for visualization frontend)
+# Temp folders
+ising-life-lab-temp/
+ising-memory-ai-lab/auto-memory-research-*.json
+ising-test/
+
+# Node (si présent)
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Temporary files
-*.tmp
-*.bak
-
+package-lock.json

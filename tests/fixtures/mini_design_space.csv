@@ -1,0 +1,12 @@
+system_id,protein_name,family,platform,is_biosensor,temp_k,ph,context,integration_level,contrast_normalized,brightness_proxy,readout_type,bio_compatible,status,excitation_nm,emission_nm,stokes_shift_nm,doi,year,room_temp_viable,bio_adjacent,high_contrast,near_infrared,stable_mature,cmos_friendly
+FP_0001,ASAP2s,Voltage,fluorescent_protein,True,310.0,7.4,in_vivo(neurons),in_vivo,1.25,498.99,fluorescence,True,B,488.0,510.0,22.0,10.1016/j.neuron.2018.08.021,2019,True,True,False,False,True,False
+FP_0012,GCaMP6f,Calcium,fluorescent_protein,True,298.0,7.4,in_cellulo(HEK293),in_cellulo,15.5,500.73,fluorescence,True,B,488.0,515.0,27.0,10.1038/nature12354,2013,True,True,True,False,True,False
+FP_0056,jGCaMP8s,Calcium,fluorescent_protein,True,298.0,7.4,in_vivo(neurons),in_vivo,90.0,500.06,fluorescence,True,B,488.0,510.0,22.0,10.1126/science.abd2659,2019,True,True,True,False,True,False
+FP_0042,dLight1.1,Dopamine,fluorescent_protein,True,298.0,7.4,in_vivo(neurons),in_vivo,3.3,498.99,fluorescence,True,B,488.0,510.0,22.0,10.1038/s41586-018-0023-2,2018,True,True,False,False,True,False
+FP_0007,DsRed2,RFP,fluorescent_protein,False,298.0,7.4,in_cellulo,in_cellulo,0.8,569.77,fluorescence,True,B,558.0,583.0,25.0,10.1038/nbt0901-999,2002,True,True,False,False,True,False
+FP_0030,QuasAr2,Voltage,fluorescent_protein,True,298.0,7.4,unknown,unknown,1.35,659.55,fluorescence,True,B,640.0,680.0,40.0,10.1126/science.aab0810,2014,True,False,False,True,True,False
+FP_0025,NIR-GECO2,Calcium,fluorescent_protein,True,298.0,7.4,unknown,unknown,8.5,640.28,fluorescence,True,B,625.0,655.0,30.0,10.1038/s41589-021-00813-6,2021,True,False,True,True,True,False
+FP_0036,SypHer3s,pH,fluorescent_protein,True,298.0,7.4,unknown,unknown,5.2,464.95,fluorescence,True,B,420.0,516.0,96.0,10.1021/acschembio.9b00864,2020,True,False,True,False,True,False
+FP_0009,EGFP,GFP-like,fluorescent_protein,False,298.0,7.4,in_cellulo,in_cellulo,1.2,497.56,fluorescence,True,B,488.0,509.0,21.0,10.1016/j.gene.2005.06.018,1998,True,True,False,False,True,False
+FP_0037,TagBFP2,BFP-like,fluorescent_protein,False,298.0,7.4,in_cellulo,in_cellulo,0.95,429.11,fluorescence,True,B,402.0,457.0,55.0,10.1371/journal.pone.0028674,2011,True,True,False,False,True,False
+
