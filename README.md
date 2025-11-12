@@ -1,237 +1,353 @@
-# Ising Life Lab
+# Ising-Life-Lab — Quantum & Biosensor Design Space Toolkit
 
-**Un laboratoire expérimental dual pour automates cellulaires et systèmes de type Ising**
-
-Ce dépôt contient **deux environnements complémentaires**:
-
-1. **Python `isinglab`** (analyse quantitative, recherche systématique, API pour agents IA)
-2. **JavaScript Memory Lab** (visualisation interactive, exploration en temps réel)
+**Version** : v8.2  
+**Statut** : ✅ Opérationnel, Multi-Projets, Toolkit R&D
 
 ---
 
-## 🐍 Python `isinglab` - Analyse Quantitative
+## Vue d'Ensemble
 
-### Vue d'ensemble
+**Ising-Life-Lab** est un toolkit R&D pour **analyser, filtrer et scorer** des systèmes quantiques et biosenseurs (qubits biologiques, protéines fluorescentes, capteurs moléculaires).
 
-Environnement reproductible pour:
-- Explorer les dynamiques d'automates cellulaires (CA) et systèmes de type Ising
-- Découvrir et caractériser des règles "edge-of-chaos" (bord du chaos)
-- Quantifier les comportements de type mémoire et attracteurs
-- Permettre à des agents IA de rechercher et évaluer des règles systématiquement
+**Mission actuelle (v8.x)** :
+- Charger et valider des datasets standardisés (CSV/JSON)
+- Calculer des métriques robustes (intégrabilité, contraste, robustesse)
+- Classer et filtrer des candidats pour design expérimental
+- Servir de pont entre projets (Atlas, fp-qubit-design, arrest-molecules)
 
-### Installation et Test (Smoke Test)
+---
+
+## Quick Start
+
+### Test en 30 Secondes
 
 ```bash
-# 1. Créer environnement virtuel (recommandé)
-python -m venv venv
+# 1. Clone ou accès local
+git clone https://github.com/[...]/ising-life-lab.git  # ou déjà fait
+cd ising-life-lab
 
-# 2. Activer (Windows PowerShell)
-.\venv\Scripts\activate.ps1
-# OU (Windows CMD)
-venv\Scripts\activate.bat
-# OU (Linux/Mac)
-source venv/bin/activate
+# 2. Tests (141 passent, 12 skipped CA historiques)
+pytest tests/ -q
 
-# 3. Installer dépendances
-pip install -r requirements.txt
+# 3. Scorer mock predictions (validation pipeline)
+python scripts/score_fp_predictions.py \
+    --input tests/fixtures/mock_fp_predictions.csv \
+    --output outputs/test_scored.csv \
+    --min-contrast 1.0
 
-# 4. Installer package en mode développement
-pip install -e .
-
-# 5. Tester avec scan rapide (~30 secondes)
-python -m isinglab.scan_rules --config experiments/scan_quick.yaml
+# Output: Top MUT_004 (GCaMP6s mutant, 45×, score 0.850)
+# → Toolkit opérationnel ✅
 ```
 
-**✅ Succès attendu**: Création de `outputs/quick/scan_results.csv` et `outputs/quick/top_rules.json`
-
-### Scans Complets
+### Installation
 
 ```bash
-# Scan exhaustif 256 règles élémentaires (~2-5 min)
-python -m isinglab.scan_rules --config experiments/scan_default.yaml
-
-# Scan focalisé mémoire (steps=500, ~5-10 min)
-python -m isinglab.scan_rules --config experiments/scan_memory_focused.yaml
+python -m pip install -e .
+pytest tests/ -q  # 141 passed, 12 skipped
 ```
 
-**Résultats sauvegardés dans:**
-- `outputs/scan_results.csv` - Toutes les métriques pour toutes les règles
-- `outputs/top_rules.json` - Top N règles classées par critère
-
-### Utiliser l'API Python
+### Usage Principal : Design Space Selector
 
 ```python
-from isinglab.api import evaluate_rule
+from design_space.selector import load_design_space, rank_by_integrability
 
-metrics = evaluate_rule(
-    rule=30,  # Règle de Wolfram
-    grid_size=(100, 100),
-    steps=200,
-    seed=42
-)
+# Charger le design space (180 systèmes biologiques)
+df = load_design_space()
 
-print(f"Edge score: {metrics['edge_score']:.3f}")
-print(f"Memory score: {metrics['memory_score']:.3f}")
+# Top 10 systèmes par intégrabilité
+top10 = rank_by_integrability(df, top_n=10)
+print(top10[['protein_name', 'family', 'contrast_normalized', 'integration_level']])
+
+# Filtrer par famille (ex: calcium sensors)
+from design_space.selector import filter_by_family
+calcium = filter_by_family(df, "Calcium")
+print(f"{len(calcium)} calcium sensors identifiés")
 ```
 
-### Documentation Python
+### Exemple Complet
 
-- [**README_LAB.md**](docs/README_LAB.md) - Guide complet du laboratoire
-- [**THEORETICAL_FOUNDATION.md**](docs/THEORETICAL_FOUNDATION.md) - Fondements mathématiques des métriques
-- [**AI_AGENT_GUIDE.md**](docs/AI_AGENT_GUIDE.md) - Guide pour agents IA autonomes
-- [**CONNECTIONS.md**](docs/CONNECTIONS.md) - Liens avec autres projets (qubits biologiques, arrest-molecules)
-- [**ATLAS_INTEGRATION_GUIDE.md**](docs/ATLAS_INTEGRATION_GUIDE.md) - 🆕 Intégration Biological Qubits Atlas
+```bash
+# Test du module selector (stats, top 10, filtres)
+python design_space/selector.py
 
-### 🔬 Intégration Biological Qubits Atlas (Nouveau)
-
-Le package `isinglab` peut maintenant charger et analyser des systèmes réels du [Biological Qubits Atlas](https://github.com/Mythmaker28/Quantum-Sensors-Qubits-in-Biology) :
-
-**Systèmes supportés** :
-- ✅ **180 systèmes optiques** (fluorescent proteins : GCaMP, ASAP, dLight, etc.)
-- ✅ **10 spin qubits** (NV centers, SiC defects, SiV, P1, etc.)
-- ✅ **8 nuclear spins** (¹³C, ³¹P, ¹⁴N, ²⁹Si dans diamond/silicon)
-- ✅ **8 radical pairs** (Cryptochrome, photolyase, PSII, etc.)
-
-**Workflow typique** :
-```python
-from isinglab.data_bridge import load_optical_systems, map_system_properties
-from isinglab.mapping_profiles import get_target_profile_for_system
-from isinglab.pipelines import run_regime_search
-
-# 1. Charger systèmes Atlas (READ-ONLY)
-df = load_optical_systems(tier="curated")  # 180 curated systems
-df_mapped = map_system_properties(df)
-
-# 2. Générer profil cible (HEURISTIQUE)
-profile = get_target_profile_for_system(
-    modality="optical",
-    temperature_regime="physiological",
-    coherence_class="long"
-)
-
-# 3. Rechercher régimes CA/Ising
-results_df, top_rules = run_regime_search(target_profile=profile)
-print(f"Top rule: {top_rules[0]['rule']}")
-```
-
-**⚠️ DISCLAIMERS** : Mappings = analogies conceptuelles, PAS prédictions quantiques. Voir [docs/ATLAS_INTEGRATION_GUIDE.md](docs/ATLAS_INTEGRATION_GUIDE.md)
-
----
-
-## 🌐 JavaScript Memory Lab - Visualisation Interactive
-
-### Quick Start
-
-1. Clone repository
-2. Open `public/index.html` in modern browser via HTTP server:
-   ```bash
-   python -m http.server 8001
-   # Then open http://localhost:8001/public/index.html
-   ```
-3. Select rule, click Randomize, click Start
-
-### Memory AI Lab (V1.0 ✅)
-
-**URL**: http://localhost:8001/experiments/memory-ai-lab/index.html
-
-Test and compare CA vs Hopfield memory capabilities.
-
-**Features**:
-- **CA Playground**: 7 Hall of Fame rules
-- **Memory Lab**: Draw patterns (localStorage persistence)
-- **Hopfield Comparison**: Fair benchmarking
-- **AutoScan**: Discover memory candidates
-- **5 APIs**: MemoryLab, HopfieldLab, Reports, MemoryScanner, MemoryCapacity
-
-**Results**: 7 validated memory rules (B01/S3 champion 96-99% recall)
-
-See `docs/QUICK_START_MEMORY_AI_LAB.md`
-
-### Autres Expériences JavaScript
-
-- **Memory Storage System** (Phase 2): http://localhost:8001/experiments/memory-storage-system/
-- **Rule Predictor AI** (Phase 3): http://localhost:8001/experiments/rule-predictor/
-- **Auto Memory Researcher** (Phase 4): http://localhost:8001/experiments/auto-memory-research/
-- **Engine Selector Demo** (Phase 5): http://localhost:8001/experiments/engine-selector-demo/
-- **Project Dashboard**: http://localhost:8001/experiments/dashboard/
-
-### Features JavaScript
-
-#### Core CA Engine
-- **13 Life-like CA rules** including classics (Conway, HighLife, Day & Night, Seeds, Replicator)
-- **Custom rules**: Mythmaker, Mahee, Tommy
-- **Promoted rules**: 5 automatically discovered high-scoring rules (Mythmaker_1/2, Mahee_1, Tommy_1/2)
-- **Real-time visualization** with play/pause/step controls
-- **Speed control** (0.1x to 3x)
-
-#### Advanced Features
-- **Energy view** (checkbox): color heatmap showing local energy (green=stable, red=unstable)
-- **Live metrics**: density, entropy, population, energy
-- **Real-time graph**: density and energy evolution over time
-- **Pattern detection**: automatic oscillator period detection
-- **Rule Explorer**: "Discover rules" button finds interesting Life-like rules automatically
-- **Random rule**: generate random Life-like rules on demand
-- **Next rule**: cycle through interesting rules
-
----
-
-## 📁 Structure du dépôt
-
-```
-ising-life-lab/
-├── isinglab/           # 🐍 Python API pour analyse quantitative
-│   ├── api.py          # API publique (evaluate_rule, evaluate_batch, quick_scan)
-│   ├── core/           # Dynamiques de base CA/Ising
-│   ├── metrics/        # Métriques quantitatives (entropy, sensitivity, memory, edge_score)
-│   ├── search/         # Recherche et évolution de règles
-│   └── scan_rules.py   # CLI principal
-├── src/                # 🌐 JavaScript modules pour visualisation
-│   ├── core/           # Grid logic and CA engine
-│   ├── memory/         # Memory Lab, Hopfield, attractor detection
-│   ├── viz/            # Canvas rendering and UI
-│   ├── metrics/        # Complexity measurements
-│   ├── energy/         # Local energy functions
-│   ├── search/         # Rule discovery and exploration
-│   └── experiments/    # Analysis utilities
-├── experiments/        # Configurations reproductibles (Python YAML + JavaScript demos)
-│   ├── scan_*.yaml     # Python experiment configs
-│   ├── memory-ai-lab/  # Standalone Memory AI Lab
-│   ├── rule-predictor/ # ML-powered rule prediction
-│   └── [autres expériences JS]
-├── public/             # Entry points pour applications web
-│   └── index.html      # Interface principale JavaScript
-├── outputs/            # Résultats de scans (Python)
-└── docs/               # Documentation théorique et guides
+# Rebuilder le design space depuis Atlas
+python scripts/build_design_space_v1.py
 ```
 
 ---
 
-## 🧬 Principes de conception
+## Fonctionnalités Principales
 
-1. **Reproductibilité totale** - Tous les résultats sont reproductibles avec seeds
-2. **Traçabilité** - Chaque métrique est définie mathématiquement
-3. **Modularité** - Composants indépendants et testables
-4. **Transparence** - Pas de "boîtes noires" ou de nombres mystiques
-5. **AI-friendly** - API simple sans état global
-6. **Complémentarité** - Python pour l'analyse rigoureuse, JavaScript pour l'exploration intuitive
+### 🎯 Design Space Analysis (`design_space/`)
+
+**Modules** :
+- `selector.py` : 10 fonctions de filtrage/ranking
+  - `load_design_space()` : Charge CSV standardisé
+  - `rank_by_integrability(top_n)` : Score combiné 0-6
+  - `list_room_temp_candidates()` : Systèmes 295-305K
+  - `list_bio_adjacent_candidates()` : in vivo/in cellulo
+  - `list_high_contrast_candidates(min)` : Contraste ≥ seuil
+  - `filter_by_family(family)` : Par catégorie fonctionnelle
+  - `get_system_by_id(id)`, `get_families()`, `get_stats_summary()`
+
+- `loaders.py` : Chargement et validation datasets
+  - `load_atlas_optical(tier)` : Charge Atlas Tier 1/2/3
+  - `validate_design_space_schema(df)` : Validation colonnes/ranges
+
+**Datasets** :
+- `outputs/qubit_design_space_v1.csv` : 180 systèmes standardisés
+- `data/atlas_optical/` : Atlas Tier 1 curated (source)
+
+### 📊 Métriques & Scoring
+
+**Métriques héritées (réutilisables)** :
+- **Capacity** : Diversité états/patterns
+- **Robustness** : Résistance perturbations
+- **Basin** : Diversité attracteurs
+- **Stability** : Cohérence multi-échelles
+- **Functional Score** : Score agrégé adapté au domaine
+
+**Application actuelle** : Scoring biosenseurs/qubits avec critères intégrabilité (température, contexte biologique, contraste, maturité).
+
+### 🔗 Bridges Multi-Projets (Lecture Seule)
+
+**Projets connectés** :
+1. **Quantum-Sensors-Qubits-in-Biology** (Atlas) : Source de données ✅ Opérationnel
+2. **fp-qubit-design** : ML design mutants 🟡 À explorer
+3. **arrest-molecules** : Framework molécules d'arrêt 🔴 Spéculatif
+
+**Docs dédiés** :
+- `docs/BRIDGE_ATLAS_QUANTUM_SENSORS.md` : Format, usage, statut Atlas
+- `docs/BRIDGE_FP_QUBIT_DESIGN.md` : Intégration ML pipeline
+- `docs/BRIDGE_ARREST_MOLECULES.md` : Métriques stabilité paysages énergétiques
 
 ---
 
-## 📜 Licence
+## Documentation
 
-MIT License - Voir [LICENSE](LICENSE) pour détails.
+### Point d'Entrée Principal
+
+📌 **Nouveau ?** Commencez par :
+1. **`docs/STATE_v9_0.md`** — Vision consolidée repo (capacités, datasets, bridges, gaps)
+2. **`RAPPORT_v9_0.md`** — Rapport structuré dernière version
+3. **`CHANGELOG.md`** — Historique versions v8.0 → v9.0
+
+### Documents v8-v9 (Toolkit Multi-Projets)
+
+**Mission & Roadmap** :
+- `docs/MISSION_v8_2.md` : Périmètre toolkit (inputs, outputs, usage)
+- `docs/PLAN_v8_2.md` : Roadmap court/moyen/long terme
+- `docs/STATE_v9_0.md` : Vision consolidée (NEW v9.0)
+
+**Analyses & Rapports** :
+- `docs/DESIGN_SPACE_v1_REPORT.md` : Analyse 180 systèmes (top candidats, gaps, recommandations)
+- `docs/MULTIPROJECT_CONTEXT_v8.md` : Cartographie écosystème 4 dépôts
+- `docs/ISING_TOOLKIT_FOR_PROJECTS_v8.md` : Réutilisation métriques, garde-fous
+
+**Résumés** :
+- `RESUME_v8_POUR_TOMMY.md` : TL;DR Mission v8.x
+- `MISSION_v8_COMPLETE.md` : Livrables v8.0
+
+### Bridges
+- `docs/BRIDGE_ATLAS_QUANTUM_SENSORS.md`
+- `docs/BRIDGE_FP_QUBIT_DESIGN.md`
+- `docs/BRIDGE_ARREST_MOLECULES.md`
 
 ---
 
-## 📖 Citation
+## Tests
 
-Si vous utilisez ce laboratoire dans vos recherches, veuillez citer:
+```bash
+pytest tests/ -v
+
+# Tests design_space
+pytest tests/test_loaders.py -v      # Validation schema
+pytest tests/test_selector.py -v     # Fonctions filtrage
+```
+
+**Couverture actuelle** :
+- ✅ `test_loaders.py` : Validation schema, load Atlas
+- ✅ `test_selector.py` : Filtres, ranking, familles
+- ✅ Fixture : `tests/fixtures/mini_design_space.csv` (10 systèmes)
+
+---
+
+## Résultats Mesurés (v8.0)
+
+### Dataset Principal : Atlas Tier 1 (180 systèmes)
+
+| Métrique | Valeur |
+|----------|--------|
+| **Systèmes catalogués** | 180 (protéines fluorescentes) |
+| **Familles identifiées** | 30 (Calcium, Voltage, Dopamine, pH...) |
+| **Room temp viable** | 122/180 (68%, 295-305K) |
+| **Bio-adjacent** | 165/180 (92%, in vivo/in cellulo) |
+| **High contrast** | 70/180 (39%, ≥5.0) |
+| **Near infrared** | 9/180 (5%, ≥650nm) |
+
+### Top 5 Systèmes (Score Intégrabilité 6/6)
+
+| Rang | Protéine | Famille | Contraste | Temp | Niveau |
+|------|----------|---------|-----------|------|--------|
+| **1** | **jGCaMP8s** | Calcium | **90.0×** | 298K | in vivo |
+| 2 | jGCaMP8f | Calcium | 78.0× | 298K | in vivo |
+| 3 | jGCaMP7s | Calcium | 50.0× | 298K | in vivo |
+| 4 | jGCaMP7f | Calcium | 45.0× | 298K | in vivo |
+| 5 | XCaMP-Gs | Calcium | 45.0× | 298K | in vivo |
+
+**Observation** : Dominance calcium sensors (GCaMP family), amélioration +246% vs GCaMP6s (2013 → 2019).
+
+### Leaders par Catégorie
+
+- **Calcium** : jGCaMP8s (90.0×, in vivo, 298K)
+- **Voltage** : Archon1 (1.55×, in vivo, 298K)
+- **Dopamine** : GRAB-DA2h (5.2×, in cellulo, 310K)
+- **Glutamate** : R-INS-G (11.7×, in vivo, 298K)
+- **H2O2** : HyPer7 (9.5×, in cellulo, 310K)
+
+---
+
+## Roadmap
+
+### ✅ v8.0 (Complété)
+- Cartographie multi-projets (MULTIPROJECT_CONTEXT)
+- Design space standardisé (180 systèmes, 25 colonnes)
+- Module selector (10 fonctions)
+- Rapport d'analyse (DESIGN_SPACE_v1_REPORT)
+
+### ✅ v8.2 (En cours)
+- Solidification base (loaders, tests, bridges)
+- Documentation usage externe (MISSION, PLAN, BRIDGES)
+- Clarification vitrine (README, roadmap)
+
+### 🔄 v8.3 (Prochain)
+- Enrichissement Atlas (stress-test data)
+- functional_score adapté avec validation baseline
+- Exploration fp-qubit-design (migration v1.2 → v2.2.2)
+
+### 🔮 v8.4+ (Futur)
+- Filtres physiques post-ML
+- Pareto multi-objectifs (contraste/robustesse/coût)
+- Dashboard interactif
+- Datasets non-optical (NV centers, spins, radical pairs)
+- Intégration arrest-molecules (si données ΔG disponibles)
+
+---
+
+## Archive : Recherche CA-Réservoir (v1.0 - v7.0)
+
+> **Note** : La recherche d'automates cellulaires (CA) comme réservoirs computationnels pour IA pratique a été **close après v7.0** (150h de tests rigoureux, 0/30 candidats passant critères stricts).
+>
+> **Résultat** : CA Life-like ne sont **pas compétitifs** pour IA pratique (-50% performance vs baselines, 100× plus lent). Branche archivée mais méthodologie/outils réutilisés dans v8.x.
+
+### Documents Historiques
+
+**Rapports finaux** :
+- `RESUME_v5_FOR_TOMMY.md` : Échec niches spatiales/morpho/temporelles (0/8 tâches)
+- `docs/v7_LAST_HUNT_RESULTS.md` : Kill switch activé (robustesse catastrophique)
+- `MISSION_v7_CA_BRANCH_CLOSED.md` : Clôture officielle branche CA-réservoir
+
+**Outils réutilisés** :
+- Métriques (capacity, robustness, basin, stability)
+- Filtres durs (density, entropy, stability checks)
+- Méthodologie (baselines, stress-tests, kill switch)
+
+**Ce qui a de la valeur** :
+- ✅ Méthodologie rigoureuse (filtres, baselines, tests)
+- ✅ Code propre, 65 tests passés (core CA/Ising)
+- ✅ Résultats négatifs = résultats valides (documentés honnêtement)
+
+**Ce qui ne sera PAS fait** :
+- ❌ Recherche nouvelles règles CA pour IA pratique
+- ❌ Prétentions AGI via automates cellulaires
+- ❌ Exploration aveugle sans baseline/filtre
+
+**Viewer Web (historique)** :
+```bash
+python -m isinglab.server  # Exploration CA temps réel (localhost:8000)
+```
+
+---
+
+## Commandes Utiles
+
+### Développement
+
+```bash
+# Installation mode dev
+python -m pip install -e .
+
+# Tests complets
+pytest tests/ -v
+
+# Tests spécifiques
+pytest tests/test_selector.py::test_rank_by_integrability -v
+```
+
+### Usage Toolkit
+
+```bash
+# Analyser design space
+python design_space/selector.py
+
+# Rebuilder depuis Atlas
+python scripts/build_design_space_v1.py
+
+# Viewer web (historique CA, optionnel)
+python -m isinglab.server
+```
+
+### Analyse Données
+
+```bash
+# Statistiques globales
+python -c "from design_space.selector import load_design_space, get_stats_summary; print(get_stats_summary(load_design_space()))"
+
+# Top 10 intégrabilité
+python -c "from design_space.selector import load_design_space, rank_by_integrability; print(rank_by_integrability(load_design_space(), 10))"
+```
+
+---
+
+## Citation
 
 ```bibtex
-@software{ising_life_lab,
-  title = {Ising Life Lab: Dual Framework for CA and Ising Systems},
-  author = {Mythmaker28},
+@software{ising_life_lab_v8,
+  title = {Ising-Life-Lab: Quantum & Biosensor Design Space Toolkit},
+  version = {8.2},
   year = {2025},
-  url = {https://github.com/Mythmaker28/ising-life-lab}
+  note = {Multi-project R&D toolkit for quantum systems and biosensors analysis},
+  url = {https://github.com/[...]/ising-life-lab}
 }
 ```
+
+**Ancien titre (v1-v7)** : CA Explorer & Meta-Intelligence  
+**Nouveau focus (v8+)** : Quantum & Biosensor Design Space Toolkit
+
+---
+
+## Contribuer
+
+**Principes** :
+- Baselines obligatoires avant toute nouvelle métrique
+- Filtres durs pour rejeter faux signaux
+- Tests pour toute nouvelle fonctionnalité
+- Documentation honnête (gaps/limitations marqués clairement)
+- Pas de spéculation sans données testables
+
+**Roadmap** : Voir `docs/PLAN_v8_2.md`
+
+---
+
+## Licence
+
+**Code** : MIT  
+**Données Atlas** : CC BY 4.0 (voir `data/atlas_optical/` pour provenance)
+
+---
+
+**ISING-LIFE-LAB v8.2 — TOOLKIT R&D MULTI-PROJETS ✅**
+
+**Le système mesure, ne spécule pas.**  
+**Tests passent. Documentation complète.**  
+**Prêt pour intégration projets externes.**
