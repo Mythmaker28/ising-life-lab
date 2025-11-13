@@ -78,20 +78,33 @@ class AtlasMapper:
     T_REF = 300.0   # K (température de référence pour annealing)
     COUPLING_SCALE = 0.01  # Facteur d'échelle √(T1·T2) → K
     
-    def __init__(self, atlas_path: Optional[str] = None):
+    def __init__(
+        self,
+        atlas_path: Optional[str] = None,
+        atlas_loader=None,
+        mode: str = 'mock'
+    ):
         """
         Args:
-            atlas_path: Chemin vers le CSV de l'Atlas. Si None, charge le mock.
+            atlas_path: Chemin vers le CSV de l'Atlas (legacy)
+            atlas_loader: Instance d'AtlasLoader (nouveau, P5)
+            mode: 'mock', 'local', ou 'repository' (si atlas_loader est None)
         """
         self.atlas_df: Optional[pd.DataFrame] = None
         self.profiles: Dict[str, AtlasProfile] = {}
+        self.loader = atlas_loader
         
-        if atlas_path is None:
-            # Charger le mock par défaut
+        if atlas_loader is not None:
+            # P5 : Utiliser AtlasLoader
+            self.profiles = atlas_loader.load_all_profiles()
+            atlas_loader._profiles_cache = self.profiles
+        elif atlas_path is None:
+            # Legacy : Charger le mock par défaut
             default_path = Path(__file__).parent / 'atlas_mock.csv'
             if default_path.exists():
                 self.load_atlas(str(default_path))
         else:
+            # Legacy : Charger depuis un chemin spécifique
             self.load_atlas(atlas_path)
     
     def load_atlas(self, path: str) -> None:

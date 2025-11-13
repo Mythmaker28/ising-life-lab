@@ -1,369 +1,265 @@
 """
-Atlas Data Loader (READ-ONLY)
+AtlasLoader : Gestion de la connexion à l'Atlas quantique.
 
-Loads CSV data from Biological Qubits Atlas exports.
-NEVER modifies source files.
+Supporte :
+    - Mock data (par défaut)
+    - Répertoire local de CSV
+    - Connexion future à biological-qubits-atlas (dépôt externe)
 """
 
 import pandas as pd
 from pathlib import Path
-from typing import Optional, Dict, List
+from typing import Dict, List, Optional
+import glob
+
+from .atlas_map import AtlasProfile
 
 
-class AtlasDataError(Exception):
-    """Raised when Atlas data cannot be loaded"""
-    pass
-
-
-def _get_data_directory() -> Path:
+class AtlasLoader:
     """
-    Get Atlas data directory.
+    Loader universel pour charger les données de l'Atlas quantique.
     
-    Expected structure:
-        ising-life-lab/
-        ├── data/              # Atlas CSV exports (gitignored)
-        │   ├── optical_tier1.csv
-        │   ├── nonoptical_tier1.csv
-        │   └── ...
-        └── isinglab/
+    Modes de chargement :
+        1. 'mock' : Utilise atlas_mock.csv (par défaut, pour tests)
+        2. 'local' : Scanne un répertoire local contenant des CSV
+        3. 'repository' : Se connecte au dépôt biological-qubits-atlas (futur)
     
-    Returns:
-        Path to data directory
+    Usage:
+        # Mode mock (défaut)
+        loader = AtlasLoader()
+        
+        # Mode local avec répertoire personnalisé
+        loader = AtlasLoader(mode='local', data_dir='../biological-qubits-atlas/data')
+        
+        # Charger les profils
+        profiles = loader.load_all_profiles()
     """
-    # Start from this file's location
-    current_file = Path(__file__).resolve()
-    repo_root = current_file.parent.parent.parent
-    data_dir = repo_root / "data"
     
-    return data_dir
-
-
-def list_available_datasets() -> List[str]:
-    """
-    List all available CSV datasets in data/ directory.
-    
-    Returns:
-        List of available dataset filenames
-    """
-    data_dir = _get_data_directory()
-    
-    if not data_dir.exists():
-        return []
-    
-    csv_files = [f.name for f in data_dir.glob("*.csv")]
-    return sorted(csv_files)
-
-
-def load_optical_systems(
-    tier: str = "tier1",
-    data_dir: Optional[Path] = None
-) -> pd.DataFrame:
-    """
-    Load optical qubit systems data (READ-ONLY).
-    
-    Args:
-        tier: Data tier ("tier1", "tier2", "all")
-        data_dir: Override default data directory (for testing)
+    def __init__(
+        self,
+        mode: str = 'mock',
+        data_dir: Optional[str] = None,
+        repo_path: Optional[str] = None
+    ):
+        """
+        Args:
+            mode: 'mock', 'local', ou 'repository'
+            data_dir: Chemin vers le répertoire de données (pour mode 'local')
+            repo_path: Chemin vers le dépôt biological-qubits-atlas (pour mode 'repository')
+        """
+        self.mode = mode
+        self.data_dir = data_dir
+        self.repo_path = repo_path
         
-    Returns:
-        DataFrame with optical systems
+        # Cache des profils chargés
+        self._profiles_cache: Dict[str, AtlasProfile] = {}
+        self._metadata: Dict[str, any] = {}
         
-    Raises:
-        AtlasDataError: If file not found or cannot be read
+    def load_all_profiles(self) -> Dict[str, AtlasProfile]:
+        """
+        Charge tous les profils disponibles selon le mode.
         
-    Example:
-        >>> from isinglab.data_bridge import load_optical_systems
-        >>> df = load_optical_systems(tier="tier1")
-        >>> print(f"Loaded {len(df)} optical systems")
-    """
-    if data_dir is None:
-        data_dir = _get_data_directory()
+        Returns:
+            Dict de {system_id: AtlasProfile}
+        """
+        if self.mode == 'mock':
+            return self._load_mock_profiles()
+        elif self.mode == 'local':
+            return self._load_local_profiles()
+        elif self.mode == 'repository':
+            return self._load_repository_profiles()
+        else:
+            raise ValueError(f"Mode inconnu : {self.mode}")
     
-    filename = f"optical_{tier}.csv"
-    
-    # Try multiple locations (for flexibility in testing/deployment)
-    possible_paths = [
-        data_dir / "atlas_optical" / filename,  # Structured subdirectory
-        data_dir / filename,                    # Direct in data/
-    ]
-    
-    filepath = None
-    for path in possible_paths:
-        if path.exists():
-            filepath = path
-            break
-    
-    if filepath is None:
-        available = list_available_datasets()
-        raise AtlasDataError(
-            f"Optical data file not found. Tried:\\n"
-            f"  - {possible_paths[0]}\\n"
-            f"  - {possible_paths[1]}\\n"
-            f"Available datasets: {available}\\n"
-            f"Expected directory: {data_dir}\\n"
-            f"Ensure Atlas CSV exports are placed in data/ directory."
-        )
-    
-    try:
-        df = pd.read_csv(filepath)
-        return df.copy()  # Return copy to ensure READ-ONLY
-    except Exception as e:
-        raise AtlasDataError(f"Failed to read {filepath}: {e}")
-
-
-def load_nonoptical_systems(
-    tier: str = "tier1",
-    data_dir: Optional[Path] = None
-) -> pd.DataFrame:
-    """
-    Load non-optical qubit systems data (READ-ONLY).
-    
-    Includes: spin, nuclear, radical pairs, etc.
-    
-    Args:
-        tier: Data tier ("tier1", "tier2", "all")
-        data_dir: Override default data directory (for testing)
+    def _load_mock_profiles(self) -> Dict[str, AtlasProfile]:
+        """Charge depuis le mock CSV."""
+        mock_path = Path(__file__).parent / 'atlas_mock.csv'
         
-    Returns:
-        DataFrame with non-optical systems
+        if not mock_path.exists():
+            raise FileNotFoundError(f"Mock Atlas not found: {mock_path}")
         
-    Raises:
-        AtlasDataError: If file not found or cannot be read
+        df = pd.read_csv(mock_path)
+        return self._parse_dataframe_to_profiles(df)
+    
+    def _load_local_profiles(self) -> Dict[str, AtlasProfile]:
+        """
+        Charge depuis un répertoire local de CSV.
         
-    Example:
-        >>> from isinglab.data_bridge import load_nonoptical_systems
-        >>> df = load_nonoptical_systems(tier="tier1")
-        >>> print(f"Loaded {len(df)} non-optical systems")
-    """
-    if data_dir is None:
-        data_dir = _get_data_directory()
-    
-    filename = f"nonoptical_{tier}.csv"
-    
-    # Try multiple locations
-    possible_paths = [
-        data_dir / "atlas_nonoptical" / filename,
-        data_dir / filename,
-    ]
-    
-    filepath = None
-    for path in possible_paths:
-        if path.exists():
-            filepath = path
-            break
-    
-    if filepath is None:
-        available = list_available_datasets()
-        raise AtlasDataError(
-            f"Non-optical data file not found. Tried:\\n"
-            f"  - {possible_paths[0]}\\n"
-            f"  - {possible_paths[1]}\\n"
-            f"Available datasets: {available}\\n"
-            f"Expected directory: {data_dir}\\n"
-            f"Ensure Atlas CSV exports are placed in data/ directory."
-        )
-    
-    try:
-        df = pd.read_csv(filepath)
-        return df.copy()  # Return copy to ensure READ-ONLY
-    except Exception as e:
-        raise AtlasDataError(f"Failed to read {filepath}: {e}")
-
-
-def load_spin_qubits(
-    data_dir: Optional[Path] = None
-) -> pd.DataFrame:
-    """
-    Load spin qubit systems data (READ-ONLY).
-    
-    Includes: NV centers, SiC defects, SiV, GeV, P1 centers, endohedral fullerenes, etc.
-    
-    Args:
-        data_dir: Override default data directory (for testing)
+        Scanne tous les fichiers *.csv dans data_dir et les fusionne.
+        """
+        if self.data_dir is None:
+            raise ValueError("data_dir doit être spécifié pour le mode 'local'")
         
-    Returns:
-        DataFrame with spin qubit systems
+        data_path = Path(self.data_dir)
         
-    Raises:
-        AtlasDataError: If file not found or cannot be read
+        if not data_path.exists():
+            raise FileNotFoundError(f"Data directory not found: {data_path}")
         
-    Example:
-        >>> from isinglab.data_bridge import load_spin_qubits
-        >>> df = load_spin_qubits()
-        >>> print(f"Loaded {len(df)} spin qubit systems")
-    """
-    if data_dir is None:
-        data_dir = _get_data_directory()
-    
-    # Look in atlas_nonoptical subdirectory
-    filepath = data_dir / "atlas_nonoptical" / "spin_qubit_candidates.csv"
-    
-    if not filepath.exists():
-        # Fallback: try root data directory
-        filepath = data_dir / "spin_qubit_candidates.csv"
-    
-    if not filepath.exists():
-        available = list_available_datasets()
-        raise AtlasDataError(
-            f"Spin qubit data file not found: {filepath}\\n"
-            f"Available datasets: {available}\\n"
-            f"Expected: data/atlas_nonoptical/spin_qubit_candidates.csv\\n"
-            f"See data/README.md for download instructions."
-        )
-    
-    try:
-        df = pd.read_csv(filepath)
-        return df.copy()  # Return copy to ensure READ-ONLY
-    except Exception as e:
-        raise AtlasDataError(f"Failed to read {filepath}: {e}")
-
-
-def load_nuclear_spins(
-    data_dir: Optional[Path] = None
-) -> pd.DataFrame:
-    """
-    Load nuclear spin systems data (READ-ONLY).
-    
-    Includes: 13C, 31P, 14N, 29Si, 15N, 1H nuclear spins in diamond, silicon, proteins, etc.
-    
-    Args:
-        data_dir: Override default data directory (for testing)
+        # Scanner tous les CSV
+        csv_files = list(data_path.glob('**/*.csv'))
         
-    Returns:
-        DataFrame with nuclear spin systems
+        if len(csv_files) == 0:
+            raise FileNotFoundError(f"Aucun fichier CSV trouvé dans {data_path}")
         
-    Raises:
-        AtlasDataError: If file not found or cannot be read
+        # Fusionner tous les CSV
+        dfs = []
+        for csv_file in csv_files:
+            try:
+                df = pd.read_csv(csv_file)
+                # Ajouter métadata sur la source
+                df['source_file'] = csv_file.name
+                dfs.append(df)
+            except Exception as e:
+                print(f"Warning: Failed to load {csv_file}: {e}")
         
-    Example:
-        >>> from isinglab.data_bridge import load_nuclear_spins
-        >>> df = load_nuclear_spins()
-        >>> print(f"Loaded {len(df)} nuclear spin systems")
-    """
-    if data_dir is None:
-        data_dir = _get_data_directory()
-    
-    # Look in atlas_nonoptical subdirectory
-    filepath = data_dir / "atlas_nonoptical" / "nuclear_spin_candidates.csv"
-    
-    if not filepath.exists():
-        filepath = data_dir / "nuclear_spin_candidates.csv"
-    
-    if not filepath.exists():
-        available = list_available_datasets()
-        raise AtlasDataError(
-            f"Nuclear spin data file not found: {filepath}\\n"
-            f"Available datasets: {available}\\n"
-            f"Expected: data/atlas_nonoptical/nuclear_spin_candidates.csv\\n"
-            f"See data/README.md for download instructions."
-        )
-    
-    try:
-        df = pd.read_csv(filepath)
-        return df.copy()
-    except Exception as e:
-        raise AtlasDataError(f"Failed to read {filepath}: {e}")
-
-
-def load_radical_pairs(
-    data_dir: Optional[Path] = None
-) -> pd.DataFrame:
-    """
-    Load radical pair systems data (READ-ONLY).
-    
-    Includes: Cryptochrome, photolyase, photosystem II, bacterial reaction centers, etc.
-    
-    Args:
-        data_dir: Override default data directory (for testing)
+        if len(dfs) == 0:
+            raise ValueError("Aucun CSV valide chargé")
         
-    Returns:
-        DataFrame with radical pair systems
+        # Concaténer
+        df_combined = pd.concat(dfs, ignore_index=True)
         
-    Raises:
-        AtlasDataError: If file not found or cannot be read
+        # Dédupliquer par system_id
+        if 'system_id' in df_combined.columns:
+            df_combined = df_combined.drop_duplicates(subset='system_id', keep='first')
         
-    Example:
-        >>> from isinglab.data_bridge import load_radical_pairs
-        >>> df = load_radical_pairs()
-        >>> print(f"Loaded {len(df)} radical pair systems")
-    """
-    if data_dir is None:
-        data_dir = _get_data_directory()
-    
-    filepath = data_dir / "atlas_nonoptical" / "radical_pair_candidates.csv"
-    
-    if not filepath.exists():
-        filepath = data_dir / "radical_pair_candidates.csv"
-    
-    if not filepath.exists():
-        available = list_available_datasets()
-        raise AtlasDataError(
-            f"Radical pair data file not found: {filepath}\\n"
-            f"Available datasets: {available}\\n"
-            f"Expected: data/atlas_nonoptical/radical_pair_candidates.csv\\n"
-            f"See data/README.md for download instructions."
-        )
-    
-    try:
-        df = pd.read_csv(filepath)
-        return df.copy()
-    except Exception as e:
-        raise AtlasDataError(f"Failed to read {filepath}: {e}")
-
-
-def load_custom_dataset(
-    filename: str,
-    data_dir: Optional[Path] = None
-) -> pd.DataFrame:
-    """
-    Load a custom CSV dataset (READ-ONLY).
-    
-    Args:
-        filename: Name of CSV file (e.g., "my_systems.csv")
-        data_dir: Override default data directory
+        self._metadata['n_sources'] = len(csv_files)
+        self._metadata['n_systems'] = len(df_combined)
         
-    Returns:
-        DataFrame with loaded data
+        return self._parse_dataframe_to_profiles(df_combined)
+    
+    def _load_repository_profiles(self) -> Dict[str, AtlasProfile]:
+        """
+        Charge depuis le dépôt biological-qubits-atlas.
         
-    Raises:
-        AtlasDataError: If file not found or cannot be read
-    """
-    if data_dir is None:
-        data_dir = _get_data_directory()
+        TODO : Implémentation complète quand le dépôt existe.
+        Pour l'instant : fallback vers local ou mock.
+        """
+        if self.repo_path is None:
+            # Essayer des chemins standards
+            possible_paths = [
+                Path(__file__).parent.parent.parent.parent / 'biological-qubits-atlas' / 'data',
+                Path.home() / 'Documents' / 'biological-qubits-atlas' / 'data',
+                Path('../biological-qubits-atlas/data')
+            ]
+            
+            for path in possible_paths:
+                if path.exists():
+                    print(f"✓ Found biological-qubits-atlas at: {path}")
+                    self.data_dir = str(path)
+                    return self._load_local_profiles()
+            
+            # Fallback vers mock
+            print(f"Warning: biological-qubits-atlas not found. Falling back to mock.")
+            return self._load_mock_profiles()
+        else:
+            # Utiliser le chemin spécifié
+            self.data_dir = str(Path(self.repo_path) / 'data')
+            return self._load_local_profiles()
     
-    filepath = data_dir / filename
-    
-    if not filepath.exists():
-        available = list_available_datasets()
-        raise AtlasDataError(
-            f"Dataset not found: {filepath}\\n"
-            f"Available datasets: {available}"
-        )
-    
-    try:
-        df = pd.read_csv(filepath)
-        return df.copy()  # Return copy to ensure READ-ONLY
-    except Exception as e:
-        raise AtlasDataError(f"Failed to read {filepath}: {e}")
-
-
-def get_schema_info(df: pd.DataFrame) -> Dict:
-    """
-    Get schema information for a loaded dataset.
-    
-    Useful for debugging and validation.
-    
-    Args:
-        df: Loaded DataFrame
+    def _parse_dataframe_to_profiles(self, df: pd.DataFrame) -> Dict[str, AtlasProfile]:
+        """
+        Parse un DataFrame en AtlasProfile.
         
-    Returns:
-        Dictionary with schema info (columns, dtypes, null counts)
-    """
-    return {
-        "columns": list(df.columns),
-        "dtypes": {col: str(dtype) for col, dtype in df.dtypes.items()},
-        "null_counts": df.isnull().sum().to_dict(),
-        "shape": df.shape,
-        "sample_row": df.head(1).to_dict("records")[0] if len(df) > 0 else {}
-    }
-
+        Colonnes requises : system_id, system_name, temperature_k, t1_us, t2_us,
+                           frequency_ghz, noise_level, regime_notes
+        """
+        profiles = {}
+        
+        required_cols = ['system_id', 'system_name', 'temperature_k', 't1_us', 
+                        't2_us', 'frequency_ghz', 'noise_level', 'regime_notes']
+        
+        # Vérifier les colonnes
+        missing_cols = set(required_cols) - set(df.columns)
+        if missing_cols:
+            raise ValueError(f"Colonnes manquantes dans le CSV : {missing_cols}")
+        
+        for _, row in df.iterrows():
+            try:
+                profile = AtlasProfile(
+                    system_id=str(row['system_id']),
+                    system_name=str(row['system_name']),
+                    temperature_k=float(row['temperature_k']),
+                    t1_us=float(row['t1_us']),
+                    t2_us=float(row['t2_us']),
+                    frequency_ghz=float(row['frequency_ghz']),
+                    noise_level=float(row['noise_level']),
+                    regime_notes=str(row['regime_notes'])
+                )
+                profiles[profile.system_id] = profile
+            except Exception as e:
+                print(f"Warning: Failed to parse row {row.get('system_id', '?')}: {e}")
+        
+        return profiles
+    
+    def get_metadata(self) -> Dict:
+        """Retourne les métadonnées du chargement."""
+        return {
+            'mode': self.mode,
+            'data_dir': self.data_dir,
+            'n_systems': len(self._profiles_cache),
+            **self._metadata
+        }
+    
+    def filter_profiles(
+        self,
+        min_t2: Optional[float] = None,
+        max_t2: Optional[float] = None,
+        min_temp: Optional[float] = None,
+        max_temp: Optional[float] = None
+    ) -> Dict[str, AtlasProfile]:
+        """
+        Filtre les profils selon des critères.
+        
+        Args:
+            min_t2: T2 minimal (µs)
+            max_t2: T2 maximal (µs)
+            min_temp: Température minimale (K)
+            max_temp: Température maximale (K)
+            
+        Returns:
+            Dict filtré de profils
+        """
+        filtered = {}
+        
+        for sys_id, profile in self._profiles_cache.items():
+            # Filtres T2
+            if min_t2 is not None and profile.t2_us < min_t2:
+                continue
+            if max_t2 is not None and profile.t2_us > max_t2:
+                continue
+            
+            # Filtres température
+            if min_temp is not None and profile.temperature_k < min_temp:
+                continue
+            if max_temp is not None and profile.temperature_k > max_temp:
+                continue
+            
+            filtered[sys_id] = profile
+        
+        return filtered
+    
+    def group_by_regime(self) -> Dict[str, List[str]]:
+        """
+        Groupe les systèmes par type de régime.
+        
+        Returns:
+            Dict de {regime_type: [system_ids]}
+        """
+        groups = {}
+        
+        for sys_id, profile in self._profiles_cache.items():
+            # Catégoriser par T2
+            if profile.t2_us < 10:
+                regime = "ultra_short_coherence"
+            elif profile.t2_us < 100:
+                regime = "short_coherence"
+            elif profile.t2_us < 500:
+                regime = "medium_coherence"
+            else:
+                regime = "long_coherence"
+            
+            if regime not in groups:
+                groups[regime] = []
+            groups[regime].append(sys_id)
+        
+        return groups
