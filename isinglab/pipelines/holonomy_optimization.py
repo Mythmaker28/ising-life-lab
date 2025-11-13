@@ -422,7 +422,8 @@ def compare_geometric_vs_dynamic_robustness(
     noise_multiplier: float = 2.0,
     n_trials: int = 5,
     output_dir: Optional[str] = None,
-    seed: int = 42
+    seed: int = 42,
+    atlas_mapper: Optional['AtlasMapper'] = None
 ) -> Dict:
     """
     Scénario D : Comparaison Head-to-Head P3 vs P4.
@@ -441,6 +442,7 @@ def compare_geometric_vs_dynamic_robustness(
         n_trials: Nombre d'essais avec bruit aléatoire différent
         output_dir: Répertoire de sortie
         seed: Seed
+        atlas_mapper: Mapper Atlas (si None, créé en mode mock)
         
     Returns:
         Dict contenant :
@@ -450,7 +452,7 @@ def compare_geometric_vs_dynamic_robustness(
             - 'winner': 'P3' ou 'P4'
     """
     # 1. Initialisation
-    mapper = AtlasMapper()
+    mapper = atlas_mapper if atlas_mapper is not None else AtlasMapper()
     phys_profile = mapper.get_profile(atlas_profile)
     target_state = compute_target_profile(target_profile)
     
