@@ -290,6 +290,85 @@ def compute_trajectory_metrics(
     )
 
 
+def cost_geometric_phase(
+    path,
+    target_phase: Optional[float] = None,
+    maximize_area: bool = True
+) -> float:
+    """
+    Coût lié à la phase géométrique accumulée.
+    
+    P4 IMPLEMENTATION : Évalue la boucle selon sa phase géométrique.
+    
+    Args:
+        path: HolonomyPath (doit être fermé)
+        target_phase: Phase cible (si None, maximise l'aire)
+        maximize_area: Si True, favorise les grandes aires
+        
+    Returns:
+        Coût [0, 1] où 0 = optimal
+    """
+    try:
+        geometric_phase = path.compute_geometric_phase()
+    except ValueError:
+        # Pas une boucle fermée
+        return 1.0
+    
+    if target_phase is not None:
+        # Distance à une phase cible
+        delta = abs(geometric_phase - target_phase)
+        cost = delta / (2 * np.pi)
+    elif maximize_area:
+        # Favoriser les grandes aires (phase élevée = aire élevée)
+        # Normaliser à [0, 2π]
+        cost = 1.0 - (geometric_phase / (2 * np.pi))
+    else:
+        # Minimiser l'aire
+        cost = geometric_phase / (2 * np.pi)
+    
+    return np.clip(cost, 0, 1)
+
+
+def cost_robustness_to_noise(
+    state_history_clean: List[PhenoState],
+    state_history_noisy: List[PhenoState],
+    target_state: PhenoState
+) -> float:
+    """
+    Coût de robustesse au bruit : compare trajectoire propre vs bruitée.
+    
+    P4 KEY METRIC : Mesure la dégradation de performance sous bruit.
+    
+    Hypothèse : Les trajectoires géométriques (P4) devraient être plus robustes
+    que les trajectoires dynamiques (P3) car la phase géométrique est
+    topologiquement protégée.
+    
+    Args:
+        state_history_clean: Historique sans bruit supplémentaire
+        state_history_noisy: Historique avec bruit ajouté
+        target_state: État cible
+        
+    Returns:
+        Coût [0, 1] où 0 = très robuste (pas de dégradation)
+    """
+    from ..data_bridge.cost_functions import phenomenology_distance
+    
+    # Distance finale dans les deux cas
+    distance_clean = phenomenology_distance(state_history_clean[-1], target_state)
+    distance_noisy = phenomenology_distance(state_history_noisy[-1], target_state)
+    
+    # Dégradation relative
+    if distance_clean < 1e-6:
+        degradation = 0.0 if distance_noisy < 1e-6 else 1.0
+    else:
+        degradation = (distance_noisy - distance_clean) / distance_clean
+    
+    # Normaliser
+    robustness_cost = np.clip(degradation, 0, 1)
+    
+    return robustness_cost
+
+
 def rank_trajectories(
     trajectories_metrics: List[Tuple[str, TrajectoryMetrics]]
 ) -> List[Tuple[str, TrajectoryMetrics, float]]:

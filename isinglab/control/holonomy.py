@@ -160,25 +160,65 @@ class HolonomyPath:
         
         return True
     
+    def compute_geometric_phase(self) -> float:
+        """
+        Calcule la phase géométrique (Holonomie) de la trajectoire fermée.
+        
+        IMPLÉMENTATION P4 : Calcul basé sur l'aire orientée de la boucle
+        dans l'espace des paramètres via le théorème de Green.
+        
+        Pour une boucle fermée dans l'espace (K1, K2) :
+            Aire = (1/2) ∮ (K1 dK2 - K2 dK1)
+        
+        Cette aire est proportionnelle à la phase géométrique accumulée.
+        
+        Returns:
+            Phase géométrique normalisée [0, 2π)
+        """
+        if not self.is_closed_loop(tolerance=0.1):
+            raise ValueError("Le calcul de la phase géométrique requiert une boucle fermée.")
+        
+        if len(self.points) < 3:
+            return 0.0
+        
+        # Extraire les paramètres K1, K2 de chaque point
+        k1_values = []
+        k2_values = []
+        
+        for point in self.points:
+            k1_values.append(point.params.get('k1', 0.0))
+            k2_values.append(point.params.get('k2', 0.0))
+        
+        # Calcul de l'aire via la formule du lacet (Shoelace formula)
+        # Aire = (1/2) Σ (x_i * y_{i+1} - x_{i+1} * y_i)
+        area = 0.0
+        n = len(k1_values)
+        
+        for i in range(n):
+            j = (i + 1) % n
+            area += k1_values[i] * k2_values[j]
+            area -= k1_values[j] * k2_values[i]
+        
+        area = abs(area) / 2.0
+        
+        # Normaliser à [0, 2π) : la phase géométrique est proportionnelle à l'aire
+        # On utilise une normalisation arbitraire pour avoir une phase en radians
+        phase = (area / (1.0 + area)) * 2 * np.pi
+        
+        return phase
+    
     def compute_berry_phase(self) -> float:
         """
-        Calcule la Phase de Berry le long de la trajectoire fermée.
+        Alias pour compute_geometric_phase() (compatibilité).
         
-        TODO: Implémentation complète nécessite :
-            1. État quantique |ψ(t)> pour chaque point
-            2. Intégrale de la connexion de Berry : γ = i ∮ <ψ|∂_t ψ> dt
-            3. Projection sur les états propres du système
-        
-        Pour l'instant : PLACEHOLDER retournant 0.
+        Note : La Phase de Berry quantique complète nécessiterait les états |ψ>.
+        Notre implémentation calcule la phase géométrique classique (Holonomie)
+        dans l'espace des paramètres de contrôle.
         
         Returns:
             Phase géométrique γ ∈ [0, 2π)
         """
-        if not self.is_closed_loop():
-            raise ValueError("Le calcul de la Phase de Berry requiert une boucle fermée.")
-        
-        # TODO: Implémentation réelle
-        return 0.0
+        return self.compute_geometric_phase()
     
     def to_dict(self) -> Dict:
         """Sérialise le path en dictionnaire (pour sauvegarde JSON)."""
@@ -354,6 +394,132 @@ def generate_multi_stage_path(
                 "k3": 0.0,
                 "annealing": annealing
             }, t=t_global)
+    
+    return path
+
+
+def generate_closed_loop_path(
+    k1_center: float,
+    k2_center: float,
+    radius_k1: float,
+    radius_k2: float,
+    n_points: int = 20,
+    duration: float = 1.0,
+    annealing: float = 0.3,
+    phase_offset: float = 0.0,
+    loop_type: str = "ellipse"
+) -> HolonomyPath:
+    """
+    Génère une trajectoire fermée (boucle) dans l'espace (K1, K2).
+    
+    P4 IMPLEMENTATION : Trajectoires fermées pour accumuler une phase géométrique.
+    
+    Args:
+        k1_center: Centre K1 de la boucle
+        k2_center: Centre K2 de la boucle
+        radius_k1: Rayon dans la direction K1
+        radius_k2: Rayon dans la direction K2
+        n_points: Nombre de points sur la boucle
+        duration: Durée totale [0, 1]
+        annealing: Valeur d'annealing (constante pour la boucle)
+        phase_offset: Offset de phase initial [0, 2π]
+        loop_type: 'ellipse' ou 'lissajous'
+        
+    Returns:
+        HolonomyPath formant une boucle fermée
+    """
+    path = HolonomyPath(
+        space=ParameterSpace.KERNEL_STRENGTHS,
+        name=f"closed_loop_{loop_type}",
+        description=f"Closed loop: center=({k1_center:.2f}, {k2_center:.2f}), radii=({radius_k1:.2f}, {radius_k2:.2f})"
+    )
+    
+    for i in range(n_points + 1):  # +1 pour fermer la boucle
+        t = i / n_points * duration
+        theta = 2 * np.pi * i / n_points + phase_offset
+        
+        if loop_type == "ellipse":
+            # Ellipse simple
+            k1 = k1_center + radius_k1 * np.cos(theta)
+            k2 = k2_center + radius_k2 * np.sin(theta)
+            
+        elif loop_type == "lissajous":
+            # Courbe de Lissajous (plus complexe)
+            k1 = k1_center + radius_k1 * np.cos(2 * theta)
+            k2 = k2_center + radius_k2 * np.sin(3 * theta)
+            
+        else:  # circle
+            k1 = k1_center + radius_k1 * np.cos(theta)
+            k2 = k2_center + radius_k1 * np.sin(theta)  # Même rayon
+        
+        path.add_point({
+            "k1": k1,
+            "k2": k2,
+            "k3": 0.0,
+            "annealing": annealing
+        }, t=t)
+    
+    return path
+
+
+def generate_adaptive_loop_path(
+    k1_start: float,
+    k2_start: float,
+    k1_amplitude: float,
+    k2_amplitude: float,
+    n_loops: int = 2,
+    n_points_per_loop: int = 10,
+    annealing_profile: str = "increasing"
+) -> HolonomyPath:
+    """
+    Génère une trajectoire avec plusieurs boucles imbriquées.
+    
+    Utile pour explorer différentes amplitudes de phase géométrique.
+    
+    Args:
+        k1_start: K1 initial
+        k2_start: K2 initial
+        k1_amplitude: Amplitude des oscillations K1
+        k2_amplitude: Amplitude des oscillations K2
+        n_loops: Nombre de boucles complètes
+        n_points_per_loop: Points par boucle
+        annealing_profile: 'increasing', 'decreasing', 'constant'
+        
+    Returns:
+        HolonomyPath avec boucles multiples
+    """
+    path = HolonomyPath(
+        space=ParameterSpace.KERNEL_STRENGTHS,
+        name="adaptive_loop",
+        description=f"Adaptive loop with {n_loops} cycles"
+    )
+    
+    total_points = n_loops * n_points_per_loop
+    
+    for i in range(total_points + 1):
+        t = i / total_points
+        theta = 2 * np.pi * n_loops * t
+        
+        # Amplitude décroissante si requis
+        amplitude_factor = 1.0 - 0.5 * t if annealing_profile == "decreasing" else 1.0
+        
+        k1 = k1_start + k1_amplitude * amplitude_factor * np.cos(theta)
+        k2 = k2_start + k2_amplitude * amplitude_factor * np.sin(theta)
+        
+        # Profil d'annealing
+        if annealing_profile == "increasing":
+            annealing = 0.1 + 0.4 * t
+        elif annealing_profile == "decreasing":
+            annealing = 0.5 - 0.4 * t
+        else:
+            annealing = 0.3
+        
+        path.add_point({
+            "k1": k1,
+            "k2": k2,
+            "k3": 0.0,
+            "annealing": annealing
+        }, t=t)
     
     return path
 
