@@ -275,7 +275,128 @@ for t in np.linspace(0, 1, 100):
 
 ---
 
-## 9. Références théoriques
+## 9. Ancrage Physique : Contraintes vs Émergence
+
+**Mise à jour 2025-11-13** : Le pont Atlas est désormais implémenté.
+
+### 9.1 Méthodologie de mapping
+
+Le module `isinglab/data_bridge/atlas_map.py` traduit les paramètres physiques quantiques en paramètres phénoménologiques via des formules empiriques :
+
+#### Formule 1 : Bruit ∝ 1/T2
+
+$$\text{Bruit} = \left(\frac{T_{2,\text{ref}}}{T_2}\right) \cdot \sigma_0$$
+
+où $T_{2,\text{ref}} = 100\mu s$ et $\sigma_0 = 0.05$.
+
+**Interprétation** : Un temps de cohérence court (T2 faible) se traduit par un bruit élevé dans le moteur d'oscillateurs. La décohérence quantique limite la stabilité des couplages.
+
+#### Formule 2 : K_max ∝ √(T1·T2)
+
+$$K_{\max} = \alpha \sqrt{T_1 \cdot T_2}$$
+
+où $\alpha = 0.01$ (facteur d'échelle).
+
+**Interprétation** : La force de couplage maximale réalisable dépend à la fois de la cohérence (T2) et de la stabilité énergétique (T1). Des couplages forts requièrent les deux.
+
+#### Formule 3 : Annealing ∝ exp(-T/T_ref)
+
+$$\text{Annealing} = 0.5 \cdot \exp\left(-\frac{T}{T_{\text{ref}}}\right)$$
+
+où $T_{\text{ref}} = 300K$.
+
+**Interprétation** : La température contrôle le taux de relaxation. Haute température → relaxation thermique forte (annealing élevé). Basse température → système "gelé".
+
+### 9.2 Validation physique
+
+La classe `PhysicsValidator` vérifie les contraintes dures :
+
+1. **T2 minimal** : T2 > 1µs pour opérations cohérentes
+2. **Ratio T1/T2** : T1 devrait être > 2·T2
+3. **Bruit maximal** : Noise < 0.3 pour contrôle efficace
+4. **Produit K·T2** : K·T2 < 100 (couplage vs décohérence)
+
+### 9.3 Pipeline de recherche contrainte
+
+La fonction `run_constrained_search()` implémente l'algorithme suivant :
+
+1. **Charger le profil Atlas** : Extraction des paramètres (T1, T2, T, f)
+2. **Générer des candidats** : Mapping vers paramètres phéno + variations
+3. **Valider la physique** : Filtrer les configurations impossibles
+4. **Simuler** : Exécuter le moteur d'oscillateurs
+5. **Mesurer la distance** : Comparer à la cible phénoménologique
+6. **Optimiser** : Retenir la meilleure configuration
+
+### 9.4 Scénarios d'exploration
+
+**Scénario A : Stabilité biologique**
+
+```python
+from isinglab.pipelines.regime_search import run_constrained_search
+
+result = run_constrained_search(
+    target_profile='uniform',  # 5-MeO-like
+    atlas_profile='NV-298K',   # Température ambiante
+    n_iterations=20
+)
+```
+
+**Question** : Un système NV à 298K peut-il maintenir une haute synchronie ?
+
+**Résultat typique** : Possible mais difficile. Nécessite K1 très fort pour compenser le bruit thermique.
+
+**Scénario B : Capacité de calcul**
+
+```python
+from isinglab.pipelines.regime_search import compare_systems_for_target
+
+result = compare_systems_for_target(
+    target_profile='fragmented',  # DMT-like
+    system_ids=['NV-77K', 'SiC-VSi-Cryo']
+)
+```
+
+**Question** : Quel T2 minimal pour supporter des structures complexes ?
+
+**Résultat typique** : T2 > 300µs requis. SiC-VSi-Cryo (T2=800µs) supérieur à NV-77K (T2=350µs).
+
+### 9.5 Fonction de coût phénoménologique
+
+La distance entre états est définie par :
+
+$$d(\text{state}_1, \text{state}_2) = \sqrt{w_r \cdot \Delta r^2 + w_d \cdot \Delta d^2 + w_a \cdot \Delta a^2}$$
+
+où :
+- $\Delta r$ : différence du paramètre d'ordre
+- $\Delta d$ : différence de densité de défauts
+- $\Delta a$ : différence du taux d'annihilation
+- $w_r = 2.0$, $w_d = 3.0$, $w_a = 1.0$ (poids par défaut)
+
+Cette métrique quantifie la similarité phénoménologique indépendamment des paramètres physiques sous-jacents.
+
+### 9.6 Limitations du mapping actuel
+
+1. **Formules empiriques** : Les relations T2→Bruit et √(T1·T2)→K sont des approximations. Calibration expérimentale nécessaire.
+
+2. **Linéarité supposée** : Le mapping ignore les effets non-linéaires et les transitions de phase abruptes.
+
+3. **Pas de dynamique temporelle** : Le système est statique. Les fluctuations temporelles de T1/T2 ne sont pas modélisées.
+
+4. **Découplage spatial** : Tous les oscillateurs subissent le même bruit. En réalité, le bruit est spatialement corrélé.
+
+### 9.7 Extensions futures
+
+1. **Calibration expérimentale** : Mesurer les paramètres phéno sur des systèmes quantiques réels pour affiner les formules.
+
+2. **Modèle de bruit avancé** : Intégrer les corrélations spatiales et temporelles du bruit quantique.
+
+3. **Optimisation Bayésienne** : Remplacer la recherche par perturbations par une optimisation intelligente (Gaussian Processes).
+
+4. **Atlas réel** : Connecter au dépôt `biological-qubits-atlas` pour des données expérimentales.
+
+---
+
+## 10. Références théoriques
 
 1. **Kuramoto, Y.** (1984). _Chemical Oscillations, Waves, and Turbulence_. Springer.
 2. **Strogatz, S.H.** (2000). From Kuramoto to Crawford: exploring the onset of synchronization. _Physica D_, 143(1-4), 1-20.

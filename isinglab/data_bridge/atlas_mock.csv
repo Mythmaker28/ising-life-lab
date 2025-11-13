@@ -1,0 +1,7 @@
+system_id,system_name,temperature_k,t1_us,t2_us,frequency_ghz,noise_level,regime_notes
+NV-298K,NV Center Room Temp,298,5000,1.8,2.87,0.15,High temperature biological regime - short T2
+NV-77K,NV Center Cryogenic,77,8000,350,2.87,0.02,Low temperature - extended coherence
+RP-Cry4,Radical Pair Cryptochrome,310,50,0.8,0.01,0.25,Biological avian magnetoreception - very short T2
+SiC-VSi-Cryo,Silicon Carbide VSi Defect,4,12000,800,1.35,0.008,Deep cryogenic - ultra-low noise
+SiC-VSi-RT,Silicon Carbide VSi Room Temp,295,6000,12,1.35,0.12,Room temperature SiC - moderate coherence
+
