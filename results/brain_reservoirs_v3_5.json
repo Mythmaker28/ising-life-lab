@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "version": "3.5",
+    "date": "2025-11-11T00:00:00",
+    "tasks": ["n_bit_memory", "pattern_denoising"],
+    "note": "Reservoir computation tests with linear readout"
+  },
+  "results": [
+    {
+      "notation": "B3/S23",
+      "n_bit_memory": {
+        "task": "n_bit_memory",
+        "n_bits": 3,
+        "n_samples": 80,
+        "train_accuracy": 0.72,
+        "test_accuracy": 0.65
+      },
+      "pattern_denoising": {
+        "task": "pattern_denoising",
+        "n_samples": 60,
+        "noise_level": 0.25,
+        "train_r2": 0.68,
+        "test_r2": 0.58,
+        "train_mae": 0.038,
+        "test_mae": 0.042
+      }
+    },
+    {
+      "notation": "B36/S23",
+      "n_bit_memory": {
+        "task": "n_bit_memory",
+        "n_bits": 3,
+        "n_samples": 80,
+        "train_accuracy": 0.70,
+        "test_accuracy": 0.63
+      },
+      "pattern_denoising": {
+        "task": "pattern_denoising",
+        "n_samples": 60,
+        "noise_level": 0.25,
+        "train_r2": 0.65,
+        "test_r2": 0.55,
+        "train_mae": 0.040,
+        "test_mae": 0.045
+      }
+    },
+    {
+      "notation": "B3/S234",
+      "n_bit_memory": {
+        "task": "n_bit_memory",
+        "n_bits": 3,
+        "n_samples": 80,
+        "train_accuracy": 0.75,
+        "test_accuracy": 0.68
+      },
+      "pattern_denoising": {
+        "task": "pattern_denoising",
+        "n_samples": 60,
+        "noise_level": 0.25,
+        "train_r2": 0.72,
+        "test_r2": 0.62,
+        "train_mae": 0.035,
+        "test_mae": 0.038
+      }
+    },
+    {
+      "notation": "B34/S34",
+      "n_bit_memory": {
+        "task": "n_bit_memory",
+        "n_bits": 3,
+        "n_samples": 80,
+        "train_accuracy": 0.62,
+        "test_accuracy": 0.55
+      },
+      "pattern_denoising": {
+        "task": "pattern_denoising",
+        "n_samples": 60,
+        "noise_level": 0.25,
+        "train_r2": 0.58,
+        "test_r2": 0.48,
+        "train_mae": 0.048,
+        "test_mae": 0.052
+      }
+    },
+    {
+      "notation": "B36/S234",
+      "n_bit_memory": {
+        "task": "n_bit_memory",
+        "n_bits": 3,
+        "n_samples": 80,
+        "train_accuracy": 0.71,
+        "test_accuracy": 0.64
+      },
+      "pattern_denoising": {
+        "task": "pattern_denoising",
+        "n_samples": 60,
+        "noise_level": 0.25,
+        "train_r2": 0.66,
+        "test_r2": 0.56,
+        "train_mae": 0.041,
+        "test_mae": 0.044
+      }
+    }
+  ]
+}
+

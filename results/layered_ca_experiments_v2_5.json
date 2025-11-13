@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "grid_size": [
+      64,
+      64
+    ],
+    "steps": 200,
+    "runs_per_config": 3,
+    "pairs_tested": 3
+  },
+  "results": [
+    {
+      "rule_a": "B3/S23",
+      "rule_b": "B34/S34",
+      "coupling": "none",
+      "avg_density_a": 0.07666015625,
+      "avg_density_b": 0.4191080729166667,
+      "avg_correlation": 0.023726455497955243,
+      "runs": [
+        {
+          "rule_a": "B3/S23",
+          "rule_b": "B34/S34",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.079345703125,
+          "final_density_b": 0.413818359375,
+          "correlation": 0.024776122469441445
+        },
+        {
+          "rule_a": "B3/S23",
+          "rule_b": "B34/S34",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.072021484375,
+          "final_density_b": 0.415771484375,
+          "correlation": 0.029407390383623628
+        },
+        {
+          "rule_a": "B3/S23",
+          "rule_b": "B34/S34",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.07861328125,
+          "final_density_b": 0.427734375,
+          "correlation": 0.016995853640800657
+        }
+      ]
+    },
+    {
+      "rule_a": "B3/S23",
+      "rule_b": "B34/S34",
+      "coupling": "density_mask",
+      "avg_density_a": 0.07666015625,
+      "avg_density_b": 0.0,
+      "avg_correlation": 0.0,
+      "runs": [
+        {
+          "rule_a": "B3/S23",
+          "rule_b": "B34/S34",
+          "coupling": "density_mask",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.079345703125,
+          "final_density_b": 0.0,
+          "correlation": 0.0
+        },
+        {
+          "rule_a": "B3/S23",
+          "rule_b": "B34/S34",
+          "coupling": "density_mask",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.072021484375,
+          "final_density_b": 0.0,
+          "correlation": 0.0
+        },
+        {
+          "rule_a": "B3/S23",
+          "rule_b": "B34/S34",
+          "coupling": "density_mask",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.07861328125,
+          "final_density_b": 0.0,
+          "correlation": 0.0
+        }
+      ]
+    },
+    {
+      "rule_a": "B36/S23",
+      "rule_b": "B018/S1236",
+      "coupling": "none",
+      "avg_density_a": 0.06363932291666667,
+      "avg_density_b": 0.3743489583333333,
+      "avg_correlation": 0.010742635841650949,
+      "runs": [
+        {
+          "rule_a": "B36/S23",
+          "rule_b": "B018/S1236",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.047607421875,
+          "final_density_b": 0.3701171875,
+          "correlation": 0.009088046078354985
+        },
+        {
+          "rule_a": "B36/S23",
+          "rule_b": "B018/S1236",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.075927734375,
+          "final_density_b": 0.377685546875,
+          "correlation": 0.016235444314631454
+        },
+        {
+          "rule_a": "B36/S23",
+          "rule_b": "B018/S1236",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.0673828125,
+          "final_density_b": 0.375244140625,
+          "correlation": 0.006904417131966406
+        }
+      ]
+    },
+    {
+      "rule_a": "B36/S23",
+      "rule_b": "B018/S1236",
+      "coupling": "density_mask",
+      "avg_density_a": 0.06363932291666667,
+      "avg_density_b": 0.040283203125,
+      "avg_correlation": 0.49033009943247374,
+      "runs": [
+        {
+          "rule_a": "B36/S23",
+          "rule_b": "B018/S1236",
+          "coupling": "density_mask",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.047607421875,
+          "final_density_b": 0.0263671875,
+          "correlation": 0.5714599656187768
+        },
+        {
+          "rule_a": "B36/S23",
+          "rule_b": "B018/S1236",
+          "coupling": "density_mask",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.075927734375,
+          "final_density_b": 0.045166015625,
+          "correlation": 0.4525000394053123
+        },
+        {
+          "rule_a": "B36/S23",
+          "rule_b": "B018/S1236",
+          "coupling": "density_mask",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.0673828125,
+          "final_density_b": 0.04931640625,
+          "correlation": 0.44703029327333216
+        }
+      ]
+    },
+    {
+      "rule_a": "B34/S34",
+      "rule_b": "B018/S1236",
+      "coupling": "none",
+      "avg_density_a": 0.4278157552083333,
+      "avg_density_b": 0.3743489583333333,
+      "avg_correlation": 0.0006892265799201656,
+      "runs": [
+        {
+          "rule_a": "B34/S34",
+          "rule_b": "B018/S1236",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.42626953125,
+          "final_density_b": 0.3701171875,
+          "correlation": -0.005341930936273614
+        },
+        {
+          "rule_a": "B34/S34",
+          "rule_b": "B018/S1236",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.42529296875,
+          "final_density_b": 0.377685546875,
+          "correlation": 0.022482255300539475
+        },
+        {
+          "rule_a": "B34/S34",
+          "rule_b": "B018/S1236",
+          "coupling": "none",
+          "grid_size": [
+            64,
+            64
+          ],
+          "steps": 200,
+          "final_density_a": 0.431884765625,
+          "final_density_b": 0.375244140625,
+          "correlation": -0.015072644624505362
+        }
+      ]
+    }
+  ]
+}

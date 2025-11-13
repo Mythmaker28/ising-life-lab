@@ -1,0 +1,35 @@
+{
+  "total_pulls": 265,
+  "arms": {
+    "exploitation": {
+      "name": "exploitation",
+      "pulls": 40,
+      "total_reward": 11.0,
+      "avg_reward": 0.275
+    },
+    "curiosity": {
+      "name": "curiosity",
+      "pulls": 24,
+      "total_reward": 3.2,
+      "avg_reward": 0.13333333333333333
+    },
+    "diversity": {
+      "name": "diversity",
+      "pulls": 21,
+      "total_reward": 2.0,
+      "avg_reward": 0.09523809523809523
+    },
+    "random": {
+      "name": "random",
+      "pulls": 159,
+      "total_reward": 97.0,
+      "avg_reward": 0.610062893081761
+    },
+    "stable_bias": {
+      "name": "stable_bias",
+      "pulls": 21,
+      "total_reward": 2.0,
+      "avg_reward": 0.09523809523809523
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "timestamp": "2025-11-11T21:44:59.397080",
+  "config": {
+    "grid_size": [
+      64,
+      64
+    ],
+    "n_samples": 100,
+    "seed": 42
+  },
+  "connected_components": [
+    {
+      "preservation_score": 0.040122027656886286,
+      "method": "CA_life",
+      "elapsed": 0.11243605613708496
+    },
+    {
+      "preservation_score": 0.037970735319113776,
+      "method": "CA_highlife",
+      "elapsed": 0.1113898754119873
+    },
+    {
+      "preservation_score": 0.03227243154750128,
+      "method": "CA_life_dense",
+      "elapsed": 0.11272859573364258
+    },
+    {
+      "preservation_score": 0.06256020257303231,
+      "method": "CA_34life",
+      "elapsed": 0.1099693775177002
+    }
+  ],
+  "erosion": [
+    {
+      "erosion_similarity": 0.0,
+      "density_ca": 0.02281494140625,
+      "density_classic": 0.10768310546875,
+      "method": "CA_life",
+      "elapsed": 0.06815743446350098
+    },
+    {
+      "erosion_similarity": 0.0,
+      "density_ca": 0.02291015625,
+      "density_classic": 0.10768310546875,
+      "method": "CA_highlife",
+      "elapsed": 0.06844186782836914
+    },
+    {
+      "erosion_similarity": 0.0,
+      "density_ca": 0.04529052734375,
+      "density_classic": 0.10768310546875,
+      "method": "CA_life_dense",
+      "elapsed": 0.07093954086303711
+    },
+    {
+      "erosion_similarity": 0.0,
+      "density_ca": 0.0303955078125,
+      "density_classic": 0.10768310546875,
+      "method": "CA_34life",
+      "elapsed": 0.06869792938232422
+    }
+  ],
+  "dilation": [
+    {
+      "dilation_similarity": 0.08255184959020843,
+      "density_ca": 0.02281494140625,
+      "density_classic": 0.280458984375,
+      "method": "CA_life",
+      "elapsed": 0.07122206687927246
+    },
+    {
+      "dilation_similarity": 0.08283078143531705,
+      "density_ca": 0.02291015625,
+      "density_classic": 0.280458984375,
+      "method": "CA_highlife",
+      "elapsed": 0.07316112518310547
+    },
+    {
+      "dilation_similarity": 0.1735398518860286,
+      "density_ca": 0.04529052734375,
+      "density_classic": 0.280458984375,
+      "method": "CA_life_dense",
+      "elapsed": 0.07603120803833008
+    },
+    {
+      "dilation_similarity": 0.10946453125471227,
+      "density_ca": 0.0303955078125,
+      "density_classic": 0.280458984375,
+      "method": "CA_34life",
+      "elapsed": 0.10791444778442383
+    }
+  ],
+  "edge_detection": [
+    {
+      "edge_similarity": 0.2723417191747084,
+      "method": "CA_life",
+      "elapsed": 0.04439043998718262
+    },
+    {
+      "edge_similarity": 0.27248592120203974,
+      "method": "CA_highlife",
+      "elapsed": 0.03547072410583496
+    },
+    {
+      "edge_similarity": 0.2405502614111198,
+      "method": "CA_life_dense",
+      "elapsed": 0.034427642822265625
+    },
+    {
+      "edge_similarity": 0.25240550636317677,
+      "method": "CA_34life",
+      "elapsed": 0.032605886459350586
+    }
+  ]
+}

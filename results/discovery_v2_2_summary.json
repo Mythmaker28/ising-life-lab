@@ -1,0 +1,318 @@
+{
+  "config": {
+    "evaluation_seed": 42,
+    "adaptive_thresholds": true,
+    "hof_percentiles": {
+      "composite_min": 85
+    },
+    "diversity_threshold": 2,
+    "profile_stability_min": 0.67,
+    "hof_profile_quotas": {
+      "stable_memory": 4,
+      "robust_memory": 4,
+      "diverse_memory": 4,
+      "chaotic_probe": 4,
+      "sensitive_detector": 4,
+      "attractor_dominant": 2,
+      "generic": 2
+    }
+  },
+  "total_iterations": 20,
+  "final_memory_rules": 230,
+  "final_hof_rules": 7,
+  "unique_profiles": 2,
+  "profile_distribution": {
+    "unknown": 5,
+    "chaotic_probe": 2
+  },
+  "avg_hamming_distance": 6.380952380952381,
+  "avg_profile_stability": 0.9,
+  "grid_sweeps": [
+    {
+      "notation": "B3/S23",
+      "born": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "sweeps": [
+        {
+          "grid_size": [
+            16,
+            16
+          ],
+          "metrics": {
+            "capacity_score": 0.0,
+            "robustness_score": 0.0,
+            "basin_diversity": 1.0,
+            "functional_score": 0.0,
+            "entropy": -0.0
+          },
+          "profile": "generic"
+        },
+        {
+          "grid_size": [
+            32,
+            32
+          ],
+          "metrics": {
+            "capacity_score": 0.0,
+            "robustness_score": 0.0,
+            "basin_diversity": 1.0,
+            "functional_score": 0.0,
+            "entropy": 0.4890999509252731
+          },
+          "profile": "generic"
+        }
+      ],
+      "profile_stability": 1.0,
+      "consensus_profile": "generic",
+      "profiles_by_size": [
+        "generic",
+        "generic"
+      ]
+    },
+    {
+      "notation": "B08/S068",
+      "born": [
+        0,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "sweeps": [
+        {
+          "grid_size": [
+            16,
+            16
+          ],
+          "metrics": {
+            "capacity_score": 0.0,
+            "robustness_score": 0.0,
+            "basin_diversity": 1.0,
+            "functional_score": 0.0,
+            "entropy": 0.8725253619169874
+          },
+          "profile": "chaotic_probe"
+        },
+        {
+          "grid_size": [
+            32,
+            32
+          ],
+          "metrics": {
+            "capacity_score": 0.0,
+            "robustness_score": 0.0,
+            "basin_diversity": 1.0,
+            "functional_score": 0.0,
+            "entropy": 0.7578784625383954
+          },
+          "profile": "chaotic_probe"
+        }
+      ],
+      "profile_stability": 1.0,
+      "consensus_profile": "chaotic_probe",
+      "profiles_by_size": [
+        "chaotic_probe",
+        "chaotic_probe"
+      ]
+    },
+    {
+      "notation": "B18/S0126",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "sweeps": [
+        {
+          "grid_size": [
+            16,
+            16
+          ],
+          "metrics": {
+            "capacity_score": 0.2,
+            "robustness_score": 0.6666666666666666,
+            "basin_diversity": 1.0,
+            "functional_score": 0.31333333333333335,
+            "entropy": 0.9283620723948676
+          },
+          "profile": "chaotic_probe"
+        },
+        {
+          "grid_size": [
+            32,
+            32
+          ],
+          "metrics": {
+            "capacity_score": 0.4,
+            "robustness_score": 0.6666666666666666,
+            "basin_diversity": 1.0,
+            "functional_score": 0.3933333333333333,
+            "entropy": 0.9363152348037944
+          },
+          "profile": "generic"
+        }
+      ],
+      "profile_stability": 0.5,
+      "consensus_profile": "chaotic_probe",
+      "profiles_by_size": [
+        "chaotic_probe",
+        "generic"
+      ]
+    },
+    {
+      "notation": "B01567/S08",
+      "born": [
+        0,
+        1,
+        5,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "sweeps": [
+        {
+          "grid_size": [
+            16,
+            16
+          ],
+          "metrics": {
+            "capacity_score": 0.0,
+            "robustness_score": 0.0,
+            "basin_diversity": 1.0,
+            "functional_score": 0.0,
+            "entropy": 0.8518061887486321
+          },
+          "profile": "chaotic_probe"
+        },
+        {
+          "grid_size": [
+            32,
+            32
+          ],
+          "metrics": {
+            "capacity_score": 0.0,
+            "robustness_score": 0.0,
+            "basin_diversity": 1.0,
+            "functional_score": 0.0,
+            "entropy": 0.9179699691998295
+          },
+          "profile": "chaotic_probe"
+        }
+      ],
+      "profile_stability": 1.0,
+      "consensus_profile": "chaotic_probe",
+      "profiles_by_size": [
+        "chaotic_probe",
+        "chaotic_probe"
+      ]
+    },
+    {
+      "notation": "B018/S1236",
+      "born": [
+        0,
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "sweeps": [
+        {
+          "grid_size": [
+            16,
+            16
+          ],
+          "metrics": {
+            "capacity_score": 0.6,
+            "robustness_score": 0.3333333333333333,
+            "basin_diversity": 1.0,
+            "functional_score": 0.35666666666666663,
+            "entropy": 0.9652016987500656
+          },
+          "profile": "diverse_memory"
+        },
+        {
+          "grid_size": [
+            32,
+            32
+          ],
+          "metrics": {
+            "capacity_score": 0.6,
+            "robustness_score": 0.3333333333333333,
+            "basin_diversity": 1.0,
+            "functional_score": 0.35666666666666663,
+            "entropy": 0.9565666925926268
+          },
+          "profile": "diverse_memory"
+        }
+      ],
+      "profile_stability": 1.0,
+      "consensus_profile": "diverse_memory",
+      "profiles_by_size": [
+        "diverse_memory",
+        "diverse_memory"
+      ]
+    }
+  ],
+  "checks": {
+    "HoF >= 3 rules": true,
+    "Unique profiles >= 2": true,
+    "Avg distance >= 2.0": true,
+    "Profile stability >= 0.67": true,
+    "Contains stable/robust": false
+  },
+  "all_checks_passed": false,
+  "bandit_stats": {
+    "total_pulls": 109,
+    "arms": {
+      "exploitation": {
+        "name": "exploitation",
+        "pulls": 27,
+        "total_reward": 5.0,
+        "avg_reward": 0.18518518518518517
+      },
+      "curiosity": {
+        "name": "curiosity",
+        "pulls": 23,
+        "total_reward": 3.2,
+        "avg_reward": 0.1391304347826087
+      },
+      "diversity": {
+        "name": "diversity",
+        "pulls": 18,
+        "total_reward": 1.0,
+        "avg_reward": 0.05555555555555555
+      },
+      "random": {
+        "name": "random",
+        "pulls": 23,
+        "total_reward": 3.0,
+        "avg_reward": 0.13043478260869565
+      },
+      "stable_bias": {
+        "name": "stable_bias",
+        "pulls": 18,
+        "total_reward": 1.0,
+        "avg_reward": 0.05555555555555555
+      }
+    }
+  }
+}

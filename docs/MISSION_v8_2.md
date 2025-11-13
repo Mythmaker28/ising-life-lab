@@ -247,3 +247,4 @@ plotly >= 5.0.0      # Dashboard interactif
 
 **Sans bullshit. Juste des outils mesurés.** ✅
 
+

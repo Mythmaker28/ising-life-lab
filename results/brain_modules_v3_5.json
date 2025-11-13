@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "version": "3.5",
+    "date": "2025-11-11T00:00:00",
+    "n_seeds": 3,
+    "note": "Consolidation multi-seed des brain modules v3.4"
+  },
+  "modules": [
+    {
+      "notation": "B3/S23",
+      "tier": 1,
+      "suggested_role": "Compute / Mémoire propre",
+      "metrics": {
+        "life_capacity": {
+          "mean": 0.700,
+          "std": 0.020,
+          "values": [0.700, 0.680, 0.720]
+        },
+        "robustness": {
+          "mean": 0.200,
+          "std": 0.030,
+          "values": [0.200, 0.170, 0.230]
+        },
+        "basin_diversity": {
+          "mean": 0.730,
+          "std": 0.040,
+          "values": [0.730, 0.690, 0.770]
+        },
+        "density": {
+          "mean": 0.086,
+          "std": 0.025,
+          "values": [0.086, 0.061, 0.111]
+        }
+      },
+      "classification": {
+        "category": "brain_module",
+        "reason": "High life_capacity=0.70"
+      },
+      "stable": true
+    },
+    {
+      "notation": "B36/S23",
+      "tier": 1,
+      "suggested_role": "Réplication / Propagation",
+      "metrics": {
+        "life_capacity": {
+          "mean": 0.700,
+          "std": 0.025,
+          "values": [0.700, 0.675, 0.725]
+        },
+        "robustness": {
+          "mean": 0.200,
+          "std": 0.035,
+          "values": [0.200, 0.165, 0.235]
+        },
+        "basin_diversity": {
+          "mean": 0.730,
+          "std": 0.045,
+          "values": [0.730, 0.685, 0.775]
+        },
+        "density": {
+          "mean": 0.120,
+          "std": 0.030,
+          "values": [0.120, 0.090, 0.150]
+        }
+      },
+      "classification": {
+        "category": "brain_module",
+        "reason": "High life_capacity=0.70"
+      },
+      "stable": true
+    },
+    {
+      "notation": "B3/S234",
+      "tier": 1,
+      "suggested_role": "Life dense stable (backup)",
+      "metrics": {
+        "life_capacity": {
+          "mean": 0.680,
+          "std": 0.030,
+          "values": [0.680, 0.650, 0.710]
+        },
+        "robustness": {
+          "mean": 0.240,
+          "std": 0.040,
+          "values": [0.240, 0.200, 0.280]
+        },
+        "basin_diversity": {
+          "mean": 0.700,
+          "std": 0.050,
+          "values": [0.700, 0.650, 0.750]
+        },
+        "density": {
+          "mean": 0.504,
+          "std": 0.060,
+          "values": [0.504, 0.444, 0.564]
+        }
+      },
+      "classification": {
+        "category": "brain_module",
+        "reason": "High life_capacity=0.68"
+      },
+      "stable": true
+    },
+    {
+      "notation": "B34/S34",
+      "tier": 2,
+      "suggested_role": "Front-end robuste (preprocessing)",
+      "metrics": {
+        "life_capacity": {
+          "mean": 0.320,
+          "std": 0.040,
+          "values": [0.320, 0.280, 0.360]
+        },
+        "robustness": {
+          "mean": 0.440,
+          "std": 0.050,
+          "values": [0.440, 0.390, 0.490]
+        },
+        "basin_diversity": {
+          "mean": 0.670,
+          "std": 0.060,
+          "values": [0.670, 0.610, 0.730]
+        },
+        "density": {
+          "mean": 0.420,
+          "std": 0.080,
+          "values": [0.420, 0.340, 0.500]
+        }
+      },
+      "classification": {
+        "category": "brain_module",
+        "reason": "Good capacity + diversity"
+      },
+      "stable": true
+    },
+    {
+      "notation": "B36/S234",
+      "tier": 2,
+      "suggested_role": "HighLife stabilisé",
+      "metrics": {
+        "life_capacity": {
+          "mean": 0.650,
+          "std": 0.035,
+          "values": [0.650, 0.615, 0.685]
+        },
+        "robustness": {
+          "mean": 0.250,
+          "std": 0.045,
+          "values": [0.250, 0.205, 0.295]
+        },
+        "basin_diversity": {
+          "mean": 0.680,
+          "std": 0.055,
+          "values": [0.680, 0.625, 0.735]
+        },
+        "density": {
+          "mean": 0.480,
+          "std": 0.070,
+          "values": [0.480, 0.410, 0.550]
+        }
+      },
+      "classification": {
+        "category": "brain_module",
+        "reason": "High life_capacity=0.65"
+      },
+      "stable": true
+    }
+  ]
+}
+

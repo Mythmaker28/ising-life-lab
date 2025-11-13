@@ -1,0 +1,93 @@
+{
+  "life": {
+    "notation": "B3/S23",
+    "born": [
+      3
+    ],
+    "survive": [
+      2,
+      3
+    ],
+    "profile": "sparse_memory",
+    "life_capacity": 0.7,
+    "robustness": 0.2,
+    "functional_score": 0.0,
+    "description": "Conway's Life \u2014 Baseline compute/m\u00e9moire propre, r\u00e9f\u00e9rence pour patterns Life canoniques",
+    "role": "Compute / M\u00e9moire propre / R\u00e9f\u00e9rence",
+    "tier": 1
+  },
+  "highlife": {
+    "notation": "B36/S23",
+    "born": [
+      3,
+      6
+    ],
+    "survive": [
+      2,
+      3
+    ],
+    "profile": "replicator",
+    "life_capacity": 0.7,
+    "robustness": 0.2,
+    "functional_score": 0.0,
+    "description": "HighLife \u2014 Life-compatible avec r\u00e9plication additionnelle (B6), propagation",
+    "role": "R\u00e9plication / Propagation",
+    "tier": 1
+  },
+  "life_dense": {
+    "notation": "B3/S234",
+    "born": [
+      3
+    ],
+    "survive": [
+      2,
+      3,
+      4
+    ],
+    "profile": "dense_memory",
+    "life_capacity": 0.68,
+    "robustness": 0.24,
+    "functional_score": 0.0,
+    "description": "Life dense stable \u2014 Variante Life avec stabilit\u00e9 accrue (S4), tol\u00e9rance bruit am\u00e9lior\u00e9e",
+    "role": "Variante Life dense/stable",
+    "tier": 1
+  },
+  "34life": {
+    "notation": "B34/S34",
+    "born": [
+      3,
+      4
+    ],
+    "survive": [
+      3,
+      4
+    ],
+    "profile": "robust_frontend",
+    "life_capacity": 0.32,
+    "robustness": 0.2,
+    "functional_score": 0.0,
+    "description": "34 Life \u2014 Front-end robuste, pr\u00e9serve still-lifes + spaceships, tue oscillateurs period-2",
+    "role": "Front-end robuste / Filtrage",
+    "tier": 1,
+    "limitation": "Ne pas utiliser pour m\u00e9moire patterns complexes (life_capacity limit\u00e9e)"
+  },
+  "36_234": {
+    "notation": "B36/S234",
+    "born": [
+      3,
+      6
+    ],
+    "survive": [
+      2,
+      3,
+      4
+    ],
+    "profile": "spin_glass_like",
+    "life_capacity": 0.68,
+    "robustness": 0.25,
+    "functional_score": 0.0,
+    "description": "HighLife stabilis\u00e9 \u2014 HighLife + S4, r\u00e9plication + robustesse",
+    "role": "Backup / HighLife stabilis\u00e9",
+    "tier": 2
+  }
+}

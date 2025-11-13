@@ -270,3 +270,4 @@ if __name__ == "__main__":
     print("[SUCCESS] Pareto module works")
     print("=" * 60)
 
+

@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "date": "2025-11-11T04:59:23.926425",
+    "iterations": 20,
+    "vectorized": true,
+    "fast_mode": true
+  },
+  "performance": {
+    "total_time_seconds": 8.978851556777954,
+    "time_per_iteration": 0.4489425778388977,
+    "projection_50_iter_minutes": 0.3741188148657481,
+    "speedup_vs_baseline": 32075.371574953217
+  },
+  "hof_size": 25
+}

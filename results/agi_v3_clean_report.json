@@ -1,0 +1,120 @@
+{
+  "timestamp": "2025-11-11T05:37:59.915853",
+  "config": {
+    "evaluation_seed": 42,
+    "hof_max_size": 25,
+    "adaptive_thresholds": true,
+    "hof_percentiles": {
+      "composite_min": 80,
+      "memory_score_min_abs": 0.01,
+      "edge_score_min_abs": 0.05,
+      "entropy_min_abs": 0.0
+    },
+    "diversity_threshold": 2,
+    "density_min": 0.05,
+    "density_max": 0.95,
+    "richness_min": 0.05
+  },
+  "iterations": 20,
+  "batch_size": 4,
+  "strategy": "mixed",
+  "total_memory": 28,
+  "hof_size": 9,
+  "n_trivial_in_hof": 0,
+  "n_hard_filtered": 0,
+  "top_10_rules": [
+    {
+      "rank": 1,
+      "notation": "B5/S0136",
+      "functional_score": 0.75,
+      "capacity_score": 1.0,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 2,
+      "notation": "B5/S0136",
+      "functional_score": 0.75,
+      "capacity_score": 1.0,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 3,
+      "notation": "B05/S0136",
+      "functional_score": 0.4833333333333333,
+      "capacity_score": 0.3333333333333333,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 4,
+      "notation": "B05/S0136",
+      "functional_score": 0.4833333333333333,
+      "capacity_score": 0.3333333333333333,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 5,
+      "notation": "B05/S0136",
+      "functional_score": 0.4833333333333333,
+      "capacity_score": 0.3333333333333333,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 6,
+      "notation": "B05/S0136",
+      "functional_score": 0.4833333333333333,
+      "capacity_score": 0.3333333333333333,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 7,
+      "notation": "B05/S0136",
+      "functional_score": 0.4833333333333333,
+      "capacity_score": 0.3333333333333333,
+      "robustness_score": 1.0,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 8,
+      "notation": "B3567/S138",
+      "functional_score": 0.105,
+      "capacity_score": 0.0,
+      "robustness_score": 0.3,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    },
+    {
+      "rank": 9,
+      "notation": "B3567/S138",
+      "functional_score": 0.105,
+      "capacity_score": 0.0,
+      "robustness_score": 0.3,
+      "basin_score": 0.0,
+      "trivial": false,
+      "trivial_reason": "Valid"
+    }
+  ],
+  "profiles": {
+    "unknown": 9
+  }
+}

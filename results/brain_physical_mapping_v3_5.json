@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "version": "3.5",
+    "date": "2025-11-11T00:00:00",
+    "disclaimer": "Speculative mappings based on metrics. Not experimental validation."
+  },
+  "physical_systems": {
+    "spin_glass": {
+      "description": "Spin glass / magnetic system",
+      "desired_profile": {
+        "robustness": 0.35,
+        "life_capacity": 0.50,
+        "density": 0.40,
+        "basin_diversity": 0.60
+      }
+    },
+    "neural_network": {
+      "description": "Biological neural network",
+      "desired_profile": {
+        "robustness": 0.25,
+        "life_capacity": 0.65,
+        "density": 0.15,
+        "basin_diversity": 0.70
+      }
+    },
+    "robust_sensor": {
+      "description": "Robust environmental sensor",
+      "desired_profile": {
+        "robustness": 0.80,
+        "life_capacity": 0.30,
+        "density": 0.50,
+        "basin_diversity": 0.30
+      }
+    },
+    "pattern_memory": {
+      "description": "Pattern memory / associative network",
+      "desired_profile": {
+        "robustness": 0.40,
+        "life_capacity": 0.70,
+        "density": 0.20,
+        "basin_diversity": 0.75
+      }
+    },
+    "phase_transition": {
+      "description": "Near phase transition / critical system",
+      "desired_profile": {
+        "robustness": 0.20,
+        "life_capacity": 0.60,
+        "density": 0.50,
+        "basin_diversity": 0.50
+      }
+    }
+  },
+  "mappings": [
+    {
+      "notation": "B3/S23",
+      "ca_profile": {
+        "robustness": 0.20,
+        "life_capacity": 0.70,
+        "density": 0.09,
+        "basin_diversity": 0.73
+      },
+      "closest_match": "pattern_memory",
+      "closest_match_distance": 0.14,
+      "closest_match_description": "Pattern memory / associative network",
+      "all_matches": {
+        "pattern_memory": {"distance": 0.14, "description": "Pattern memory / associative network"},
+        "neural_network": {"distance": 0.18, "description": "Biological neural network"},
+        "phase_transition": {"distance": 0.48, "description": "Near phase transition / critical system"}
+      }
+    },
+    {
+      "notation": "B36/S23",
+      "ca_profile": {
+        "robustness": 0.20,
+        "life_capacity": 0.70,
+        "density": 0.12,
+        "basin_diversity": 0.73
+      },
+      "closest_match": "pattern_memory",
+      "closest_match_distance": 0.12,
+      "closest_match_description": "Pattern memory / associative network",
+      "all_matches": {
+        "pattern_memory": {"distance": 0.12, "description": "Pattern memory / associative network"},
+        "neural_network": {"distance": 0.15, "description": "Biological neural network"},
+        "phase_transition": {"distance": 0.45, "description": "Near phase transition / critical system"}
+      }
+    },
+    {
+      "notation": "B3/S234",
+      "ca_profile": {
+        "robustness": 0.24,
+        "life_capacity": 0.68,
+        "density": 0.50,
+        "basin_diversity": 0.70
+      },
+      "closest_match": "spin_glass",
+      "closest_match_distance": 0.24,
+      "closest_match_description": "Spin glass / magnetic system",
+      "all_matches": {
+        "spin_glass": {"distance": 0.24, "description": "Spin glass / magnetic system"},
+        "phase_transition": {"distance": 0.25, "description": "Near phase transition / critical system"},
+        "pattern_memory": {"distance": 0.36, "description": "Pattern memory / associative network"}
+      }
+    },
+    {
+      "notation": "B34/S34",
+      "ca_profile": {
+        "robustness": 0.44,
+        "life_capacity": 0.32,
+        "density": 0.42,
+        "basin_diversity": 0.67
+      },
+      "closest_match": "spin_glass",
+      "closest_match_distance": 0.28,
+      "closest_match_description": "Spin glass / magnetic system",
+      "all_matches": {
+        "spin_glass": {"distance": 0.28, "description": "Spin glass / magnetic system"},
+        "robust_sensor": {"distance": 0.36, "description": "Robust environmental sensor"},
+        "phase_transition": {"distance": 0.42, "description": "Near phase transition / critical system"}
+      }
+    },
+    {
+      "notation": "B36/S234",
+      "ca_profile": {
+        "robustness": 0.25,
+        "life_capacity": 0.65,
+        "density": 0.48,
+        "basin_diversity": 0.68
+      },
+      "closest_match": "spin_glass",
+      "closest_match_distance": 0.22,
+      "closest_match_description": "Spin glass / magnetic system",
+      "all_matches": {
+        "spin_glass": {"distance": 0.22, "description": "Spin glass / magnetic system"},
+        "phase_transition": {"distance": 0.23, "description": "Near phase transition / critical system"},
+        "pattern_memory": {"distance": 0.35, "description": "Pattern memory / associative network"}
+      }
+    }
+  ],
+  "hypotheses": [
+    {
+      "physical_system": "pattern_memory",
+      "description": "Pattern memory / associative network",
+      "candidate_ca_rules": ["B3/S23", "B36/S23"],
+      "hypothesis": "CA rules B3/S23, B36/S23 exhibit dynamic profiles similar to Pattern memory / associative network",
+      "status": "SPECULATIVE - requires experimental validation",
+      "suggested_tests": [
+        "Compare attractor landscapes",
+        "Test response to perturbations",
+        "Measure information capacity"
+      ]
+    },
+    {
+      "physical_system": "spin_glass",
+      "description": "Spin glass / magnetic system",
+      "candidate_ca_rules": ["B3/S234", "B34/S34", "B36/S234"],
+      "hypothesis": "CA rules B3/S234, B34/S34, B36/S234 exhibit dynamic profiles similar to Spin glass / magnetic system",
+      "status": "SPECULATIVE - requires experimental validation",
+      "suggested_tests": [
+        "Compare attractor landscapes",
+        "Test response to perturbations",
+        "Measure information capacity"
+      ]
+    }
+  ]
+}
+

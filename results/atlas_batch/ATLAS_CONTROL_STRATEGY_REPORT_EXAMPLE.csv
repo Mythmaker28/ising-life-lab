@@ -1,0 +1,13 @@
+system_id,system_name,t2_us,t1_us,temperature_k,noise_level,target_phenomenology,winner_strategy,robustness_gain_percent,p3_robustness,p4_robustness,geometric_phase_rad,p3_variance_r,p4_variance_r
+NV-298K,NV Center Room Temp,1.8,5000,298,0.15,uniform,P4,19.2,0.0234,0.0189,0.187,0.000145,0.000089
+NV-298K,NV Center Room Temp,1.8,5000,298,0.15,fragmented,P4,12.5,0.0421,0.0368,0.201,0.000287,0.000198
+NV-77K,NV Center Cryogenic,350,8000,77,0.02,uniform,P3,-5.2,0.0089,0.0094,0.156,0.000032,0.000035
+NV-77K,NV Center Cryogenic,350,8000,77,0.02,fragmented,P4,8.7,0.0198,0.0181,0.178,0.000091,0.000074
+RP-Cry4,Radical Pair Cryptochrome,0.8,50,310,0.25,uniform,P4,24.3,0.0512,0.0388,0.223,0.000421,0.000289
+RP-Cry4,Radical Pair Cryptochrome,0.8,50,310,0.25,fragmented,P4,18.9,0.0634,0.0514,0.198,0.000523,0.000401
+SiC-VSi-Cryo,Silicon Carbide VSi Defect,800,12000,4,0.008,uniform,P3,-8.1,0.0045,0.0049,0.134,0.000018,0.000021
+SiC-VSi-Cryo,Silicon Carbide VSi Defect,800,12000,4,0.008,fragmented,P3,-3.4,0.0092,0.0095,0.145,0.000034,0.000038
+SiC-VSi-RT,Silicon Carbide VSi Room Temp,12,6000,295,0.12,uniform,P4,15.6,0.0267,0.0225,0.169,0.000156,0.000121
+SiC-VSi-RT,Silicon Carbide VSi Room Temp,12,6000,295,0.12,fragmented,P4,11.2,0.0389,0.0345,0.182,0.000234,0.000198
+
+

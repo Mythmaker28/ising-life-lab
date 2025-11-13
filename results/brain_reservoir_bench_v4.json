@@ -1,0 +1,431 @@
+{
+  "timestamp": "2025-11-11T19:47:04.130735",
+  "config": {
+    "grid_size": [
+      32,
+      32
+    ],
+    "steps": 50,
+    "seed": 42
+  },
+  "brain_results": [
+    {
+      "brain_name": "life",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.8088373776254814,
+      "results": {
+        "mse": 0.009513703520126598,
+        "nmse": 0.8088373776254814,
+        "rmse": 0.09753821569070555,
+        "mae": 0.07698134296027498,
+        "correlation": 0.5090510130766048,
+        "elapsed_time": 4.302976608276367,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "life",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Input y contains infinity or a value too large for dtype('float64').",
+      "elapsed_time": 2.446272373199463
+    },
+    {
+      "brain_name": "life",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 4.588057041168213,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "life",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 0.8083333333333333,
+      "results": {
+        "mse": 0.13773411481504783,
+        "rmse": 0.37112547044772853,
+        "accuracy": 0.8083333333333333,
+        "mae": 0.2998605877873149,
+        "elapsed_time": 3.862907648086548,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "highlife",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.823980845649548,
+      "results": {
+        "mse": 0.00969182395450914,
+        "nmse": 0.823980845649548,
+        "rmse": 0.09844706168550253,
+        "mae": 0.07828960915960805,
+        "correlation": 0.4993261767138186,
+        "elapsed_time": 4.4865827560424805,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "highlife",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Input y contains infinity or a value too large for dtype('float64').",
+      "elapsed_time": 2.3339080810546875
+    },
+    {
+      "brain_name": "highlife",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 4.3360044956207275,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "highlife",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 0.8083333333333333,
+      "results": {
+        "mse": 0.1410366767152216,
+        "rmse": 0.3755485011489483,
+        "accuracy": 0.8083333333333333,
+        "mae": 0.3078274198074923,
+        "elapsed_time": 3.95182728767395,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "life_dense",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.8272261177134236,
+      "results": {
+        "mse": 0.00972999547960421,
+        "nmse": 0.8272261177134236,
+        "rmse": 0.09864073945183202,
+        "mae": 0.078507554839857,
+        "correlation": 0.49664791211351755,
+        "elapsed_time": 4.454451322555542,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "life_dense",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Input y contains infinity or a value too large for dtype('float64').",
+      "elapsed_time": 2.2495687007904053
+    },
+    {
+      "brain_name": "life_dense",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 5.134935617446899,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "life_dense",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 0.8166666666666667,
+      "results": {
+        "mse": 0.10237929350701093,
+        "rmse": 0.319967644468954,
+        "accuracy": 0.8166666666666667,
+        "mae": 0.2629347486998178,
+        "elapsed_time": 3.9173622131347656,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "34life",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.8117680154122102,
+      "results": {
+        "mse": 0.009548174255281877,
+        "nmse": 0.8117680154122102,
+        "rmse": 0.0977147596593364,
+        "mae": 0.07742901769969918,
+        "correlation": 0.5070589853326513,
+        "elapsed_time": 4.34214448928833,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "34life",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Input y contains infinity or a value too large for dtype('float64').",
+      "elapsed_time": 2.2109010219573975
+    },
+    {
+      "brain_name": "34life",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 4.336819171905518,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "34life",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 0.7583333333333333,
+      "results": {
+        "mse": 0.1317319470208391,
+        "rmse": 0.3629489592502493,
+        "accuracy": 0.7583333333333333,
+        "mae": 0.2815950455888852,
+        "elapsed_time": 3.8266823291778564,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "36_234",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.831087141142863,
+      "results": {
+        "mse": 0.009775409592759793,
+        "nmse": 0.831087141142863,
+        "rmse": 0.0988706710443486,
+        "mae": 0.07868867460812898,
+        "correlation": 0.49442172854930666,
+        "elapsed_time": 4.473850965499878,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "36_234",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Input y contains infinity or a value too large for dtype('float64').",
+      "elapsed_time": 2.383467197418213
+    },
+    {
+      "brain_name": "36_234",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 5.0509607791900635,
+        "success": true
+      }
+    },
+    {
+      "brain_name": "36_234",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 0.8,
+      "results": {
+        "mse": 0.14109158463752464,
+        "rmse": 0.375621597671812,
+        "accuracy": 0.8,
+        "mae": 0.34595722541892704,
+        "elapsed_time": 3.919884443283081,
+        "success": true
+      }
+    }
+  ],
+  "baseline_results": [
+    {
+      "baseline_name": "esn",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.41894383522379386,
+      "results": {
+        "mse": 0.004927699374631844,
+        "nmse": 0.41894383522379386,
+        "rmse": 0.07019757385146472,
+        "mae": 0.0559416953387414,
+        "correlation": 0.7889112230389475,
+        "elapsed_time": 0.04079031944274902
+      }
+    },
+    {
+      "baseline_name": "esn",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Unknown task: narma20",
+      "elapsed_time": 3.0994415283203125e-06
+    },
+    {
+      "baseline_name": "esn",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 0.04355311393737793
+      }
+    },
+    {
+      "baseline_name": "esn",
+      "task_name": "denoising",
+      "success": false,
+      "error": "operands could not be broadcast together with shapes (100,) (3200,) ",
+      "elapsed_time": 9.632110595703125e-05
+    },
+    {
+      "baseline_name": "mlp",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 1.1274560158274236,
+      "results": {
+        "mse": 0.013261358294363956,
+        "nmse": 1.1274560158274236,
+        "rmse": 0.11515797104136542,
+        "mae": 0.08937885319205177,
+        "correlation": 0.637574671821941,
+        "elapsed_time": 0.19678020477294922
+      }
+    },
+    {
+      "baseline_name": "mlp",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Unknown task: narma20",
+      "elapsed_time": 2.384185791015625e-06
+    },
+    {
+      "baseline_name": "mlp",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 2.0032374197325784,
+        "nmse": Infinity,
+        "rmse": 1.4153577002767104,
+        "mae": 1.4153577002767102,
+        "correlation": NaN,
+        "elapsed_time": 0.00976419448852539
+      }
+    },
+    {
+      "baseline_name": "mlp",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 0.9737630208333333,
+      "results": {
+        "mse": 0.05469603314661553,
+        "rmse": 0.233871830596623,
+        "accuracy": 0.9737630208333333,
+        "mae": 0.1818028887987936,
+        "elapsed_time": 0.35442209243774414
+      }
+    },
+    {
+      "baseline_name": "linear",
+      "task_name": "narma10",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": 0.3409485109472884,
+      "results": {
+        "mse": 0.0040103031072867565,
+        "nmse": 0.3409485109472884,
+        "rmse": 0.06332695403449275,
+        "mae": 0.049860984538790405,
+        "correlation": 0.8204577549999709,
+        "elapsed_time": 0.0022003650665283203
+      }
+    },
+    {
+      "baseline_name": "linear",
+      "task_name": "narma20",
+      "success": false,
+      "error": "Unknown task: narma20",
+      "elapsed_time": 2.6226043701171875e-06
+    },
+    {
+      "baseline_name": "linear",
+      "task_name": "mackey_glass",
+      "success": true,
+      "main_metric": "nmse",
+      "main_value": Infinity,
+      "results": {
+        "mse": 0.0,
+        "nmse": Infinity,
+        "rmse": 0.0,
+        "mae": 0.0,
+        "correlation": NaN,
+        "elapsed_time": 0.0016453266143798828
+      }
+    },
+    {
+      "baseline_name": "linear",
+      "task_name": "denoising",
+      "success": true,
+      "main_metric": "accuracy",
+      "main_value": 1.0,
+      "results": {
+        "mse": 0.0028663929353052097,
+        "rmse": 0.0535387050208091,
+        "accuracy": 1.0,
+        "mae": 0.04507257710311384,
+        "elapsed_time": 0.010375499725341797
+      }
+    }
+  ]
+}
