@@ -215,73 +215,241 @@ class HolonomyPath:
         return path
 
 
+def generate_linear_ramp_path(
+    k_start: float,
+    k_end: float,
+    duration: float,
+    n_steps: int = 10,
+    annealing_start: float = 0.1,
+    annealing_end: float = 0.5,
+    name: str = "linear_ramp"
+) -> HolonomyPath:
+    """
+    Génère une trajectoire linéaire simple K_start → K_end.
+    
+    Args:
+        k_start: Force de couplage initiale
+        k_end: Force de couplage finale
+        duration: Durée totale normalisée [0, 1]
+        n_steps: Nombre de points de contrôle
+        annealing_start: Annealing initial
+        annealing_end: Annealing final
+        name: Nom de la trajectoire
+        
+    Returns:
+        HolonomyPath paramétré
+    """
+    path = HolonomyPath(
+        space=ParameterSpace.KERNEL_STRENGTHS,
+        name=name,
+        description=f"Linear ramp: K1={k_start:.2f}→{k_end:.2f}, annealing={annealing_start:.2f}→{annealing_end:.2f}"
+    )
+    
+    for i in range(n_steps):
+        t = i / (n_steps - 1) * duration
+        alpha = i / (n_steps - 1)
+        
+        k1_current = k_start + alpha * (k_end - k_start)
+        annealing_current = annealing_start + alpha * (annealing_end - annealing_start)
+        
+        path.add_point({
+            "k1": k1_current,
+            "k2": 0.0,
+            "k3": 0.0,
+            "annealing": annealing_current
+        }, t=t)
+    
+    return path
+
+
+def generate_smooth_sigmoid_path(
+    k_start: float,
+    k_end: float,
+    duration: float,
+    steepness: float = 5.0,
+    n_steps: int = 15,
+    annealing_profile: str = "increasing"
+) -> HolonomyPath:
+    """
+    Génère une trajectoire sigmoïde (transition douce).
+    
+    Args:
+        k_start: K1 initial
+        k_end: K1 final
+        duration: Durée normalisée
+        steepness: Raideur de la sigmoïde (plus élevé = transition plus abrupte)
+        n_steps: Nombre de points
+        annealing_profile: 'increasing', 'decreasing', ou 'constant'
+        
+    Returns:
+        HolonomyPath avec transition douce
+    """
+    path = HolonomyPath(
+        space=ParameterSpace.KERNEL_STRENGTHS,
+        name=f"sigmoid_{annealing_profile}",
+        description=f"Smooth sigmoid: K={k_start:.2f}→{k_end:.2f}, profile={annealing_profile}"
+    )
+    
+    def sigmoid(x, steepness):
+        return 1 / (1 + np.exp(-steepness * (x - 0.5)))
+    
+    for i in range(n_steps):
+        t = i / (n_steps - 1) * duration
+        alpha = i / (n_steps - 1)
+        
+        # Transition sigmoïde pour K1
+        sig_alpha = sigmoid(alpha, steepness)
+        k1_current = k_start + sig_alpha * (k_end - k_start)
+        
+        # Profil d'annealing
+        if annealing_profile == "increasing":
+            annealing_current = 0.1 + 0.4 * alpha
+        elif annealing_profile == "decreasing":
+            annealing_current = 0.5 - 0.4 * alpha
+        else:  # constant
+            annealing_current = 0.3
+        
+        path.add_point({
+            "k1": k1_current,
+            "k2": 0.0,
+            "k3": 0.0,
+            "annealing": annealing_current
+        }, t=t)
+    
+    return path
+
+
+def generate_multi_stage_path(
+    stages: List[Tuple[float, float, float]],
+    duration: float = 1.0,
+    n_steps_per_stage: int = 5
+) -> HolonomyPath:
+    """
+    Génère une trajectoire multi-étapes.
+    
+    Args:
+        stages: Liste de (k1, k2, annealing) pour chaque étape
+        duration: Durée totale
+        n_steps_per_stage: Points par étape
+        
+    Returns:
+        HolonomyPath avec transitions multi-étapes
+    """
+    path = HolonomyPath(
+        space=ParameterSpace.KERNEL_STRENGTHS,
+        name="multi_stage",
+        description=f"Multi-stage path with {len(stages)} stages"
+    )
+    
+    n_stages = len(stages)
+    stage_duration = duration / n_stages
+    
+    for stage_idx, (k1, k2, annealing) in enumerate(stages):
+        for step_idx in range(n_steps_per_stage):
+            t_global = (stage_idx + step_idx / n_steps_per_stage) * stage_duration
+            
+            path.add_point({
+                "k1": k1,
+                "k2": k2,
+                "k3": 0.0,
+                "annealing": annealing
+            }, t=t_global)
+    
+    return path
+
+
 class StrokeLibrary:
     """
     Bibliothèque de strokes préfabriqués pour le contrôle holonomique.
     
     Chaque stroke est une trajectoire nommée avec un effet prévisible.
+    MISE À JOUR : Maintenant avec générateurs paramétriques.
     """
     
     @staticmethod
-    def make_5meo_basic() -> HolonomyPath:
+    def make_5meo_basic(
+        k_start: float = 1.5,
+        k_end: float = 2.0,
+        duration: float = 1.0,
+        annealing_strength: float = 0.5
+    ) -> HolonomyPath:
         """
         Stroke "5-MeO-DMT Basic" : Uniformisation progressive.
+        
+        PARAMÉTRABLE : Ajuste K_start, K_end, duration, annealing.
         
         Stratégie :
             1. K1 fort, K2/K3 nuls → synchronisation locale
             2. Annealing progressif → annihilation des défauts
             3. Convergence vers état uniforme (r → 1, #defects → 0)
         
+        Args:
+            k_start: K1 initial
+            k_end: K1 final (généralement > k_start pour renforcer)
+            duration: Durée de la trajectoire [0, 1]
+            annealing_strength: Force de l'annealing final
+            
         Returns:
-            HolonomyPath fermé
+            HolonomyPath paramétré
         """
-        path = HolonomyPath(
-            space=ParameterSpace.KERNEL_STRENGTHS,
-            name="5meo_basic",
-            description="Uniformisation progressive : K1 dominant avec annealing"
+        return generate_linear_ramp_path(
+            k_start=k_start,
+            k_end=k_end,
+            duration=duration,
+            n_steps=10,
+            annealing_start=0.1,
+            annealing_end=annealing_strength,
+            name="5meo_basic_param"
         )
-        
-        # Phase 1 : K1 fort
-        path.add_point({"k1": 1.5, "k2": 0.0, "k3": 0.0, "annealing": 0.1}, t=0.0)
-        
-        # Phase 2 : Maintien avec réduction du bruit
-        path.add_point({"k1": 1.5, "k2": 0.0, "k3": 0.0, "annealing": 0.5}, t=0.5)
-        
-        # Phase 3 : Retour (boucle fermée)
-        path.add_point({"k1": 1.5, "k2": 0.0, "k3": 0.0, "annealing": 0.1}, t=1.0)
-        
-        return path
     
     @staticmethod
-    def make_dmt_chaos() -> HolonomyPath:
+    def make_dmt_chaos(
+        k1_strength: float = 1.0,
+        k2_strength: float = 0.5,
+        duration: float = 1.0,
+        oscillation_frequency: float = 3.0
+    ) -> HolonomyPath:
         """
         Stroke "DMT Chaos" : Fragmentation et instabilité.
+        
+        PARAMÉTRABLE : Ajuste forces de couplage et fréquence d'oscillation.
         
         Stratégie :
             1. Kernels compétitifs (K1 positif, K2 négatif)
             2. Oscillations de force → instabilité des défauts
             3. Haute densité de défauts persistants
         
+        Args:
+            k1_strength: Force du kernel K1
+            k2_strength: Force du kernel K2 (sera négatif)
+            duration: Durée de la trajectoire
+            oscillation_frequency: Fréquence des oscillations
+            
         Returns:
-            HolonomyPath fermé
+            HolonomyPath paramétré
         """
         path = HolonomyPath(
             space=ParameterSpace.KERNEL_STRENGTHS,
-            name="dmt_chaos",
-            description="Fragmentation chaotique : kernels compétitifs multi-échelle"
+            name="dmt_chaos_param",
+            description=f"Fragmentation chaotique : K1={k1_strength:.2f}, K2=-{k2_strength:.2f}, freq={oscillation_frequency:.1f}"
         )
         
-        # Phase 1 : K1 positif, K2 négatif
-        path.add_point({"k1": 1.0, "k2": -0.5, "k3": 0.2}, t=0.0)
-        
-        # Phase 2 : Inversion partielle
-        path.add_point({"k1": 0.5, "k2": -1.0, "k3": 0.5}, t=0.33)
-        
-        # Phase 3 : Oscillation
-        path.add_point({"k1": 1.2, "k2": -0.3, "k3": -0.2}, t=0.66)
-        
-        # Phase 4 : Retour (boucle fermée)
-        path.add_point({"k1": 1.0, "k2": -0.5, "k3": 0.2}, t=1.0)
+        n_points = int(10 * oscillation_frequency)
+        for i in range(n_points):
+            t = i / (n_points - 1) * duration
+            phase = 2 * np.pi * oscillation_frequency * t
+            
+            # Oscillations des kernels
+            k1_osc = k1_strength * (1 + 0.2 * np.sin(phase))
+            k2_osc = -k2_strength * (1 + 0.3 * np.cos(phase * 1.5))
+            k3_osc = 0.2 * np.sin(phase * 0.5)
+            
+            path.add_point({
+                "k1": k1_osc,
+                "k2": k2_osc,
+                "k3": k3_osc,
+                "annealing": 0.05
+            }, t=t)
         
         return path
     
