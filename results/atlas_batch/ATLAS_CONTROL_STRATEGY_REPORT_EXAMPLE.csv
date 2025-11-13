@@ -10,3 +10,4 @@ SiC-VSi-Cryo,Silicon Carbide VSi Defect,800,12000,4,0.008,fragmented,P3,-3.4,0.0
 SiC-VSi-RT,Silicon Carbide VSi Room Temp,12,6000,295,0.12,uniform,P4,15.6,0.0267,0.0225,0.169,0.000156,0.000121
 SiC-VSi-RT,Silicon Carbide VSi Room Temp,12,6000,295,0.12,fragmented,P4,11.2,0.0389,0.0345,0.182,0.000234,0.000198
 
+

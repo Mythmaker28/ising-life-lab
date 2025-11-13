@@ -129,7 +129,8 @@ def run_atlas_batch_processing(
     
     # 1. Charger l'Atlas
     if atlas_loader is None:
-        atlas_loader = AtlasLoader(mode='repository')  # Essaie de trouver le vrai Atlas
+        # Essayer de charger l'Atlas réel, sinon fallback vers mock
+        atlas_loader = AtlasLoader(mode='all', tier='tier1')  # Tous les systèmes tier1
     
     print(f"\n>> Loading Atlas...")
     all_profiles = atlas_loader.load_all_profiles()
@@ -303,14 +304,14 @@ def generate_strategy_recommendations(
     if len(df_medium) > 0:
         p4_wins_med = (df_medium['winner_strategy'] == 'P4').sum()
         total_med = len(df_medium)
-        recommendations.append(f"\n### 10µs ≤ T2 < 100µs (Court-Moyen) : {total_med} systèmes\n")
+        recommendations.append(f"\n### 10us <= T2 < 100us (Court-Moyen) : {total_med} systemes\n")
         recommendations.append(f"- P4 gagne dans {p4_wins_med}/{total_med} cas ({p4_wins_med/total_med*100:.0f}%)\n")
         recommendations.append("- **RECOMMANDATION** : Évaluer au cas par cas (mix P3/P4)\n")
     
     if len(df_long) > 0:
         p3_wins_long = (df_long['winner_strategy'] == 'P3').sum()
         total_long = len(df_long)
-        recommendations.append(f"\n### T2 ≥ 100µs (Long) : {total_long} systèmes\n")
+        recommendations.append(f"\n### T2 >= 100us (Long) : {total_long} systemes\n")
         recommendations.append(f"- P3 gagne dans {p3_wins_long}/{total_long} cas ({p3_wins_long/total_long*100:.0f}%)\n")
         if p3_wins_long / total_long > 0.6:
             recommendations.append("- **RECOMMANDATION** : Utiliser P3 (ramps) pour convergence rapide\n")
@@ -351,7 +352,7 @@ def generate_strategy_recommendations(
     if output_path:
         output_file = Path(output_path)
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='utf-8') as f:
             f.write(text)
     
     return text
