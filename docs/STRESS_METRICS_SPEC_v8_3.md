@@ -308,3 +308,4 @@ FP_TEST2,HighButFragile,85.0,0.25,0.35,0.40,0.750
 
 **Sans données inventées. Juste des specs claires.** ✅
 
+

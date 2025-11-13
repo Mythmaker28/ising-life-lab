@@ -1,0 +1,197 @@
+{
+  "timestamp": "2025-11-11T21:42:32.836484",
+  "rule_2d": {
+    "born": [
+      3
+    ],
+    "survive": [
+      2,
+      3
+    ]
+  },
+  "rule_3d": {
+    "born": [
+      4
+    ],
+    "survive": [
+      3,
+      4
+    ]
+  },
+  "results": [
+    {
+      "dimension": "2D",
+      "grid_size": [
+        64,
+        64
+      ],
+      "steps": 50,
+      "n_cells": 4096,
+      "total_time": 0.012642860412597656,
+      "time_per_update": 0.0002528572082519531,
+      "n_trials": 3
+    },
+    {
+      "dimension": "2D",
+      "grid_size": [
+        64,
+        64
+      ],
+      "steps": 100,
+      "n_cells": 4096,
+      "total_time": 0.024958372116088867,
+      "time_per_update": 0.00024958372116088865,
+      "n_trials": 3
+    },
+    {
+      "dimension": "2D",
+      "grid_size": [
+        128,
+        128
+      ],
+      "steps": 50,
+      "n_cells": 16384,
+      "total_time": 0.0385432243347168,
+      "time_per_update": 0.0007708644866943359,
+      "n_trials": 3
+    },
+    {
+      "dimension": "2D",
+      "grid_size": [
+        128,
+        128
+      ],
+      "steps": 100,
+      "n_cells": 16384,
+      "total_time": 0.07454848289489746,
+      "time_per_update": 0.0007454848289489746,
+      "n_trials": 3
+    },
+    {
+      "dimension": "2D",
+      "grid_size": [
+        256,
+        256
+      ],
+      "steps": 50,
+      "n_cells": 65536,
+      "total_time": 0.14386892318725586,
+      "time_per_update": 0.0028773784637451173,
+      "n_trials": 3
+    },
+    {
+      "dimension": "2D",
+      "grid_size": [
+        256,
+        256
+      ],
+      "steps": 100,
+      "n_cells": 65536,
+      "total_time": 0.2721122105916341,
+      "time_per_update": 0.002721122105916341,
+      "n_trials": 3
+    },
+    {
+      "dimension": "3D",
+      "grid_size": [
+        16,
+        16,
+        16
+      ],
+      "n_cells": 4096,
+      "steps": 50,
+      "total_time": 0.008508046468098959,
+      "time_per_update": 0.00017016092936197918,
+      "n_trials": 3
+    },
+    {
+      "dimension": "3D",
+      "grid_size": [
+        16,
+        16,
+        16
+      ],
+      "n_cells": 4096,
+      "steps": 100,
+      "total_time": 0.016883055369059246,
+      "time_per_update": 0.00016883055369059245,
+      "n_trials": 3
+    },
+    {
+      "dimension": "3D",
+      "grid_size": [
+        32,
+        32,
+        32
+      ],
+      "n_cells": 32768,
+      "steps": 50,
+      "total_time": 0.039828221003214516,
+      "time_per_update": 0.0007965644200642904,
+      "n_trials": 3
+    },
+    {
+      "dimension": "3D",
+      "grid_size": [
+        32,
+        32,
+        32
+      ],
+      "n_cells": 32768,
+      "steps": 100,
+      "total_time": 0.07820932070414226,
+      "time_per_update": 0.0007820932070414226,
+      "n_trials": 3
+    }
+  ],
+  "model": {
+    "2D": {
+      "alpha": 4.148725392518655e-08,
+      "beta": 8.002592457665343e-05,
+      "mse": 2.0906362249730577e-09,
+      "formula": "t = 4.15e-08 * n_cells + 8.00e-05"
+    },
+    "3D": {
+      "alpha": 2.1618061942890993e-08,
+      "beta": 8.0948159808204e-05,
+      "mse": 2.639823822252933e-11,
+      "formula": "t = 2.16e-08 * n_cells + 8.09e-05"
+    }
+  },
+  "budget": {
+    "2D": {
+      "(64, 64)": {
+        "n_cells": 4096,
+        "time_per_update_ms": 0.24995771665421757,
+        "max_updates_in_60s": 240040
+      },
+      "(128, 128)": {
+        "n_cells": 16384,
+        "time_per_update_ms": 0.75975309288691,
+        "max_updates_in_60s": 78973
+      },
+      "(256, 256)": {
+        "n_cells": 65536,
+        "time_per_update_ms": 2.7989345978176794,
+        "max_updates_in_60s": 21436
+      }
+    },
+    "3D": {
+      "(16, 16, 16)": {
+        "n_cells": 4096,
+        "time_per_update_ms": 0.1694957415262855,
+        "max_updates_in_60s": 353991
+      },
+      "(32, 32, 32)": {
+        "n_cells": 32768,
+        "time_per_update_ms": 0.789328813552856,
+        "max_updates_in_60s": 76013
+      },
+      "(48, 48, 48)": {
+        "n_cells": 110592,
+        "time_per_update_ms": 2.4717328661964046,
+        "max_updates_in_60s": 24274
+      }
+    }
+  }
+}

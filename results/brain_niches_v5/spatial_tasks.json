@@ -1,0 +1,82 @@
+{
+  "timestamp": "2025-11-11T21:44:09.826682",
+  "config": {
+    "grid_size": [
+      64,
+      64
+    ],
+    "n_samples": 150,
+    "steps": 10,
+    "seed": 42
+  },
+  "segmentation": [
+    {
+      "accuracy": 0.8222222222222222,
+      "f1": 0.7788137788137788,
+      "method": "CA_life",
+      "elapsed": 0.3580939769744873
+    },
+    {
+      "accuracy": 0.7777777777777778,
+      "f1": 0.7024509803921569,
+      "method": "CA_highlife",
+      "elapsed": 0.31768107414245605
+    },
+    {
+      "accuracy": 0.7555555555555555,
+      "f1": 0.7229633222842051,
+      "method": "CA_life_dense",
+      "elapsed": 0.32153964042663574
+    },
+    {
+      "accuracy": 0.6888888888888889,
+      "f1": 0.68574959831912,
+      "method": "CA_34life",
+      "elapsed": 0.3104410171508789
+    },
+    {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "method": "MLP_baseline",
+      "elapsed": 2.948026418685913
+    },
+    {
+      "accuracy": 0.9333333333333333,
+      "f1": 0.917920656634747,
+      "method": "Conv_baseline",
+      "elapsed": 0.011535882949829102
+    }
+  ],
+  "denoising": [
+    {
+      "accuracy": 0.593359375,
+      "mse": 0.406640625,
+      "method": "CA_life",
+      "elapsed": 0.3704235553741455
+    },
+    {
+      "accuracy": 0.5915462239583333,
+      "mse": 0.40845377604166666,
+      "method": "CA_highlife",
+      "elapsed": 0.35946059226989746
+    },
+    {
+      "accuracy": 0.5446419270833334,
+      "mse": 0.4553580729166667,
+      "method": "CA_life_dense",
+      "elapsed": 0.3905494213104248
+    },
+    {
+      "accuracy": 0.5758138020833333,
+      "mse": 0.4241861979166667,
+      "method": "CA_34life",
+      "elapsed": 0.3537940979003906
+    },
+    {
+      "accuracy": 0.8958642578125,
+      "mse": 0.1041357421875,
+      "method": "Median_baseline",
+      "elapsed": 0.03880476951599121
+    }
+  ]
+}

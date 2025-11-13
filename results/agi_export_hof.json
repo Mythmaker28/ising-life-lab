@@ -1,0 +1,3522 @@
+{
+  "meta": {
+    "exported_at": "2025-11-11T05:12:45.785061",
+    "version": "v2.0",
+    "description": "Ising Life Lab - AGI Memory & Hall of Fame Export (Adaptive + Diversity)",
+    "origin": "ising-life-lab",
+    "total_hof_rules": 1,
+    "total_memory_rules": 260
+  },
+  "hall_of_fame": [
+    {
+      "module_id": "mem_B3_S23",
+      "notation": "B3/S23",
+      "born": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "tier": "test",
+      "diversity_signature": "B1_3/S2_23",
+      "module_profile": "generic",
+      "suggested_use": "Usage g\u00e9n\u00e9ral, profil mixte",
+      "scores": {
+        "memory_score": 0.5,
+        "edge_score": 0.2,
+        "entropy": 0.5,
+        "composite": 0
+      },
+      "metadata": {
+        "discovered_by": "unknown",
+        "discovered_date": "unknown",
+        "promotion_reason": "unknown",
+        "tags": [
+          "moderate_edge",
+          "moderate_entropy",
+          "moderate_memory"
+        ],
+        "origin": "ising-life-lab"
+      }
+    }
+  ],
+  "memory_library": [
+    {
+      "notation": "B08/S068",
+      "born": [
+        0,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_08/S3_068",
+      "scores": {
+        "memory_score": 0.1409688581314879,
+        "edge_score": 0.48026746557183203,
+        "entropy": 0.8725253619169874,
+        "composite": 0.38906974112069104
+      },
+      "labels": [
+        "adaptive",
+        "adaptive_candidate",
+        "agi",
+        "automated",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "moderate_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:07:48.568879",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B016/S8",
+      "born": [
+        0,
+        1,
+        6
+      ],
+      "survive": [
+        8
+      ],
+      "diversity_signature": "B3_016/S1_8",
+      "scores": {
+        "memory_score": 0.07186394371969128,
+        "edge_score": 0.35011542238335397,
+        "entropy": 0.9169882436828392,
+        "composite": 0.32436424731141966
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:56:22.827799",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B067/S08",
+      "born": [
+        0,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B3_067/S2_08",
+      "scores": {
+        "memory_score": 0.020380354867169905,
+        "edge_score": 0.4839325015834216,
+        "entropy": 0.7838886626231392,
+        "composite": 0.31214766043323927
+      },
+      "labels": [
+        "adaptive",
+        "adaptive_candidate",
+        "agi",
+        "automated",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:18:38.002097",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S126",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        6
+      ],
+      "diversity_signature": "B2_18/S3_126",
+      "scores": {
+        "memory_score": 0.04186851211072668,
+        "edge_score": 0.3317836363061643,
+        "entropy": 0.9572658766313911,
+        "composite": 0.3119225222734909
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:20.773159",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S1268",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_1268",
+      "scores": {
+        "memory_score": 0.034538624410900894,
+        "edge_score": 0.3406720816420953,
+        "entropy": 0.9461608308144215,
+        "composite": 0.3087031028609633
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:29.795927",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S1267",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        6,
+        7
+      ],
+      "diversity_signature": "B2_18/S4_1267",
+      "scores": {
+        "memory_score": 0.034538624410900894,
+        "edge_score": 0.34014049367690063,
+        "entropy": 0.9429746255912711,
+        "composite": 0.30790638542677484
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:34.014181",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0126",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "diversity_signature": "B2_18/S4_0126",
+      "scores": {
+        "memory_score": 0.020274894271434047,
+        "edge_score": 0.35156074779798835,
+        "entropy": 0.9283620723948676,
+        "composite": 0.30127808595408706
+      },
+      "labels": [
+        "adaptive",
+        "adaptive_candidate",
+        "agi",
+        "automated",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:43:43.163816",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B016/S08",
+      "born": [
+        0,
+        1,
+        6
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B3_016/S2_08",
+      "scores": {
+        "memory_score": 0.041886089599058894,
+        "edge_score": 0.3212372679990907,
+        "entropy": 0.9189455003071654,
+        "composite": 0.3011033252606897
+      },
+      "labels": [
+        "adaptive",
+        "adaptive_candidate",
+        "agi",
+        "automated",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:18:23.934132",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S1256",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "diversity_signature": "B2_18/S4_1256",
+      "scores": {
+        "memory_score": 0.0169045830202855,
+        "edge_score": 0.3288482934103523,
+        "entropy": 0.9492519731528918,
+        "composite": 0.29695717416382683
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:44.484597",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B178/S026",
+      "born": [
+        1,
+        7,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6
+      ],
+      "diversity_signature": "B3_178/S3_026",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4684726190569294,
+        "entropy": 0.7788275455263486,
+        "composite": 0.2963072948223485
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:51:29.182992",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S068",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S3_068",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.5025141057086252,
+        "entropy": 0.7203628404720206,
+        "composite": 0.29482679980699167
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 8,
+        "last_seen_iter": "2025-11-11T04:43:47.327846",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0
+      ],
+      "diversity_signature": "B2_18/S1_0",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.47950917746148225,
+        "entropy": 0.7542754098178032,
+        "composite": 0.29470783520200533
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:09.081815",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B08/S06",
+      "born": [
+        0,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B2_08/S2_06",
+      "scores": {
+        "memory_score": 0.04186851211072668,
+        "edge_score": 0.4765791411975163,
+        "entropy": 0.6530369782801025,
+        "composite": 0.29451539407063876
+      },
+      "labels": [
+        "closed_loop",
+        "evaluated",
+        "low_memory",
+        "moderate_entropy",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:18.556481",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S68",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S2_68",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.5065713629573476,
+        "entropy": 0.7104542924579511,
+        "composite": 0.2940622673787945
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:51:41.009939",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S08",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B2_18/S2_08",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4537041839149011,
+        "entropy": 0.7888805713722642,
+        "composite": 0.29388736944892313
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:51:21.543247",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B01/S06",
+      "born": [
+        0,
+        1
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B2_01/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4153727818765586,
+        "entropy": 0.8463541013584317,
+        "composite": 0.2938826548346539
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:59:19.429372",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0678",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        7,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_0678",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4361311371668905,
+        "entropy": 0.8143591038537923,
+        "composite": 0.2937111619208256
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:51:47.923987",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S056",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        5,
+        6
+      ],
+      "diversity_signature": "B3_158/S3_056",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.41464102618609827,
+        "entropy": 0.8463541013584317,
+        "composite": 0.2936631281275158
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:43:14.320838",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B01567/S08",
+      "born": [
+        0,
+        1,
+        5,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B5_01567/S2_08",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4104516709856747,
+        "entropy": 0.8518061887486321,
+        "composite": 0.29349673904542883
+      },
+      "labels": [
+        "adaptive",
+        "adaptive_candidate",
+        "agi",
+        "automated",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T02:52:35.694301",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S06",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B2_18/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4090969293043153,
+        "entropy": 0.8518061887486321,
+        "composite": 0.293090316541021
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 9,
+        "last_seen_iter": "2025-11-11T04:59:22.604567",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1/S06",
+      "born": [
+        1
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B1_1/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4090969293043153,
+        "entropy": 0.8518061887486321,
+        "composite": 0.293090316541021
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:50:29.409447",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0568",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        5,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_0568",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4261553812994412,
+        "entropy": 0.8234274317947734,
+        "composite": 0.29253210074878705
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:51:47.923972",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S06",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B3_158/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.44244248091046706,
+        "entropy": 0.798659130358246,
+        "composite": 0.29246457034478934
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T00:44:00.636018",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S1246",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "diversity_signature": "B2_18/S4_1246",
+      "scores": {
+        "memory_score": 0.0169045830202855,
+        "edge_score": 0.3173972944858714,
+        "entropy": 0.9421631690835511,
+        "composite": 0.2921041136726144
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:44.484578",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B018/S016",
+      "born": [
+        0,
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        1,
+        6
+      ],
+      "diversity_signature": "B3_018/S3_016",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.388337970897712,
+        "entropy": 0.877437311089633,
+        "composite": 0.2919888534872402
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:39:36.612052",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B167/S8",
+      "born": [
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        8
+      ],
+      "diversity_signature": "B3_167/S1_8",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.43744399934417505,
+        "entropy": 0.803446922973095,
+        "composite": 0.29192258439787155
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:56:08.678800",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1/S126",
+      "born": [
+        1
+      ],
+      "survive": [
+        1,
+        2,
+        6
+      ],
+      "diversity_signature": "B1_1/S3_126",
+      "scores": {
+        "memory_score": 0.020274894271434047,
+        "edge_score": 0.2838465599824285,
+        "entropy": 0.9823166080205501,
+        "composite": 0.29175473673455565
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "moderate_edge"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:54:18.456466",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1/S068",
+      "born": [
+        1
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B1_1/S3_068",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.42906246044779467,
+        "entropy": 0.8143591038537923,
+        "composite": 0.2915905589050969
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:51:41.009859",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B28/S06",
+      "born": [
+        2,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B2_28/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4480388381898818,
+        "entropy": 0.7855602922535472,
+        "composite": 0.29152370990767396
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T05:09:02.106603",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B28/S068",
+      "born": [
+        2,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_28/S3_068",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4480388381898818,
+        "entropy": 0.7855602922535472,
+        "composite": 0.29152370990767396
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:19.882951",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0167/S8",
+      "born": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        8
+      ],
+      "diversity_signature": "B4_0167/S1_8",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4182863922849588,
+        "entropy": 0.8293289299279161,
+        "composite": 0.2913517036710709
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:20.773117",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S068",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B3_158/S3_068",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.38278213595160976,
+        "entropy": 0.88224379779762,
+        "composite": 0.2912834003450069
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T05:09:02.733044",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0168",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        1,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_0168",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4093027549999747,
+        "entropy": 0.840791205012962,
+        "composite": 0.2909490675025848
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:29.795841",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S36",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        3,
+        6
+      ],
+      "diversity_signature": "B2_18/S2_36",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4018255163704954,
+        "entropy": 0.8518061887486321,
+        "composite": 0.29090889266087505
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T03:18:06.459210",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1568/S06",
+      "born": [
+        1,
+        5,
+        6,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_1568/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.42303348388664475,
+        "entropy": 0.8174108828059471,
+        "composite": 0.2903922217271828
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:22.130265",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S026",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6
+      ],
+      "diversity_signature": "B2_18/S3_026",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.45237755266977225,
+        "entropy": 0.7719706699485863,
+        "composite": 0.2901073997906489
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T00:51:09.081910",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S12",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2
+      ],
+      "diversity_signature": "B2_18/S2_12",
+      "scores": {
+        "memory_score": 0.008359060173485389,
+        "edge_score": 0.3135497378385985,
+        "entropy": 0.957959214303292,
+        "composite": 0.28983629429898067
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T00:51:37.494756",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B04/S3",
+      "born": [
+        0,
+        4
+      ],
+      "survive": [
+        3
+      ],
+      "diversity_signature": "B2_04/S1_3",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.44275178188588155,
+        "entropy": 0.7838886626231392,
+        "composite": 0.2896032670903923
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 14,
+        "last_seen_iter": "2025-11-11T02:16:14.816711",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0268",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_0268",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.37038883176856474,
+        "entropy": 0.8915435098801496,
+        "composite": 0.28942535150659937
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 8,
+        "last_seen_iter": "2025-11-11T05:09:03.271243",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B28/S36",
+      "born": [
+        2,
+        8
+      ],
+      "survive": [
+        3,
+        6
+      ],
+      "diversity_signature": "B2_28/S2_36",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4069669471841227,
+        "entropy": 0.8365457112262327,
+        "composite": 0.2893992264004833
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:16:10.178497",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S046",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        4,
+        6
+      ],
+      "diversity_signature": "B3_158/S3_046",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.45813836357265997,
+        "entropy": 0.7578784625383954,
+        "composite": 0.2890172015794771
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:39:34.536453",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B018/S026",
+      "born": [
+        0,
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6
+      ],
+      "diversity_signature": "B3_018/S3_026",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3686596971302755,
+        "entropy": 0.8915435098801496,
+        "composite": 0.2889066111151126
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:51:31.157676",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0368",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        3,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_0368",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4119721318331215,
+        "entropy": 0.8263924914287071,
+        "composite": 0.28887013783567783
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:51:25.649092",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S026",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6
+      ],
+      "diversity_signature": "B3_158/S3_026",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.40581666328170823,
+        "entropy": 0.8351164948421137,
+        "composite": 0.28876829795293524
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:18.994826",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0256",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        5,
+        6
+      ],
+      "diversity_signature": "B2_18/S4_0256",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4156510484055781,
+        "entropy": 0.8174108828059471,
+        "composite": 0.28817749108286284
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:18.108448",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S036",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        3,
+        6
+      ],
+      "diversity_signature": "B3_158/S3_036",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4060853981821398,
+        "entropy": 0.830786459611206,
+        "composite": 0.28798291137688314
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:26:10.205546",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S16",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        6
+      ],
+      "diversity_signature": "B2_18/S2_16",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4588850634172549,
+        "entropy": 0.7506399446452308,
+        "composite": 0.28779350795422265
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:54:18.864317",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S067",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        7
+      ],
+      "diversity_signature": "B3_158/S3_067",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.42368369074734136,
+        "entropy": 0.798659130358246,
+        "composite": 0.2868369332958516
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:25:09.702900",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0468",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        4,
+        6,
+        8
+      ],
+      "diversity_signature": "B2_18/S4_0468",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.40496360447688984,
+        "entropy": 0.8263924914287071,
+        "composite": 0.2867675796288084
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T00:51:44.484627",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B15/S06",
+      "born": [
+        1,
+        5
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B2_15/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.37667272961958953,
+        "entropy": 0.8687717006080347,
+        "composite": 0.2867561590074838
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:18:47.435025",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B128/S046",
+      "born": [
+        1,
+        2,
+        8
+      ],
+      "survive": [
+        0,
+        4,
+        6
+      ],
+      "diversity_signature": "B3_128/S3_046",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3604715556175745,
+        "entropy": 0.8915435098801496,
+        "composite": 0.2864501686613023
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T03:18:02.684630",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S26",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        2,
+        6
+      ],
+      "diversity_signature": "B2_18/S2_26",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4086058258511858,
+        "entropy": 0.8174108828059471,
+        "composite": 0.28606392431654515
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:18:42.675956",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B128/S036",
+      "born": [
+        1,
+        2,
+        8
+      ],
+      "survive": [
+        0,
+        3,
+        6
+      ],
+      "diversity_signature": "B3_128/S3_036",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.34456948907344764,
+        "entropy": 0.9129992135852473,
+        "composite": 0.28597068943908377
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:07:51.373289",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0167/S018",
+      "born": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        1,
+        8
+      ],
+      "diversity_signature": "B4_0167/S3_018",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3251003578184729,
+        "entropy": 0.9421631690835511,
+        "composite": 0.2859627411622521
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T04:43:42.139639",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1578/S06",
+      "born": [
+        1,
+        5,
+        7,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_1578/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4728372811237605,
+        "entropy": 0.7203628404720206,
+        "composite": 0.2859237524315323
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:59:18.108428",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0236",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        3,
+        6
+      ],
+      "diversity_signature": "B2_18/S4_0236",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3310771460722045,
+        "entropy": 0.9319574523469683,
+        "composite": 0.28571463429105504
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:22.604605",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S0",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0
+      ],
+      "diversity_signature": "B3_158/S1_0",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4239918801325823,
+        "entropy": 0.7921703563573823,
+        "composite": 0.28563163531125113
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T05:09:01.653057",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0267",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6,
+        7
+      ],
+      "diversity_signature": "B2_18/S4_0267",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.37372348331112204,
+        "entropy": 0.8675071344816212,
+        "composite": 0.28561847188966083
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 8,
+        "last_seen_iter": "2025-11-11T04:43:45.238314",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B148/S16",
+      "born": [
+        1,
+        4,
+        8
+      ],
+      "survive": [
+        1,
+        6
+      ],
+      "diversity_signature": "B3_148/S2_16",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.36751126348648466,
+        "entropy": 0.8725253619169874,
+        "composite": 0.28475845142934286
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:25:51.526512",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B03/S3",
+      "born": [
+        0,
+        3
+      ],
+      "survive": [
+        3
+      ],
+      "diversity_signature": "B2_03/S1_3",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.37681460628988084,
+        "entropy": 0.8571484374283715,
+        "composite": 0.2844740693726386
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T01:51:11.098323",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0158/S06",
+      "born": [
+        0,
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_0158/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.36635981617342894,
+        "entropy": 0.8725253619169874,
+        "composite": 0.28441301723542617
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T05:09:03.786512",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1368/S06",
+      "born": [
+        1,
+        3,
+        6,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_1368/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.37141267011672546,
+        "entropy": 0.8623817843585116,
+        "composite": 0.28390015790671996
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:59:16.318590",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B017/S08",
+      "born": [
+        0,
+        1,
+        7
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B3_017/S2_08",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.348767445126395,
+        "entropy": 0.8960382325345574,
+        "composite": 0.28383788004483
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:35:46.859938",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S02",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2
+      ],
+      "diversity_signature": "B2_18/S2_02",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.34844474053469754,
+        "entropy": 0.8960382325345574,
+        "composite": 0.28374106866732074
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:43:43.163861",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B18/S0246",
+      "born": [
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "diversity_signature": "B2_18/S4_0246",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.342239853094071,
+        "entropy": 0.9047209661860875,
+        "composite": 0.2836161491654388
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:18.994888",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B3/S234",
+      "born": [
+        3
+      ],
+      "survive": [
+        2,
+        3,
+        4
+      ],
+      "diversity_signature": "B1_3/S3_234",
+      "scores": {
+        "memory_score": 0.034538624410900894,
+        "edge_score": 0.21840665555133967,
+        "entropy": 0.9992954443621549,
+        "composite": 0.2826503977432833
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "moderate_edge"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T01:44:28.985535",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0148/S126",
+      "born": [
+        0,
+        1,
+        4,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        6
+      ],
+      "diversity_signature": "B4_0148/S3_126",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.31130857979788523,
+        "entropy": 0.9453732087003415,
+        "composite": 0.2824672156794339
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T05:09:02.998479",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S056",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        0,
+        5,
+        6
+      ],
+      "diversity_signature": "B3_138/S3_056",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.34939712548512036,
+        "entropy": 0.8869456102215852,
+        "composite": 0.2822082596898532
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:43:46.281796",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B018/S68",
+      "born": [
+        0,
+        1,
+        8
+      ],
+      "survive": [
+        6,
+        8
+      ],
+      "diversity_signature": "B3_018/S2_68",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.37249583435708045,
+        "entropy": 0.8518061887486321,
+        "composite": 0.28210998805685056
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T00:54:19.027165",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B168/S026",
+      "born": [
+        1,
+        6,
+        8
+      ],
+      "survive": [
+        0,
+        2,
+        6
+      ],
+      "diversity_signature": "B3_168/S3_026",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3949809934466557,
+        "entropy": 0.8174108828059471,
+        "composite": 0.28197647459518616
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:20.331694",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S016",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        1,
+        6
+      ],
+      "diversity_signature": "B3_158/S3_016",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.36126477752318664,
+        "entropy": 0.8675071344816212,
+        "composite": 0.28188086015328023
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:51:27.609402",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B018/S046",
+      "born": [
+        0,
+        1,
+        8
+      ],
+      "survive": [
+        0,
+        4,
+        6
+      ],
+      "diversity_signature": "B3_018/S3_046",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.34443580799905393,
+        "entropy": 0.8915435098801496,
+        "composite": 0.2816394443757461
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:26:19.401988",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0167/S08",
+      "born": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B4_0167/S2_08",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.34872097251392864,
+        "entropy": 0.8846077400861418,
+        "composite": 0.28153783977140695
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T00:44:00.635957",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S046",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        0,
+        4,
+        6
+      ],
+      "diversity_signature": "B3_138/S3_046",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.33466461060430214,
+        "entropy": 0.9047209661860875,
+        "composite": 0.28134357641850816
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:07:50.663619",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B158/S6",
+      "born": [
+        1,
+        5,
+        8
+      ],
+      "survive": [
+        6
+      ],
+      "diversity_signature": "B3_158/S1_6",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.35272714078731343,
+        "entropy": 0.877437311089633,
+        "composite": 0.2813056044541206
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T05:09:03.786493",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S6",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        6
+      ],
+      "diversity_signature": "B3_138/S1_6",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3237105102953218,
+        "entropy": 0.9208780154383214,
+        "composite": 0.2812887561762608
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:18.108405",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S068",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B3_138/S3_068",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3185500753249979,
+        "entropy": 0.9283620723948676,
+        "composite": 0.2812374370764729
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:35:48.471019",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B267/S148",
+      "born": [
+        2,
+        6,
+        7
+      ],
+      "survive": [
+        1,
+        4,
+        8
+      ],
+      "diversity_signature": "B3_267/S3_148",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3483345207053653,
+        "entropy": 0.88224379779762,
+        "composite": 0.2809491157711336
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 2,
+        "last_seen_iter": "2025-11-11T04:59:23.476682",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B017/S8",
+      "born": [
+        0,
+        1,
+        7
+      ],
+      "survive": [
+        8
+      ],
+      "diversity_signature": "B3_017/S1_8",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3299750603578243,
+        "entropy": 0.9089103274103589,
+        "composite": 0.2807745835894191
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T00:56:26.252194",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1/S026",
+      "born": [
+        1
+      ],
+      "survive": [
+        0,
+        2,
+        6
+      ],
+      "diversity_signature": "B1_1/S3_026",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.34051082112664766,
+        "entropy": 0.8915435098801496,
+        "composite": 0.2804619483140242
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:22.604534",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B045/S3",
+      "born": [
+        0,
+        4,
+        5
+      ],
+      "survive": [
+        3
+      ],
+      "diversity_signature": "B3_045/S1_3",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3310528974075504,
+        "entropy": 0.9047209661860875,
+        "composite": 0.28026006245948265
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:16.763888",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B13/S06",
+      "born": [
+        1,
+        3
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B2_13/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3773864215698304,
+        "entropy": 0.8351164948421137,
+        "composite": 0.28023922543937185
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:39:35.573533",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B128/S068",
+      "born": [
+        1,
+        2,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "diversity_signature": "B3_128/S3_068",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.31030002622692393,
+        "entropy": 0.9354557645575772,
+        "composite": 0.28018116077959265
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:18.556459",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S067",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        7
+      ],
+      "diversity_signature": "B3_138/S3_067",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3408532234651867,
+        "entropy": 0.8892575025680446,
+        "composite": 0.28010746755316496
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 4,
+        "last_seen_iter": "2025-11-11T02:25:09.702875",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B167/S08",
+      "born": [
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        8
+      ],
+      "diversity_signature": "B3_167/S2_08",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3881038988256301,
+        "entropy": 0.8174108828059471,
+        "composite": 0.2799133462088785
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:07:52.098022",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0178/S06",
+      "born": [
+        0,
+        1,
+        7,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_0178/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.27476411691780983,
+        "entropy": 0.985687679358613,
+        "composite": 0.27956677094706556
+      },
+      "labels": [
+        "agi",
+        "automated",
+        "bootstrap",
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "hof",
+        "low_memory",
+        "moderate_edge"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:07:49.645792",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0168/S06",
+      "born": [
+        0,
+        1,
+        6,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_0168/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3399174045302863,
+        "entropy": 0.8869456102215852,
+        "composite": 0.27936434340340294
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:43:41.092566",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B148/S1268",
+      "born": [
+        1,
+        4,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        6,
+        8
+      ],
+      "diversity_signature": "B3_148/S4_1268",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.33351469564025016,
+        "entropy": 0.8960382325345574,
+        "composite": 0.2792620551989865
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T04:43:40.073738",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1458/S06",
+      "born": [
+        1,
+        4,
+        5,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_1458/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.29598947665130704,
+        "entropy": 0.9515082024691666,
+        "composite": 0.27909848348922545
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "moderate_edge"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:59:20.773144",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B14/S3",
+      "born": [
+        1,
+        4
+      ],
+      "survive": [
+        3
+      ],
+      "diversity_signature": "B2_14/S1_3",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3059121959745387,
+        "entropy": 0.9354557645575772,
+        "composite": 0.27886481170387706
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T01:59:15.557295",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0167/S028",
+      "born": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        2,
+        8
+      ],
+      "diversity_signature": "B4_0167/S3_028",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.30820567995762443,
+        "entropy": 0.9319574523469683,
+        "composite": 0.278853194456681
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T04:43:16.546973",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0148/S06",
+      "born": [
+        0,
+        1,
+        4,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B4_0148/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3232298467990177,
+        "entropy": 0.9089103274103589,
+        "composite": 0.2787510195217771
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 7,
+        "last_seen_iter": "2025-11-11T04:43:48.378475",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S016",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        0,
+        1,
+        6
+      ],
+      "diversity_signature": "B3_138/S3_016",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.27476572273429944,
+        "entropy": 0.9804957926024032,
+        "composite": 0.2785288753407705
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "moderate_edge"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 5,
+        "last_seen_iter": "2025-11-11T02:52:39.913972",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B0167/S058",
+      "born": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "survive": [
+        0,
+        5,
+        8
+      ],
+      "diversity_signature": "B4_0167/S3_058",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3091379716425195,
+        "entropy": 0.9283620723948676,
+        "composite": 0.2784138059717294
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T02:52:36.775490",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B24/S3",
+      "born": [
+        2,
+        4
+      ],
+      "survive": [
+        3
+      ],
+      "diversity_signature": "B2_24/S1_3",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3192663063398396,
+        "entropy": 0.9129992135852473,
+        "composite": 0.27837973461900134
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T01:44:10.032152",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B128/S06",
+      "born": [
+        1,
+        2,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B3_128/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.33461774483813433,
+        "entropy": 0.8892575025680446,
+        "composite": 0.27823682396504923
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T00:44:00.635994",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B138/S06",
+      "born": [
+        1,
+        3,
+        8
+      ],
+      "survive": [
+        0,
+        6
+      ],
+      "diversity_signature": "B3_138/S2_06",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.3269429754110968,
+        "entropy": 0.9004304890456556,
+        "composite": 0.27816899043246013
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 1,
+        "last_seen_iter": "2025-11-11T00:44:00.636006",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B08/S36",
+      "born": [
+        0,
+        8
+      ],
+      "survive": [
+        3,
+        6
+      ],
+      "diversity_signature": "B2_08/S2_36",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.4162424559319212,
+        "entropy": 0.7649881629079047,
+        "composite": 0.2778703693611573
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 14,
+        "last_seen_iter": "2025-11-11T02:49:20.283492",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B1468/S126",
+      "born": [
+        1,
+        4,
+        6,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        6
+      ],
+      "diversity_signature": "B4_1468/S3_126",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.320088668076906,
+        "entropy": 0.9089103274103589,
+        "composite": 0.2778086659051436
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "robust"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 3,
+        "last_seen_iter": "2025-11-11T03:18:03.889123",
+        "origin": "ising-life-lab"
+      }
+    },
+    {
+      "notation": "B128/S6",
+      "born": [
+        1,
+        2,
+        8
+      ],
+      "survive": [
+        6
+      ],
+      "diversity_signature": "B3_128/S1_6",
+      "scores": {
+        "memory_score": 0.0,
+        "edge_score": 0.2979083347489409,
+        "entropy": 0.9421631690835511,
+        "composite": 0.2778051342413925
+      },
+      "labels": [
+        "closed_loop",
+        "dynamic",
+        "evaluated",
+        "high_entropy",
+        "low_memory",
+        "moderate_edge"
+      ],
+      "metadata": {
+        "source": "closed_loop_iteration",
+        "discovered_date": "2025-11-11",
+        "times_evaluated": 6,
+        "last_seen_iter": "2025-11-11T04:59:17.216888",
+        "origin": "ising-life-lab"
+      }
+    }
+  ]
+}

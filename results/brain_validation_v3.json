@@ -1,0 +1,469 @@
+[
+  {
+    "notation": "B3/S23",
+    "born": [
+      3
+    ],
+    "survive": [
+      2,
+      3
+    ],
+    "vectorized": true,
+    "timestamp": "2025-11-11T19:42:17.682913",
+    "grid_tests": [
+      {
+        "grid_size": [
+          32,
+          32
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.0821683406829834
+      },
+      {
+        "grid_size": [
+          64,
+          64
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.17857837677001953
+      },
+      {
+        "grid_size": [
+          128,
+          128
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.4795229434967041
+      }
+    ],
+    "noise_tests": [
+      {
+        "noise_level": 0.0,
+        "robustness_score": 1.0,
+        "elapsed_time": 0.024771451950073242
+      },
+      {
+        "noise_level": 0.1,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.035454511642456055
+      },
+      {
+        "noise_level": 0.2,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03761887550354004
+      },
+      {
+        "noise_level": 0.3,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.040587425231933594
+      },
+      {
+        "noise_level": 0.4,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.04215049743652344
+      }
+    ],
+    "life_capacity": {
+      "life_capacity_score": 0.7,
+      "patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "elapsed_time": 0.006446123123168945
+    },
+    "summary": {
+      "avg_functional_score": 0.0,
+      "avg_robustness_to_noise": 0.2,
+      "life_capacity_score": 0.7,
+      "total_elapsed_time": 0.9272985458374023
+    }
+  },
+  {
+    "notation": "B36/S23",
+    "born": [
+      3,
+      6
+    ],
+    "survive": [
+      2,
+      3
+    ],
+    "vectorized": true,
+    "timestamp": "2025-11-11T19:42:18.610830",
+    "grid_tests": [
+      {
+        "grid_size": [
+          32,
+          32
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.07311773300170898
+      },
+      {
+        "grid_size": [
+          64,
+          64
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.16441774368286133
+      },
+      {
+        "grid_size": [
+          128,
+          128
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.4985496997833252
+      }
+    ],
+    "noise_tests": [
+      {
+        "noise_level": 0.0,
+        "robustness_score": 1.0,
+        "elapsed_time": 0.023031234741210938
+      },
+      {
+        "noise_level": 0.1,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03294634819030762
+      },
+      {
+        "noise_level": 0.2,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03562569618225098
+      },
+      {
+        "noise_level": 0.3,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03853583335876465
+      },
+      {
+        "noise_level": 0.4,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.04078531265258789
+      }
+    ],
+    "life_capacity": {
+      "life_capacity_score": 0.7,
+      "patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "elapsed_time": 0.005597352981567383
+    },
+    "summary": {
+      "avg_functional_score": 0.0,
+      "avg_robustness_to_noise": 0.2,
+      "life_capacity_score": 0.7,
+      "total_elapsed_time": 0.912606954574585
+    }
+  },
+  {
+    "notation": "B34/S34",
+    "born": [
+      3,
+      4
+    ],
+    "survive": [
+      3,
+      4
+    ],
+    "vectorized": true,
+    "timestamp": "2025-11-11T19:42:19.523952",
+    "grid_tests": [
+      {
+        "grid_size": [
+          32,
+          32
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.0720067024230957
+      },
+      {
+        "grid_size": [
+          64,
+          64
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.17385435104370117
+      },
+      {
+        "grid_size": [
+          128,
+          128
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.5402076244354248
+      }
+    ],
+    "noise_tests": [
+      {
+        "noise_level": 0.0,
+        "robustness_score": 1.0,
+        "elapsed_time": 0.023561477661132812
+      },
+      {
+        "noise_level": 0.1,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03471493721008301
+      },
+      {
+        "noise_level": 0.2,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03920769691467285
+      },
+      {
+        "noise_level": 0.3,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.04213857650756836
+      },
+      {
+        "noise_level": 0.4,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.04402494430541992
+      }
+    ],
+    "life_capacity": {
+      "life_capacity_score": 0.32,
+      "patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "glider": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "beacon": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        }
+      },
+      "elapsed_time": 0.006082296371459961
+    },
+    "summary": {
+      "avg_functional_score": 0.0,
+      "avg_robustness_to_noise": 0.2,
+      "life_capacity_score": 0.32,
+      "total_elapsed_time": 0.9757986068725586
+    }
+  },
+  {
+    "notation": "B3/S234",
+    "born": [
+      3
+    ],
+    "survive": [
+      2,
+      3,
+      4
+    ],
+    "vectorized": true,
+    "timestamp": "2025-11-11T19:42:20.500401",
+    "grid_tests": [
+      {
+        "grid_size": [
+          32,
+          32
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.07747054100036621
+      },
+      {
+        "grid_size": [
+          64,
+          64
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.17244815826416016
+      },
+      {
+        "grid_size": [
+          128,
+          128
+        ],
+        "capacity_score": 0.0,
+        "robustness_score": 0.0,
+        "basin_score": 0.0,
+        "functional_score": 0.0,
+        "elapsed_time": 0.5429439544677734
+      }
+    ],
+    "noise_tests": [
+      {
+        "noise_level": 0.0,
+        "robustness_score": 1.0,
+        "elapsed_time": 0.028430700302124023
+      },
+      {
+        "noise_level": 0.1,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.03582024574279785
+      },
+      {
+        "noise_level": 0.2,
+        "robustness_score": 0.08,
+        "elapsed_time": 0.03670763969421387
+      },
+      {
+        "noise_level": 0.3,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.04027962684631348
+      },
+      {
+        "noise_level": 0.4,
+        "robustness_score": 0.0,
+        "elapsed_time": 0.04269099235534668
+      }
+    ],
+    "life_capacity": {
+      "life_capacity_score": 0.68,
+      "patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.05859375
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.033203125
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0078125
+        }
+      },
+      "elapsed_time": 0.005777835845947266
+    },
+    "summary": {
+      "avg_functional_score": 0.0,
+      "avg_robustness_to_noise": 0.21600000000000003,
+      "life_capacity_score": 0.68,
+      "total_elapsed_time": 0.982569694519043
+    }
+  }
+]

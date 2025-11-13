@@ -5,3 +5,4 @@ from .projection import ProjectionMap
 
 __all__ = ['detect_vortices', 'compute_winding_number', 'DefectMetrics', 'ProjectionMap']
 
+

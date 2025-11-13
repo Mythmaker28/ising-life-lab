@@ -258,3 +258,4 @@ print(f"Top: {df_scored.iloc[0]['protein_name']} (score {df_scored.iloc[0]['func
 
 **Toolkit core r1 : Stable, testé, documenté, prêt pour usage externe.** ✅
 
+

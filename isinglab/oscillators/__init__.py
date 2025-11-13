@@ -4,3 +4,4 @@ from .kuramoto_xy import KuramotoXYEngine, MultiKernelConfig
 
 __all__ = ['KuramotoXYEngine', 'MultiKernelConfig']
 
+

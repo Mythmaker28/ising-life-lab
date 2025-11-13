@@ -1,0 +1,12 @@
+{
+  "model": "LogisticRegression",
+  "train_stats": {
+    "n_samples": 285,
+    "train_accuracy": 0.7236842105263158,
+    "test_accuracy": 0.7192982456140351,
+    "class_balance": {
+      "positive": 76,
+      "negative": 209
+    }
+  }
+}

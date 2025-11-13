@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ising-memory-ai-lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ising-memory-ai-lab</h1>
+      <p>Analyse de la mÃ©moire des rÃ¨gles CA Life-like et comparaison avec les rÃ©seaux de Hopfield</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="ca-playground">CA Playground</button>
+      <button class="tab-btn" data-tab="memory-lab">Memory Lab</button>
+      <button class="tab-btn" data-tab="hopfield-lab">Hopfield Comparison</button>
+    </nav>
+
+    <!-- CA Playground Tab -->
+    <div id="ca-playground" class="tab-content active">
+      <div class="section">
+        <h2>CA Playground</h2>
+        <div class="controls">
+          <label>
+            RÃ¨gle:
+            <select id="ruleSelect"></select>
+          </label>
+          <button id="startBtn">Start</button>
+          <button id="stopBtn">Stop</button>
+          <button id="stepBtn">Step</button>
+          <button id="randomBtn">Random</button>
+          <button id="clearBtn">Clear</button>
+        </div>
+        <canvas id="caCanvas"></canvas>
+        <div class="metrics" id="caMetrics">
+          FPS: 0 | Step: 0 | Population: 0
+        </div>
+      </div>
+    </div>
+
+    <!-- Memory Lab Tab -->
+    <div id="memory-lab" class="tab-content">
+      <div class="section">
+        <h2>Memory Lab</h2>
+        <div class="memory-controls">
+          <div class="pattern-editor">
+            <h3>Ã‰diteur de Pattern (32Ã—32)</h3>
+            <canvas id="patternCanvas"></canvas>
+            <div class="pattern-buttons">
+              <button id="addPatternBtn">Add Pattern</button>
+              <button id="clearPatternBtn">Clear</button>
+            </div>
+          </div>
+          <div class="test-config">
+            <h3>Configuration du Test</h3>
+            <label>
+              RÃ¨gle:
+              <select id="memoryRuleSelect"></select>
+            </label>
+            <label>
+              Noise Level:
+              <input type="range" id="noiseSlider" min="0" max="0.3" step="0.01" value="0.05">
+              <span id="noiseValue">0.05</span>
+            </label>
+            <label>
+              Steps:
+              <input type="range" id="stepsSlider" min="10" max="200" step="10" value="80">
+              <span id="stepsValue">80</span>
+            </label>
+            <label>
+              Runs:
+              <input type="range" id="runsSlider" min="10" max="100" step="10" value="50">
+              <span id="runsValue">50</span>
+            </label>
+            <button id="runMemoryTestBtn">Run Memory Test</button>
+          </div>
+        </div>
+        <div class="patterns-list">
+          <h3>Patterns SauvegardÃ©s</h3>
+          <div id="patternsContainer"></div>
+        </div>
+        <div class="progress-container" id="progressContainer" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text" id="progressText">0%</div>
+        </div>
+        <div class="results-container">
+          <h3>RÃ©sultats</h3>
+          <div id="memoryResults"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hopfield Lab Tab -->
+    <div id="hopfield-lab" class="tab-content">
+      <div class="section">
+        <h2>Hopfield Comparison</h2>
+        <div class="hopfield-controls">
+          <p>Utilise les patterns crÃ©Ã©s dans Memory Lab</p>
+          <label>
+            RÃ¨gle CA:
+            <select id="hopfieldRuleSelect"></select>
+          </label>
+          <label>
+            Noise Level:
+            <input type="range" id="hopfieldNoiseSlider" min="0" max="0.3" step="0.01" value="0.05">
+            <span id="hopfieldNoiseValue">0.05</span>
+          </label>
+          <label>
+            Runs:
+            <input type="range" id="hopfieldRunsSlider" min="10" max="100" step="10" value="50">
+            <span id="hopfieldRunsValue">50</span>
+          </label>
+          <button id="runComparisonBtn">Run Comparison</button>
+        </div>
+        <div class="progress-container" id="hopfieldProgressContainer" style="display: none;">
+          <div class="progress-bar">
+            <div class="progress-fill" id="hopfieldProgressFill"></div>
+          </div>
+          <div class="progress-text" id="hopfieldProgressText">0%</div>
+        </div>
+        <div class="results-container">
+          <h3>RÃ©sultats Comparatifs</h3>
+          <div id="hopfieldResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../src/main.js"></script>
+</body>
+</html>

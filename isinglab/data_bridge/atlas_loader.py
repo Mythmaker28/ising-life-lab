@@ -602,13 +602,12 @@ class AtlasLoader:
         Returns:
             Dict filtré de profils
         """
-        # Charger si pas encore fait
-        if not self._profiles_cache:
-            self._profiles_cache = self.load_all_profiles()
+        # Utiliser le cache ou charger
+        profiles_to_filter = self._profiles_cache if self._profiles_cache else self.load_all_profiles()
         
         filtered = {}
         
-        for sys_id, profile in self._profiles_cache.items():
+        for sys_id, profile in profiles_to_filter.items():
             # Filtres T2
             if min_t2 is not None and profile.t2_us < min_t2:
                 continue

@@ -1,0 +1,2015 @@
+{
+  "timestamp": "2025-11-11T22:29:41.363873",
+  "version": "v7.0",
+  "config": {
+    "grid_size_2d": [
+      32,
+      32
+    ],
+    "grid_size_3d": [
+      16,
+      16,
+      16
+    ],
+    "n_candidates_2d": 30,
+    "n_candidates_3d": 3,
+    "seed": 42
+  },
+  "results_2d": [
+    {
+      "notation": "B36/S2358",
+      "born": [
+        3,
+        6
+      ],
+      "survive": [
+        2,
+        3,
+        5,
+        8
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.4412109375,
+        "entropy": 0.988800539694253
+      },
+      "life_capacity_score": 0.7,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B34/S0348",
+      "born": [
+        3,
+        4
+      ],
+      "survive": [
+        0,
+        3,
+        4,
+        8
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.44443359375,
+        "entropy": 0.9899526748847464
+      },
+      "life_capacity_score": 0.64,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.001953125
+        },
+        "glider": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "beacon": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B037/S23",
+      "born": [
+        0,
+        3,
+        7
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.3720703125,
+        "entropy": 0.9510952529862442
+      },
+      "life_capacity_score": 0.3,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.94140625
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.916015625
+        },
+        "toad": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.98828125
+        },
+        "beacon": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 1.0
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B036/S234",
+      "born": [
+        0,
+        3,
+        6
+      ],
+      "survive": [
+        2,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.47041015625,
+        "entropy": 0.9965202036999369
+      },
+      "life_capacity_score": 0.34,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.01953125
+        },
+        "blinker": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.892578125
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.8017578125
+        },
+        "toad": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.875
+        },
+        "beacon": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.90234375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B36/S2368",
+      "born": [
+        3,
+        6
+      ],
+      "survive": [
+        2,
+        3,
+        6,
+        8
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.33681640625,
+        "entropy": 0.9178363394037842
+      },
+      "life_capacity_score": 0.7,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B3/S02347",
+      "born": [
+        3
+      ],
+      "survive": [
+        0,
+        2,
+        3,
+        4,
+        7
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.49677734375,
+        "entropy": 0.999777333074122
+      },
+      "life_capacity_score": 0.68,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0556640625
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.033203125
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0078125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B0346/S234",
+      "born": [
+        0,
+        3,
+        4,
+        6
+      ],
+      "survive": [
+        2,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.50830078125,
+        "entropy": 0.998016845653888
+      },
+      "life_capacity_score": 0.34,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.01171875
+        },
+        "blinker": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.92578125
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.80859375
+        },
+        "toad": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.91796875
+        },
+        "beacon": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.849609375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B135/S234",
+      "born": [
+        1,
+        3,
+        5
+      ],
+      "survive": [
+        2,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.487109375,
+        "entropy": 0.9963959816045346
+      },
+      "life_capacity_score": 0.5,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.16796875
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.265625
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.4912109375
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.33203125
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.30859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B234/S23",
+      "born": [
+        2,
+        3,
+        4
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.42568359375,
+        "entropy": 0.9818832197160188
+      },
+      "life_capacity_score": 0.5,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.03515625
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.11328125
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.2919921875
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.056640625
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.212890625
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B3/S23",
+      "born": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.12841796875,
+        "entropy": 0.5480839449648008
+      },
+      "life_capacity_score": 0.7,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B3/S34",
+      "born": [
+        3
+      ],
+      "survive": [
+        3,
+        4
+      ],
+      "passed_filter": false,
+      "filter_reason": "quasi-death",
+      "filter_stats": {
+        "density": 0.00322265625,
+        "entropy": 0.027779939649638118
+      }
+    },
+    {
+      "notation": "B0368/S23",
+      "born": [
+        0,
+        3,
+        6,
+        8
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.38046875,
+        "entropy": 0.9568963984093776
+      },
+      "life_capacity_score": 0.34,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.01171875
+        },
+        "blinker": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.908203125
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.8232421875
+        },
+        "toad": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.890625
+        },
+        "beacon": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.95703125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B0346/S23",
+      "born": [
+        0,
+        3,
+        4,
+        6
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.4427734375,
+        "entropy": 0.9894813077263647
+      },
+      "life_capacity_score": 0.34,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.04296875
+        },
+        "blinker": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.9208984375
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.80078125
+        },
+        "toad": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.89453125
+        },
+        "beacon": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.873046875
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B34/S346",
+      "born": [
+        3,
+        4
+      ],
+      "survive": [
+        3,
+        4,
+        6
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.50849609375,
+        "entropy": 0.9993462619683836
+      },
+      "life_capacity_score": 0.42000000000000004,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "glider": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.015625
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B123/S23",
+      "born": [
+        1,
+        2,
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.40615234375,
+        "entropy": 0.9689477483549979
+      },
+      "life_capacity_score": 0.5,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.1171875
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.1328125
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.4482421875
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.248046875
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.3515625
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B36/S023",
+      "born": [
+        3,
+        6
+      ],
+      "survive": [
+        0,
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.27626953125,
+        "entropy": 0.847041276235297
+      },
+      "life_capacity_score": 0.7,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B34/S034",
+      "born": [
+        3,
+        4
+      ],
+      "survive": [
+        0,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.42763671875,
+        "entropy": 0.9833483535917968
+      },
+      "life_capacity_score": 0.64,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.001953125
+        },
+        "glider": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "beacon": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B34/S134",
+      "born": [
+        3,
+        4
+      ],
+      "survive": [
+        1,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.43974609375,
+        "entropy": 0.9879125329052367
+      },
+      "life_capacity_score": 0.36,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0556640625
+        },
+        "toad": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.015625
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B6/S23",
+      "born": [
+        6
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.05908203125,
+        "entropy": 0.32289379543699487
+      },
+      "life_capacity_score": 0.4800000000000001,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "glider": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "toad": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 1.0,
+      "robustness_15": 1.0,
+      "robustness_20": 1.0,
+      "memory_capacity_score": 1.0,
+      "memory_capacity_details": {
+        "capacity_score": 1.0,
+        "stable_patterns": 10,
+        "total_patterns": 10,
+        "distinct_finals": 10
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": true,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B36/S2348",
+      "born": [
+        3,
+        6
+      ],
+      "survive": [
+        2,
+        3,
+        4,
+        8
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.4671875,
+        "entropy": 0.9953199138272357
+      },
+      "life_capacity_score": 0.64,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.046875
+        },
+        "toad": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0078125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B2367/S23",
+      "born": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.43017578125,
+        "entropy": 0.9842115320910709
+      },
+      "life_capacity_score": 0.5,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.046875
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0986328125
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.3125
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.16015625
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.23828125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B3/S123",
+      "born": [
+        3
+      ],
+      "survive": [
+        1,
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.33466796875,
+        "entropy": 0.9187490424786562
+      },
+      "life_capacity_score": 0.68,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.04296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.01953125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B3467/S23",
+      "born": [
+        3,
+        4,
+        6,
+        7
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.41689453125,
+        "entropy": 0.978274191114291
+      },
+      "life_capacity_score": 0.74,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0263671875
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0078125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B1347/S34",
+      "born": [
+        1,
+        3,
+        4,
+        7
+      ],
+      "survive": [
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.47783203125,
+        "entropy": 0.9972627378072214
+      },
+      "life_capacity_score": 0.5,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.17578125
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.283203125
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.4658203125
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.287109375
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.341796875
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B36/S1238",
+      "born": [
+        3,
+        6
+      ],
+      "survive": [
+        1,
+        2,
+        3,
+        8
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.342578125,
+        "entropy": 0.9260736832232753
+      },
+      "life_capacity_score": 0.68,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.02734375
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.056640625
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B367/S23",
+      "born": [
+        3,
+        6,
+        7
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.19892578125,
+        "entropy": 0.718716103370334
+      },
+      "life_capacity_score": 0.7,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.3,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0048828125
+        },
+        "toad": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.005859375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B34/S1346",
+      "born": [
+        3,
+        4
+      ],
+      "survive": [
+        1,
+        3,
+        4,
+        6
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.532421875,
+        "entropy": 0.9954910694959505
+      },
+      "life_capacity_score": 0.26,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "glider": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "toad": {
+          "score": 0.0,
+          "survived": false,
+          "found_period": false,
+          "final_density": 0.0
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0234375
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": false,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B3/S0234",
+      "born": [
+        3
+      ],
+      "survive": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.49853515625,
+        "entropy": 0.9998957043858983
+      },
+      "life_capacity_score": 0.68,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.05859375
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.033203125
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0078125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B2348/S34",
+      "born": [
+        2,
+        3,
+        4,
+        8
+      ],
+      "survive": [
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.46298828125,
+        "entropy": 0.9918059721603416
+      },
+      "life_capacity_score": 0.5,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.10546875
+        },
+        "blinker": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.083984375
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.259765625
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.1640625
+        },
+        "beacon": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.197265625
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    },
+    {
+      "notation": "B37/S234",
+      "born": [
+        3,
+        7
+      ],
+      "survive": [
+        2,
+        3,
+        4
+      ],
+      "passed_filter": true,
+      "filter_stats": {
+        "density": 0.4828125,
+        "entropy": 0.9988552289660054
+      },
+      "life_capacity_score": 0.68,
+      "life_capacity_patterns": {
+        "block": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.00390625
+        },
+        "blinker": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0029296875
+        },
+        "glider": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0673828125
+        },
+        "toad": {
+          "score": 0.5,
+          "survived": true,
+          "found_period": false,
+          "final_density": 0.0234375
+        },
+        "beacon": {
+          "score": 0.8,
+          "survived": true,
+          "found_period": true,
+          "final_density": 0.0078125
+        }
+      },
+      "robustness_10": 0.0,
+      "robustness_15": 0.0,
+      "robustness_20": 0.0,
+      "memory_capacity_score": 0.0,
+      "memory_capacity_details": {
+        "capacity_score": 0.0,
+        "stable_patterns": 0,
+        "total_patterns": 10,
+        "distinct_finals": 0
+      },
+      "criteria": {
+        "life_capacity": true,
+        "robustness": false,
+        "non_trivial": true
+      },
+      "passed_all_criteria": false
+    }
+  ],
+  "results_3d": [
+    {
+      "notation": "B4/S34",
+      "born": [
+        4
+      ],
+      "survive": [
+        3,
+        4
+      ],
+      "dimension": "3D",
+      "passed_filter": true,
+      "avg_density": 0.169970703125,
+      "note": "R\u00e8gle 3D explor\u00e9e, mais pas de crit\u00e8res stricts (patterns Life 2D incompatibles)"
+    },
+    {
+      "notation": "B4/S45",
+      "born": [
+        4
+      ],
+      "survive": [
+        4,
+        5
+      ],
+      "dimension": "3D",
+      "passed_filter": true,
+      "avg_density": 0.19560546875,
+      "note": "R\u00e8gle 3D explor\u00e9e, mais pas de crit\u00e8res stricts (patterns Life 2D incompatibles)"
+    },
+    {
+      "notation": "B567/S567",
+      "born": [
+        5,
+        6,
+        7
+      ],
+      "survive": [
+        5,
+        6,
+        7
+      ],
+      "dimension": "3D",
+      "passed_filter": true,
+      "avg_density": 0.26123046875,
+      "note": "R\u00e8gle 3D explor\u00e9e, mais pas de crit\u00e8res stricts (patterns Life 2D incompatibles)"
+    }
+  ],
+  "summary": {
+    "total_candidates_2d": 30,
+    "total_candidates_3d": 3,
+    "passed_all_criteria_2d": 0,
+    "elapsed_time_seconds": 7.184241771697998
+  }
+}

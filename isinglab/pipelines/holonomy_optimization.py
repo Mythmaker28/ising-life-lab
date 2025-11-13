@@ -19,7 +19,12 @@ from tqdm import tqdm
 
 from ..oscillators import KuramotoXYEngine, MultiKernelConfig
 from ..analysis import detect_vortices
-from ..control.holonomy import HolonomyPath, generate_linear_ramp_path, generate_smooth_sigmoid_path
+from ..control.holonomy import (
+    HolonomyPath,
+    generate_linear_ramp_path,
+    generate_smooth_sigmoid_path,
+    generate_closed_loop_path
+)
 from ..control.optimizers import GridSearchOptimizer, RandomSearchOptimizer, OptimizationResult
 from ..data_bridge.atlas_map import AtlasMapper, AtlasProfile, PhenoParams
 from ..data_bridge.physics_validator import PhysicsValidator
@@ -168,8 +173,8 @@ def optimize_holonomy_path(
     phys_profile = atlas_mapper.get_profile(atlas_profile)
     target_state = compute_target_profile(target_profile)
     
-    print(f"📡 Atlas Profile: {phys_profile}")
-    print(f"🎯 Target: {target_profile} (r={target_state.order_parameter_r:.2f}, density={target_state.defect_density:.3f})")
+    print(f">> Atlas Profile: {phys_profile}")
+    print(f">> Target: {target_profile} (r={target_state.order_parameter_r:.2f}, density={target_state.defect_density:.3f})")
     
     # 2. Définir les ranges de paramètres basés sur l'Atlas
     k_max_safe = atlas_mapper._compute_k_max(phys_profile.t1_us, phys_profile.t2_us)
@@ -225,7 +230,7 @@ def optimize_holonomy_path(
         return metrics.composite_score
     
     # 4. Créer l'optimiseur
-    print(f"\n🔧 Optimizer: {optimizer_type}, Generator: {path_generator}")
+    print(f"\n>> Optimizer: {optimizer_type}, Generator: {path_generator}")
     
     if optimizer_type == 'random':
         optimizer = RandomSearchOptimizer(
@@ -250,15 +255,15 @@ def optimize_holonomy_path(
         raise ValueError(f"Unknown optimizer: {optimizer_type}")
     
     # 5. Optimiser
-    print(f"\n🚀 Starting optimization...")
+    print(f"\n>> Starting optimization...")
     opt_result = optimizer.optimize(cost_function, atlas_profile=phys_profile)
     
-    print(f"\n✅ Optimization complete!")
+    print(f"\n>> Optimization complete!")
     print(f"   Best cost: {opt_result.best_cost:.4f}")
     print(f"   Best params: {opt_result.best_params}")
     
     # 6. Évaluer le meilleur en détail
-    print(f"\n📊 Evaluating best trajectory in detail...")
+    print(f"\n>> Evaluating best trajectory in detail...")
     best_state_history, best_params_history = simulate_with_holonomy_path(
         opt_result.best_path,
         grid_size=grid_size,
@@ -361,7 +366,7 @@ def compare_trajectory_strategies(
     """
     results = {}
     
-    print(f"🔬 Comparing {len(strategies)} trajectory strategies...")
+    print(f">> Comparing {len(strategies)} trajectory strategies...")
     
     for strategy in strategies:
         print(f"\n{'='*60}")
@@ -449,7 +454,7 @@ def compare_geometric_vs_dynamic_robustness(
     phys_profile = mapper.get_profile(atlas_profile)
     target_state = compute_target_profile(target_profile)
     
-    print(f"🎯 SCÉNARIO D : Robustesse Géométrique vs Dynamique")
+    print(f">> SCENARIO D : Robustesse Geometrique vs Dynamique")
     print(f"{'='*70}")
     print(f"Système : {atlas_profile} (T2={phys_profile.t2_us}µs)")
     print(f"Cible : {target_profile}")
@@ -466,7 +471,7 @@ def compare_geometric_vs_dynamic_robustness(
         name="p3_ramp"
     )
     
-    print(f"\n✓ P3 Path (Dynamic Ramp) created")
+    print(f"\n[OK] P3 Path (Dynamic Ramp) created")
     
     # 3. Créer la trajectoire P4 (closed loop)
     k_max = mapper._compute_k_max(phys_profile.t1_us, phys_profile.t2_us)
@@ -489,12 +494,12 @@ def compare_geometric_vs_dynamic_robustness(
     )
     
     geometric_phase = p4_path.compute_geometric_phase()
-    print(f"✓ P4 Path (Geometric Loop) created")
+    print(f"[OK] P4 Path (Geometric Loop) created")
     print(f"  Geometric Phase : {geometric_phase:.3f} rad ({geometric_phase * 180/np.pi:.1f}°)")
     print(f"  Loop area (K1, K2) : {radius_k1 * radius_k2 * np.pi:.4f}")
     
     # 4. Simuler les deux trajectoires : propre + bruitées
-    print(f"\n🔬 Running {n_trials} trials for each trajectory...")
+    print(f"\n>> Running {n_trials} trials for each trajectory...")
     
     p3_results = {'clean': None, 'noisy': []}
     p4_results = {'clean': None, 'noisy': []}
@@ -546,7 +551,7 @@ def compare_geometric_vs_dynamic_robustness(
         )
         p4_results['noisy'].append(p4_noisy_states)
     
-    print(f"✓ Simulations complete")
+    print(f"[OK] Simulations complete")
     
     # 5. Calculer la robustesse au bruit
     from .trajectory_cost import cost_robustness_to_noise
@@ -587,7 +592,7 @@ def compare_geometric_vs_dynamic_robustness(
     print(f"  Robustness cost : {p4_robustness_mean:.4f} ± {p4_robustness_std:.4f}")
     print(f"  Geometric Phase : {geometric_phase:.3f} rad")
     
-    print(f"\n🏆 WINNER : {winner}")
+    print(f"\n>> WINNER : {winner}")
     print(f"   Improvement : {improvement:.1f}%")
     
     # 7. Calculer la stabilité finale (variance)

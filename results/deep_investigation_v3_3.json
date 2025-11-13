@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "timestamp": "2025-11-11T18:15:57.253860",
+    "version": "v3.3_deep",
+    "candidates_investigated": 2
+  },
+  "investigations": [
+    {
+      "notation": "B6/S23",
+      "born": [
+        6
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "timestamp": "2025-11-11T18:15:38.856569",
+      "tests": {
+        "grid_16x16": {
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "basin_diversity": 1.0,
+          "functional_score": 0.75,
+          "elapsed_time": 0.10801029205322266
+        },
+        "grid_32x32": {
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "basin_diversity": 1.0,
+          "functional_score": 0.75,
+          "elapsed_time": 0.16257166862487793
+        },
+        "grid_64x64": {
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "basin_diversity": 1.0,
+          "functional_score": 0.75,
+          "elapsed_time": 0.3495016098022461
+        },
+        "grid_128x128": {
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "basin_diversity": 1.0,
+          "functional_score": 0.75,
+          "elapsed_time": 1.091484785079956
+        },
+        "grid_256x256": {
+          "capacity_score": 0.6,
+          "robustness_score": 0.8,
+          "basin_score": 0.0,
+          "basin_diversity": 1.0,
+          "functional_score": 0.52,
+          "elapsed_time": 4.077340126037598
+        },
+        "noise_resilience": [
+          {
+            "noise_level": 0.0,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.05,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.1,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.15,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.2,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.25,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.3,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.35,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.4,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.45,
+            "robustness_score": 1.0
+          },
+          {
+            "noise_level": 0.5,
+            "robustness_score": 1.0
+          }
+        ],
+        "life_patterns_64x64": {
+          "life_capacity_score": 0.4800000000000001,
+          "patterns": {
+            "block": {
+              "score": 0.8,
+              "survived": 

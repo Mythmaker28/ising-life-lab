@@ -1,0 +1,1027 @@
+{
+  "candidates": [
+    {
+      "notation": "B018/S1236",
+      "born": [
+        0,
+        1,
+        8
+      ],
+      "survive": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "source": "agi_v2"
+    },
+    {
+      "notation": "B08/S068",
+      "born": [
+        0,
+        8
+      ],
+      "survive": [
+        0,
+        6,
+        8
+      ],
+      "source": "agi_v2"
+    },
+    {
+      "notation": "B3/S23",
+      "born": [
+        3
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "source": "Game of Life (Conway 1970)"
+    },
+    {
+      "notation": "B36/S23",
+      "born": [
+        3,
+        6
+      ],
+      "survive": [
+        2,
+        3
+      ],
+      "source": "HighLife (Trevorrow)"
+    },
+    {
+      "notation": "B3678/S34678",
+      "born": [
+        3,
+        6,
+        7,
+        8
+      ],
+      "survive": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "source": "Day & Night (auto-complementaire)"
+    },
+    {
+      "notation": "B1357/S1357",
+      "born": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "survive": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "source": "Replicator"
+    },
+    {
+      "notation": "B2/S",
+      "born": [
+        2
+      ],
+      "survive": [],
+      "source": "Seeds (chaotic)"
+    },
+    {
+      "notation": "B34/S34",
+      "born": [
+        3,
+        4
+      ],
+      "survive": [
+        3,
+        4
+      ],
+      "source": "34 Life"
+    }
+  ],
+  "stress_results": {
+    "B018/S1236": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 1,
+          "total_patterns": 5,
+          "stability_rate": 0.2,
+          "avg_final_density": 0.4390625
+        },
+        "64x64": {
+          "stable_patterns": 0,
+          "total_patterns": 5,
+          "stability_rate": 0.0,
+          "avg_final_density": 0.43779296875
+        },
+        "128x128": {
+          "stable_patterns": 1,
+          "total_patterns": 5,
+          "stability_rate": 0.2,
+          "avg_final_density": 0.3796875
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.42932862190812726,
+          "std_recall": 0.3864018589936453
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.47003869860263414,
+          "std_recall": 0.39900634393116385
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.4820060281480886,
+          "std_recall": 0.4099985733726886
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.4712499749036299,
+          "std_recall": 0.3961350328425953
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.466853216350787,
+          "std_recall": 0.3955873861872303
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.4724003925072277,
+          "std_recall": 0.3997136183691762
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.45706299690812724,
+          "std_recall": 0.38245137230286025
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.13333333333333333,
+        "avg_recall_across_noise": 0.4641342756183745,
+        "robustness_score": 0.4641342756183745
+      }
+    },
+    "B08/S068": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.5173828125
+        },
+        "64x64": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.53349609375
+        },
+        "128x128": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.6701171875
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.1823321554770318,
+          "std_recall": 0.3646643109540636
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.2788146482492772,
+          "std_recall": 0.3423190951831767
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.40725573703019596,
+          "std_recall": 0.35032305745247005
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.39244398490202376,
+          "std_recall": 0.33889733088644497
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.4006077086010279,
+          "std_recall": 0.33975697512208747
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.36214927822839704,
+          "std_recall": 0.31234539995467764
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.38399729963058143,
+          "std_recall": 0.3460235357562799
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.4000000000000001,
+        "avg_recall_across_noise": 0.3439429731597908,
+        "robustness_score": 0.3439429731597908
+      }
+    },
+    "B3/S23": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 4,
+          "total_patterns": 5,
+          "stability_rate": 0.8,
+          "avg_final_density": 0.027734375
+        },
+        "64x64": {
+          "stable_patterns": 3,
+          "total_patterns": 5,
+          "stability_rate": 0.6,
+          "avg_final_density": 0.0337890625
+        },
+        "128x128": {
+          "stable_patterns": 4,
+          "total_patterns": 5,
+          "stability_rate": 0.8,
+          "avg_final_density": 0.02607421875
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.24734982332155475,
+          "std_recall": 0.3873346017924398
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.2643374307340186,
+          "std_recall": 0.20906621340238346
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.47386394309704816,
+          "std_recall": 0.32907538365279804
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.3634736973310847,
+          "std_recall": 0.3249710899030906
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.2503763758387764,
+          "std_recall": 0.20445184493249804
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.2489906239961452,
+          "std_recall": 0.2254056873061283
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.17302642145840025,
+          "std_recall": 0.15706751352287812
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.7333333333333334,
+        "avg_recall_across_noise": 0.288774045111004,
+        "robustness_score": 0.288774045111004
+      }
+    },
+    "B36/S23": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 4,
+          "total_patterns": 5,
+          "stability_rate": 0.8,
+          "avg_final_density": 0.021875
+        },
+        "64x64": {
+          "stable_patterns": 3,
+          "total_patterns": 5,
+          "stability_rate": 0.6,
+          "avg_final_density": 0.118017578125
+        },
+        "128x128": {
+          "stable_patterns": 4,
+          "total_patterns": 5,
+          "stability_rate": 0.8,
+          "avg_final_density": 0.032080078125
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.2840989399293286,
+          "std_recall": 0.39325685094759105
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.3675350010707784,
+          "std_recall": 0.38641678241459987
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.4920955218037263,
+          "std_recall": 0.20995496262656424
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.26658870061034373,
+          "std_recall": 0.19384447043084702
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.2766402987471892,
+          "std_recall": 0.2522195500871511
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.2700890168246065,
+          "std_recall": 0.25990527449599266
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.2910466190170254,
+          "std_recall": 0.2528319877583502
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.7333333333333334,
+        "avg_recall_across_noise": 0.32115629971471404,
+        "robustness_score": 0.32115629971471404
+      }
+    },
+    "B3678/S34678": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.231640625
+        },
+        "64x64": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.198876953125
+        },
+        "128x128": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.19432373046875
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.7918727915194347,
+          "std_recall": 0.2552264311529774
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.35979572670164545,
+          "std_recall": 0.20862716467944553
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.3080334595959596,
+          "std_recall": 0.3117508349253665
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.5167094280927651,
+          "std_recall": 0.2889194961487486
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.4983576517159225,
+          "std_recall": 0.2649058478730897
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.6571425524012207,
+          "std_recall": 0.2145924877613398
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.6116161755585894,
+          "std_recall": 0.3289165785896643
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.4000000000000001,
+        "avg_recall_across_noise": 0.5347896836550767,
+        "robustness_score": 0.5347896836550767
+      }
+    },
+    "B1357/S1357": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 5,
+          "total_patterns": 5,
+          "stability_rate": 1.0,
+          "avg_final_density": 0.0
+        },
+        "64x64": {
+          "stable_patterns": 5,
+          "total_patterns": 5,
+          "stability_rate": 1.0,
+          "avg_final_density": 0.0
+        },
+        "128x128": {
+          "stable_patterns": 1,
+          "total_patterns": 5,
+          "stability_rate": 0.2,
+          "avg_final_density": 0.265869140625
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.0,
+          "std_recall": 0.0
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.7333333333333334,
+        "avg_recall_across_noise": 0.0,
+        "robustness_score": 0.0
+      }
+    },
+    "B2/S": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.08984375
+        },
+        "64x64": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.0748046875
+        },
+        "128x128": {
+          "stable_patterns": 2,
+          "total_patterns": 5,
+          "stability_rate": 0.4,
+          "avg_final_density": 0.06190185546875
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.2554770318021201,
+          "std_recall": 0.3249569560904426
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.1335689045936396,
+          "std_recall": 0.2671378091872792
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.27563267948923864,
+          "std_recall": 0.336664149999057
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.36279588620301956,
+          "std_recall": 0.3135962523216738
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.32707383853999356,
+          "std_recall": 0.28166017374420177
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.3588010460167041,
+          "std_recall": 0.3187712969661393
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.3783435893832316,
+          "std_recall": 0.3348006539966019
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.4000000000000001,
+        "avg_recall_across_noise": 0.2988132822897067,
+        "robustness_score": 0.2988132822897067
+      }
+    },
+    "B34/S34": {
+      "config": {
+        "grid_sizes": [
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            64
+          ],
+          [
+            128,
+            128
+          ]
+        ],
+        "noise_levels": [
+          0.0,
+          0.01,
+          0.05,
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "steps": 50,
+        "seed": 42
+      },
+      "by_grid_size": {
+        "32x32": {
+          "stable_patterns": 4,
+          "total_patterns": 5,
+          "stability_rate": 0.8,
+          "avg_final_density": 0.0923828125
+        },
+        "64x64": {
+          "stable_patterns": 3,
+          "total_patterns": 5,
+          "stability_rate": 0.6,
+          "avg_final_density": 0.102099609375
+        },
+        "128x128": {
+          "stable_patterns": 3,
+          "total_patterns": 5,
+          "stability_rate": 0.6,
+          "avg_final_density": 0.09727783203125
+        }
+      },
+      "by_noise_level": {
+        "noise_0.00": {
+          "noise_level": 0.0,
+          "avg_recall": 0.338339222614841,
+          "std_recall": 0.3701967878052932
+        },
+        "noise_0.01": {
+          "noise_level": 0.01,
+          "avg_recall": 0.5030169182996038,
+          "std_recall": 0.33907584427582527
+        },
+        "noise_0.05": {
+          "noise_level": 0.05,
+          "avg_recall": 0.4328229149935753,
+          "std_recall": 0.26073441621348586
+        },
+        "noise_0.10": {
+          "noise_level": 0.1,
+          "avg_recall": 0.48413520418406686,
+          "std_recall": 0.27853161823904327
+        },
+        "noise_0.20": {
+          "noise_level": 0.2,
+          "avg_recall": 0.42548059548666883,
+          "std_recall": 0.37940374202330734
+        },
+        "noise_0.30": {
+          "noise_level": 0.3,
+          "avg_recall": 0.4450812369498876,
+          "std_recall": 0.37357247074691746
+        },
+        "noise_0.40": {
+          "noise_level": 0.4,
+          "avg_recall": 0.44430977453421133,
+          "std_recall": 0.3795026415898808
+        }
+      },
+      "summary": {
+        "avg_stability_across_sizes": 0.6666666666666666,
+        "avg_recall_across_noise": 0.4390265524375507,
+        "robustness_score": 0.4390265524375507
+      }
+    }
+  },
+  "brain_analysis": {
+    "B018/S1236": {
+      "score": 3,
+      "max_score": 6,
+      "qualified": false,
+      "specialization": "not_qualified",
+      "criteria": {
+        "capacity": false,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": false,
+        "functional": true
+      },
+      "metrics": {
+        "stability": 0.13333333333333333,
+        "robustness": 0.4641342756183745,
+        "capacity_proxy": 0.13333333333333333,
+        "functional": 0.4641342756183745
+      }
+    },
+    "B08/S068": {
+      "score": 2,
+      "max_score": 6,
+      "qualified": false,
+      "specialization": "not_qualified",
+      "criteria": {
+        "capacity": false,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": false,
+        "functional": false
+      },
+      "metrics": {
+        "stability": 0.4000000000000001,
+        "robustness": 0.3439429731597908,
+        "capacity_proxy": 0.4000000000000001,
+        "functional": 0.3439429731597908
+      }
+    },
+    "B3/S23": {
+      "score": 4,
+      "max_score": 6,
+      "qualified": true,
+      "specialization": "diverse_memory",
+      "criteria": {
+        "capacity": true,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": true,
+        "functional": false
+      },
+      "metrics": {
+        "stability": 0.7333333333333334,
+        "robustness": 0.288774045111004,
+        "capacity_proxy": 0.7333333333333334,
+        "functional": 0.288774045111004
+      }
+    },
+    "B36/S23": {
+      "score": 4,
+      "max_score": 6,
+      "qualified": true,
+      "specialization": "diverse_memory",
+      "criteria": {
+        "capacity": true,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": true,
+        "functional": false
+      },
+      "metrics": {
+        "stability": 0.7333333333333334,
+        "robustness": 0.32115629971471404,
+        "capacity_proxy": 0.7333333333333334,
+        "functional": 0.32115629971471404
+      }
+    },
+    "B3678/S34678": {
+      "score": 3,
+      "max_score": 6,
+      "qualified": false,
+      "specialization": "not_qualified",
+      "criteria": {
+        "capacity": false,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": false,
+        "functional": true
+      },
+      "metrics": {
+        "stability": 0.4000000000000001,
+        "robustness": 0.5347896836550767,
+        "capacity_proxy": 0.4000000000000001,
+        "functional": 0.5347896836550767
+      }
+    },
+    "B1357/S1357": {
+      "score": 4,
+      "max_score": 6,
+      "qualified": true,
+      "specialization": "diverse_memory",
+      "criteria": {
+        "capacity": true,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": true,
+        "functional": false
+      },
+      "metrics": {
+        "stability": 0.7333333333333334,
+        "robustness": 0.0,
+        "capacity_proxy": 0.7333333333333334,
+        "functional": 0.0
+      }
+    },
+    "B2/S": {
+      "score": 2,
+      "max_score": 6,
+      "qualified": false,
+      "specialization": "not_qualified",
+      "criteria": {
+        "capacity": false,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": false,
+        "functional": false
+      },
+      "metrics": {
+        "stability": 0.4000000000000001,
+        "robustness": 0.2988132822897067,
+        "capacity_proxy": 0.4000000000000001,
+        "functional": 0.2988132822897067
+      }
+    },
+    "B34/S34": {
+      "score": 4,
+      "max_score": 6,
+      "qualified": true,
+      "specialization": "diverse_memory",
+      "criteria": {
+        "capacity": true,
+        "robustness": false,
+        "basin": true,
+        "edge": true,
+        "stability": false,
+        "functional": true
+      },
+      "metrics": {
+        "stability": 0.6666666666666666,
+        "robustness": 0.4390265524375507,
+        "capacity_proxy": 0.6666666666666666,
+        "functional": 0.4390265524375507
+      }
+    }
+  },
+  "summary": {
+    "total_tested": 8,
+    "qualified_brains": 4,
+    "best_rule": [
+      "B3/S23",
+      {
+        "score": 4,
+        "max_score": 6,
+        "qualified": true,
+        "specialization": "diverse_memory",
+        "criteria": {
+          "capacity": true,
+          "robustness": false,
+          "basin": true,
+          "edge": true,
+          "stability": true,
+          "functional": false
+        },
+        "metrics": {
+          "stability": 0.7333333333333334,
+          "robustness": 0.288774045111004,
+          "capacity_proxy": 0.7333333333333334,
+          "functional": 0.288774045111004
+        }
+      }
+    ]
+  }
+}

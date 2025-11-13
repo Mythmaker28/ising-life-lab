@@ -300,3 +300,4 @@ print(f"Robustness score: {robustness:.3f}")
 
 **Exploration conditionnelle : Si ΔG/Ea disponibles → Tester métriques. Sinon → Archiver.**
 
+

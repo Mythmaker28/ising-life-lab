@@ -267,3 +267,4 @@ def test_comparison_vs_simple_ranking(mini_design_space):
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
 
+

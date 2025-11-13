@@ -219,3 +219,4 @@ def compute_defect_annihilation_rate(
     
     return rate
 
+

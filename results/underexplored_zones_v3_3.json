@@ -1,0 +1,4076 @@
+{
+  "meta": {
+    "timestamp": "2025-11-11T18:23:05.102799",
+    "version": "v3.3_phase_b",
+    "total_elapsed": 6.258792400360107
+  },
+  "campaigns": [
+    {
+      "campaign": "minimal_birth",
+      "candidates": [
+        [
+          "B/S23",
+          [],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B/S2",
+          [],
+          [
+            2
+          ]
+        ],
+        [
+          "B/S3",
+          [],
+          [
+            3
+          ]
+        ],
+        [
+          "B/S234",
+          [],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B/S34",
+          [],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B/S24",
+          [],
+          [
+            2,
+            4
+          ]
+        ],
+        [
+          "B/S123",
+          [],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          "B/S235",
+          [],
+          [
+            2,
+            3,
+            5
+          ]
+        ],
+        [
+          "B0/S23",
+          [
+            0
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B0/S2",
+          [
+            0
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B0/S3",
+          [
+            0
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B0/S234",
+          [
+            0
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B0/S34",
+          [
+            0
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B0/S24",
+          [
+            0
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        [
+          "B0/S123",
+          [
+            0
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          "B0/S235",
+          [
+            0
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ],
+        [
+          "B1/S23",
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B1/S2",
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B1/S3",
+          [
+            1
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B1/S234",
+          [
+            1
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B1/S34",
+          [
+            1
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B1/S24",
+          [
+            1
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        [
+          "B1/S123",
+          [
+            1
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          "B1/S235",
+          [
+            1
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ],
+        [
+          "B2/S23",
+          [
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B2/S2",
+          [
+            2
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B2/S3",
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B2/S234",
+          [
+            2
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B2/S34",
+          [
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B2/S24",
+          [
+            2
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        [
+          "B2/S123",
+          [
+            2
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          "B2/S235",
+          [
+            2
+          ],
+          [
+            2,
+            3,
+            5
+          ]
+        ]
+      ],
+      "results": [
+        {
+          "notation": "B/S23",
+          "born": [],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B/S234",
+          "born": [],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B/S123",
+          "born": [],
+          "survive": [
+            1,
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B/S235",
+          "born": [],
+          "survive": [
+            2,
+            3,
+            5
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S23",
+          "born": [
+            0
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S2",
+          "born": [
+            0
+          ],
+          "survive": [
+            2
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S3",
+          "born": [
+            0
+          ],
+          "survive": [
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S234",
+          "born": [
+            0
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.6,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.3
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S34",
+          "born": [
+            0
+          ],
+          "survive": [
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S24",
+          "born": [
+            0
+          ],
+          "survive": [
+            2,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.6,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.3
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S123",
+          "born": [
+            0
+          ],
+          "survive": [
+            1,
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.3
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B0/S235",
+          "born": [
+            0
+          ],
+          "survive": [
+            2,
+            3,
+            5
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.38,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.3
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.3
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.3
+            }
+          }
+        },
+        {
+          "notation": "B1/S23",
+          "born": [
+            1
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S2",
+          "born": [
+            1
+          ],
+          "survive": [
+            2
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S3",
+          "born": [
+            1
+          ],
+          "survive": [
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S234",
+          "born": [
+            1
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S34",
+          "born": [
+            1
+          ],
+          "survive": [
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S24",
+          "born": [
+            1
+          ],
+          "survive": [
+            2,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S123",
+          "born": [
+            1
+          ],
+          "survive": [
+            1,
+            2,
+            3
+          ],
+          "capacity_score": 0.8,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.32000000000000006,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B1/S235",
+          "born": [
+            1
+          ],
+          "survive": [
+            2,
+            3,
+            5
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S23",
+          "born": [
+            2
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S2",
+          "born": [
+            2
+          ],
+          "survive": [
+            2
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.4,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S3",
+          "born": [
+            2
+          ],
+          "survive": [
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S234",
+          "born": [
+            2
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.2,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.08000000000000002,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S34",
+          "born": [
+            2
+          ],
+          "survive": [
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S24",
+          "born": [
+            2
+          ],
+          "survive": [
+            2,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S123",
+          "born": [
+            2
+          ],
+          "survive": [
+            1,
+            2,
+            3
+          ],
+          "capacity_score": 0.6,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.24,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        },
+        {
+          "notation": "B2/S235",
+          "born": [
+            2
+          ],
+          "survive": [
+            2,
+            3,
+            5
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.5,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.5
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.5
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "campaign": "high_sensitivity",
+      "candidates": [
+        [
+          "B5/S2",
+          [
+            5
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B5/S3",
+          [
+            5
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B5/S23",
+          [
+            5
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B5/S34",
+          [
+            5
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B5/S234",
+          [
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B5/S12",
+          [
+            5
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B5/S45",
+          [
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B6/S2",
+          [
+            6
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B6/S3",
+          [
+            6
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B6/S23",
+          [
+            6
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B6/S34",
+          [
+            6
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B6/S234",
+          [
+            6
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B6/S12",
+          [
+            6
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B6/S45",
+          [
+            6
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B7/S2",
+          [
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B7/S3",
+          [
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B7/S23",
+          [
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B7/S34",
+          [
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B7/S234",
+          [
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B7/S12",
+          [
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B7/S45",
+          [
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B35/S2",
+          [
+            3,
+            5
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B35/S3",
+          [
+            3,
+            5
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B35/S23",
+          [
+            3,
+            5
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B35/S34",
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B35/S234",
+          [
+            3,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B35/S12",
+          [
+            3,
+            5
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B35/S45",
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B36/S2",
+          [
+            3,
+            6
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B36/S3",
+          [
+            3,
+            6
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B36/S23",
+          [
+            3,
+            6
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B36/S34",
+          [
+            3,
+            6
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B36/S234",
+          [
+            3,
+            6
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B36/S12",
+          [
+            3,
+            6
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B36/S45",
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B37/S2",
+          [
+            3,
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B37/S3",
+          [
+            3,
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B37/S23",
+          [
+            3,
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B37/S34",
+          [
+            3,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B37/S234",
+          [
+            3,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B37/S12",
+          [
+            3,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B37/S45",
+          [
+            3,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B56/S2",
+          [
+            5,
+            6
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B56/S3",
+          [
+            5,
+            6
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B56/S23",
+          [
+            5,
+            6
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B56/S34",
+          [
+            5,
+            6
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B56/S234",
+          [
+            5,
+            6
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B56/S12",
+          [
+            5,
+            6
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B56/S45",
+          [
+            5,
+            6
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B57/S2",
+          [
+            5,
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B57/S3",
+          [
+            5,
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B57/S23",
+          [
+            5,
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B57/S34",
+          [
+            5,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B57/S234",
+          [
+            5,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B57/S12",
+          [
+            5,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B57/S45",
+          [
+            5,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B67/S2",
+          [
+            6,
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B67/S3",
+          [
+            6,
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B67/S23",
+          [
+            6,
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B67/S34",
+          [
+            6,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B67/S234",
+          [
+            6,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B67/S12",
+          [
+            6,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B67/S45",
+          [
+            6,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B356/S2",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B356/S3",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B356/S23",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B356/S34",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B356/S234",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B356/S12",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B356/S45",
+          [
+            3,
+            5,
+            6
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B357/S2",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B357/S3",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B357/S23",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B357/S34",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B357/S234",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B357/S12",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B357/S45",
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B367/S2",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B367/S3",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B367/S23",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B367/S34",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B367/S234",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B367/S12",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B367/S45",
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          "B567/S2",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        [
+          "B567/S3",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        [
+          "B567/S23",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        [
+          "B567/S34",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        [
+          "B567/S234",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        [
+          "B567/S12",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          "B567/S45",
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      ],
+      "results": [
+        {
+          "notation": "B5/S23",
+          "born": [
+            5
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B5/S234",
+          "born": [
+            5
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.2,
+          "robustness_score": 0.3333333333333333,
+          "basin_score": 0.0,
+          "functional_score": 0.19666666666666666,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B5/S12",
+          "born": [
+            5
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B6/S23",
+          "born": [
+            6
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B6/S234",
+          "born": [
+            6
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.6,
+          "robustness_score": 0.3333333333333333,
+          "basin_score": 0.0,
+          "functional_score": 0.35666666666666663,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B6/S12",
+          "born": [
+            6
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B7/S23",
+          "born": [
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B7/S234",
+          "born": [
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B7/S12",
+          "born": [
+            7
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B35/S23",
+          "born": [
+            3,
+            5
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B35/S234",
+          "born": [
+            3,
+            5
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.68,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B36/S23",
+          "born": [
+            3,
+            6
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.3
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B36/S234",
+          "born": [
+            3,
+            6
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.3
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B37/S23",
+          "born": [
+            3,
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.3
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B37/S234",
+          "born": [
+            3,
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.68,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B56/S23",
+          "born": [
+            5,
+            6
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.8,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.67,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B56/S234",
+          "born": [
+            5,
+            6
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.2,
+          "robustness_score": 0.3333333333333333,
+          "basin_score": 0.0,
+          "functional_score": 0.19666666666666666,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B56/S12",
+          "born": [
+            5,
+            6
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B57/S23",
+          "born": [
+            5,
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B57/S234",
+          "born": [
+            5,
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.2,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.08000000000000002,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B57/S12",
+          "born": [
+            5,
+            7
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B67/S23",
+          "born": [
+            6,
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B67/S234",
+          "born": [
+            6,
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.6,
+          "robustness_score": 0.3333333333333333,
+          "basin_score": 0.0,
+          "functional_score": 0.35666666666666663,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B67/S12",
+          "born": [
+            6,
+            7
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B356/S23",
+          "born": [
+            3,
+            5,
+            6
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B356/S34",
+          "born": [
+            3,
+            5,
+            6
+          ],
+          "survive": [
+            3,
+            4
+          ],
+          "capacity_score": 0.2,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.08000000000000002,
+          "life_capacity_score": 0.32,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B356/S234",
+          "born": [
+            3,
+            5,
+            6
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.68,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B356/S12",
+          "born": [
+            3,
+            5,
+            6
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.0,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        },
+        {
+          "notation": "B357/S23",
+          "born": [
+            3,
+            5,
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B357/S234",
+          "born": [
+            3,
+            5,
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.68,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.5
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B367/S23",
+          "born": [
+            3,
+            6,
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.7,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.3
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B367/S234",
+          "born": [
+            3,
+            6,
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.0,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.0,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.5
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.3
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B567/S23",
+          "born": [
+            5,
+            6,
+            7
+          ],
+          "survive": [
+            2,
+            3
+          ],
+          "capacity_score": 0.8,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.67,
+          "life_capacity_score": 0.4800000000000001,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B567/S234",
+          "born": [
+            5,
+            6,
+            7
+          ],
+          "survive": [
+            2,
+            3,
+            4
+          ],
+          "capacity_score": 0.2,
+          "robustness_score": 0.0,
+          "basin_score": 0.0,
+          "functional_score": 0.08000000000000002,
+          "life_capacity_score": 0.64,
+          "life_patterns": {
+            "block": {
+              "survived": true,
+              "score": 0.8
+            },
+            "blinker": {
+              "survived": false,
+              "score": 0.0
+            },
+            "glider": {
+              "survived": true,
+              "score": 0.8
+            },
+            "toad": {
+              "survived": true,
+              "score": 0.8
+            },
+            "beacon": {
+              "survived": true,
+              "score": 0.8
+            }
+          }
+        },
+        {
+          "notation": "B567/S12",
+          "born": [
+            5,
+            6,
+            7
+          ],
+          "survive": [
+            1,
+            2
+          ],
+          "capacity_score": 1.0,
+          "robustness_score": 1.0,
+          "basin_score": 0.0,
+          "functional_score": 0.75,
+          "life_capacity_score": 0.16,
+          "life_patterns": {
+            "block": {
+              "survived": false,
+              "score": 0.0
+            },
+            "blinker": {
+              "survived": true,
+              "score": 0.8
+            },
+            "glider": {
+              "survived": false,
+              "score": 0.0
+            },
+            "toad": {
+              "survived": false,
+              "score": 0.0
+            },
+            "beacon": {
+              "survived": false,
+              "score": 0.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "global_analysis": {
+    "total_evaluated": 63,
+    "top_10_functional": [
+      {
+        "notation": "B/S23",
+        "born": [],
+        "survive": [
+          2,
+          3
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.4800000000000001,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B/S234",
+        "born": [],
+        "survive": [
+          2,
+          3,
+          4
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.64,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": true,
+            "score": 0.8
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B/S123",
+        "born": [],
+        "survive": [
+          1,
+          2,
+          3
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.64,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": true,
+            "score": 0.8
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B/S235",
+        "born": [],
+        "survive": [
+          2,
+          3,
+          5
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.4800000000000001,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B5/S23",
+        "born": [
+          5
+        ],
+        "survive": [
+          2,
+          3
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.4800000000000001,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B5/S12",
+        "born": [
+          5
+        ],
+        "survive": [
+          1,
+          2
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.16,
+        "life_patterns": {
+          "block": {
+            "survived": false,
+            "score": 0.0
+          },
+          "blinker": {
+            "survived": true,
+            "score": 0.8
+          },
+          "glider": {
+            "survived": false,
+            "score": 0.0
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": false,
+            "score": 0.0
+          }
+        }
+      },
+      {
+        "notation": "B6/S23",
+        "born": [
+          6
+        ],
+        "survive": [
+          2,
+          3
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.4800000000000001,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B6/S12",
+        "born": [
+          6
+        ],
+        "survive": [
+          1,
+          2
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.16,
+        "life_patterns": {
+          "block": {
+            "survived": false,
+            "score": 0.0
+          },
+          "blinker": {
+            "survived": true,
+            "score": 0.8
+          },
+          "glider": {
+            "survived": false,
+            "score": 0.0
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": false,
+            "score": 0.0
+          }
+        }
+      },
+      {
+        "notation": "B7/S23",
+        "born": [
+          7
+        ],
+        "survive": [
+          2,
+          3
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.4800000000000001,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": false,
+            "score": 0.0
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      },
+      {
+        "notation": "B7/S234",
+        "born": [
+          7
+        ],
+        "survive": [
+          2,
+          3,
+          4
+        ],
+        "capacity_score": 1.0,
+        "robustness_score": 1.0,
+        "basin_score": 0.0,
+        "functional_score": 0.75,
+        "life_capacity_score": 0.64,
+        "life_patterns": {
+          "block": {
+            "survived": true,
+            "score": 0.8
+          },
+          "blinker": {
+            "survived": false,
+            "score": 0.0
+          },
+          "glider": {
+            "survived": true,
+            "score": 0.8
+          },
+          "toad": {
+            "survived": true,
+            "score": 0.8
+          },
+          "beacon": {
+            "survived": true,
+            "score": 0.8
+          }
+        }
+      }
+    ]
+  }
+}

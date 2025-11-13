@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "date": "2025-11-11T05:10:41.025132",
+    "seeds": [
+      "B3/S23",
+      "B36/S23",
+      "B34/S34"
+    ],
+    "strategy": "local_mutations_radius_1"
+  },
+  "results": [
+    {
+      "seed": "B3/S23",
+      "seed_name": "Life",
+      "neighbors_generated": 17,
+      "neighbors_valid": 15,
+      "neighbors_rejected": 2,
+      "seed_metrics": {
+        "functional": 0.0,
+        "robustness": 0.0,
+        "capacity": 0.0
+      },
+      "better_functional": 1,
+      "better_robustness": 0,
+      "better_capacity": 1,
+      "top_functional": [
+        [
+          "B3/S234",
+          0.08000000000000002
+        ]
+      ],
+      "top_robustness": []
+    },
+    {
+      "seed": "B36/S23",
+      "seed_name": "HighLife",
+      "neighbors_generated": 18,
+      "neighbors_valid": 16,
+      "neighbors_rejected": 2,
+      "seed_metrics": {
+        "functional": 0.0,
+        "robustness": 0.0,
+        "capacity": 0.0
+      },
+      "better_functional": 1,
+      "better_robustness": 1,
+      "better_capacity": 1,
+      "top_functional": [
+        [
+          "B6/S23",
+          0.75
+        ]
+      ],
+      "top_robustness": [
+        [
+          "B6/S23",
+          1.0
+        ]
+      ]
+    },
+    {
+      "seed": "B34/S34",
+      "seed_name": "34 Life",
+      "neighbors_generated": 18,
+      "neighbors_valid": 14,
+      "neighbors_rejected": 4,
+      "seed_metrics": {
+        "functional": 0.0,
+        "robustness": 0.0,
+        "capacity": 0.0
+      },
+      "better_functional": 0,
+      "better_robustness": 0,
+      "better_capacity": 0,
+      "top_functional": [],
+      "top_robustness": []
+    }
+  ]
+}

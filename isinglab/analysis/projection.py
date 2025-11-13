@@ -231,3 +231,4 @@ class ProjectionMap:
             self._coords_3d[:, :, 2]
         )
 
+

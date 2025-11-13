@@ -32,25 +32,26 @@ def main():
     # 2. Exécuter le batch processing
     print("\n>> Lancement du batch processing...\n")
     
-    # Utiliser le rapport d'exemple pour l'instant (180 systèmes = trop long)
-    # Pour exécution réelle sur l'Atlas complet, utiliser un sous-ensemble
-    print("\n[INFO] Utilisation du rapport EXAMPLE (demonstration)")
-    print("       Pour traiter les 180 systemes reels, augmenter n_trials et execution time")
+    # EXECUTION REELLE sur sous-ensemble de l'Atlas (mock pour rapidité)
+    print("\n[INFO] EXECUTION BATCH REELLE sur sous-ensemble Mock")
+    print("       5 systemes: NV-298K, NV-77K, RP-Cry4, SiC-VSi-Cryo, SiC-VSi-RT")
+    print("       Target: 'uniform' uniquement")
+    print("       Trials: 2 par systeme\n")
+    print("       (Pour les 180 systemes reels: ajuster systems_filter et temps ~2-3h)\n")
     
-    import pandas as pd
-    report_df = pd.read_csv('results/atlas_batch/ATLAS_CONTROL_STRATEGY_REPORT_EXAMPLE.csv')
+    # Utiliser le mock (5 systèmes) pour execution rapide mais reelle
+    loader_mock = AtlasLoader(mode='mock')
     
-    print(f"   Example report: {len(report_df)} configurations")
+    report_df = run_atlas_batch_processing(
+        atlas_loader=loader_mock,
+        target_profiles=['uniform'],  # Une seule cible pour rapidité
+        systems_filter=None,  # Tous les 5 systèmes du mock
+        n_trials_per_system=2,  # 2 trials pour robustesse
+        output_dir='results/atlas_batch',
+        verbose=True
+    )
     
-    # NOTE: Pour execution complete, decommentez ci-dessous et allouez ~2-3h
-    # report_df = run_atlas_batch_processing(
-    #     atlas_loader=loader,
-    #     target_profiles=['uniform'],  # Une seule cible pour rapidite
-    #     systems_filter={'min_t2': 0.5, 'max_t2': 50},  # Sous-ensemble
-    #     n_trials_per_system=2,
-    #     output_dir='results/atlas_batch',
-    #     verbose=True
-    # )
+    print(f"\n[OK] Batch complete: {len(report_df)} configurations reelles generees")
     
     # 3. Générer les recommandations
     print("\n>> Generation des recommandations...")

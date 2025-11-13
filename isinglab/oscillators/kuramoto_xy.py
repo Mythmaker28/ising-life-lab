@@ -261,3 +261,4 @@ class KuramotoXYEngine:
             'std_phase': float(np.std(self.phase_current)),
         }
 
+
