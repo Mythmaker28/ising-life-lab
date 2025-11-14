@@ -4,5 +4,6 @@ NV-77K,NV Center Cryogenic,77,8000,350,2.87,0.02,Low temperature - extended cohe
 RP-Cry4,Radical Pair Cryptochrome,310,50,0.8,0.01,0.25,Biological avian magnetoreception - very short T2
 SiC-VSi-Cryo,Silicon Carbide VSi Defect,4,12000,800,1.35,0.008,Deep cryogenic - ultra-low noise
 SiC-VSi-RT,Silicon Carbide VSi Room Temp,295,6000,12,1.35,0.12,Room temperature SiC - moderate coherence
+C13-Pyruvate,Hyperpolarized 13C Pyruvate,310,45000,3.5,10.7,0.18,Biological metabolic imaging - hyperpolarized nuclear spin
 
 

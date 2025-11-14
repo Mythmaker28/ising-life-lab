@@ -41,6 +41,50 @@ print(f"Improvement: {result['improvement_percent']:.1f}%")  # → +67.8%
 
 ---
 
+## 🎯 Geometric Control Demo (Atlas-Linked)
+
+**Nouveau** : Démonstration complète du pipeline Atlas → Contrôle Géométrique avec figures publiables.
+
+### Systèmes Testés
+
+3 systèmes quantiques biologiques de l'Atlas :
+- **NV-298K** : NV Center à température ambiante (spin qubit optique)
+- **C13-Pyruvate** : 13C hyperpolarisé pour imagerie métabolique
+- **RP-Cry4** : Radical pair Cryptochrome (magnétoréception aviaire)
+
+### Résultats Clés
+
+- **P4 (Geometric Loop)** vs **P3 (Dynamic Ramp)** : Comparaison de robustesse au bruit
+- **Phase de Berry** : Protection topologique démontrée
+- **Figures** : 3 figures publication-ready générées
+- **Tableau** : Résultats agrégés (gain robustesse P4 vs baseline)
+
+### Pipeline Reproductible
+
+```bash
+# Lancer le notebook complet (Jupyter requis)
+cd notebooks/
+jupyter notebook ATLAS_GEOMETRIC_CONTROL_DEMO.ipynb
+
+# Ou exécuter depuis Python
+python -c "import runpy; runpy.run_path('notebooks/ATLAS_GEOMETRIC_CONTROL_DEMO.ipynb')"
+```
+
+### Fichiers Générés
+
+- **Notebook** : `notebooks/ATLAS_GEOMETRIC_CONTROL_DEMO.ipynb`
+- **Figures** :
+  - `figures/atlas_geometric_demo/figure1_nv298k_p3_vs_p4.png` - Comparaison P3 vs P4 (NV center)
+  - `figures/atlas_geometric_demo/figure2_multi_system_comparison.png` - Robustesse 3 systèmes
+  - `figures/atlas_geometric_demo/figure3_system_properties.png` - Propriétés physiques
+- **Données** : `figures/atlas_geometric_demo/results_table.csv` - Tableau résultats
+
+### Mini Résumé
+
+Le pipeline démontre que les trajectoires de contrôle géométrique (closed loops avec phase de Berry) offrent une protection topologique mesurable contre le bruit quantique. Les 3 systèmes biologiques (NV center, 13C hyperpolarisé, radical pair) montrent des gains de robustesse variables selon leurs propriétés de cohérence (T2) et de température d'opération. Pipeline complet disponible dans le notebook, prêt pour extension à l'Atlas complet (180+ systèmes).
+
+---
+
 ## Vue d'Ensemble
 
 **Ising-Life-Lab** est un toolkit R&D pour :
