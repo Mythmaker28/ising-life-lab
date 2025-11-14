@@ -1,14 +1,15 @@
 {
-  "timestamp": "20251113_231522",
-  "n_systems": 5,
-  "n_results": 5,
+  "timestamp": "20251113_233845",
+  "n_systems": 180,
+  "n_results": 360,
   "target_profiles": [
-    "uniform"
+    "uniform",
+    "fragmented"
   ],
-  "n_trials_per_system": 2,
-  "atlas_mode": "mock",
+  "n_trials_per_system": 3,
+  "atlas_mode": "all",
   "winner_distribution": {
-    "P4": 5
+    "P4": 360
   },
-  "average_improvement_p4": 74.26343536376953
+  "average_improvement_p4": 83.9146499633789
 }

@@ -7,6 +7,7 @@ tous les systèmes de l'Atlas.
 
 import sys
 from pathlib import Path
+import pandas as pd
 
 # Ajouter le module au path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -32,21 +33,21 @@ def main():
     # 2. Exécuter le batch processing
     print("\n>> Lancement du batch processing...\n")
     
-    # EXECUTION REELLE sur sous-ensemble de l'Atlas (mock pour rapidité)
-    print("\n[INFO] EXECUTION BATCH REELLE sur sous-ensemble Mock")
-    print("       5 systemes: NV-298K, NV-77K, RP-Cry4, SiC-VSi-Cryo, SiC-VSi-RT")
-    print("       Target: 'uniform' uniquement")
-    print("       Trials: 2 par systeme\n")
-    print("       (Pour les 180 systemes reels: ajuster systems_filter et temps ~2-3h)\n")
+    # EXECUTION REELLE sur TOUS les systèmes de l'Atlas (180 systèmes réels)
+    print("\n[INFO] EXECUTION BATCH COMPLETE - 180 SYSTEMES REELS")
+    print("       Mode: 'all' (optical + nonoptical tier1)")
+    print("       Targets: 'uniform' + 'fragmented'")
+    print("       Trials: 3 par systeme")
+    print("       Systemes bruites: T2 < 50us (validation pattern)")
+    print("       Temps estime: 2-3 heures\n")
+    print("       [Demarrage imminent...]\n")
     
-    # Utiliser le mock (5 systèmes) pour execution rapide mais reelle
-    loader_mock = AtlasLoader(mode='mock')
-    
+    # Utiliser le loader COMPLET (180 systèmes réels)
     report_df = run_atlas_batch_processing(
-        atlas_loader=loader_mock,
-        target_profiles=['uniform'],  # Une seule cible pour rapidité
-        systems_filter=None,  # Tous les 5 systèmes du mock
-        n_trials_per_system=2,  # 2 trials pour robustesse
+        atlas_loader=loader,  # Mode 'all' défini ligne 30
+        target_profiles=['uniform', 'fragmented'],  # Deux cibles phénoménologiques
+        systems_filter={'min_t2': 0.5, 'max_t2': 50},  # Focus systèmes bruités
+        n_trials_per_system=3,  # 3 trials pour robustesse statistique
         output_dir='results/atlas_batch',
         verbose=True
     )

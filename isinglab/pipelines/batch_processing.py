@@ -71,7 +71,8 @@ def process_single_system(
                 noise_multiplier=2.0,
                 n_trials=n_trials,
                 output_dir=None,  # Pas de sauvegarde individuelle
-                seed=42
+                seed=42,
+                atlas_mapper=atlas_mapper
             )
             
             results_per_target[target] = {
