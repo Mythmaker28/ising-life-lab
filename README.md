@@ -11,7 +11,7 @@
 
 ## 🎯 Résultats Majeurs P5 (2025-11-13)
 
-**DÉCOUVERTE** : Les trajectoires de contrôle géométriques (Phase de Berry) offrent une **protection topologique universelle** contre le bruit quantique.
+**DÉCOUVERTE** : Les trajectoires de contrôle géométriques (Phase de Berry) offrent une **protection topologique universelle** contre le bruit quantique. (outdated)
 
 ### Validation Expérimentale Computationnelle
 
