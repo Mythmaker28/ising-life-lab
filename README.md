@@ -83,6 +83,17 @@ python -c "import runpy; runpy.run_path('notebooks/ATLAS_GEOMETRIC_CONTROL_DEMO.
 
 Le pipeline démontre que les trajectoires de contrôle géométrique (closed loops avec phase de Berry) offrent une protection topologique mesurable contre le bruit quantique. Les 3 systèmes biologiques (NV center, 13C hyperpolarisé, radical pair) montrent des gains de robustesse variables selon leurs propriétés de cohérence (T2) et de température d'opération. Pipeline complet disponible dans le notebook, prêt pour extension à l'Atlas complet (180+ systèmes).
 
+### 📄 Paper (arXiv-Ready)
+
+The complete pipeline has been written up as a publication-ready manuscript:
+
+- **Location**: `paper/main.tex` (LaTeX source) + `paper/figures/`
+- **Compilation**: `cd paper && pdflatex main.tex`
+- **Abstract**: `paper/ABSTRACT_arxiv.txt` (for arXiv submission form)
+- **Status**: Ready for arXiv submission to quant-ph (Quantum Physics)
+
+See `paper/README.md` for submission instructions.
+
 ---
 
 ## Vue d'Ensemble

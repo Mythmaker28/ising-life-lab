@@ -1,0 +1,4 @@
+System,Type,T2_us,Temperature_K,Noise,P3_Robustness,P3_Robustness_Std,P4_Robustness,P4_Robustness_Std,Improvement_Percent,Winner,Geometric_Phase_rad
+NV-298K,High temperature biological regime,1.8,298,0.150,0.0000,0.0000,0.0984,0.0921,-100.0,P3,0.173
+C13-Pyruvate,Biological metabolic imaging,3.5,310,0.180,0.0000,0.0000,0.0001,0.0001,-100.0,P3,0.128
+RP-Cry4,Biological avian magnetoreception,0.8,310,0.250,0.0000,0.0000,0.0689,0.0974,-100.0,P3,0.077
