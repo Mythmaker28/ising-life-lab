@@ -1,0 +1,20 @@
+{
+  "scenario": "D - Geometric vs Dynamic Robustness",
+  "target_profile": "uniform",
+  "atlas_profile": "NV-298K",
+  "noise_multiplier": 2.0,
+  "n_trials": 3,
+  "p3_robustness": {
+    "mean": 0.0,
+    "std": 0.0,
+    "variance_r": 2.6731247999123298e-05
+  },
+  "p4_robustness": {
+    "mean": 0.0984402522444725,
+    "std": 0.09213298559188843,
+    "variance_r": 2.3417351258103736e-05,
+    "geometric_phase": 0.17346079965913738
+  },
+  "winner": "P3",
+  "improvement_percent": 100.0
+}

@@ -1,0 +1,20 @@
+{
+  "scenario": "D - Geometric vs Dynamic Robustness",
+  "target_profile": "uniform",
+  "atlas_profile": "RP-Cry4",
+  "noise_multiplier": 2.0,
+  "n_trials": 3,
+  "p3_robustness": {
+    "mean": 0.0,
+    "std": 0.0,
+    "variance_r": 2.666382169991266e-05
+  },
+  "p4_robustness": {
+    "mean": 0.068850576877594,
+    "std": 0.09736942499876022,
+    "variance_r": 2.4629616746096872e-05,
+    "geometric_phase": 0.07671617744604617
+  },
+  "winner": "P3",
+  "improvement_percent": 100.0
+}

@@ -1,0 +1,20 @@
+{
+  "scenario": "D - Geometric vs Dynamic Robustness",
+  "target_profile": "uniform",
+  "atlas_profile": "C13-Pyruvate",
+  "noise_multiplier": 2.0,
+  "n_trials": 3,
+  "p3_robustness": {
+    "mean": 0.0,
+    "std": 0.0,
+    "variance_r": 2.6791822165250778e-05
+  },
+  "p4_robustness": {
+    "mean": 5.2620252972701564e-05,
+    "std": 6.471634696936235e-05,
+    "variance_r": 2.4079847207758576e-05,
+    "geometric_phase": 0.12838089336233413
+  },
+  "winner": "P3",
+  "improvement_percent": 100.0
+}

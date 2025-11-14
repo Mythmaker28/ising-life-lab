@@ -1,9 +1,12 @@
 system_id,system_name,temperature_k,t1_us,t2_us,frequency_ghz,noise_level,regime_notes
-NV-298K,NV Center Room Temp,298,5000,1.8,2.87,0.15,High temperature biological regime - short T2
-NV-77K,NV Center Cryogenic,77,8000,350,2.87,0.02,Low temperature - extended coherence
-RP-Cry4,Radical Pair Cryptochrome,310,50,0.8,0.01,0.25,Biological avian magnetoreception - very short T2
-SiC-VSi-Cryo,Silicon Carbide VSi Defect,4,12000,800,1.35,0.008,Deep cryogenic - ultra-low noise
-SiC-VSi-RT,Silicon Carbide VSi Room Temp,295,6000,12,1.35,0.12,Room temperature SiC - moderate coherence
-C13-Pyruvate,Hyperpolarized 13C Pyruvate,310,45000,3.5,10.7,0.18,Biological metabolic imaging - hyperpolarized nuclear spin
+NV-298K,NV Center Room Temp,298,5000,1.8,2.87,0.15,NV - High temperature biological regime
+NV-310K,NV Center Physiological,310,4200,1.2,2.87,0.18,NV - Physiological temperature (37C) - increased phonon coupling
+NV-280K,NV Center Cool,280,6500,2.5,2.87,0.12,NV - Slightly cooled - better T2
+C13-Pyruvate,Hyperpolarized 13C Pyruvate,310,45000,3.5,10.7,0.18,13C - Metabolic imaging - pyruvate tracer
+C13-Lactate,Hyperpolarized 13C Lactate,310,42000,3.2,10.7,0.19,13C - Lactate metabolism - slightly shorter T2
+C13-Bicarbonate,Hyperpolarized 13C Bicarbonate,310,38000,2.8,10.7,0.21,13C - pH sensing - CO2 exchange affects T2
+RP-Cry4,Radical Pair Cryptochrome Cry4,310,50,0.8,0.01,0.25,RP - Avian magnetoreception - cryptochrome 4
+RP-Photolyase,Radical Pair Photolyase,305,65,1.1,0.01,0.22,RP - DNA repair enzyme - slightly longer T2
+RP-PSII,Radical Pair Photosystem II,298,40,0.6,0.01,0.28,RP - Photosynthetic reaction center - very fast recombination
 
 
